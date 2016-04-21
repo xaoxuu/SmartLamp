@@ -4,7 +4,7 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Smart Lamp.xcscheme</key>
+		<key>SmartLamp.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
@@ -12,17 +12,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>DDC0AF871CC623D400B669A1</key>
+		<key>DDC0AFCC1CC8C29100B669A1</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>DDC0AFA01CC623D400B669A1</key>
+		<key>DDC0AFE51CC8C29100B669A1</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>DDC0AFAB1CC623D500B669A1</key>
+		<key>DDC0AFF01CC8C29100B669A1</key>
 		<dict>
 			<key>primary</key>
 			<true/>

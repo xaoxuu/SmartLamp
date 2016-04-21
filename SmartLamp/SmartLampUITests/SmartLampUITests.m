@@ -1,18 +1,18 @@
 //
-//  Smart_LampUITests.m
-//  Smart LampUITests
+//  SmartLampUITests.m
+//  SmartLampUITests
 //
-//  Created by Aesir Titan on 2016-04-19.
+//  Created by Aesir Titan on 2016-04-21.
 //  Copyright © 2016 Titan Studio. All rights reserved.
 //
 
 #import <XCTest/XCTest.h>
 
-@interface Smart_LampUITests : XCTestCase
+@interface SmartLampUITests : XCTestCase
 
 @end
 
-@implementation Smart_LampUITests
+@implementation SmartLampUITests
 
 - (void)setUp {
     [super setUp];

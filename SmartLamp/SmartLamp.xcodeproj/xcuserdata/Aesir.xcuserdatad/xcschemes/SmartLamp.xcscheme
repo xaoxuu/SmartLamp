@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "DDC0AF871CC623D400B669A1"
-               BuildableName = "Smart Lamp.app"
-               BlueprintName = "Smart Lamp"
-               ReferencedContainer = "container:Smart Lamp.xcodeproj">
+               BlueprintIdentifier = "DDC0AFCC1CC8C29100B669A1"
+               BuildableName = "SmartLamp.app"
+               BlueprintName = "SmartLamp"
+               ReferencedContainer = "container:SmartLamp.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -32,30 +32,30 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "DDC0AFA01CC623D400B669A1"
-               BuildableName = "Smart LampTests.xctest"
-               BlueprintName = "Smart LampTests"
-               ReferencedContainer = "container:Smart Lamp.xcodeproj">
+               BlueprintIdentifier = "DDC0AFE51CC8C29100B669A1"
+               BuildableName = "SmartLampTests.xctest"
+               BlueprintName = "SmartLampTests"
+               ReferencedContainer = "container:SmartLamp.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "DDC0AFAB1CC623D500B669A1"
-               BuildableName = "Smart LampUITests.xctest"
-               BlueprintName = "Smart LampUITests"
-               ReferencedContainer = "container:Smart Lamp.xcodeproj">
+               BlueprintIdentifier = "DDC0AFF01CC8C29100B669A1"
+               BuildableName = "SmartLampUITests.xctest"
+               BlueprintName = "SmartLampUITests"
+               ReferencedContainer = "container:SmartLamp.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "DDC0AF871CC623D400B669A1"
-            BuildableName = "Smart Lamp.app"
-            BlueprintName = "Smart Lamp"
-            ReferencedContainer = "container:Smart Lamp.xcodeproj">
+            BlueprintIdentifier = "DDC0AFCC1CC8C29100B669A1"
+            BuildableName = "SmartLamp.app"
+            BlueprintName = "SmartLamp"
+            ReferencedContainer = "container:SmartLamp.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -75,10 +75,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "DDC0AF871CC623D400B669A1"
-            BuildableName = "Smart Lamp.app"
-            BlueprintName = "Smart Lamp"
-            ReferencedContainer = "container:Smart Lamp.xcodeproj">
+            BlueprintIdentifier = "DDC0AFCC1CC8C29100B669A1"
+            BuildableName = "SmartLamp.app"
+            BlueprintName = "SmartLamp"
+            ReferencedContainer = "container:SmartLamp.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -94,10 +94,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "DDC0AF871CC623D400B669A1"
-            BuildableName = "Smart Lamp.app"
-            BlueprintName = "Smart Lamp"
-            ReferencedContainer = "container:Smart Lamp.xcodeproj">
+            BlueprintIdentifier = "DDC0AFCC1CC8C29100B669A1"
+            BuildableName = "SmartLamp.app"
+            BlueprintName = "SmartLamp"
+            ReferencedContainer = "container:SmartLamp.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

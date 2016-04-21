@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:Smart Lamp.xcodeproj">
+      location = "self:SmartLamp.xcodeproj">
    </FileRef>
 </Workspace>
