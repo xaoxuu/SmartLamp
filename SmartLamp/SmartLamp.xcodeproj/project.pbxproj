@@ -10,11 +10,15 @@
 		DDC0AFD21CC8C29100B669A1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DDC0AFD11CC8C29100B669A1 /* main.m */; };
 		DDC0AFD51CC8C29100B669A1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DDC0AFD41CC8C29100B669A1 /* AppDelegate.m */; };
 		DDC0AFD81CC8C29100B669A1 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDC0AFD71CC8C29100B669A1 /* ViewController.m */; };
-		DDC0AFDD1CC8C29100B669A1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DDC0AFDC1CC8C29100B669A1 /* Assets.xcassets */; };
 		DDC0AFE01CC8C29100B669A1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDC0AFDE1CC8C29100B669A1 /* LaunchScreen.storyboard */; };
 		DDC0AFEB1CC8C29100B669A1 /* SmartLampTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DDC0AFEA1CC8C29100B669A1 /* SmartLampTests.m */; };
 		DDC0AFF61CC8C29100B669A1 /* SmartLampUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = DDC0AFF51CC8C29100B669A1 /* SmartLampUITests.m */; };
 		DDC0B0041CC8C2F400B669A1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDC0B0031CC8C2F400B669A1 /* Main.storyboard */; };
+		DDC0B04E1CC8C53F00B669A1 /* UIView+ATView.m in Sources */ = {isa = PBXBuildFile; fileRef = DDC0B04C1CC8C53F00B669A1 /* UIView+ATView.m */; };
+		DDF5AD3E1CC8E75F008F4E1C /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDF5AD3D1CC8E75F008F4E1C /* HomeViewController.m */; };
+		DDF5AD411CC8E8CD008F4E1C /* ProfilesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDF5AD401CC8E8CD008F4E1C /* ProfilesViewController.m */; };
+		DDF5AD431CC8F3FB008F4E1C /* Asset.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DDF5AD421CC8F3FB008F4E1C /* Asset.xcassets */; };
+		DDF5AD461CC8F828008F4E1C /* BluetoothViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDF5AD451CC8F828008F4E1C /* BluetoothViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,7 +45,6 @@
 		DDC0AFD41CC8C29100B669A1 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		DDC0AFD61CC8C29100B669A1 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		DDC0AFD71CC8C29100B669A1 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		DDC0AFDC1CC8C29100B669A1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DDC0AFDF1CC8C29100B669A1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DDC0AFE11CC8C29100B669A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DDC0AFE61CC8C29100B669A1 /* SmartLampTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SmartLampTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -51,6 +54,16 @@
 		DDC0AFF51CC8C29100B669A1 /* SmartLampUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SmartLampUITests.m; sourceTree = "<group>"; };
 		DDC0AFF71CC8C29100B669A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DDC0B0031CC8C2F400B669A1 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		DDC0B0481CC8C53F00B669A1 /* ATStandard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATStandard.h; sourceTree = "<group>"; };
+		DDC0B04B1CC8C53F00B669A1 /* UIView+ATView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+ATView.h"; sourceTree = "<group>"; };
+		DDC0B04C1CC8C53F00B669A1 /* UIView+ATView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+ATView.m"; sourceTree = "<group>"; };
+		DDF5AD3C1CC8E75F008F4E1C /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
+		DDF5AD3D1CC8E75F008F4E1C /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
+		DDF5AD3F1CC8E8CD008F4E1C /* ProfilesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfilesViewController.h; sourceTree = "<group>"; };
+		DDF5AD401CC8E8CD008F4E1C /* ProfilesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfilesViewController.m; sourceTree = "<group>"; };
+		DDF5AD421CC8F3FB008F4E1C /* Asset.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Asset.xcassets; sourceTree = "<group>"; };
+		DDF5AD441CC8F828008F4E1C /* BluetoothViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BluetoothViewController.h; sourceTree = "<group>"; };
+		DDF5AD451CC8F828008F4E1C /* BluetoothViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BluetoothViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,14 +114,8 @@
 		DDC0AFCF1CC8C29100B669A1 /* SmartLamp */ = {
 			isa = PBXGroup;
 			children = (
-				DDC0AFD31CC8C29100B669A1 /* AppDelegate.h */,
-				DDC0AFD41CC8C29100B669A1 /* AppDelegate.m */,
-				DDC0AFD61CC8C29100B669A1 /* ViewController.h */,
-				DDC0AFD71CC8C29100B669A1 /* ViewController.m */,
-				DDC0AFDC1CC8C29100B669A1 /* Assets.xcassets */,
-				DDC0B0031CC8C2F400B669A1 /* Main.storyboard */,
-				DDC0AFDE1CC8C29100B669A1 /* LaunchScreen.storyboard */,
-				DDC0AFE11CC8C29100B669A1 /* Info.plist */,
+				DDC0B0501CC8C57300B669A1 /* Controller */,
+				DDC0B04F1CC8C56800B669A1 /* View */,
 				DDC0AFD01CC8C29100B669A1 /* Supporting Files */,
 			);
 			path = SmartLamp;
@@ -117,7 +124,11 @@
 		DDC0AFD01CC8C29100B669A1 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				DDC0AFE11CC8C29100B669A1 /* Info.plist */,
+				DDC0B0481CC8C53F00B669A1 /* ATStandard.h */,
 				DDC0AFD11CC8C29100B669A1 /* main.m */,
+				DDC0AFD31CC8C29100B669A1 /* AppDelegate.h */,
+				DDC0AFD41CC8C29100B669A1 /* AppDelegate.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -138,6 +149,33 @@
 				DDC0AFF71CC8C29100B669A1 /* Info.plist */,
 			);
 			path = SmartLampUITests;
+			sourceTree = "<group>";
+		};
+		DDC0B04F1CC8C56800B669A1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DDC0B0031CC8C2F400B669A1 /* Main.storyboard */,
+				DDC0AFDE1CC8C29100B669A1 /* LaunchScreen.storyboard */,
+				DDC0B04B1CC8C53F00B669A1 /* UIView+ATView.h */,
+				DDC0B04C1CC8C53F00B669A1 /* UIView+ATView.m */,
+				DDF5AD421CC8F3FB008F4E1C /* Asset.xcassets */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		DDC0B0501CC8C57300B669A1 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				DDC0AFD61CC8C29100B669A1 /* ViewController.h */,
+				DDC0AFD71CC8C29100B669A1 /* ViewController.m */,
+				DDF5AD3C1CC8E75F008F4E1C /* HomeViewController.h */,
+				DDF5AD3D1CC8E75F008F4E1C /* HomeViewController.m */,
+				DDF5AD441CC8F828008F4E1C /* BluetoothViewController.h */,
+				DDF5AD451CC8F828008F4E1C /* BluetoothViewController.m */,
+				DDF5AD3F1CC8E8CD008F4E1C /* ProfilesViewController.h */,
+				DDF5AD401CC8E8CD008F4E1C /* ProfilesViewController.m */,
+			);
+			name = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -246,9 +284,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DDF5AD431CC8F3FB008F4E1C /* Asset.xcassets in Resources */,
 				DDC0B0041CC8C2F400B669A1 /* Main.storyboard in Resources */,
 				DDC0AFE01CC8C29100B669A1 /* LaunchScreen.storyboard in Resources */,
-				DDC0AFDD1CC8C29100B669A1 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -273,8 +311,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DDF5AD411CC8E8CD008F4E1C /* ProfilesViewController.m in Sources */,
+				DDC0B04E1CC8C53F00B669A1 /* UIView+ATView.m in Sources */,
+				DDF5AD461CC8F828008F4E1C /* BluetoothViewController.m in Sources */,
 				DDC0AFD81CC8C29100B669A1 /* ViewController.m in Sources */,
 				DDC0AFD51CC8C29100B669A1 /* AppDelegate.m in Sources */,
+				DDF5AD3E1CC8E75F008F4E1C /* HomeViewController.m in Sources */,
 				DDC0AFD21CC8C29100B669A1 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -359,7 +401,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -398,7 +440,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -411,6 +453,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = SmartLamp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.titanstudio.SmartLamp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -422,6 +465,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = SmartLamp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.titanstudio.SmartLamp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -493,6 +537,7 @@
 				DDC0AFFC1CC8C29100B669A1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		DDC0AFFD1CC8C29100B669A1 /* Build configuration list for PBXNativeTarget "SmartLampTests" */ = {
 			isa = XCConfigurationList;
@@ -501,6 +546,7 @@
 				DDC0AFFF1CC8C29100B669A1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		DDC0B0001CC8C29100B669A1 /* Build configuration list for PBXNativeTarget "SmartLampUITests" */ = {
 			isa = XCConfigurationList;
@@ -509,6 +555,7 @@
 				DDC0B0021CC8C29100B669A1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
