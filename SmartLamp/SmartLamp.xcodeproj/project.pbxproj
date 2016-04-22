@@ -19,6 +19,7 @@
 		DDF5AD411CC8E8CD008F4E1C /* ProfilesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDF5AD401CC8E8CD008F4E1C /* ProfilesViewController.m */; };
 		DDF5AD431CC8F3FB008F4E1C /* Asset.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DDF5AD421CC8F3FB008F4E1C /* Asset.xcassets */; };
 		DDF5AD461CC8F828008F4E1C /* BluetoothViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDF5AD451CC8F828008F4E1C /* BluetoothViewController.m */; };
+		DDF5AD491CC90312008F4E1C /* BLEUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = DDF5AD481CC90312008F4E1C /* BLEUtil.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +65,8 @@
 		DDF5AD421CC8F3FB008F4E1C /* Asset.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Asset.xcassets; sourceTree = "<group>"; };
 		DDF5AD441CC8F828008F4E1C /* BluetoothViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BluetoothViewController.h; sourceTree = "<group>"; };
 		DDF5AD451CC8F828008F4E1C /* BluetoothViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BluetoothViewController.m; sourceTree = "<group>"; };
+		DDF5AD471CC90312008F4E1C /* BLEUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLEUtil.h; sourceTree = "<group>"; };
+		DDF5AD481CC90312008F4E1C /* BLEUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLEUtil.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +117,8 @@
 		DDC0AFCF1CC8C29100B669A1 /* SmartLamp */ = {
 			isa = PBXGroup;
 			children = (
+				DDF5AD471CC90312008F4E1C /* BLEUtil.h */,
+				DDF5AD481CC90312008F4E1C /* BLEUtil.m */,
 				DDC0B0501CC8C57300B669A1 /* Controller */,
 				DDC0B04F1CC8C56800B669A1 /* View */,
 				DDC0AFD01CC8C29100B669A1 /* Supporting Files */,
@@ -316,6 +321,7 @@
 				DDF5AD461CC8F828008F4E1C /* BluetoothViewController.m in Sources */,
 				DDC0AFD81CC8C29100B669A1 /* ViewController.m in Sources */,
 				DDC0AFD51CC8C29100B669A1 /* AppDelegate.m in Sources */,
+				DDF5AD491CC90312008F4E1C /* BLEUtil.m in Sources */,
 				DDF5AD3E1CC8E75F008F4E1C /* HomeViewController.m in Sources */,
 				DDC0AFD21CC8C29100B669A1 /* main.m in Sources */,
 			);

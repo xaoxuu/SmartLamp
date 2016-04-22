@@ -54,11 +54,11 @@
         /*======================[ Button ]======================*/
         case ATWidgetAnimationButtonDown:  // 按钮按下
             self.layer.shadowOpacity = 0.2;
-            self.layer.shadowRadius = 2.0;
+            self.layer.shadowRadius = 0.5;
             break;
         case ATWidgetAnimationButtonUp:    // 按钮弹起
             self.layer.shadowOpacity = 0.3;
-            self.layer.shadowRadius = 5.0;
+            self.layer.shadowRadius = 2.0;
             break;
             
             

@@ -2,11 +2,12 @@
   "images" : [
     {
       "idiom" : "universal",
+      "filename" : "bluetooth.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "LampOFF.png",
+      "filename" : "bluetooth-1.png",
       "scale" : "2x"
     },
     {
