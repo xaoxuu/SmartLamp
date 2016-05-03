@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DDB0D1EB1CD224C100C6445D /* ATCentralManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB0D1EA1CD224C100C6445D /* ATCentralManager.m */; };
+		DDB0D1EE1CD226FA00C6445D /* ATPeripheral.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB0D1ED1CD226FA00C6445D /* ATPeripheral.m */; };
 		DDC0AFD21CC8C29100B669A1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DDC0AFD11CC8C29100B669A1 /* main.m */; };
 		DDC0AFD51CC8C29100B669A1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DDC0AFD41CC8C29100B669A1 /* AppDelegate.m */; };
 		DDC0AFD81CC8C29100B669A1 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDC0AFD71CC8C29100B669A1 /* ViewController.m */; };
@@ -19,7 +21,6 @@
 		DDF5AD411CC8E8CD008F4E1C /* ProfilesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDF5AD401CC8E8CD008F4E1C /* ProfilesViewController.m */; };
 		DDF5AD431CC8F3FB008F4E1C /* Asset.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DDF5AD421CC8F3FB008F4E1C /* Asset.xcassets */; };
 		DDF5AD461CC8F828008F4E1C /* BluetoothViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDF5AD451CC8F828008F4E1C /* BluetoothViewController.m */; };
-		DDF5AD491CC90312008F4E1C /* BLEUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = DDF5AD481CC90312008F4E1C /* BLEUtil.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DDB0D1E91CD224C100C6445D /* ATCentralManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATCentralManager.h; sourceTree = "<group>"; };
+		DDB0D1EA1CD224C100C6445D /* ATCentralManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATCentralManager.m; sourceTree = "<group>"; };
+		DDB0D1EC1CD226FA00C6445D /* ATPeripheral.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATPeripheral.h; sourceTree = "<group>"; };
+		DDB0D1ED1CD226FA00C6445D /* ATPeripheral.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATPeripheral.m; sourceTree = "<group>"; };
 		DDC0AFCD1CC8C29100B669A1 /* SmartLamp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartLamp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DDC0AFD11CC8C29100B669A1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		DDC0AFD31CC8C29100B669A1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -65,8 +70,6 @@
 		DDF5AD421CC8F3FB008F4E1C /* Asset.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Asset.xcassets; sourceTree = "<group>"; };
 		DDF5AD441CC8F828008F4E1C /* BluetoothViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BluetoothViewController.h; sourceTree = "<group>"; };
 		DDF5AD451CC8F828008F4E1C /* BluetoothViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BluetoothViewController.m; sourceTree = "<group>"; };
-		DDF5AD471CC90312008F4E1C /* BLEUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLEUtil.h; sourceTree = "<group>"; };
-		DDF5AD481CC90312008F4E1C /* BLEUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLEUtil.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +97,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DDB0D1E81CD2248200C6445D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DDB0D1E91CD224C100C6445D /* ATCentralManager.h */,
+				DDB0D1EA1CD224C100C6445D /* ATCentralManager.m */,
+				DDB0D1EC1CD226FA00C6445D /* ATPeripheral.h */,
+				DDB0D1ED1CD226FA00C6445D /* ATPeripheral.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		DDC0AFC41CC8C29100B669A1 = {
 			isa = PBXGroup;
 			children = (
@@ -117,8 +131,7 @@
 		DDC0AFCF1CC8C29100B669A1 /* SmartLamp */ = {
 			isa = PBXGroup;
 			children = (
-				DDF5AD471CC90312008F4E1C /* BLEUtil.h */,
-				DDF5AD481CC90312008F4E1C /* BLEUtil.m */,
+				DDB0D1E81CD2248200C6445D /* Model */,
 				DDC0B0501CC8C57300B669A1 /* Controller */,
 				DDC0B04F1CC8C56800B669A1 /* View */,
 				DDC0AFD01CC8C29100B669A1 /* Supporting Files */,
@@ -245,6 +258,7 @@
 		DDC0AFC51CC8C29100B669A1 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = AT;
 				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = "Titan Studio";
 				TargetAttributes = {
@@ -317,11 +331,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				DDF5AD411CC8E8CD008F4E1C /* ProfilesViewController.m in Sources */,
+				DDB0D1EB1CD224C100C6445D /* ATCentralManager.m in Sources */,
+				DDB0D1EE1CD226FA00C6445D /* ATPeripheral.m in Sources */,
 				DDC0B04E1CC8C53F00B669A1 /* UIView+ATView.m in Sources */,
 				DDF5AD461CC8F828008F4E1C /* BluetoothViewController.m in Sources */,
 				DDC0AFD81CC8C29100B669A1 /* ViewController.m in Sources */,
 				DDC0AFD51CC8C29100B669A1 /* AppDelegate.m in Sources */,
-				DDF5AD491CC90312008F4E1C /* BLEUtil.m in Sources */,
 				DDF5AD3E1CC8E75F008F4E1C /* HomeViewController.m in Sources */,
 				DDC0AFD21CC8C29100B669A1 /* main.m in Sources */,
 			);

@@ -7,7 +7,7 @@
 //
 
 #import "HomeViewController.h"
-#import "BLEUtil.h"
+#import "ATCentralManager.h"
 
 @interface HomeViewController ()
 
@@ -18,12 +18,10 @@
 
 
 @property (weak, nonatomic) IBOutlet UISlider *brightnessSlider;
-
 @property (weak, nonatomic) IBOutlet UISlider *redSlider;
-
 @property (weak, nonatomic) IBOutlet UISlider *greenSlider;
-
 @property (weak, nonatomic) IBOutlet UISlider *blueSlider;
+
 @property (weak, nonatomic) IBOutlet UIButton *bluetoothButton;
 @property (weak, nonatomic) IBOutlet UIView *tabBarBackground;
 
@@ -31,10 +29,43 @@
 
 @implementation HomeViewController
 
+- (IBAction)btn1:(UIButton *)sender {
+    
+    [self.iPhone smartLampConnectOrNot:YES];
+    
+}
+
+- (IBAction)btn2:(UIButton *)sender {
+    [self.iPhone smartLampConnectOrNot:NO];
+}
+
+- (IBAction)btn3:(UIButton *)sender {
+    [self.iPhone smartLampPowerOnOrOff:NO];
+}
+- (IBAction)btn4:(UIButton *)sender {
+    [self.iPhone smartLampPowerOnOrOff:YES];
+}
+
+- (IBAction)btn5:(UIButton *)sender {
+    [self.iPhone smartLampSetColorAnimation: AnimationSaltusStep3];
+}
+- (IBAction)btn6:(UIButton *)sender {
+    [self.iPhone smartLampSetColorAnimation: AnimationSaltusStep7];
+}
+
+- (IBAction)btn7:(UIButton *)sender {
+    [self.iPhone smartLampSetColorAnimation: AnimationGratation];
+}
+- (IBAction)btn8:(UIButton *)sender {
+    [self.iPhone smartLampSetColorAnimation: AnimationNone];
+}
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self prefersStatusBarHidden];
+    
 
 }
 - (BOOL)prefersStatusBarHidden{
@@ -50,7 +81,9 @@
 -(void)viewWillAppear:(BOOL)animated{
 //    [self.navigationController setNavigationBarHidden:YES animated:NO];
     
-    [_bluetoothButton shadowLayer:ATWidgetAnimationButtonUp];
+    [self.iPhone smartLampConnectOrNot:YES];
+    [self.bluetoothButton shadowLayer:ATWidgetAnimationButtonUp];
+    
 }
 
 
@@ -77,7 +110,6 @@
 - (IBAction)redSlider:(UISlider *)sender {
     
     [self refreshRGBValue];
-    
     
 }
 
@@ -129,7 +161,6 @@
                                             blue:0.5 * blue  + 0.3
                                            alpha:0.7 * alpha + 0.3];
     
-
     
     // 背景颜色
     _backgroundView.backgroundColor = trueColor;
@@ -149,7 +180,8 @@
     
     // 给蓝牙设备发送指令
     
-    [kBLEUtil ble07_red:(int)red blue:(int)blue green:(int)green];
+    [self.iPhone smartLampSetColorWithR:red G:green B:blue andBright:alpha];
+    
     
 }
 

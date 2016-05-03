@@ -168,6 +168,62 @@
                                                     <segue destination="tTz-0P-put" kind="show" id="UdP-mz-vGc"/>
                                                 </connections>
                                             </button>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kdu-A8-a7w">
+                                                <rect key="frame" x="0.0" y="45" width="30" height="30"/>
+                                                <state key="normal" title="断开"/>
+                                                <connections>
+                                                    <action selector="btn2:" destination="nHe-8W-S81" eventType="touchUpInside" id="7ha-SL-wkS"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y88-tC-NrK">
+                                                <rect key="frame" x="0.0" y="8" width="30" height="30"/>
+                                                <state key="normal" title="连接"/>
+                                                <connections>
+                                                    <action selector="btn1:" destination="nHe-8W-S81" eventType="touchUpInside" id="Rjb-Yl-uZh"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IMS-8c-r5e">
+                                                <rect key="frame" x="0.0" y="121" width="30" height="30"/>
+                                                <state key="normal" title="唤醒"/>
+                                                <connections>
+                                                    <action selector="btn4:" destination="nHe-8W-S81" eventType="touchUpInside" id="diI-yv-GGG"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NgF-dE-O6m">
+                                                <rect key="frame" x="0.0" y="83" width="30" height="30"/>
+                                                <state key="normal" title="睡眠"/>
+                                                <connections>
+                                                    <action selector="btn3:" destination="nHe-8W-S81" eventType="touchUpInside" id="WhI-a3-lt2"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="61d-JZ-9vu">
+                                                <rect key="frame" x="0.0" y="159" width="55" height="30"/>
+                                                <state key="normal" title="3色跳变"/>
+                                                <connections>
+                                                    <action selector="btn5:" destination="nHe-8W-S81" eventType="touchUpInside" id="gAH-cK-qJo"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jTY-5b-tTe">
+                                                <rect key="frame" x="1" y="197" width="54" height="30"/>
+                                                <state key="normal" title="7色跳变"/>
+                                                <connections>
+                                                    <action selector="btn6:" destination="nHe-8W-S81" eventType="touchUpInside" id="PfH-J6-iEW"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hm1-vD-DSZ">
+                                                <rect key="frame" x="1" y="230" width="30" height="30"/>
+                                                <state key="normal" title="渐变"/>
+                                                <connections>
+                                                    <action selector="btn7:" destination="nHe-8W-S81" eventType="touchUpInside" id="q0a-D1-ZoV"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eta-YN-sAq">
+                                                <rect key="frame" x="0.0" y="268" width="30" height="30"/>
+                                                <state key="normal" title="静态"/>
+                                                <connections>
+                                                    <action selector="btn8:" destination="nHe-8W-S81" eventType="touchUpInside" id="QDS-cS-ci9"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
                                         <constraints>

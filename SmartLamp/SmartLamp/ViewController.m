@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "ATCentralManager.h"
 
 @interface ViewController ()
 
@@ -14,10 +15,23 @@
 
 @implementation ViewController
 
+- (ATCentralManager *)iPhone{
+    
+    if (!_iPhone) {
+        
+        _iPhone = [ATCentralManager defaultCentralManager];
+        
+        
+    }
+    return _iPhone;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     [self.navigationController setNavigationBarHidden:YES animated:NO];
+    
+    
     
 }
 

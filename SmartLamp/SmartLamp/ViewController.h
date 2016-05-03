@@ -7,9 +7,13 @@
 //
 
 #import "UIView+ATView.h"
+@class ATCentralManager;
+
 
 @interface ViewController : UIViewController
 
+
+@property (strong, nonatomic) ATCentralManager *iPhone;
 
 @end
 
