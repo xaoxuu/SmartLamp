@@ -12,16 +12,21 @@
 
 #import "ATCentralManager.h"
 
+
+
 ATCentralManager *iPhone;
 
 @interface ATCentralManager ()
 
-// 中心设备与周边设备的连接状态
-@property (assign, nonatomic) BOOL connecting;
 
 // 特征
 @property (strong, nonatomic) CBCharacteristic *Characteristic1001;
 @property (strong, nonatomic) CBCharacteristic *Characteristic1002;
+
+// 蓝牙设备列表
+@property (strong, nonatomic) NSMutableArray<CBPeripheral *> *peripheralList;
+
+
 
 @end
 
@@ -29,10 +34,104 @@ ATCentralManager *iPhone;
 
 #pragma mark - 公有方法 🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀
 
+// 准备扫描
+- (void)readyForScan{
+    
+    [self.peripheralList removeAllObjects];
+    [self requestScan];
+    
+}
+
+#pragma mark 🔗连接和开关控制
+
+// 搜索蓝牙灯, 找到的蓝牙灯设备列表
+- (NSArray *)searchSmartLamp{
+    
+    
+    // 开始扫描
+    [self requestScan];
+    
+    // 返回扫描到的蓝牙设备列表
+    return self.peripheralList;
+
+}
+
+
+// 建立连接
+- (void)connectSmartLamp:(CBPeripheral *)smartLamp{
+    
+    // 如果已经连接了, 就忽略指令
+    if (self.connecting) return;
+    
+    // 把传入指定的设备赋值给单例中的属性
+    self.peripheral = smartLamp;
+    
+    // 如果拥有对象, 就连接
+    if (self.peripheral) {
+        // 调用连接周边设备的方法
+        [self.manager connectPeripheral:self.peripheral options:nil];
+        // 更新状态值
+        self.connecting = YES;
+    }
+    
+}
+
+// 断开连接
+- (void)disConnectSmartLamp{
+    
+    // 如果已经断开连接了, 就忽略指令
+    if (!self.connecting) return;
+    // 调用断开连接的方法
+    [self.manager cancelPeripheralConnection:self.peripheral];
+    // 更新状态值
+    self.connecting = NO;
+    // 控制台输出
+    NSLog(@"蓝牙设备已断开");
+    
+    //        [[NSNotificationCenter defaultCenter] postNotificationName:@"disconnect" object:nil];
+    
+
+    
+}
+
+
+// 电源开关
+- (void)letSmartLampPowerOnOrOff:(BOOL)powerOn{
+    
+    // 如果已经断开连接了, 就忽略指令
+    if (!self.connecting) return;
+    
+    // 开灯
+    if (powerOn) [iPhone letSmartLampSetColorWithR:1 G:1 B:1 andBright:1];
+    
+    // 关灯
+    else [iPhone letSmartLampSetColorWithR:1 G:1 B:1 andBright:0];
+    
+}
+
+// 设置定时关机
+- (void)letSmartLampPowerOffAfter:(NSUInteger)minutes{
+    
+    // 如果已经断开连接了, 就忽略指令
+    if (!self.connecting) return;
+    
+    // 保证传入的时间在支持的范围内
+    if (minutes < 5) minutes = 5;
+    if (minutes > 120)minutes = 120;
+    
+    // 调用发送数据的Block
+    [self sendData:^(char *p) {
+        *p++ = 0x04;    // 延时关机指令
+        *p++ = minutes; // 分钟数，5~120分钟
+    }];
+    
+}
+
+
 #pragma mark 🔆颜色和亮度控制
 
 // 设置颜色和亮度
-- (void)smartLampSetColorWithR:(float)red G:(float)green B:(float)blue andBright:(float)bright{
+- (void)letSmartLampSetColorWithR:(float)red G:(float)green B:(float)blue andBright:(float)bright{
     
     // 如果没有连接, 就忽略指令
     if (!self.connecting) return;
@@ -53,7 +152,7 @@ ATCentralManager *iPhone;
 }
 
 // 设置动画
-- (void)smartLampSetColorAnimation:(Animation)animation{
+- (void)letSmartLampPerformColorAnimation:(ColorAnimation)animation{
     
     // 如果没有连接, 就忽略指令
     if (!self.connecting) return;
@@ -62,97 +161,21 @@ ATCentralManager *iPhone;
     [self sendData:^(char *p) {
         
         switch (animation) {
-            case AnimationNone:        // 动画暂停
+            case ColorAnimationNone:        // 动画暂停
                 *p++ = 0x29;
                 break;
-            case AnimationSaltusStep3: // 3色跳变
+            case ColorAnimationSaltusStep3: // 3色跳变
                 *p++ = 0x26;
                 break;
-            case AnimationSaltusStep7: // 7色跳变
+            case ColorAnimationSaltusStep7: // 7色跳变
                 *p++ = 0x27;
                 break;
-            case AnimationGratation:   // 渐变
+            case ColorAnimationGratation:   // 渐变
                 *p++ = 0x28;
                 break;
                 
         }
         
-    }];
-    
-}
-
-#pragma mark 🔗连接和开关控制
-
-// 连接
-- (void)smartLampConnectOrNot:(BOOL)connect{
-    
-    // ==================== [ 连接 ] ==================== //
-    if (connect) {
-        
-        // 如果已经连接了, 就忽略指令
-        if (self.connecting) return;
-        // 如果蓝牙可用, 就扫描
-        if (self.attachable) {
-            // 扫描周边设备, (扫描到就会拥有对象)
-            [self requestScan];
-            // 如果拥有对象, 就连接
-            if (self.peripheral) {
-                // 调用连接周边设备的方法
-                [self.manager connectPeripheral:self.peripheral options:nil];
-                // 更新状态值
-                self.connecting = YES;
-            }
-            
-        }
-        
-    }
-    
-    // ==================== [ 断开 ] ==================== //
-    else{
-        
-        // 如果已经断开连接了, 就忽略指令
-        if (!self.connecting) return;
-        // 调用断开连接的方法
-        [self.manager cancelPeripheralConnection:self.peripheral];
-        // 更新状态值
-        self.connecting = NO;
-        // 控制台输出
-        NSLog(@"蓝牙设备已断开");
-        
-//        [[NSNotificationCenter defaultCenter] postNotificationName:@"disconnect" object:nil];
-        
-    }
-    
-}
-
-// 电源开关
-- (void)smartLampPowerOnOrOff:(BOOL)powerOn{
-    
-    // 如果已经断开连接了, 就忽略指令
-    if (!self.connecting) return;
-    
-    // 开灯
-    if (powerOn) [iPhone smartLampSetColorWithR:1 G:1 B:1 andBright:0];
-    
-    // 关灯
-    else [iPhone smartLampSetColorWithR:1 G:1 B:1 andBright:1];
-    
-}
-
-// 设置定时关机
-- (void)smartLampPowerOffAfter:(NSUInteger)minutes{
-    
-    // 如果已经断开连接了, 就忽略指令
-    if (!self.connecting) return;
-    
-    // 保证传入的时间在支持的范围内
-    if (minutes < 5) minutes = 5;
-    if (minutes > 120)minutes = 120;
-    
-    // 调用发送数据的Block
-    [self sendData:^(char *p) {
-        *p++ = 0x04;    // 延时关机指令
-        *p++ = minutes; // 分钟数，5~120分钟
     }];
     
 }
@@ -198,6 +221,7 @@ ATCentralManager *iPhone;
 - (void)centralManagerDidUpdateState:(CBCentralManager *)central
 {
     
+    [self.peripheralList removeAllObjects];
     // 如果状态变为可用的, 就执行以下操作
     if (self.attachable) {
         
@@ -214,13 +238,37 @@ ATCentralManager *iPhone;
                   RSSI:(NSNumber *)RSSI
 {
     
-    // 如果蓝牙设备的名字是配套的蓝牙灯, 就保存到单例中
-    if ([aPeripheral.name isEqualToString:@"KQX-BL1000"]) {
-        // 将这个蓝牙灯对象保存到单例中
-        self.peripheral = aPeripheral;
-        NSLog(@"<手机>已保存蓝牙灯对象");
+    
+    if ([aPeripheral.name containsString:@"KQX"]) {
+        
+        // ==================== [ 获取蓝牙设备列表 ] ==================== //
+        if (![self.peripheralList containsObject:aPeripheral]) {
+            // 将这个蓝牙灯对象保存到列表
+            [self.peripheralList addObject:aPeripheral];
+            NSLog(@"<手机>已发现蓝牙设备<%@>",aPeripheral.name);
+            
+            
+            
+            
+            
+        }
         
     }
+    
+    
+    
+    
+    
+    
+    
+    // ==================== [ 直接连接 ] ==================== //
+    // 如果蓝牙设备的名字是配套的蓝牙灯, 就保存到单例中
+//    if ([aPeripheral.name isEqualToString:@"KQX-BL1000"]) {
+//        // 将这个蓝牙灯对象保存到单例中
+//        self.peripheral = aPeripheral;
+//        NSLog(@"<手机>已保存蓝牙灯对象");
+//        
+//    }
     
 }
 
@@ -382,13 +430,25 @@ ATCentralManager *iPhone;
 
 #pragma mark - 私有方法 🚫🚫🚫🚫🚫🚫🚫🚫🚫🚫
 
+-(CBPeripheral *)peripheral{
+    
+    if (!_peripheral) {
+        [NSThread sleepForTimeInterval:3];
+    }
+    return _peripheral;
+    
+}
+
 #pragma mark 🔍扫描
 
 // 请求扫描周边设备
 - (void)requestScan
 {
+    
+    
     // 在蓝牙已经开启的情况下扫描
     if (self.attachable) {
+        
         
         [self.manager scanForPeripheralsWithServices:nil options:nil];
         NSLog(@"<扫描>正在扫描");
@@ -520,6 +580,9 @@ ATCentralManager *iPhone;
     _manager = [[CBCentralManager alloc] initWithDelegate:self queue:nil];
     _manager.delegate = self;
     _connecting = NO;
+    
+    
+    _peripheralList = [NSMutableArray array];
     
     
     return iPhone;

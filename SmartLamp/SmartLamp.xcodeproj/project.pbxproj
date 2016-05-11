@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DD4A43561CE19E0F0093D87A /* ATProfiles.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4A43551CE19E0F0093D87A /* ATProfiles.m */; };
+		DD4A43591CE1CF8B0093D87A /* ATFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4A43581CE1CF8B0093D87A /* ATFileManager.m */; };
+		DD4A435C1CE1E4230093D87A /* UIButton+ATButton.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4A435B1CE1E4230093D87A /* UIButton+ATButton.m */; };
+		DD4A43621CE203550093D87A /* ProfilesDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4A43611CE203550093D87A /* ProfilesDetailsViewController.m */; };
+		DD4A43651CE230340093D87A /* UITextField+ATText.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4A43641CE230340093D87A /* UITextField+ATText.m */; };
 		DDB0D1EB1CD224C100C6445D /* ATCentralManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB0D1EA1CD224C100C6445D /* ATCentralManager.m */; };
 		DDB0D1EE1CD226FA00C6445D /* ATPeripheral.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB0D1ED1CD226FA00C6445D /* ATPeripheral.m */; };
 		DDC0AFD21CC8C29100B669A1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DDC0AFD11CC8C29100B669A1 /* main.m */; };
@@ -41,6 +46,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DD4A43541CE19E0F0093D87A /* ATProfiles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATProfiles.h; sourceTree = "<group>"; };
+		DD4A43551CE19E0F0093D87A /* ATProfiles.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATProfiles.m; sourceTree = "<group>"; };
+		DD4A43571CE1CF8B0093D87A /* ATFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATFileManager.h; sourceTree = "<group>"; };
+		DD4A43581CE1CF8B0093D87A /* ATFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATFileManager.m; sourceTree = "<group>"; };
+		DD4A435A1CE1E4230093D87A /* UIButton+ATButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+ATButton.h"; sourceTree = "<group>"; };
+		DD4A435B1CE1E4230093D87A /* UIButton+ATButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+ATButton.m"; sourceTree = "<group>"; };
+		DD4A43601CE203550093D87A /* ProfilesDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfilesDetailsViewController.h; sourceTree = "<group>"; };
+		DD4A43611CE203550093D87A /* ProfilesDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfilesDetailsViewController.m; sourceTree = "<group>"; };
+		DD4A43631CE230340093D87A /* UITextField+ATText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+ATText.h"; sourceTree = "<group>"; };
+		DD4A43641CE230340093D87A /* UITextField+ATText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+ATText.m"; sourceTree = "<group>"; };
 		DDB0D1E91CD224C100C6445D /* ATCentralManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATCentralManager.h; sourceTree = "<group>"; };
 		DDB0D1EA1CD224C100C6445D /* ATCentralManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATCentralManager.m; sourceTree = "<group>"; };
 		DDB0D1EC1CD226FA00C6445D /* ATPeripheral.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATPeripheral.h; sourceTree = "<group>"; };
@@ -104,6 +119,10 @@
 				DDB0D1EA1CD224C100C6445D /* ATCentralManager.m */,
 				DDB0D1EC1CD226FA00C6445D /* ATPeripheral.h */,
 				DDB0D1ED1CD226FA00C6445D /* ATPeripheral.m */,
+				DD4A43541CE19E0F0093D87A /* ATProfiles.h */,
+				DD4A43551CE19E0F0093D87A /* ATProfiles.m */,
+				DD4A43571CE1CF8B0093D87A /* ATFileManager.h */,
+				DD4A43581CE1CF8B0093D87A /* ATFileManager.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -176,6 +195,10 @@
 				DDC0AFDE1CC8C29100B669A1 /* LaunchScreen.storyboard */,
 				DDC0B04B1CC8C53F00B669A1 /* UIView+ATView.h */,
 				DDC0B04C1CC8C53F00B669A1 /* UIView+ATView.m */,
+				DD4A435A1CE1E4230093D87A /* UIButton+ATButton.h */,
+				DD4A435B1CE1E4230093D87A /* UIButton+ATButton.m */,
+				DD4A43631CE230340093D87A /* UITextField+ATText.h */,
+				DD4A43641CE230340093D87A /* UITextField+ATText.m */,
 				DDF5AD421CC8F3FB008F4E1C /* Asset.xcassets */,
 			);
 			name = View;
@@ -192,6 +215,8 @@
 				DDF5AD451CC8F828008F4E1C /* BluetoothViewController.m */,
 				DDF5AD3F1CC8E8CD008F4E1C /* ProfilesViewController.h */,
 				DDF5AD401CC8E8CD008F4E1C /* ProfilesViewController.m */,
+				DD4A43601CE203550093D87A /* ProfilesDetailsViewController.h */,
+				DD4A43611CE203550093D87A /* ProfilesDetailsViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -332,10 +357,15 @@
 			files = (
 				DDF5AD411CC8E8CD008F4E1C /* ProfilesViewController.m in Sources */,
 				DDB0D1EB1CD224C100C6445D /* ATCentralManager.m in Sources */,
+				DD4A43621CE203550093D87A /* ProfilesDetailsViewController.m in Sources */,
 				DDB0D1EE1CD226FA00C6445D /* ATPeripheral.m in Sources */,
 				DDC0B04E1CC8C53F00B669A1 /* UIView+ATView.m in Sources */,
+				DD4A43651CE230340093D87A /* UITextField+ATText.m in Sources */,
+				DD4A435C1CE1E4230093D87A /* UIButton+ATButton.m in Sources */,
 				DDF5AD461CC8F828008F4E1C /* BluetoothViewController.m in Sources */,
 				DDC0AFD81CC8C29100B669A1 /* ViewController.m in Sources */,
+				DD4A43591CE1CF8B0093D87A /* ATFileManager.m in Sources */,
+				DD4A43561CE19E0F0093D87A /* ATProfiles.m in Sources */,
 				DDC0AFD51CC8C29100B669A1 /* AppDelegate.m in Sources */,
 				DDF5AD3E1CC8E75F008F4E1C /* HomeViewController.m in Sources */,
 				DDC0AFD21CC8C29100B669A1 /* main.m in Sources */,
