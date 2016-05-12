@@ -74,7 +74,7 @@
     [self reloadView];
     
     // 更新蓝牙灯状态
-    [self updateSmartLampStatus];
+    [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(updateSmartLampStatus) userInfo:nil repeats:NO];
 
 }
 
@@ -106,7 +106,6 @@
     
     // 如果灯是开着的, 就关灯
     if (self.brightnessSlider.value) {
-        self.aProfiles.brightness = 0;
         [self.brightnessSlider setValue:0 animated:YES];
         [self.powerButton setImage:[UIImage imageNamed:@"powerOff"] forState:UIControlStateNormal];
         [self.iPhone letSmartLampPowerOnOrOff:NO];
@@ -115,10 +114,10 @@
     
     // 如果灯是关着的, 就开灯
     else{
-        self.aProfiles.brightness = 1;
-        [self.brightnessSlider setValue:1 animated:YES];
+
+        [self.brightnessSlider setValue:self.aProfiles.brightness animated:YES];
         [self.powerButton setImage:[UIImage imageNamed:@"powerOn"] forState:UIControlStateNormal];
-        [self.iPhone letSmartLampPowerOnOrOff:YES];
+        [self updateSmartLampStatus];
     }
     
 }
