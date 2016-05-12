@@ -89,7 +89,7 @@
                     <connections>
                         <outlet property="addButton" destination="iM8-Hi-nPP" id="dTY-1u-t15"/>
                         <outlet property="editButton" destination="j3U-Bk-UhQ" id="o8b-K9-vqt"/>
-                        <outlet property="profilesTableView" destination="kmf-FK-5xY" id="HT8-OG-oNN"/>
+                        <outlet property="profilesListTableView" destination="kmf-FK-5xY" id="ZQu-yR-PFD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7KX-qb-vTK" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -120,7 +120,7 @@
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="标题" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pq4-dr-Fby">
                                                         <rect key="frame" x="0.0" y="12" width="34" height="21"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="情景模式标题" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vT5-CM-3MQ">
@@ -148,7 +148,7 @@
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="描述" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Mj-fm-kJS">
                                                         <rect key="frame" x="0.0" y="50" width="34" height="21"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
@@ -192,27 +192,30 @@
                                                 <rect key="frame" x="0.0" y="92" width="560" height="134"/>
                                                 <subviews>
                                                     <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eTW-P6-81p">
-                                                        <rect key="frame" x="76" y="0.0" width="484" height="134"/>
+                                                        <rect key="frame" x="0.0" y="21" width="560" height="113"/>
                                                         <connections>
                                                             <outlet property="dataSource" destination="x64-ZZ-TpG" id="ZgE-oA-vzd"/>
                                                             <outlet property="delegate" destination="x64-ZZ-TpG" id="Ftb-jZ-era"/>
                                                         </connections>
                                                     </pickerView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="定时关机" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nn4-2b-RC3">
-                                                        <rect key="frame" x="0.0" y="56" width="68" height="21"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="定时关机:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nn4-2b-RC3">
+                                                        <rect key="frame" x="0.0" y="0.0" width="73" height="21"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="21" id="Tam-U0-d1e"/>
+                                                        </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="bottom" secondItem="eTW-P6-81p" secondAttribute="bottom" id="6QQ-oc-sBF"/>
-                                                    <constraint firstItem="eTW-P6-81p" firstAttribute="top" secondItem="9UZ-FG-gXr" secondAttribute="top" id="DvD-oV-1KN"/>
-                                                    <constraint firstItem="eTW-P6-81p" firstAttribute="centerY" secondItem="Nn4-2b-RC3" secondAttribute="centerY" id="Rbc-Qf-xIZ"/>
-                                                    <constraint firstItem="eTW-P6-81p" firstAttribute="leading" secondItem="Nn4-2b-RC3" secondAttribute="trailing" constant="8" id="XbB-BA-I8q"/>
-                                                    <constraint firstAttribute="trailing" secondItem="eTW-P6-81p" secondAttribute="trailing" id="vTu-3p-gid"/>
-                                                    <constraint firstItem="Nn4-2b-RC3" firstAttribute="leading" secondItem="9UZ-FG-gXr" secondAttribute="leading" id="wyE-Gy-aBt"/>
+                                                    <constraint firstItem="Nn4-2b-RC3" firstAttribute="top" secondItem="9UZ-FG-gXr" secondAttribute="top" id="9GZ-Zn-9ti"/>
+                                                    <constraint firstAttribute="bottom" secondItem="eTW-P6-81p" secondAttribute="bottom" id="Paf-ko-oJG"/>
+                                                    <constraint firstAttribute="trailing" secondItem="eTW-P6-81p" secondAttribute="trailing" id="VeN-tb-nfZ"/>
+                                                    <constraint firstItem="eTW-P6-81p" firstAttribute="leading" secondItem="9UZ-FG-gXr" secondAttribute="leading" id="Vm2-O9-Z1u"/>
+                                                    <constraint firstItem="eTW-P6-81p" firstAttribute="top" secondItem="Nn4-2b-RC3" secondAttribute="bottom" id="e7V-17-bLO"/>
+                                                    <constraint firstItem="Nn4-2b-RC3" firstAttribute="leading" secondItem="9UZ-FG-gXr" secondAttribute="leading" id="thE-Sn-p8k"/>
                                                 </constraints>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7jZ-qS-Foj">
@@ -231,9 +234,9 @@
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="saveButton:" destination="x64-ZZ-TpG" eventType="touchUpInside" id="WW4-OY-qgl"/>
-                                                    <action selector="touchDown:" destination="x64-ZZ-TpG" eventType="touchDown" id="nez-up-rlP"/>
-                                                    <action selector="touchUp:" destination="x64-ZZ-TpG" eventType="touchUpOutside" id="23s-NY-pVE"/>
-                                                    <action selector="touchUp:" destination="x64-ZZ-TpG" eventType="touchUpInside" id="iSP-ZB-cJO"/>
+                                                    <action selector="touchDown:" destination="x64-ZZ-TpG" eventType="touchDown" id="vll-QN-TKk"/>
+                                                    <action selector="touchUp:" destination="x64-ZZ-TpG" eventType="touchUpOutside" id="Gbf-W2-Q40"/>
+                                                    <action selector="touchUp:" destination="x64-ZZ-TpG" eventType="touchUpInside" id="pjw-Gb-EVf"/>
                                                 </connections>
                                             </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="esd-li-V79">
@@ -251,10 +254,10 @@
                                                             <action selector="colorSegmented:" destination="x64-ZZ-TpG" eventType="valueChanged" id="GOr-LI-fMx"/>
                                                         </connections>
                                                     </segmentedControl>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="色彩渐变" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FDv-eQ-ZNt">
-                                                        <rect key="frame" x="0.0" y="8" width="68" height="21"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="色彩渐变:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FDv-eQ-ZNt">
+                                                        <rect key="frame" x="0.0" y="8" width="73" height="21"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
@@ -276,7 +279,7 @@
                                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="CXs-7M-0Zi">
                                                         <rect key="frame" x="40" y="126" width="454" height="31"/>
                                                         <connections>
-                                                            <action selector="brightnessSlider:" destination="x64-ZZ-TpG" eventType="valueChanged" id="knk-J3-jOf"/>
+                                                            <action selector="sliderRGB:" destination="x64-ZZ-TpG" eventType="valueChanged" id="h8y-wN-we4"/>
                                                         </connections>
                                                     </slider>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="亮度" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bf0-Et-J0U">
@@ -287,19 +290,19 @@
                                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Xzb-0a-tAI">
                                                         <rect key="frame" x="40" y="8" width="454" height="31"/>
                                                         <connections>
-                                                            <action selector="redSlider:" destination="x64-ZZ-TpG" eventType="valueChanged" id="aSZ-9u-vnb"/>
+                                                            <action selector="sliderRGB:" destination="x64-ZZ-TpG" eventType="valueChanged" id="T3P-KG-5Yk"/>
                                                         </connections>
                                                     </slider>
                                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="bH4-MC-YP9">
                                                         <rect key="frame" x="40" y="46" width="454" height="31"/>
                                                         <connections>
-                                                            <action selector="greenSlider:" destination="x64-ZZ-TpG" eventType="valueChanged" id="IaS-Ol-W40"/>
+                                                            <action selector="sliderRGB:" destination="x64-ZZ-TpG" eventType="valueChanged" id="yVx-sc-mvn"/>
                                                         </connections>
                                                     </slider>
                                                     <slider opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Zc2-6m-Uiy">
                                                         <rect key="frame" x="40" y="84" width="454" height="35"/>
                                                         <connections>
-                                                            <action selector="blueSlider:" destination="x64-ZZ-TpG" eventType="valueChanged" id="pKC-HG-k2z"/>
+                                                            <action selector="sliderRGB:" destination="x64-ZZ-TpG" eventType="valueChanged" id="bK1-l4-wzw"/>
                                                         </connections>
                                                     </slider>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="红色" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ocG-pQ-C2Q">
@@ -434,62 +437,6 @@
                                                 <state key="normal" image="LampON"/>
                                                 <state key="highlighted" image="LampOFF"/>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kdu-A8-a7w">
-                                                <rect key="frame" x="0.0" y="45" width="30" height="30"/>
-                                                <state key="normal" title="断开"/>
-                                                <connections>
-                                                    <action selector="btn2:" destination="nHe-8W-S81" eventType="touchUpInside" id="7ha-SL-wkS"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y88-tC-NrK">
-                                                <rect key="frame" x="0.0" y="8" width="30" height="30"/>
-                                                <state key="normal" title="连接"/>
-                                                <connections>
-                                                    <action selector="btn1:" destination="nHe-8W-S81" eventType="touchUpInside" id="Rjb-Yl-uZh"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IMS-8c-r5e">
-                                                <rect key="frame" x="0.0" y="121" width="30" height="30"/>
-                                                <state key="normal" title="唤醒"/>
-                                                <connections>
-                                                    <action selector="btn4:" destination="nHe-8W-S81" eventType="touchUpInside" id="diI-yv-GGG"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NgF-dE-O6m">
-                                                <rect key="frame" x="0.0" y="83" width="30" height="30"/>
-                                                <state key="normal" title="睡眠"/>
-                                                <connections>
-                                                    <action selector="btn3:" destination="nHe-8W-S81" eventType="touchUpInside" id="WhI-a3-lt2"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="61d-JZ-9vu">
-                                                <rect key="frame" x="0.0" y="159" width="55" height="30"/>
-                                                <state key="normal" title="3色跳变"/>
-                                                <connections>
-                                                    <action selector="btn5:" destination="nHe-8W-S81" eventType="touchUpInside" id="gAH-cK-qJo"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jTY-5b-tTe">
-                                                <rect key="frame" x="1" y="197" width="54" height="30"/>
-                                                <state key="normal" title="7色跳变"/>
-                                                <connections>
-                                                    <action selector="btn6:" destination="nHe-8W-S81" eventType="touchUpInside" id="PfH-J6-iEW"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hm1-vD-DSZ">
-                                                <rect key="frame" x="1" y="230" width="30" height="30"/>
-                                                <state key="normal" title="渐变"/>
-                                                <connections>
-                                                    <action selector="btn7:" destination="nHe-8W-S81" eventType="touchUpInside" id="q0a-D1-ZoV"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eta-YN-sAq">
-                                                <rect key="frame" x="0.0" y="268" width="30" height="30"/>
-                                                <state key="normal" title="静态"/>
-                                                <connections>
-                                                    <action selector="btn8:" destination="nHe-8W-S81" eventType="touchUpInside" id="QDS-cS-ci9"/>
-                                                </connections>
-                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
                                         <constraints>
@@ -501,49 +448,53 @@
                                         <rect key="frame" x="20" y="387" width="500" height="164"/>
                                         <subviews>
                                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="gqr-OW-PCh">
-                                                <rect key="frame" x="48" y="126" width="446" height="31"/>
+                                                <rect key="frame" x="40" y="126" width="454" height="31"/>
                                                 <connections>
-                                                    <action selector="brightnessSlider:" destination="nHe-8W-S81" eventType="valueChanged" id="d8I-a3-jLO"/>
+                                                    <action selector="sliderRGB:" destination="nHe-8W-S81" eventType="valueChanged" id="dwT-xb-r0o"/>
+                                                    <action selector="sliderTouchUp:" destination="nHe-8W-S81" eventType="touchUpInside" id="9K3-tW-QQh"/>
                                                 </connections>
                                             </slider>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="亮度" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Zt-2X-Ave">
-                                                <rect key="frame" x="8" y="130" width="34" height="21"/>
+                                                <rect key="frame" x="0.0" y="130" width="34" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="6bc-TZ-wcu">
-                                                <rect key="frame" x="48" y="8" width="446" height="31"/>
+                                                <rect key="frame" x="40" y="8" width="454" height="31"/>
                                                 <connections>
-                                                    <action selector="redSlider:" destination="nHe-8W-S81" eventType="valueChanged" id="pUY-Zx-Qho"/>
+                                                    <action selector="sliderRGB:" destination="nHe-8W-S81" eventType="valueChanged" id="gim-mS-mAI"/>
+                                                    <action selector="sliderTouchUp:" destination="nHe-8W-S81" eventType="touchUpInside" id="DF8-dr-oqS"/>
                                                 </connections>
                                             </slider>
                                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="vM4-wm-rTK">
-                                                <rect key="frame" x="48" y="46" width="446" height="31"/>
+                                                <rect key="frame" x="40" y="46" width="454" height="31"/>
                                                 <connections>
-                                                    <action selector="greenSlider:" destination="nHe-8W-S81" eventType="valueChanged" id="vwU-4t-jaf"/>
+                                                    <action selector="sliderRGB:" destination="nHe-8W-S81" eventType="valueChanged" id="EXo-B9-S4K"/>
+                                                    <action selector="sliderTouchUp:" destination="nHe-8W-S81" eventType="touchUpInside" id="ecD-td-iYF"/>
                                                 </connections>
                                             </slider>
                                             <slider opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="fpn-BH-AGa">
-                                                <rect key="frame" x="48" y="84" width="446" height="35"/>
+                                                <rect key="frame" x="40" y="84" width="454" height="35"/>
                                                 <connections>
-                                                    <action selector="blueSlider:" destination="nHe-8W-S81" eventType="valueChanged" id="Nam-be-eDz"/>
+                                                    <action selector="sliderRGB:" destination="nHe-8W-S81" eventType="valueChanged" id="KAd-0I-4wE"/>
+                                                    <action selector="sliderTouchUp:" destination="nHe-8W-S81" eventType="touchUpInside" id="CCl-97-bHO"/>
                                                 </connections>
                                             </slider>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="红色" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mTN-3U-NLN">
-                                                <rect key="frame" x="8" y="12" width="34" height="21"/>
+                                                <rect key="frame" x="0.0" y="12" width="34" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="绿色" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="seZ-MO-Ng2">
-                                                <rect key="frame" x="8" y="51" width="34" height="21"/>
+                                                <rect key="frame" x="0.0" y="51" width="34" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="蓝色" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5xa-bW-oBZ">
-                                                <rect key="frame" x="8" y="91" width="34" height="21"/>
+                                                <rect key="frame" x="0.0" y="91" width="34" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
@@ -554,25 +505,25 @@
                                             <constraint firstAttribute="height" constant="164" id="3rq-OY-MyZ"/>
                                             <constraint firstAttribute="trailing" secondItem="6bc-TZ-wcu" secondAttribute="trailing" constant="8" id="8Ll-7h-1JR"/>
                                             <constraint firstItem="6bc-TZ-wcu" firstAttribute="top" secondItem="HAU-Am-FNr" secondAttribute="top" constant="8" id="9Wc-ZG-XCs"/>
-                                            <constraint firstItem="seZ-MO-Ng2" firstAttribute="leading" secondItem="HAU-Am-FNr" secondAttribute="leading" constant="8" id="CRa-Y9-xA1"/>
+                                            <constraint firstItem="seZ-MO-Ng2" firstAttribute="leading" secondItem="HAU-Am-FNr" secondAttribute="leading" id="CRa-Y9-xA1"/>
                                             <constraint firstItem="fpn-BH-AGa" firstAttribute="top" secondItem="vM4-wm-rTK" secondAttribute="bottom" constant="8" id="D2c-wi-HQ1"/>
                                             <constraint firstItem="fpn-BH-AGa" firstAttribute="leading" secondItem="5xa-bW-oBZ" secondAttribute="trailing" constant="8" id="HJr-RS-Sli"/>
                                             <constraint firstItem="vM4-wm-rTK" firstAttribute="top" secondItem="6bc-TZ-wcu" secondAttribute="bottom" constant="8" id="JIp-bW-yrX"/>
                                             <constraint firstItem="vM4-wm-rTK" firstAttribute="centerY" secondItem="seZ-MO-Ng2" secondAttribute="centerY" id="RLd-DQ-h6U"/>
                                             <constraint firstItem="gqr-OW-PCh" firstAttribute="leading" secondItem="2Zt-2X-Ave" secondAttribute="trailing" constant="8" id="SrW-9y-UPv"/>
                                             <constraint firstAttribute="trailing" secondItem="vM4-wm-rTK" secondAttribute="trailing" constant="8" id="TRR-nR-T9C"/>
-                                            <constraint firstItem="5xa-bW-oBZ" firstAttribute="leading" secondItem="HAU-Am-FNr" secondAttribute="leading" constant="8" id="V1L-qV-cg5"/>
+                                            <constraint firstItem="5xa-bW-oBZ" firstAttribute="leading" secondItem="HAU-Am-FNr" secondAttribute="leading" id="V1L-qV-cg5"/>
                                             <constraint firstAttribute="bottom" secondItem="gqr-OW-PCh" secondAttribute="bottom" constant="8" id="VI4-ts-r6v"/>
                                             <constraint firstItem="gqr-OW-PCh" firstAttribute="centerY" secondItem="2Zt-2X-Ave" secondAttribute="centerY" id="VUZ-1N-Zuy"/>
                                             <constraint firstAttribute="trailing" secondItem="gqr-OW-PCh" secondAttribute="trailing" constant="8" id="VxG-X7-v3c"/>
-                                            <constraint firstItem="2Zt-2X-Ave" firstAttribute="leading" secondItem="HAU-Am-FNr" secondAttribute="leading" constant="8" id="amY-tf-Xph"/>
+                                            <constraint firstItem="2Zt-2X-Ave" firstAttribute="leading" secondItem="HAU-Am-FNr" secondAttribute="leading" id="amY-tf-Xph"/>
                                             <constraint firstItem="vM4-wm-rTK" firstAttribute="leading" secondItem="seZ-MO-Ng2" secondAttribute="trailing" constant="8" id="aq4-Px-HYo"/>
                                             <constraint firstItem="fpn-BH-AGa" firstAttribute="centerY" secondItem="5xa-bW-oBZ" secondAttribute="centerY" id="eFC-11-814"/>
                                             <constraint firstItem="6bc-TZ-wcu" firstAttribute="leading" secondItem="mTN-3U-NLN" secondAttribute="trailing" constant="8" id="gPJ-gl-eeC"/>
                                             <constraint firstItem="6bc-TZ-wcu" firstAttribute="centerY" secondItem="mTN-3U-NLN" secondAttribute="centerY" id="hdH-we-bpj"/>
                                             <constraint firstAttribute="trailing" secondItem="fpn-BH-AGa" secondAttribute="trailing" constant="8" id="jhA-lx-eSG"/>
                                             <constraint firstItem="gqr-OW-PCh" firstAttribute="top" secondItem="fpn-BH-AGa" secondAttribute="bottom" constant="8" id="v1N-n2-L2k"/>
-                                            <constraint firstItem="mTN-3U-NLN" firstAttribute="leading" secondItem="HAU-Am-FNr" secondAttribute="leading" constant="8" id="wqn-1p-0B9"/>
+                                            <constraint firstItem="mTN-3U-NLN" firstAttribute="leading" secondItem="HAU-Am-FNr" secondAttribute="leading" id="wqn-1p-0B9"/>
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mPk-7l-0n0">
@@ -590,7 +541,6 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <action selector="bluetoothButton:" destination="nHe-8W-S81" eventType="touchUpInside" id="KV9-nP-62L"/>
                                             <action selector="touchDown:" destination="nHe-8W-S81" eventType="touchDown" id="lSb-FN-JLV"/>
                                             <action selector="touchUp:" destination="nHe-8W-S81" eventType="touchUpInside" id="obt-5u-tna"/>
                                             <action selector="touchUp:" destination="nHe-8W-S81" eventType="touchUpOutside" id="wOO-Q8-rcF"/>
@@ -655,7 +605,7 @@
                         <outlet property="greenSlider" destination="vM4-wm-rTK" id="ZIN-cD-m55"/>
                         <outlet property="lampLogo" destination="t8B-uV-wWe" id="yAF-vL-Zdr"/>
                         <outlet property="powerButton" destination="xHD-cd-Lbc" id="JAt-ba-GZ8"/>
-                        <outlet property="redSlider" destination="6bc-TZ-wcu" id="HA9-Kd-fFi"/>
+                        <outlet property="redSlider" destination="6bc-TZ-wcu" id="k7E-3m-zaZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zeV-Gh-Z6c" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -695,7 +645,7 @@
                     <navigationItem key="navigationItem" title="蓝牙设备" id="xgf-bU-s7r">
                         <barButtonItem key="rightBarButtonItem" title="清空" id="RWX-SF-3SN">
                             <connections>
-                                <action selector="searchButton:" destination="tTz-0P-put" id="8L5-JV-WbI"/>
+                                <action selector="clearButton:" destination="tTz-0P-put" id="MbI-tV-9in"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -703,7 +653,7 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="smartLampListTableView" destination="vw7-1B-7cZ" id="6Zo-vJ-eou"/>
+                        <outlet property="deviceListTableView" destination="vw7-1B-7cZ" id="tWv-kp-EoB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OmP-ZF-5aU" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -763,4 +713,5 @@
         <image name="powerOn" width="48" height="48"/>
         <image name="save" width="48" height="48"/>
     </resources>
+    <color key="tintColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
 </document>

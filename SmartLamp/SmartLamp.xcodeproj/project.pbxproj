@@ -21,7 +21,6 @@
 		DDC0AFEB1CC8C29100B669A1 /* SmartLampTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DDC0AFEA1CC8C29100B669A1 /* SmartLampTests.m */; };
 		DDC0AFF61CC8C29100B669A1 /* SmartLampUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = DDC0AFF51CC8C29100B669A1 /* SmartLampUITests.m */; };
 		DDC0B0041CC8C2F400B669A1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDC0B0031CC8C2F400B669A1 /* Main.storyboard */; };
-		DDC0B04E1CC8C53F00B669A1 /* UIView+ATView.m in Sources */ = {isa = PBXBuildFile; fileRef = DDC0B04C1CC8C53F00B669A1 /* UIView+ATView.m */; };
 		DDF5AD3E1CC8E75F008F4E1C /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDF5AD3D1CC8E75F008F4E1C /* HomeViewController.m */; };
 		DDF5AD411CC8E8CD008F4E1C /* ProfilesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDF5AD401CC8E8CD008F4E1C /* ProfilesViewController.m */; };
 		DDF5AD431CC8F3FB008F4E1C /* Asset.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DDF5AD421CC8F3FB008F4E1C /* Asset.xcassets */; };
@@ -75,9 +74,6 @@
 		DDC0AFF51CC8C29100B669A1 /* SmartLampUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SmartLampUITests.m; sourceTree = "<group>"; };
 		DDC0AFF71CC8C29100B669A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DDC0B0031CC8C2F400B669A1 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		DDC0B0481CC8C53F00B669A1 /* ATStandard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATStandard.h; sourceTree = "<group>"; };
-		DDC0B04B1CC8C53F00B669A1 /* UIView+ATView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+ATView.h"; sourceTree = "<group>"; };
-		DDC0B04C1CC8C53F00B669A1 /* UIView+ATView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+ATView.m"; sourceTree = "<group>"; };
 		DDF5AD3C1CC8E75F008F4E1C /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		DDF5AD3D1CC8E75F008F4E1C /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		DDF5AD3F1CC8E8CD008F4E1C /* ProfilesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfilesViewController.h; sourceTree = "<group>"; };
@@ -162,7 +158,6 @@
 			isa = PBXGroup;
 			children = (
 				DDC0AFE11CC8C29100B669A1 /* Info.plist */,
-				DDC0B0481CC8C53F00B669A1 /* ATStandard.h */,
 				DDC0AFD11CC8C29100B669A1 /* main.m */,
 				DDC0AFD31CC8C29100B669A1 /* AppDelegate.h */,
 				DDC0AFD41CC8C29100B669A1 /* AppDelegate.m */,
@@ -193,8 +188,6 @@
 			children = (
 				DDC0B0031CC8C2F400B669A1 /* Main.storyboard */,
 				DDC0AFDE1CC8C29100B669A1 /* LaunchScreen.storyboard */,
-				DDC0B04B1CC8C53F00B669A1 /* UIView+ATView.h */,
-				DDC0B04C1CC8C53F00B669A1 /* UIView+ATView.m */,
 				DD4A435A1CE1E4230093D87A /* UIButton+ATButton.h */,
 				DD4A435B1CE1E4230093D87A /* UIButton+ATButton.m */,
 				DD4A43631CE230340093D87A /* UITextField+ATText.h */,
@@ -359,7 +352,6 @@
 				DDB0D1EB1CD224C100C6445D /* ATCentralManager.m in Sources */,
 				DD4A43621CE203550093D87A /* ProfilesDetailsViewController.m in Sources */,
 				DDB0D1EE1CD226FA00C6445D /* ATPeripheral.m in Sources */,
-				DDC0B04E1CC8C53F00B669A1 /* UIView+ATView.m in Sources */,
 				DD4A43651CE230340093D87A /* UITextField+ATText.m in Sources */,
 				DD4A435C1CE1E4230093D87A /* UIButton+ATButton.m in Sources */,
 				DDF5AD461CC8F828008F4E1C /* BluetoothViewController.m in Sources */,

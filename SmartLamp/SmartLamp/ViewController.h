@@ -13,21 +13,24 @@
 
 @interface ViewController : UIViewController
 
-
+// 中心设备, 单例
 @property (strong, nonatomic) ATCentralManager *iPhone;
 
-@property (strong, nonatomic) NSMutableArray<ATProfiles *> *profilesList;
-
+// 当前的情景模式
 @property (strong, nonatomic) ATProfiles *aProfiles;
 
-@property (strong, nonatomic) NSArray<CBPeripheral *> *smartLampList;
+// 情景模式的配置列表
+@property (strong, nonatomic) NSMutableArray<ATProfiles *> *profilesList;
 
 
+
+// 按钮弹起的效果
 - (IBAction)touchUp:(UIButton *)sender;
 
+// 按钮按下的效果
 - (IBAction)touchDown:(UIButton *)sender;
 
-
+// AlertView
 - (void)pushAlertViewWithTitle:(NSString *)title
                     andMessage:(NSString *)message
                          andOk:(NSString *)ok

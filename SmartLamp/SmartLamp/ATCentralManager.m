@@ -23,10 +23,9 @@ ATCentralManager *iPhone;
 @property (strong, nonatomic) CBCharacteristic *Characteristic1001;
 @property (strong, nonatomic) CBCharacteristic *Characteristic1002;
 
-// 蓝牙设备列表
-@property (strong, nonatomic) NSMutableArray<CBPeripheral *> *peripheralList;
-
-
+// 蓝牙设备
+@property (strong, nonatomic) CBPeripheral *peripheral;
+@property (assign, nonatomic) BOOL isScaning;
 
 @end
 
@@ -34,25 +33,16 @@ ATCentralManager *iPhone;
 
 #pragma mark - 公有方法 🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀
 
-// 准备扫描
-- (void)readyForScan{
-    
-    [self.peripheralList removeAllObjects];
-    [self requestScan];
-    
-}
-
 #pragma mark 🔗连接和开关控制
 
 // 搜索蓝牙灯, 找到的蓝牙灯设备列表
 - (NSArray *)searchSmartLamp{
     
-    
     // 开始扫描
-    [self requestScan];
+    [self startScan];
     
     // 返回扫描到的蓝牙设备列表
-    return self.peripheralList;
+    return self.scanedDeviceList;
 
 }
 
@@ -61,7 +51,7 @@ ATCentralManager *iPhone;
 - (void)connectSmartLamp:(CBPeripheral *)smartLamp{
     
     // 如果已经连接了, 就忽略指令
-    if (self.connecting) return;
+    if (self.isConnecting) return;
     
     // 把传入指定的设备赋值给单例中的属性
     self.peripheral = smartLamp;
@@ -71,7 +61,7 @@ ATCentralManager *iPhone;
         // 调用连接周边设备的方法
         [self.manager connectPeripheral:self.peripheral options:nil];
         // 更新状态值
-        self.connecting = YES;
+        self.isConnecting = YES;
     }
     
 }
@@ -80,11 +70,11 @@ ATCentralManager *iPhone;
 - (void)disConnectSmartLamp{
     
     // 如果已经断开连接了, 就忽略指令
-    if (!self.connecting) return;
+    if (!self.isConnecting) return;
     // 调用断开连接的方法
     [self.manager cancelPeripheralConnection:self.peripheral];
     // 更新状态值
-    self.connecting = NO;
+    self.isConnecting = NO;
     // 控制台输出
     NSLog(@"蓝牙设备已断开");
     
@@ -99,7 +89,7 @@ ATCentralManager *iPhone;
 - (void)letSmartLampPowerOnOrOff:(BOOL)powerOn{
     
     // 如果已经断开连接了, 就忽略指令
-    if (!self.connecting) return;
+    if (!self.isConnecting) return;
     
     // 开灯
     if (powerOn) [iPhone letSmartLampSetColorWithR:1 G:1 B:1 andBright:1];
@@ -113,7 +103,7 @@ ATCentralManager *iPhone;
 - (void)letSmartLampPowerOffAfter:(NSUInteger)minutes{
     
     // 如果已经断开连接了, 就忽略指令
-    if (!self.connecting) return;
+    if (!self.isConnecting) return;
     
     // 保证传入的时间在支持的范围内
     if (minutes < 5) minutes = 5;
@@ -134,7 +124,7 @@ ATCentralManager *iPhone;
 - (void)letSmartLampSetColorWithR:(float)red G:(float)green B:(float)blue andBright:(float)bright{
     
     // 如果没有连接, 就忽略指令
-    if (!self.connecting) return;
+    if (!self.isConnecting) return;
     
     // 调用发送数据的Block
     [self sendData:^(char *p) {
@@ -155,7 +145,7 @@ ATCentralManager *iPhone;
 - (void)letSmartLampPerformColorAnimation:(ColorAnimation)animation{
     
     // 如果没有连接, 就忽略指令
-    if (!self.connecting) return;
+    if (!self.isConnecting) return;
     
     // 调用发送数据的Block
     [self sendData:^(char *p) {
@@ -221,7 +211,6 @@ ATCentralManager *iPhone;
 - (void)centralManagerDidUpdateState:(CBCentralManager *)central
 {
     
-    [self.peripheralList removeAllObjects];
     // 如果状态变为可用的, 就执行以下操作
     if (self.attachable) {
         
@@ -242,9 +231,10 @@ ATCentralManager *iPhone;
     if ([aPeripheral.name containsString:@"KQX"]) {
         
         // ==================== [ 获取蓝牙设备列表 ] ==================== //
-        if (![self.peripheralList containsObject:aPeripheral]) {
+        if (![self.scanedDeviceList containsObject:aPeripheral]) {
             // 将这个蓝牙灯对象保存到列表
-            [self.peripheralList addObject:aPeripheral];
+            
+            [self.scanedDeviceList addObject:aPeripheral];
             NSLog(@"<手机>已发现蓝牙设备<%@>",aPeripheral.name);
             
             
@@ -441,28 +431,29 @@ ATCentralManager *iPhone;
 
 #pragma mark 🔍扫描
 
-// 请求扫描周边设备
-- (void)requestScan
-{
+// 开始扫描
+- (void)startScan{
     
-    
-    // 在蓝牙已经开启的情况下扫描
-    if (self.attachable) {
-        
-        
+    if (!self.isScaning) {
+        // 扫描前清空列表
+        [self.scanedDeviceList removeAllObjects];
+        // 扫描
         [self.manager scanForPeripheralsWithServices:nil options:nil];
-        NSLog(@"<扫描>正在扫描");
-        
+        self.isScaning = YES;
+        NSLog(@"<扫描>-------开始扫描-------");
     }
     
 }
 
-// 立即停止扫描
+// 停止扫描
 - (void)stopScan
 {
     
-    [self.manager stopScan];
-    NSLog(@"<扫描>已停止扫描");
+    if (self.isScaning) {
+        [self.manager stopScan];
+        self.isScaning = NO;
+        NSLog(@"<扫描>-------停止扫描-------");
+    }
     
 }
 
@@ -579,10 +570,10 @@ ATCentralManager *iPhone;
     
     _manager = [[CBCentralManager alloc] initWithDelegate:self queue:nil];
     _manager.delegate = self;
-    _connecting = NO;
+    _isConnecting = NO;
+    _isScaning = NO;
     
-    
-    _peripheralList = [NSMutableArray array];
+    _scanedDeviceList = [NSMutableArray array];
     
     
     return iPhone;

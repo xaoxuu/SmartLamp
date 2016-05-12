@@ -8,6 +8,8 @@
 
 #import "ProfilesDetailsViewController.h"
 #import "UITextField+ATText.h"
+#import "HomeViewController.h"
+
 
 @interface ProfilesDetailsViewController () <UIPickerViewDataSource,UIPickerViewDelegate>
 
@@ -16,13 +18,11 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *detailTextField;
 
-
 @property (weak, nonatomic) IBOutlet UIButton *imageButton;
 
 @property (weak, nonatomic) IBOutlet UIPickerView *timerPicker;
 
 @property (weak, nonatomic) IBOutlet UISegmentedControl *colorSegmented;
-
 
 @property (weak, nonatomic) IBOutlet UIView *sliderView;
 
@@ -36,22 +36,19 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *saveButton;
 
-
-
-@property (strong, nonatomic) NSArray *timerList;
-
-
+@property (strong, nonatomic) NSArray *timeList;
 
 @end
 
 @implementation ProfilesDetailsViewController
+
+#pragma mark - 视图事件 🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
     [self initialization];
-    [self updateFrame];
     
 }
 
@@ -62,6 +59,7 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     
+    // 更新视图控件内容
     [self updateFrame];
     
 }
@@ -69,8 +67,6 @@
 -(void)viewDidAppear:(BOOL)animated{
     
     [self.navigationController setNavigationBarHidden:NO animated:YES];
-
-    
     
 }
 
@@ -80,17 +76,6 @@
     
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
-
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     
     [self.titleTextField textFieldState:ATTextFieldStateEditEnd];
@@ -98,7 +83,9 @@
     
 }
 
+#pragma mark - 控件事件 🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀
 
+// 按下了return键
 - (IBAction)touchReturn:(UITextField *)sender {
     
     if (sender == self.titleTextField) {
@@ -111,25 +98,21 @@
     
 }
 
-
-
+// 编辑结束
 - (IBAction)editEnd:(UITextField *)sender {
     
     [sender textFieldState:ATTextFieldStateEditEnd];
     
 }
 
+// 编辑状态
 - (IBAction)editing:(UITextField *)sender {
     
     [sender textFieldState:ATTextFieldStateEditing];
     
 }
 
-
-
-
-
-
+// 图片按钮
 - (IBAction)imageButton:(UIButton *)sender {
     
     UIImage *image;
@@ -145,73 +128,24 @@
     
 }
 
-- (IBAction)touchUp:(id)sender {
-    
-    if ([sender isKindOfClass:[UITextField class]]) {
-        [sender textFieldState:ATTextFieldStateEditEnd];
-    }else if ([sender isKindOfClass:[UIButton class]]){
-        
-        [sender buttonState:ATButtonStateUp];
-        
-    }
-    
-    
-}
-
-- (IBAction)touchDown:(id)sender {
-    
-    if ([sender isKindOfClass:[UITextField class]]) {
-        [sender textFieldState:ATTextFieldStateEditing];
-    }else if ([sender isKindOfClass:[UIButton class]]){
-        
-        [sender buttonState:ATButtonStateDown];
-        
-    }
-    
-}
-
-
+// 色彩动画选项
 - (IBAction)colorSegmented:(UISegmentedControl *)sender {
     
     self.aProfiles.colorAnimation = self.colorSegmented.selectedSegmentIndex;
     [self.iPhone letSmartLampPerformColorAnimation:self.aProfiles.colorAnimation];
+    // 滑块是否可用
+    [self setSliderEnable:!self.aProfiles.colorAnimation];
     
 }
 
-
-
-
-
-- (IBAction)redSlider:(UISlider *)sender {
+// 颜色和亮度滑块
+- (IBAction)sliderRGB:(UISlider *)sender {
     
-    [self refreshRGBValue];
+    [self updateSmartLampStatus];
     
 }
 
-
-
-
-- (IBAction)greenSlider:(UISlider *)sender {
-    
-    [self refreshRGBValue];
-    
-}
-
-
-
-- (IBAction)blueSlider:(UISlider *)sender {
-    
-    [self refreshRGBValue];
-    
-}
-
-- (IBAction)brightnessSlider:(UISlider *)sender {
-    
-    [self refreshRGBValue];
-    
-}
-
-
+// 保存按钮
 - (IBAction)saveButton:(UIButton *)sender {
     
     [self saveCache];
@@ -222,49 +156,74 @@
 }
 
 
-
-
 #pragma mark - 私有方法 🚫🚫🚫🚫🚫🚫🚫🚫🚫🚫
 
-
+// 初始化
 - (void)initialization{
     
-    [self.titleTextField textFieldState:ATTextFieldStateEditEnd];
+    [self.titleTextField  textFieldState:ATTextFieldStateEditEnd];
     [self.detailTextField textFieldState:ATTextFieldStateEditEnd];
-    [self.saveButton buttonState:ATButtonStateUp];
-    
+    [self.saveButton      buttonState:ATButtonStateUp];
     
 }
 
+// 更新视图控件内容
 - (void)updateFrame{
     
-    
+    // 标题
     self.titleTextField.text = self.aProfiles.title;
+    // 描述
     self.detailTextField.text = self.aProfiles.detail;
+    // 图片
     [self.imageButton setBackgroundImage:self.aProfiles.image forState:UIControlStateNormal];
+    // 定时关灯
     [self.timerPicker selectRow:(0.2 * self.aProfiles.timer) inComponent:0 animated:YES];
-    
+    // 色彩动画
     self.colorSegmented.selectedSegmentIndex = self.aProfiles.colorAnimation;
-    
+    // 滑块
     [self.redSlider setValue:self.aProfiles.red animated:YES];
     [self.greenSlider setValue:self.aProfiles.green animated:YES];
     [self.blueSlider setValue:self.aProfiles.blue animated:YES];
     [self.brightnessSlider setValue:self.aProfiles.brightness animated:YES];
-
     
+    // 滑块是否可用
+    [self setSliderEnable:!self.aProfiles.colorAnimation];
     
 }
 
-
--(NSArray *)timerList{
+// 更新蓝牙灯的颜色
+- (void)updateSmartLampStatus{
     
-    if (!_timerList) {
+    // 如果有动画, 就显示动画效果
+    if (self.aProfiles.colorAnimation) {
+        [self.iPhone letSmartLampPerformColorAnimation:self.aProfiles.colorAnimation];
+    }
+    // 否则就显示单色模式
+    else{
+        [self.iPhone letSmartLampSetColorWithR:self.redSlider.value G:self.greenSlider.value B:self.blueSlider.value andBright:self.brightnessSlider.value];
+    }
+    
+}
+
+// 控件可用
+- (void)setSliderEnable:(BOOL)isEnable{
+    
+    self.redSlider.enabled = isEnable;
+    self.greenSlider.enabled = isEnable;
+    self.blueSlider.enabled = isEnable;
+    self.brightnessSlider.enabled = isEnable;
+    
+}
+
+// 定时关灯的时间数组
+-(NSArray *)timeList{
+    
+    if (!_timeList) {
         
         NSMutableArray *tempArr = [NSMutableArray array];
         [tempArr addObject:@"不启用定时关灯"];
         
         for (int i=1; i<=24; i++) {
-            
             
             if (5*i<60) {
                 NSString *timeStr = [NSString stringWithFormat:@"%d",5*i];
@@ -280,42 +239,20 @@
                 }
                 
                 [tempArr addObject:[tempStr1 stringByAppendingString:tempStr2]];
+            
             }
             
-            
-            
         }
-        _timerList = tempArr;
-
+        
+        _timeList = tempArr;
+        
     }
-    return _timerList;
+    
+    return _timeList;
     
 }
 
-
-- (void)refreshRGBValue{
-    
-    float alpha = _brightnessSlider.value;
-    float red = _redSlider.value;
-    float green = _greenSlider.value;
-    float blue = _blueSlider.value;
-    
-    // 刷新Slider的颜色
-    _brightnessSlider.minimumTrackTintColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:alpha];
-    _redSlider.minimumTrackTintColor = [UIColor colorWithRed:1 green:1-red blue:1-red alpha:alpha];
-    _greenSlider.minimumTrackTintColor = [UIColor colorWithRed:1-green green:1 blue:1-green alpha:alpha];
-    _blueSlider.minimumTrackTintColor = [UIColor colorWithRed:1-blue green:1-blue blue:1 alpha:alpha];
-    
-    
-    // 给蓝牙设备发送指令
-    
-    [self.iPhone letSmartLampSetColorWithR:red G:green B:blue andBright:alpha];
-    
-    
-}
-
-
-
+// 保存当前配置到缓存文件
 - (void)saveCache{
     
     // 标题
@@ -327,8 +264,8 @@
     // 描述
     self.aProfiles.detail = [_detailTextField.text isEqualToString:@""]?@"没有描述信息":_detailTextField.text;
     
-    // 定时
-    // 渐变
+    // 定时picker
+    // 渐变Segmented
     
     // RGB和亮度
     self.aProfiles.red = self.redSlider.value;
@@ -341,16 +278,21 @@
     
 }
 
+// 将当前配置添加到列表中并保存
 - (void)addToProfilesList{
     
+    // 从本地读取
     self.profilesList = [ATFileManager readFile:ATFileTypeProfilesList];
     
+    // 如果有重名的, 就覆盖
     for (ATProfiles *local in self.profilesList) {
         if ([local.title isEqualToString:self.aProfiles.title]) {
             [self.profilesList removeObject:local];
         }
     }
+    // 将当前配置添加到列表中
     [self.profilesList addObject:self.aProfiles];
+    // 保存
     [ATFileManager saveFile:ATFileTypeProfilesList withPlist:self.profilesList];
     
 }
@@ -370,7 +312,7 @@
 // returns the # of rows in each component..
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component{
     
-    return self.timerList.count;
+    return self.timeList.count;
     
 }
 
@@ -379,7 +321,7 @@
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component{
     
     // 获取一列中每一行的数据, 显示到view
-    return self.timerList[row];
+    return self.timeList[row];
     
 }
 

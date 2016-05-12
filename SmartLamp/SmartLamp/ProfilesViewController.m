@@ -12,10 +12,8 @@
 
 @interface ProfilesViewController () <UITableViewDataSource,UITableViewDelegate>
 
-@property (weak, nonatomic) IBOutlet UITableView *profilesTableView;
 
-
-
+@property (weak, nonatomic) IBOutlet UITableView *profilesListTableView;
 
 @property (weak, nonatomic) IBOutlet UIButton *editButton;
 
@@ -26,12 +24,13 @@
 
 @implementation ProfilesViewController
 
+#pragma mark - 视图事件 🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
     [self initialization];
-    [self updateFrame];
     
 }
 
@@ -42,103 +41,62 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     
-    
+    // 更新视图控件内容
     [self updateFrame];
-    
-}
-
--(void)viewDidAppear:(BOOL)animated{
-    
-    
     
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
     
-    if (self.profilesTableView.editing) {
-        [self.profilesTableView setEditing:NO animated:YES];
+    if (self.profilesListTableView.editing) {
+        [self.profilesListTableView setEditing:NO animated:YES];
     }
     
-    
 }
 
-// 页面消失之后, 把情景模式配置数据存储到本地
--(void)viewDidDisappear:(BOOL)animated{
-    
-    
-    
-    
-    
-}
+#pragma mark - 控件事件 🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀
 
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
-
-
-
-
-
+// 编辑按钮
 - (IBAction)editButton:(UIButton *)sender {
     
-    if (self.profilesTableView.editing) {
+    if (self.profilesListTableView.editing) {
         
-        [self.profilesTableView setEditing:NO animated:YES];
+        [self.profilesListTableView setEditing:NO animated:YES];
         
     }else{
         
-        [self.profilesTableView setEditing:YES animated:YES];
-        
+        [self.profilesListTableView setEditing:YES animated:YES];
         
     }
     
 }
-
-
-
-
-
-
-// Row display. Implementers should *always* try to reuse cells by setting each cell's reuseIdentifier and querying for available reusable cells with dequeueReusableCellWithIdentifier:
-// Cell gets various attributes set automatically based on table (separators) and data source (accessory views, editing controls)
 
 
 #pragma mark - 私有方法 🚫🚫🚫🚫🚫🚫🚫🚫🚫🚫
 
+// 初始化
 - (void)initialization{
     
-    [self.editButton     buttonState:ATButtonStateUp];
-    [self.addButton buttonState:ATButtonStateUp];
-    
+    [self.editButton buttonState:ATButtonStateUp];
+    [self.addButton  buttonState:ATButtonStateUp];
     
 }
 
-
+// 更新视图控件内容
 - (void)updateFrame{
     
     self.profilesList = nil;
     self.profilesList = [ATFileManager readFile:ATFileTypeProfilesList];
-    [self.profilesTableView reloadData];
-    [self.profilesTableView reloadSectionIndexTitles];
+    [self.profilesListTableView reloadData];
     
 }
 
+// 保存用户配置列表
 - (void)saveProfilesList{
     
     [ATFileManager saveFile:ATFileTypeProfilesList withPlist:self.profilesList];
     
 }
-
-
-
 
 
 #pragma mark - 数据源和代理 🔵🔵🔵🔵🔵🔵🔵🔵🔵🔵
@@ -193,7 +151,7 @@
         
         
         /*======================[ 2.删除的动画 ]======================*/
-        [self.profilesTableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+        [self.profilesListTableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
         
         
     }
@@ -232,23 +190,19 @@
                            andOk:@"应用"
                        andCancel:@"取消"
                    andOkCallback:^{
+                       
                        // 应用选中的配置
                        self.aProfiles = selectedProfiles;
                        [ATFileManager saveCache:self.aProfiles];
-                       
+                       // 切换视图
                        [self.tabBarController setSelectedIndex:0];
                        
-                       NSLog(@"点击了应用");
+                       NSLog(@"应用了\"%@\"",selectedProfiles.title);
                    } andCancelCallback:^{
                        NSLog(@"点击了取消");
                    }];
-
+    
 }
-
-
-
-
-
 
 
 

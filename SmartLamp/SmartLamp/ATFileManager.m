@@ -86,8 +86,8 @@
             break;
 
     }
-    
     [fm removeItemAtPath:path error:nil];
+    return;
     
 }
 

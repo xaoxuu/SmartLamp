@@ -21,13 +21,14 @@
 // 中心设备
 @property (strong, nonatomic) CBCentralManager *manager;
 
-// 蓝牙设备
-@property (strong, nonatomic) CBPeripheral *peripheral;
+
+
+// 扫描到的蓝牙设备列表
+@property (strong, nonatomic) NSMutableArray<CBPeripheral *> *scanedDeviceList;
 
 
 // 中心设备与周边设备的连接状态
-@property (assign, nonatomic) BOOL connecting;
-
+@property (assign, nonatomic) BOOL isConnecting;
 
 // 动画枚举
 //typedef NS_ENUM(NSUInteger,ColorAnimation){
@@ -70,7 +71,7 @@
  */
 - (void)disConnectSmartLamp;
 
-- (void)readyForScan;
+- (void)startScan;
 - (void)stopScan;
 
 /**
