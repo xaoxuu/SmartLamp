@@ -37,11 +37,12 @@ typedef NS_ENUM(NSUInteger,ColorAnimation){
 @property (assign, nonatomic) ColorAnimation colorAnimation;
 
 // 单色模式的颜色和亮度
-@property (assign, nonatomic) CGFloat red;
-@property (assign, nonatomic) CGFloat green;
-@property (assign, nonatomic) CGFloat blue;
-@property (assign, nonatomic) CGFloat brightness;
+//@property (assign, nonatomic) CGFloat red;
+//@property (assign, nonatomic) CGFloat green;
+//@property (assign, nonatomic) CGFloat blue;
+//@property (assign, nonatomic) CGFloat brightness;
 
+@property (strong, nonatomic) UIColor *color;
 
 + (ATProfiles *)defaultProfiles;
 

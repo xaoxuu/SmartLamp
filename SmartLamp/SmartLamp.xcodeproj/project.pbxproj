@@ -12,6 +12,7 @@
 		DD4A435C1CE1E4230093D87A /* UIButton+ATButton.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4A435B1CE1E4230093D87A /* UIButton+ATButton.m */; };
 		DD4A43621CE203550093D87A /* ProfilesDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4A43611CE203550093D87A /* ProfilesDetailsViewController.m */; };
 		DD4A43651CE230340093D87A /* UITextField+ATText.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4A43641CE230340093D87A /* UITextField+ATText.m */; };
+		DD9D1C701CE88D2400F1A796 /* UIImage+getColorAtPixel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD9D1C6F1CE88D2300F1A796 /* UIImage+getColorAtPixel.m */; };
 		DDB0D1EB1CD224C100C6445D /* ATCentralManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB0D1EA1CD224C100C6445D /* ATCentralManager.m */; };
 		DDB0D1EE1CD226FA00C6445D /* ATPeripheral.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB0D1ED1CD226FA00C6445D /* ATPeripheral.m */; };
 		DDC0AFD21CC8C29100B669A1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DDC0AFD11CC8C29100B669A1 /* main.m */; };
@@ -21,6 +22,16 @@
 		DDC0AFEB1CC8C29100B669A1 /* SmartLampTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DDC0AFEA1CC8C29100B669A1 /* SmartLampTests.m */; };
 		DDC0AFF61CC8C29100B669A1 /* SmartLampUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = DDC0AFF51CC8C29100B669A1 /* SmartLampUITests.m */; };
 		DDC0B0041CC8C2F400B669A1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDC0B0031CC8C2F400B669A1 /* Main.storyboard */; };
+		DDDB85C41CE4A4CD0036B99A /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = DDDB85B41CE4A4CD0036B99A /* UIImage+ImageEffects.m */; };
+		DDDB85C51CE4A4CD0036B99A /* SCLAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = DDDB85B61CE4A4CD0036B99A /* SCLAlertView.m */; };
+		DDDB85C61CE4A4CD0036B99A /* SCLButton.m in Sources */ = {isa = PBXBuildFile; fileRef = DDDB85B81CE4A4CD0036B99A /* SCLButton.m */; };
+		DDDB85C71CE4A4CD0036B99A /* SCLAlertViewResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = DDDB85BA1CE4A4CD0036B99A /* SCLAlertViewResponder.m */; };
+		DDDB85C81CE4A4CD0036B99A /* SCLAlertViewStyleKit.m in Sources */ = {isa = PBXBuildFile; fileRef = DDDB85BC1CE4A4CD0036B99A /* SCLAlertViewStyleKit.m */; };
+		DDDB85C91CE4A4CD0036B99A /* SCLTimerDisplay.m in Sources */ = {isa = PBXBuildFile; fileRef = DDDB85BF1CE4A4CD0036B99A /* SCLTimerDisplay.m */; };
+		DDDB85CA1CE4A4CD0036B99A /* SCLTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = DDDB85C11CE4A4CD0036B99A /* SCLTextView.m */; };
+		DDDB85CB1CE4A4CD0036B99A /* SCLSwitchView.m in Sources */ = {isa = PBXBuildFile; fileRef = DDDB85C31CE4A4CD0036B99A /* SCLSwitchView.m */; };
+		DDDB865C1CE777670036B99A /* ASValuePopUpView.m in Sources */ = {isa = PBXBuildFile; fileRef = DDDB86591CE777670036B99A /* ASValuePopUpView.m */; };
+		DDDB865D1CE777670036B99A /* ASValueTrackingSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = DDDB865B1CE777670036B99A /* ASValueTrackingSlider.m */; };
 		DDF5AD3E1CC8E75F008F4E1C /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDF5AD3D1CC8E75F008F4E1C /* HomeViewController.m */; };
 		DDF5AD411CC8E8CD008F4E1C /* ProfilesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDF5AD401CC8E8CD008F4E1C /* ProfilesViewController.m */; };
 		DDF5AD431CC8F3FB008F4E1C /* Asset.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DDF5AD421CC8F3FB008F4E1C /* Asset.xcassets */; };
@@ -55,6 +66,8 @@
 		DD4A43611CE203550093D87A /* ProfilesDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfilesDetailsViewController.m; sourceTree = "<group>"; };
 		DD4A43631CE230340093D87A /* UITextField+ATText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+ATText.h"; sourceTree = "<group>"; };
 		DD4A43641CE230340093D87A /* UITextField+ATText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+ATText.m"; sourceTree = "<group>"; };
+		DD9D1C6E1CE88D2300F1A796 /* UIImage+getColorAtPixel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+getColorAtPixel.h"; sourceTree = "<group>"; };
+		DD9D1C6F1CE88D2300F1A796 /* UIImage+getColorAtPixel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+getColorAtPixel.m"; sourceTree = "<group>"; };
 		DDB0D1E91CD224C100C6445D /* ATCentralManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATCentralManager.h; sourceTree = "<group>"; };
 		DDB0D1EA1CD224C100C6445D /* ATCentralManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATCentralManager.m; sourceTree = "<group>"; };
 		DDB0D1EC1CD226FA00C6445D /* ATPeripheral.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATPeripheral.h; sourceTree = "<group>"; };
@@ -74,6 +87,27 @@
 		DDC0AFF51CC8C29100B669A1 /* SmartLampUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SmartLampUITests.m; sourceTree = "<group>"; };
 		DDC0AFF71CC8C29100B669A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DDC0B0031CC8C2F400B669A1 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		DDDB85B31CE4A4CD0036B99A /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
+		DDDB85B41CE4A4CD0036B99A /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageEffects.m"; sourceTree = "<group>"; };
+		DDDB85B51CE4A4CD0036B99A /* SCLAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCLAlertView.h; sourceTree = "<group>"; };
+		DDDB85B61CE4A4CD0036B99A /* SCLAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCLAlertView.m; sourceTree = "<group>"; };
+		DDDB85B71CE4A4CD0036B99A /* SCLButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCLButton.h; sourceTree = "<group>"; };
+		DDDB85B81CE4A4CD0036B99A /* SCLButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCLButton.m; sourceTree = "<group>"; };
+		DDDB85B91CE4A4CD0036B99A /* SCLAlertViewResponder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCLAlertViewResponder.h; sourceTree = "<group>"; };
+		DDDB85BA1CE4A4CD0036B99A /* SCLAlertViewResponder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCLAlertViewResponder.m; sourceTree = "<group>"; };
+		DDDB85BB1CE4A4CD0036B99A /* SCLAlertViewStyleKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCLAlertViewStyleKit.h; sourceTree = "<group>"; };
+		DDDB85BC1CE4A4CD0036B99A /* SCLAlertViewStyleKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCLAlertViewStyleKit.m; sourceTree = "<group>"; };
+		DDDB85BD1CE4A4CD0036B99A /* SCLMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCLMacros.h; sourceTree = "<group>"; };
+		DDDB85BE1CE4A4CD0036B99A /* SCLTimerDisplay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCLTimerDisplay.h; sourceTree = "<group>"; };
+		DDDB85BF1CE4A4CD0036B99A /* SCLTimerDisplay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCLTimerDisplay.m; sourceTree = "<group>"; };
+		DDDB85C01CE4A4CD0036B99A /* SCLTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCLTextView.h; sourceTree = "<group>"; };
+		DDDB85C11CE4A4CD0036B99A /* SCLTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCLTextView.m; sourceTree = "<group>"; };
+		DDDB85C21CE4A4CD0036B99A /* SCLSwitchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCLSwitchView.h; sourceTree = "<group>"; };
+		DDDB85C31CE4A4CD0036B99A /* SCLSwitchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCLSwitchView.m; sourceTree = "<group>"; };
+		DDDB86581CE777670036B99A /* ASValuePopUpView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASValuePopUpView.h; sourceTree = "<group>"; };
+		DDDB86591CE777670036B99A /* ASValuePopUpView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASValuePopUpView.m; sourceTree = "<group>"; };
+		DDDB865A1CE777670036B99A /* ASValueTrackingSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASValueTrackingSlider.h; sourceTree = "<group>"; };
+		DDDB865B1CE777670036B99A /* ASValueTrackingSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASValueTrackingSlider.m; sourceTree = "<group>"; };
 		DDF5AD3C1CC8E75F008F4E1C /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		DDF5AD3D1CC8E75F008F4E1C /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		DDF5AD3F1CC8E8CD008F4E1C /* ProfilesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfilesViewController.h; sourceTree = "<group>"; };
@@ -157,6 +191,10 @@
 		DDC0AFD01CC8C29100B669A1 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				DD9D1C6E1CE88D2300F1A796 /* UIImage+getColorAtPixel.h */,
+				DD9D1C6F1CE88D2300F1A796 /* UIImage+getColorAtPixel.m */,
+				DDDB865E1CE777780036B99A /* ASSlider */,
+				DDDB85CC1CE4A4D80036B99A /* SCLAlert */,
 				DDC0AFE11CC8C29100B669A1 /* Info.plist */,
 				DDC0AFD11CC8C29100B669A1 /* main.m */,
 				DDC0AFD31CC8C29100B669A1 /* AppDelegate.h */,
@@ -212,6 +250,41 @@
 				DD4A43611CE203550093D87A /* ProfilesDetailsViewController.m */,
 			);
 			name = Controller;
+			sourceTree = "<group>";
+		};
+		DDDB85CC1CE4A4D80036B99A /* SCLAlert */ = {
+			isa = PBXGroup;
+			children = (
+				DDDB85B31CE4A4CD0036B99A /* UIImage+ImageEffects.h */,
+				DDDB85B41CE4A4CD0036B99A /* UIImage+ImageEffects.m */,
+				DDDB85B51CE4A4CD0036B99A /* SCLAlertView.h */,
+				DDDB85B61CE4A4CD0036B99A /* SCLAlertView.m */,
+				DDDB85B71CE4A4CD0036B99A /* SCLButton.h */,
+				DDDB85B81CE4A4CD0036B99A /* SCLButton.m */,
+				DDDB85B91CE4A4CD0036B99A /* SCLAlertViewResponder.h */,
+				DDDB85BA1CE4A4CD0036B99A /* SCLAlertViewResponder.m */,
+				DDDB85BB1CE4A4CD0036B99A /* SCLAlertViewStyleKit.h */,
+				DDDB85BC1CE4A4CD0036B99A /* SCLAlertViewStyleKit.m */,
+				DDDB85BD1CE4A4CD0036B99A /* SCLMacros.h */,
+				DDDB85BE1CE4A4CD0036B99A /* SCLTimerDisplay.h */,
+				DDDB85BF1CE4A4CD0036B99A /* SCLTimerDisplay.m */,
+				DDDB85C01CE4A4CD0036B99A /* SCLTextView.h */,
+				DDDB85C11CE4A4CD0036B99A /* SCLTextView.m */,
+				DDDB85C21CE4A4CD0036B99A /* SCLSwitchView.h */,
+				DDDB85C31CE4A4CD0036B99A /* SCLSwitchView.m */,
+			);
+			name = SCLAlert;
+			sourceTree = "<group>";
+		};
+		DDDB865E1CE777780036B99A /* ASSlider */ = {
+			isa = PBXGroup;
+			children = (
+				DDDB86581CE777670036B99A /* ASValuePopUpView.h */,
+				DDDB86591CE777670036B99A /* ASValuePopUpView.m */,
+				DDDB865A1CE777670036B99A /* ASValueTrackingSlider.h */,
+				DDDB865B1CE777670036B99A /* ASValueTrackingSlider.m */,
+			);
+			name = ASSlider;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -350,16 +423,27 @@
 			files = (
 				DDF5AD411CC8E8CD008F4E1C /* ProfilesViewController.m in Sources */,
 				DDB0D1EB1CD224C100C6445D /* ATCentralManager.m in Sources */,
+				DDDB85C41CE4A4CD0036B99A /* UIImage+ImageEffects.m in Sources */,
 				DD4A43621CE203550093D87A /* ProfilesDetailsViewController.m in Sources */,
+				DDDB85C61CE4A4CD0036B99A /* SCLButton.m in Sources */,
+				DDDB865C1CE777670036B99A /* ASValuePopUpView.m in Sources */,
+				DDDB85CB1CE4A4CD0036B99A /* SCLSwitchView.m in Sources */,
+				DDDB85C81CE4A4CD0036B99A /* SCLAlertViewStyleKit.m in Sources */,
 				DDB0D1EE1CD226FA00C6445D /* ATPeripheral.m in Sources */,
+				DDDB85C51CE4A4CD0036B99A /* SCLAlertView.m in Sources */,
+				DDDB865D1CE777670036B99A /* ASValueTrackingSlider.m in Sources */,
 				DD4A43651CE230340093D87A /* UITextField+ATText.m in Sources */,
 				DD4A435C1CE1E4230093D87A /* UIButton+ATButton.m in Sources */,
 				DDF5AD461CC8F828008F4E1C /* BluetoothViewController.m in Sources */,
 				DDC0AFD81CC8C29100B669A1 /* ViewController.m in Sources */,
 				DD4A43591CE1CF8B0093D87A /* ATFileManager.m in Sources */,
+				DDDB85C91CE4A4CD0036B99A /* SCLTimerDisplay.m in Sources */,
+				DDDB85CA1CE4A4CD0036B99A /* SCLTextView.m in Sources */,
+				DDDB85C71CE4A4CD0036B99A /* SCLAlertViewResponder.m in Sources */,
 				DD4A43561CE19E0F0093D87A /* ATProfiles.m in Sources */,
 				DDC0AFD51CC8C29100B669A1 /* AppDelegate.m in Sources */,
 				DDF5AD3E1CC8E75F008F4E1C /* HomeViewController.m in Sources */,
+				DD9D1C701CE88D2400F1A796 /* UIImage+getColorAtPixel.m in Sources */,
 				DDC0AFD21CC8C29100B669A1 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

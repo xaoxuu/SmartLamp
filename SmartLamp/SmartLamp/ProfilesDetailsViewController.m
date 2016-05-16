@@ -42,7 +42,7 @@
 
 @implementation ProfilesDetailsViewController
 
-#pragma mark - 视图事件 🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀
+#pragma mark - 🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀 视图事件
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -83,7 +83,7 @@
     
 }
 
-#pragma mark - 控件事件 🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀
+#pragma mark - 🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀 控件事件
 
 // 按下了return键
 - (IBAction)touchReturn:(UITextField *)sender {
@@ -156,14 +156,14 @@
 }
 
 
-#pragma mark - 私有方法 🚫🚫🚫🚫🚫🚫🚫🚫🚫🚫
+#pragma mark - 🚫🚫🚫🚫🚫🚫🚫🚫🚫🚫 私有方法 
 
 // 初始化
 - (void)initialization{
     
     [self.titleTextField  textFieldState:ATTextFieldStateEditEnd];
     [self.detailTextField textFieldState:ATTextFieldStateEditEnd];
-    [self.saveButton      buttonState:ATButtonStateUp];
+    [self.saveButton      buttonState:ATButtonStateNormal];
     
 }
 
@@ -181,10 +181,21 @@
     // 色彩动画
     self.colorSegmented.selectedSegmentIndex = self.aProfiles.colorAnimation;
     // 滑块
-    [self.redSlider setValue:self.aProfiles.red animated:YES];
-    [self.greenSlider setValue:self.aProfiles.green animated:YES];
-    [self.blueSlider setValue:self.aProfiles.blue animated:YES];
-    [self.brightnessSlider setValue:self.aProfiles.brightness animated:YES];
+    CGFloat red=0,green=0,blue=0,bright=0;
+    if ([self respondsToSelector:@selector(getRed:green:blue:alpha:)]) {
+        [self.color getRed:&red green:&green blue:&blue alpha:&bright];
+    }
+    else {
+        const CGFloat *components = CGColorGetComponents(self.color.CGColor);
+        red = components[0];
+        green = components[1];
+        blue = components[2];
+        bright = components[3];
+    }
+    [self.redSlider setValue:red animated:YES];
+    [self.greenSlider setValue:green animated:YES];
+    [self.blueSlider setValue:blue animated:YES];
+    [self.brightnessSlider setValue:bright animated:YES];
     
     // 滑块是否可用
     [self setSliderEnable:!self.aProfiles.colorAnimation];
@@ -200,7 +211,7 @@
     }
     // 否则就显示单色模式
     else{
-        [self.iPhone letSmartLampSetColorWithR:self.redSlider.value G:self.greenSlider.value B:self.blueSlider.value andBright:self.brightnessSlider.value];
+        [self.iPhone letSmartLampSetColor:self.color];
     }
     
 }
@@ -267,11 +278,8 @@
     // 定时picker
     // 渐变Segmented
     
-    // RGB和亮度
-    self.aProfiles.red = self.redSlider.value;
-    self.aProfiles.green = self.greenSlider.value;
-    self.aProfiles.blue = self.blueSlider.value;
-    self.aProfiles.brightness = self.brightnessSlider.value;
+    // 颜色和亮度
+    self.aProfiles.color = self.color;
     
     
     [ATFileManager saveCache:self.aProfiles];
@@ -298,7 +306,8 @@
 }
 
 
-#pragma mark - 代理方法 🔵🔵🔵🔵🔵🔵🔵🔵🔵🔵
+
+#pragma mark - 🔵🔵🔵🔵🔵🔵🔵🔵🔵🔵 数据源和代理
 
 #pragma mark 🔵 UIPickerView DataSource
 

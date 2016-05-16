@@ -27,13 +27,16 @@ ATCentralManager *iPhone;
 @property (strong, nonatomic) CBPeripheral *peripheral;
 @property (assign, nonatomic) BOOL isScaning;
 
+
+@property (strong, nonatomic) UIColor *color;
+
 @end
 
 @implementation ATCentralManager
 
-#pragma mark - 公有方法 🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀
+#pragma mark - 🍀 公有方法 🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀
 
-#pragma mark 🔗连接和开关控制
+#pragma mark 🔗 连接和开关控制
 
 // 搜索蓝牙灯, 找到的蓝牙灯设备列表
 - (NSArray *)searchSmartLamp{
@@ -92,10 +95,10 @@ ATCentralManager *iPhone;
     if (!self.isConnecting) return;
     
     // 开灯
-    if (powerOn) [iPhone letSmartLampSetColorWithR:1 G:1 B:1 andBright:1];
+    if (powerOn) [iPhone letSmartLampSetColor:self.color];
     
     // 关灯
-    else [iPhone letSmartLampSetColorWithR:1 G:1 B:1 andBright:0];
+    else [iPhone letSmartLampSetColor:[UIColor colorWithRed:1 green:1 blue:1 alpha:0]];
     
 }
 
@@ -118,13 +121,26 @@ ATCentralManager *iPhone;
 }
 
 
-#pragma mark 🔆颜色和亮度控制
+#pragma mark 🔆 颜色和亮度控制
 
 // 设置颜色和亮度
-- (void)letSmartLampSetColorWithR:(float)red G:(float)green B:(float)blue andBright:(float)bright{
+- (void)letSmartLampSetColor:(UIColor *)color{
     
     // 如果没有连接, 就忽略指令
     if (!self.isConnecting) return;
+    
+    self.color = color;
+    CGFloat red=0,green=0,blue=0,bright=0;
+    if ([self respondsToSelector:@selector(getRed:green:blue:alpha:)]) {
+        [color getRed:&red green:&green blue:&blue alpha:&bright];
+    }
+    else {
+        const CGFloat *components = CGColorGetComponents(color.CGColor);
+        red = components[0];
+        green = components[1];
+        blue = components[2];
+        bright = components[3];
+    }
     
     // 调用发送数据的Block
     [self sendData:^(char *p) {
@@ -172,7 +188,7 @@ ATCentralManager *iPhone;
 
 
 
-#pragma mark 📦构造方法
+#pragma mark 📦 构造方法
 
 // 构造方法 defaultCentralManager  (可以用此方法快速创建一个单例对象)
 + (instancetype)defaultCentralManager{
@@ -203,9 +219,9 @@ ATCentralManager *iPhone;
     
 }
 
-#pragma mark - 代理方法 🔵🔵🔵🔵🔵🔵🔵🔵🔵🔵
+#pragma mark - 🔵 代理方法 🔵🔵🔵🔵🔵🔵🔵🔵🔵🔵
 
-#pragma mark 📱中心设备的代理方法
+#pragma mark 📱 中心设备的代理方法
 
 // 当中心设备的状态更新了的时候
 - (void)centralManagerDidUpdateState:(CBCentralManager *)central
@@ -228,6 +244,8 @@ ATCentralManager *iPhone;
 {
     
     
+    
+    /*
     if ([aPeripheral.name containsString:@"KQX"]) {
         
         // ==================== [ 获取蓝牙设备列表 ] ==================== //
@@ -244,21 +262,18 @@ ATCentralManager *iPhone;
         }
         
     }
-    
-    
-    
-    
-    
+    */
     
     
     // ==================== [ 直接连接 ] ==================== //
-    // 如果蓝牙设备的名字是配套的蓝牙灯, 就保存到单例中
-//    if ([aPeripheral.name isEqualToString:@"KQX-BL1000"]) {
-//        // 将这个蓝牙灯对象保存到单例中
-//        self.peripheral = aPeripheral;
-//        NSLog(@"<手机>已保存蓝牙灯对象");
-//        
-//    }
+    // ==================== [ 获取蓝牙设备列表 ] ==================== //
+    if (![self.scanedDeviceList containsObject:aPeripheral]) {
+        // 将这个蓝牙灯对象保存到列表
+        
+        [self.scanedDeviceList addObject:aPeripheral];
+        NSLog(@"<手机>已发现蓝牙设备<%@>",aPeripheral.name);
+
+    }
     
 }
 
@@ -306,7 +321,7 @@ ATCentralManager *iPhone;
     }
 }
 
-#pragma mark 💡蓝牙设备代理方法
+#pragma mark 💡 蓝牙设备代理方法
 
 // 发现服务
 - (void)peripheral:(CBPeripheral *)aPeripheral didDiscoverServices:(NSError *)error
@@ -418,7 +433,7 @@ ATCentralManager *iPhone;
 //    }
 //}
 
-#pragma mark - 私有方法 🚫🚫🚫🚫🚫🚫🚫🚫🚫🚫
+#pragma mark - 🚫 私有方法 🚫🚫🚫🚫🚫🚫🚫🚫🚫🚫
 
 -(CBPeripheral *)peripheral{
     
@@ -429,7 +444,7 @@ ATCentralManager *iPhone;
     
 }
 
-#pragma mark 🔍扫描
+#pragma mark 🔍 扫描
 
 // 开始扫描
 - (void)startScan{
@@ -492,7 +507,7 @@ ATCentralManager *iPhone;
     
 }
 
-#pragma mark 🔒给蓝牙设备发送数据
+#pragma mark 🔒 给蓝牙设备发送数据
 
 // 给蓝牙灯设备发送命令
 - (void)sendData:(void(^)(char *p))block{
@@ -523,7 +538,7 @@ ATCentralManager *iPhone;
     
 }
 
-#pragma mark ♻️单例
+#pragma mark ♻️ 单例实现
 
 // allocWithZone
 + (id) allocWithZone:(NSZone *)zone

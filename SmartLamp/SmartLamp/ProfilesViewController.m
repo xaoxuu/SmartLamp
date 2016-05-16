@@ -24,7 +24,7 @@
 
 @implementation ProfilesViewController
 
-#pragma mark - 视图事件 🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀
+#pragma mark - 🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀 视图事件
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -54,7 +54,7 @@
     
 }
 
-#pragma mark - 控件事件 🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀
+#pragma mark - 🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀 控件事件
 
 // 编辑按钮
 - (IBAction)editButton:(UIButton *)sender {
@@ -72,13 +72,14 @@
 }
 
 
-#pragma mark - 私有方法 🚫🚫🚫🚫🚫🚫🚫🚫🚫🚫
+#pragma mark - 🚫🚫🚫🚫🚫🚫🚫🚫🚫🚫 私有方法
 
+#pragma mark 🚫 初始化
 // 初始化
 - (void)initialization{
     
-    [self.editButton buttonState:ATButtonStateUp];
-    [self.addButton  buttonState:ATButtonStateUp];
+    [self.editButton buttonState:ATButtonStateNormal];
+    [self.addButton  buttonState:ATButtonStateNormal];
     
 }
 
@@ -91,6 +92,7 @@
     
 }
 
+#pragma mark 🚫 保存数据
 // 保存用户配置列表
 - (void)saveProfilesList{
     
@@ -98,8 +100,21 @@
     
 }
 
+#pragma mark 🚫 AlertView
+- (void)showAlertWithWhetherApplyWithAction:(void (^)())action profilesName:(NSString *)profilesName{
+    
+    SCLAlertView *alert = self.newAlert;
+    
+    [alert addButton:@"应用" actionBlock:^{
+        action();
+        NSLog(@"点击了应用");
+    }];
+    NSString *subTitle = [NSString stringWithFormat:@"是否应用情景模式\"%@\"?",profilesName];
+    [alert showQuestion:self title:@"是否应用" subTitle:subTitle closeButtonTitle:@"取消" duration:0.0f];
+    
+}
 
-#pragma mark - 数据源和代理 🔵🔵🔵🔵🔵🔵🔵🔵🔵🔵
+#pragma mark - 🔵🔵🔵🔵🔵🔵🔵🔵🔵🔵 数据源和代理
 
 #pragma mark 🔵 UITableView DataSource
 
@@ -181,26 +196,19 @@
 // 选中某一行
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    
     // ==================== [ 实例化选中的对象 ] ==================== //
     ATProfiles *selectedProfiles = self.profilesList[indexPath.row];
     
-    [self pushAlertViewWithTitle:@"应用情景模式"
-                      andMessage:[NSString stringWithFormat:@"是否应用情景模式\"%@\"?",selectedProfiles.title]
-                           andOk:@"应用"
-                       andCancel:@"取消"
-                   andOkCallback:^{
-                       
-                       // 应用选中的配置
-                       self.aProfiles = selectedProfiles;
-                       [ATFileManager saveCache:self.aProfiles];
-                       // 切换视图
-                       [self.tabBarController setSelectedIndex:0];
-                       
-                       NSLog(@"应用了\"%@\"",selectedProfiles.title);
-                   } andCancelCallback:^{
-                       NSLog(@"点击了取消");
-                   }];
+    // 弹出Alert
+    [self showAlertWithWhetherApplyWithAction:^{
+        // 应用选中的配置
+        self.aProfiles = selectedProfiles;
+        [ATFileManager saveCache:self.aProfiles];
+        // 切换视图
+        [self.tabBarController setSelectedIndex:0];
+        
+        NSLog(@"应用了\"%@\"",selectedProfiles.title);
+    } profilesName:selectedProfiles.title];
     
 }
 

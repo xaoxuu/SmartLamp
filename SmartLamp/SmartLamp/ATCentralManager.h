@@ -102,7 +102,7 @@
  *	@param blue		蓝色 float(0~1)
  *	@param bright	亮度 float(0~1)
  */
-- (void)letSmartLampSetColorWithR:(float)red G:(float)green B:(float)blue andBright:(float)bright;
+- (void)letSmartLampSetColor:(UIColor *)color;
 
 
 /**

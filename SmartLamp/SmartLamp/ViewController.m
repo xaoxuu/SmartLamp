@@ -11,11 +11,13 @@
 
 @interface ViewController ()
 
+
+
 @end
 
 @implementation ViewController
 
-#pragma mark - 视图事件 🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀
+#pragma mark - 🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀 视图事件
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -33,12 +35,12 @@
 
 
 
-#pragma mark - 控件事件 🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀
+#pragma mark - 🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀 控件事件
 
 
 - (IBAction)touchDown:(UIButton *)sender {
     
-    [sender buttonState:ATButtonStateDown];
+    [sender buttonState:ATButtonStateTap];
     
 }
 
@@ -47,53 +49,71 @@
 
 - (IBAction)touchUp:(UIButton *)sender {
     
-    [sender buttonState:ATButtonStateUp];
     
-}
-
-#pragma mark - 私有方法 🚫🚫🚫🚫🚫🚫🚫🚫🚫🚫
-
-// 弹出AlertView
-- (void)pushAlertViewWithTitle:(NSString *)title
-                    andMessage:(NSString *)message
-                         andOk:(NSString *)ok
-                     andCancel:(NSString *)cancel
-                 andOkCallback:(void (^)())okCallback
-             andCancelCallback:(void (^)())cancelCallback {
-
-    // 生成alert
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:title
-                                                                   message:message
-                                                            preferredStyle:UIAlertControllerStyleAlert];
-    
-    
-    // 生成okAction
-    UIAlertAction *okAction = [UIAlertAction actionWithTitle:ok
-                                                       style:UIAlertActionStyleDefault
-                                                     handler:^(UIAlertAction * _Nonnull action) {
-                                                         // Ok按钮的回调
-                                                         okCallback();
-                                                     }];
-    // 把ok按钮添加进去
-    [alert addAction:okAction];
-    
-    // 只有需要cancel按钮的时候才创建cancel按钮
-    if (![cancel isEqualToString:@""]) {
-        // 生成cancelAction
-        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:cancel
-                                                               style:UIAlertActionStyleCancel
-                                                             handler:^(UIAlertAction * _Nonnull action) {
-                                                                 // cancel按钮的回调
-                                                                 cancelCallback();
-                                                             }];
-        // 把cancelAction添加进去
-        [alert addAction:cancelAction];
+    if (sender.isSelected == YES) {
+        [sender buttonState:ATButtonStateSelected];
+    } else{
+        [sender buttonState:ATButtonStateNormal];
     }
     
-    // push
-    [self presentViewController:alert animated:YES completion:nil];
+}
+
+#pragma mark - 🚫🚫🚫🚫🚫🚫🚫🚫🚫🚫 私有方法 
+
+-(SCLAlertView *)newAlert{
+    
+    SCLAlertView *alert = [[SCLAlertView alloc] init];
+    alert.showAnimationType = FadeIn;
+    alert.hideAnimationType = FadeOut;
+    alert.backgroundType = Blur;
+
+    return alert;
     
 }
+
+//-(SCLAlertView *)alertForScaning{
+//    
+//    if (!_alertForScaning) {
+//        _alertForScaning = [[SCLAlertView alloc] init];
+//        _alertForScaning.showAnimationType = FadeIn;
+//        _alertForScaning.hideAnimationType = FadeOut;
+//        _alertForScaning.backgroundType = Blur;
+//    }
+//    
+//    return _alertForScaning;
+//    
+//}
+
+//- (void)showAlertWithScaningWithDuration:(NSTimeInterval)duration andStopAction:(void (^)())action{
+//    
+//    SCLAlertView *alert = [[SCLAlertView alloc] init];
+//    alert.showAnimationType = FadeIn;
+//    alert.hideAnimationType = FadeOut;
+//    alert.backgroundType = Blur;
+//    
+//    [alert addButton:@"停止扫描" actionBlock:^{
+//        action();
+//        NSLog(@"点击了停止扫描");
+//    }];
+//    
+//    self.autoConnect = [alert addSwitchViewWithLabel:@"自动连接"];
+//    
+//    [alert showWaiting:self title:@"正在扫描" subTitle:@"正在扫描周围可用的蓝牙灯，请稍等。。。" closeButtonTitle:nil duration:duration];
+//    
+//}
+
+
+//- (void)showAlertWithConnecting{
+//    
+//    SCLAlertView *alert = [[SCLAlertView alloc] init];
+//    alert.showAnimationType = FadeIn;
+//    alert.hideAnimationType = FadeOut;
+//    alert.backgroundType = Blur;
+//    [alert showWaiting:self title:@"正在连接" subTitle:@"正在连接蓝牙灯，请稍等。。。" closeButtonTitle:nil duration:2.0f];
+//    
+//}
+
+
 
 #pragma mark 🚫 懒加载
 
@@ -140,6 +160,15 @@
     return _profilesList;
     
 }
+
+
+- (UIColor *)tintColor{
+    
+    return [UIColor colorWithRed:0.42f green:0.80f blue:1.00f alpha:1.00f];
+    
+}
+
+
 
 
 @end

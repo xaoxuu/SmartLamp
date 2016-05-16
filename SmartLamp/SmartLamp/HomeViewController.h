@@ -11,4 +11,18 @@
 @interface HomeViewController : ViewController
 
 
+// 已经连接过的设备列表
+@property (strong, nonatomic) NSArray *connectedDevice;
+
+@property (strong, nonatomic) SCLAlertView *alertForScaning;
+@property (strong, nonatomic) SCLAlertView *alertForConnecting;
+
+
+
+
+- (void)showAlertWithDeviceNotFoundWithAction:(void (^)())action;
+
+- (SCLAlertView *)showAlertWithConnecting;
+- (void)showAlertWithConnectSuccess;
+
 @end

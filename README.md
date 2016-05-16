@@ -1,6 +1,4 @@
 # SmartLamp
-Smart Lamp
-
 
 
 ## 更新日志
@@ -14,8 +12,6 @@ Smart Lamp
 - 消除了若干已知BUG
 - 优化了大部分代码
 - 优化了操作体验
-
-
 
 
 

@@ -14,10 +14,14 @@
 typedef NS_ENUM(NSUInteger,ATButtonState){
     
     // 按钮弹起
-    ATButtonStateUp,
+    ATButtonStateNormal,
     // 按钮按下
-    ATButtonStateDown,
+    ATButtonStateTap,
     
+    // 按钮选中
+    ATButtonStateSelected,
+    // 按钮不可用
+    ATButtonStateDisable
 };
 
 - (void)buttonState:(ATButtonState)state;

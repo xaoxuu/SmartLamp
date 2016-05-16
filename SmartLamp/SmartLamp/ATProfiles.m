@@ -25,11 +25,7 @@
         _image = [UIImage imageNamed:@"smartLamp"];
         _timer = 0;//0代表不定时关机
         _colorAnimation = ColorAnimationNone;
-        _red = 1.0;
-        _green = 1.0;
-        _blue = 1.0;
-        _brightness = 1.0;
-        
+        _color = [UIColor whiteColor];
     }
     
     return self;
@@ -48,10 +44,8 @@
     
     [aCoder encodeInteger:self.timer forKey:@"timer"];
     [aCoder encodeInteger:self.colorAnimation forKey:@"colorAnimation"];
-    [aCoder encodeFloat:self.red forKey:@"red"];
-    [aCoder encodeFloat:self.green forKey:@"green"];
-    [aCoder encodeFloat:self.blue forKey:@"blue"];
-    [aCoder encodeFloat:self.brightness forKey:@"brightness"];
+    [aCoder encodeObject:self.color forKey:@"color"];
+    
 }
 
 // 解档
@@ -65,10 +59,8 @@
         
         self.timer = [aDecoder decodeIntegerForKey:@"timer"];
         self.colorAnimation = [aDecoder decodeIntegerForKey:@"colorAnimation"];
-        self.red = [aDecoder decodeFloatForKey:@"red"];
-        self.green = [aDecoder decodeFloatForKey:@"green"];
-        self.blue = [aDecoder decodeFloatForKey:@"blue"];
-        self.brightness = [aDecoder decodeFloatForKey:@"brightness"];
+        self.color = [aDecoder decodeObjectForKey:@"color"];
+        
         
     }
     return self;
