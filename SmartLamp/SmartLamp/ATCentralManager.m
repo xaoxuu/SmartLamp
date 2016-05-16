@@ -29,6 +29,7 @@ ATCentralManager *iPhone;
 
 
 @property (strong, nonatomic) UIColor *color;
+@property (assign, nonatomic) CGFloat brightness;
 
 @end
 
@@ -95,10 +96,10 @@ ATCentralManager *iPhone;
     if (!self.isConnecting) return;
     
     // 开灯
-    if (powerOn) [iPhone letSmartLampSetColor:self.color];
+    if (powerOn) [iPhone letSmartLampSetBrightness:self.brightness];
     
     // 关灯
-    else [iPhone letSmartLampSetColor:[UIColor colorWithRed:1 green:1 blue:1 alpha:0]];
+    else [iPhone letSmartLampSetBrightness:0];
     
 }
 
@@ -154,6 +155,27 @@ ATCentralManager *iPhone;
         *p++ = (int)(255 * bright); //brt
         
     }];
+    
+}
+
+// 设置亮度
+- (void)letSmartLampSetBrightness:(CGFloat)brightness{
+    
+    if (self.isConnecting) {
+        
+        // 调用发送数据的Block
+        [self sendData:^(char *p) {
+            
+            *p++ = 0x0f;                // 亮度指令
+            
+            p++;  //[]
+            p++;  //[]
+            p++;  //[]
+            *p++ = (int)(2.55 * brightness);// brt
+            
+        }];
+        
+    }
     
 }
 
@@ -227,12 +249,34 @@ ATCentralManager *iPhone;
 - (void)centralManagerDidUpdateState:(CBCentralManager *)central
 {
     
-    // 如果状态变为可用的, 就执行以下操作
-    if (self.attachable) {
-        
-        NSLog(@"<手机>蓝牙可用");
-        
+    // 在控制台输出蓝牙状态
+    switch (self.manager.state)
+    {
+            
+        case CBCentralManagerStateUnknown: // 未知状态
+            break;
+        case CBCentralManagerStateResetting: // 正在重置
+            break;
+        case CBCentralManagerStateUnsupported: // 蓝牙不支持
+            NSLog(@"<代理>蓝牙不支持");
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"Bluetooth" object:@"设备蓝牙不支持"];
+            break;
+        case CBCentralManagerStateUnauthorized: // 应用没有权限
+            NSLog(@"<代理>应用没有权限");
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"Bluetooth" object:@"应用没有权限"];
+            break;
+        case CBCentralManagerStatePoweredOff: // 蓝牙已经关闭
+            NSLog(@"<代理>蓝牙已经关闭");
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"Bluetooth" object:@"蓝牙已经关闭"];
+            break;
+        case CBCentralManagerStatePoweredOn: // 蓝牙已经打开
+            NSLog(@"<代理>蓝牙已经打开");
+            NSLog(@"<代理>蓝牙可用");
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"Bluetooth" object:@"蓝牙可用"];
+            break;
+            
     }
+    
     
 }
 
@@ -243,26 +287,22 @@ ATCentralManager *iPhone;
                   RSSI:(NSNumber *)RSSI
 {
     
+//    if ([aPeripheral.name containsString:@"KQX"]) {
+//        
+//        // ==================== [ 获取蓝牙设备列表 ] ==================== //
+//        if (![self.scanedDeviceList containsObject:aPeripheral]) {
+//            // 将这个蓝牙灯对象保存到列表
+//            
+//            [self.scanedDeviceList addObject:aPeripheral];
+//            
+//            NSString *device = [NSString stringWithFormat:@"<手机>已发现蓝牙设备<%@>,是否连接?",aPeripheral.name];
+//            NSLog(@"%@",device);
+//            [[NSNotificationCenter defaultCenter] postNotificationName:@"Device" object:device];
+//            
+//        }
+//        
+//    }
     
-    
-    /*
-    if ([aPeripheral.name containsString:@"KQX"]) {
-        
-        // ==================== [ 获取蓝牙设备列表 ] ==================== //
-        if (![self.scanedDeviceList containsObject:aPeripheral]) {
-            // 将这个蓝牙灯对象保存到列表
-            
-            [self.scanedDeviceList addObject:aPeripheral];
-            NSLog(@"<手机>已发现蓝牙设备<%@>",aPeripheral.name);
-            
-            
-            
-            
-            
-        }
-        
-    }
-    */
     
     
     // ==================== [ 直接连接 ] ==================== //
@@ -271,9 +311,14 @@ ATCentralManager *iPhone;
         // 将这个蓝牙灯对象保存到列表
         
         [self.scanedDeviceList addObject:aPeripheral];
-        NSLog(@"<手机>已发现蓝牙设备<%@>",aPeripheral.name);
+        
+        NSString *device = [NSString stringWithFormat:@"<手机>已发现蓝牙设备<%@>,是否连接?",aPeripheral.name];
+        NSLog(@"%@",device);
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"Device" object:device];
 
     }
+    
+    
     
 }
 
@@ -473,7 +518,7 @@ ATCentralManager *iPhone;
 }
 
 // 判断手机蓝牙状态
-- (BOOL)attachable
+- (BOOL)available
 {
 
     // 在控制台输出蓝牙状态
@@ -494,6 +539,7 @@ ATCentralManager *iPhone;
             break;
         case CBCentralManagerStatePoweredOff: // 蓝牙已经关闭
             NSLog(@"<蓝牙状态>已经关闭");
+            
             break;
         case CBCentralManagerStatePoweredOn: // 蓝牙已经打开
             NSLog(@"<蓝牙状态>已经打开");
@@ -537,6 +583,7 @@ ATCentralManager *iPhone;
     }];
     
 }
+
 
 #pragma mark ♻️ 单例实现
 

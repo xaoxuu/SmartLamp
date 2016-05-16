@@ -12,7 +12,7 @@
 #import "UIButton+ATButton.h"
 #import "SCLAlertView.h"
 #import "UIImage+getColorAtPixel.h"
-
+#import "SCLAlertViewStyleKit.h"
 
 @interface ViewController : UIViewController
 

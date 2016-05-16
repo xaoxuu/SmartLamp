@@ -30,15 +30,7 @@
 // 中心设备与周边设备的连接状态
 @property (assign, nonatomic) BOOL isConnecting;
 
-// 动画枚举
-//typedef NS_ENUM(NSUInteger,ColorAnimation){
-//    
-//    ColorAnimationNone,
-//    ColorAnimationSaltusStep3,
-//    ColorAnimationSaltusStep7,
-//    ColorAnimationGratation,
-//    
-//};
+
 
 #pragma mark - 供控制器调用的方法
 
@@ -73,7 +65,7 @@
 
 - (void)startScan;
 - (void)stopScan;
-
+- (BOOL)available;
 /**
  *	@author Aesir Titan, 2016-04-29 15:04:12
  *
@@ -104,6 +96,14 @@
  */
 - (void)letSmartLampSetColor:(UIColor *)color;
 
+/**
+ *	@author Aesir Titan, 2016-05-16 10:05:18
+ *
+ *	@brief 设置蓝牙灯亮度
+ *
+ *	@param brightness	亮度值(0~100)
+ */
+- (void)letSmartLampSetBrightness:(CGFloat)brightness;
 
 /**
  *	@author Aesir Titan, 2016-04-29 15:04:46

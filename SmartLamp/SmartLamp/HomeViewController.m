@@ -40,7 +40,6 @@
 // 上一次的连接状态
 @property (assign, nonatomic) BOOL lastConnectStatus;
 
-
 @end
 
 @implementation HomeViewController
@@ -159,111 +158,87 @@
 
 #pragma mark - 🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀 控件事件
 
-// 功能按钮(颜色/亮度/连接)
-- (IBAction)actionButton:(UIButton *)sender {
+- (IBAction)animationButton:(UIButton *)sender {
     
-    // 调色板按钮
-    if (sender == self.animationButton) {
-        NSLog(@"点击了动画按钮");
+    NSLog(@"点击了动画按钮");
+    
+    if ([sender.currentTitle isEqualToString:@"动画"]) {
+        [self showAlertWithColorAnimation];
+    } else {
         
-        if ([sender.currentTitle isEqualToString:@"动画"]) {
-            [self showAlertWithColorAnimation];
-        } else {
-            [self setPaletteEnable:YES];
-        }
-        
-//        [self showAlertWithConnecting];
+        [self button:self.animationButton state:ATButtonStateNormal];
     }
     
-    if (sender == self.switchButton) {
-        
-//        [self showAlertWithConnecting];
-        
-        // 关灯
-        if ([self.switchButton.titleLabel.text isEqualToString:@"关灯"]) {
-            NSLog(@"点击了关灯");
-            [self.brightnessSlider setValue:0 animated:YES];
-            [self.switchButton setTitle:@"开灯" forState:UIControlStateNormal];
-            [self.iPhone letSmartLampPowerOnOrOff:NO];
-            [self.switchButton setSelected:NO];
-//            [self.switchButton buttonState:ATButtonStateSelected];
-            
-            [self.animationButton buttonState:ATButtonStateDisable];
-            
-        }
-        
-        // 开灯
-        else{
-            NSLog(@"点击了开灯");
-            NSLog(@"%@ ",self.switchButton.titleLabel.text);
-            CGFloat bright=0;
-            [self.aProfiles.color getRed:nil green:nil blue:nil alpha:&bright];
-            [self.brightnessSlider setValue:100 * bright  animated:YES];
-            [self.switchButton setTitle:@"关灯" forState:UIControlStateNormal];
-            [self updateSmartLampStatus];
-            
-            [self.switchButton setSelected:YES];
-//            [self.switchButton buttonState:ATButtonStateNormal];
-            
-            [self.animationButton buttonState:ATButtonStateNormal];
-        }
+}
+
+
+- (IBAction)switchButton:(UIButton *)sender {
+    
+    // 关灯
+    if ([self.switchButton.titleLabel.text isEqualToString:@"关灯"]) {
+        NSLog(@"点击了关灯");
+        // 保存数据
+        [self saveCache];
+        // 开关按钮状态
+        [self button:self.switchButton state:ATButtonStateNormal];
+        // 蓝牙灯状态
+        [self.iPhone letSmartLampPowerOnOrOff:NO];
         
     }
     
-    if (sender == self.connectionButton) {
-        NSLog(@"点击了连接");
+    // 开灯
+    else{
+        NSLog(@"点击了开灯");
+        NSLog(@"%@ ",self.switchButton.titleLabel.text);
         
-        // 如果已经连接了 就弹出是否断开
-        if (self.iPhone.isConnecting) {
-            [self showAlertWithWhetherDisconnectWithAction:^{
-                [self.iPhone disConnectSmartLamp];
-                [self.connectionButton setSelected:NO];
-                [self.animationButton buttonState:ATButtonStateDisable];
-                [self.switchButton buttonState:ATButtonStateDisable];
-            } deviceName:[[ATFileManager readFile:ATFileTypeDevice] lastObject]];
-        } else{
-            [self searchDevice];
-        }
+        // 开关按钮状态
+        [self button:self.switchButton state:ATButtonStateSelected];
+        
+        // 蓝牙灯状态
+        [self.iPhone letSmartLampPowerOnOrOff:YES];
         
     }
     
 }
 
 
-// RGB滑块和亮度滑块 值改变
-- (IBAction)sliderRGB:(UISlider *)sender {
+- (IBAction)connectionButton:(UIButton *)sender {
     
-    // 更新蓝牙灯状态(颜色/亮度/动画)
+    NSLog(@"点击了连接");
+    
+    // 如果已经连接了 就弹出是否断开
+    if (self.iPhone.isConnecting) {
+        [self showAlertWithWhetherDisconnectWithAction:^{
+            // 连接按钮状态
+            [self button:self.connectionButton state:ATButtonStateNormal];
+            // 断开蓝牙灯
+            [self.iPhone disConnectSmartLamp];
+            
+        } deviceName:[[ATFileManager readFile:ATFileTypeDevice] lastObject]];
+    } else{
+        // 连接按钮状态
+        [self button:self.connectionButton state:ATButtonStateDisable];
+        // 搜索蓝牙设备
+        [self searchDevice];
+    }
+    
+    
+}
+
+
+- (IBAction)brightnessSlider:(UISlider *)sender {
+    
+    // 更新蓝牙灯状态
     [self updateSmartLampStatus];
     
-    // 更新视图
-    [self updateLayer];
-    
-    
 }
 
-// RGB滑块和亮度滑块 TouchUp事件
-- (IBAction)sliderTouchUp:(UISlider *)sender {
-    
-    // 如果手动调节了RGB滑块, 就意味着使用单色
-    if (self.brightnessSlider != sender) {
-        self.aProfiles.colorAnimation = ColorAnimationNone;
-    }
-    
-    // ----------------------< 待优化 >---------------------- //
-    // 由于使用协议提供的简易动画, 暂不支持动画模式下的亮度调节
-    // 如果自定义了动画方法, 可以在这里实现动画模式下的亮度调节
-    // ----------------------< 待优化 >---------------------- //
-    
-}
 
 
 #pragma mark - 🔵🔵🔵🔵🔵🔵🔵🔵🔵🔵 连接设备 
 
 // 检查是否连接成功
 - (void)checkConnect{
-    
-    self.brightnessSlider.enabled = self.iPhone.isConnecting;
     
     // 如果现在状态是已连接
     if (self.iPhone.isConnecting) {
@@ -273,20 +248,21 @@
             [self showAlertWithConnectSuccess];
         }
         
-        [self.connectionButton setTitle:@"断开" forState:UIControlStateNormal];
-        [self.connectionButton setSelected:YES];
-        [self.connectionButton buttonState:ATButtonStateSelected];
-        [self.animationButton buttonState:ATButtonStateNormal];
-        [self.switchButton buttonState:ATButtonStateNormal];
-        
+        // 连接按钮状态
+        [self button:self.connectionButton state:ATButtonStateSelected];
         
     }
+    
     // 未连接状态
     else{
         
-        [self.connectionButton setTitle:@"连接" forState:UIControlStateNormal];
-        [self.animationButton buttonState:ATButtonStateDisable];
-        [self.switchButton buttonState:ATButtonStateDisable];
+        // 连接按钮状态
+        if (self.iPhone.available&&!self.isAutoConnect) {
+            [self button:self.connectionButton state:ATButtonStateNormal];
+        } else{
+            [self button:self.connectionButton state:ATButtonStateDisable];
+        }
+        
     }
     
     // 记录当前的状态
@@ -317,7 +293,6 @@
         
     }
     
-    
 }
 
 // 循环调用的方法
@@ -334,47 +309,23 @@
     // 循环结束时调用(如果扫描到了设备或者时间超过)
     if (self.iPhone.scanedDeviceList.count||self.myTimerProgress>10) {
         
+        // 如果扫描到了设备会自动调用 showAlertWithDiscoverDevice
+        
         // 停止扫描
         [self.iPhone stopScan];
         [self.alertForScaning hideView];
-        self.connectionButton.enabled = YES;
         
         // 重置定时器
         self.myTimerProgress = 0; // 计时进度恢复为0
         [self.myTimer invalidate];// 销毁定时器
         [self.myTimer fire];      // 销毁定时器
         
-        // 如果扫描到了至少一个蓝牙灯
-        if (self.iPhone.scanedDeviceList.count) {
-            
-            // 1. 如果设置为自动连接, 就自动连接
-            if (self.isAutoConnect) {
-                self.alertForConnecting = [self showAlertWithConnecting];
-                [self.iPhone connectSmartLamp:[self.iPhone.scanedDeviceList lastObject]];
-            }
-            
-            else if ([self.connectedDevice containsObject:[self.iPhone.scanedDeviceList lastObject]]){
-                // 2. 如果本地保存的记录中有这个蓝牙灯, 直接连接
-                self.alertForConnecting = [self showAlertWithConnecting];
-                [self.iPhone connectSmartLamp:[self.iPhone.scanedDeviceList lastObject]];
-                
-            }
-            
-            else {
-                
-                // 3. 如果本地没有保存这个蓝牙灯的连接记录, 也没有设置自动连接, 就push到蓝牙设备列表页面
-                ViewController *view = [self.storyboard instantiateViewControllerWithIdentifier:@"BluetoothViewController"];
-                [self.navigationController pushViewController:view animated:YES];
-                
-                
-            }
-            
-            
+        // 如果循环结束时还没有扫描到设备
+        if (!self.iPhone.scanedDeviceList.count) {
+            [self showAlertWithDeviceNotFoundWithAction:^{
+                [self searchDevice];
+            }];
         }
-        
-        [self showAlertWithDeviceNotFoundWithAction:^{
-            [self searchDevice];
-        }];
         
     }
     
@@ -390,28 +341,22 @@
     
     // 原来的连接状态
     self.lastConnectStatus = NO;
-    // ==================== [ 设置控件的状态 ] ==================== //
-    [self.animationButton  buttonState:ATButtonStateDisable];
-    [self.switchButton     buttonState:ATButtonStateDisable];
-    [self.connectionButton buttonState:ATButtonStateNormal];
     
-//    self.brightnessSlider.enabled = NO;
-    
-    
+    // 调色板的样式
     _palette.layer.cornerRadius = 100;
     _palette.layer.borderWidth = 3;
     _palette.layer.borderColor = [UIColor whiteColor].CGColor;
-    
     _palette.layer.shadowOffset = (CGSize){0,0};
     _palette.layer.shadowRadius = 2.0;
     _palette.layer.shadowOpacity = 0.3f;
     
     
-    
+    // 注册通知
+    [self receiverNotification];
     
     // ==================== [ 自动连接 ] ==================== //
-    [NSTimer scheduledTimerWithTimeInterval:0.5f target:self selector:@selector(searchDevice) userInfo:nil repeats:NO];
-    [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(checkConnect) userInfo:nil repeats:NO];
+//    [NSTimer scheduledTimerWithTimeInterval:0.5f target:self selector:@selector(searchDevice) userInfo:nil repeats:NO];
+//    [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(checkConnect) userInfo:nil repeats:NO];
     
     
 }
@@ -428,46 +373,6 @@
 // 更新框架
 - (void)updateFrame{
     
-    // 调色板是否可见
-    if (self.aProfiles.colorAnimation) {
-        [self setPaletteEnable:NO];
-    }
-    
-    // 更新滑块的位置
-    CGFloat bright=0;
-    [self.aProfiles.color getRed:nil green:nil blue:nil alpha:&bright];
-    [self.brightnessSlider setValue:bright animated:YES];
-    
-    // 当已经连接并且没有动画的时候调色板可用
-    [self setPaletteEnable:self.iPhone.isConnecting&&!self.aProfiles.colorAnimation];
-    
-    // ==================== [ 按钮是否可用 ] ==================== //
-    // 如果连接
-    if (self.iPhone.isConnecting) {
-        // 如果灯已经打开
-        if (self.brightnessSlider) {
-            // 动画按钮可用
-            [self.animationButton buttonState:ATButtonStateNormal];
-            // 开关按钮选中
-            [self.switchButton buttonState:ATButtonStateSelected];
-        } else{
-            // 否则动画按钮不可用
-            [self.animationButton buttonState:ATButtonStateDisable];
-            // 开关按钮可用
-            [self.switchButton buttonState:ATButtonStateNormal];
-        }
-        // 连接按钮选中
-        [self.connectionButton buttonState:ATButtonStateSelected];
-    }
-    // 如果没有连接
-    else{
-        // 动画按钮不可用
-        [self.animationButton buttonState:ATButtonStateDisable];
-        // 开关按钮不可用
-        [self.switchButton buttonState:ATButtonStateDisable];
-        // 连接按钮可用
-        [self.connectionButton buttonState:ATButtonStateNormal];
-    }
     
     
 }
@@ -493,11 +398,9 @@
     }
     // 否则就显示单色模式
     else{
-//        [self.iPhone letSmartLampSetColorWithR:self.redSlider.value G:self.greenSlider.value B:self.blueSlider.value andBright:self.brightnessSlider.value];
+        [self.iPhone letSmartLampSetColor:self.color];
     }
-    
-    
-    
+    [self.iPhone letSmartLampSetBrightness:self.brightnessSlider.value];
     
 }
 
@@ -506,6 +409,7 @@
 - (void)saveCache{
     
     self.aProfiles.color = self.color;
+    self.aProfiles.brightness = self.brightnessSlider.value;
     [ATFileManager saveCache:self.aProfiles];
     
 }
@@ -522,6 +426,112 @@
     [self.palette addSubview:self.circle];
     
 }
+
+
+- (void)button:(UIButton *)button state:(ATButtonState)state{
+    
+    // 按钮状态样式
+    [button buttonState:state];
+    
+    if (button == self.animationButton) {
+        switch (state) {
+            case ATButtonStateNormal:
+                // 按钮标题
+                [button setTitle:@"动画" forState:UIControlStateNormal];
+                // 调色板
+                self.palette.alpha = !self.aProfiles.colorAnimation;
+                [self.palette setUserInteractionEnabled:!self.aProfiles.colorAnimation];
+                break;
+            case ATButtonStateTap: //
+                break;
+            case ATButtonStateSelected: //
+                // 按钮标题
+                [button setTitle:@"调色" forState:UIControlStateNormal];
+                // 调色板
+                self.palette.alpha = NO;
+                [self.palette setUserInteractionEnabled:NO];
+                break;
+            case ATButtonStateDisable: //
+                // 按钮标题
+                [button setTitle:@"动画" forState:UIControlStateNormal];
+                // 调色板
+                self.palette.alpha = NO;
+                [self.palette setUserInteractionEnabled:NO];
+                break;
+                
+        }
+        
+    }
+    
+    else if (button == self.switchButton) {
+        
+        switch (state) {
+            case ATButtonStateNormal:
+                // 按钮标题
+                [button setTitle:@"开灯" forState:UIControlStateNormal];
+                // 滑块
+                self.brightnessSlider.enabled = NO;
+                [self.brightnessSlider setValue:0 animated:YES];
+                // 动画按钮
+                [self button:self.animationButton state:ATButtonStateDisable];
+                break;
+            case ATButtonStateTap: //
+                break;
+            case ATButtonStateSelected: //
+                // 按钮标题
+                [button setTitle:@"关灯" forState:UIControlStateNormal];
+                // 滑块
+                self.brightnessSlider.enabled = YES;
+                [self.brightnessSlider setValue:self.aProfiles.brightness animated:YES];
+                // 动画按钮
+                [self button:self.animationButton state:ATButtonStateNormal];
+                break;
+            case ATButtonStateDisable: //
+                // 按钮标题
+                [button setTitle:@"开灯" forState:UIControlStateNormal];
+                // 滑块
+                self.brightnessSlider.enabled = NO;
+                [self.brightnessSlider setValue:0 animated:YES];
+                // 动画按钮
+                [self button:self.animationButton state:ATButtonStateDisable];
+                break;
+                
+        }
+        
+        
+    }
+    
+    else if (button == self.connectionButton) {
+        
+        switch (state) {
+            case ATButtonStateNormal:
+                // 按钮标题
+                [button setTitle:@"连接" forState:UIControlStateNormal];
+                // 开关按钮
+                [self button:self.switchButton state:ATButtonStateDisable];
+                break;
+            case ATButtonStateTap: //
+                break;
+            case ATButtonStateSelected: //
+                // 按钮标题
+                [button setTitle:@"断开" forState:UIControlStateNormal];
+                // 开关按钮
+                [self button:self.switchButton state:ATButtonStateNormal];
+                break;
+            case ATButtonStateDisable: //
+                // 按钮标题
+                [button setTitle:@"等待" forState:UIControlStateNormal];
+                // 开关按钮
+                [self button:self.switchButton state:ATButtonStateDisable];
+                break;
+                
+        }
+        
+    }
+
+}
+
+
 
 #pragma mark 🚫 懒加载
 
@@ -549,6 +559,8 @@
 }
 #pragma mark 🚫 AlertView
 
+
+// 正在扫描
 - (SCLAlertView *)showAlertWithScaning{
     
     // 如果已经设为自动连接了  就不再弹窗
@@ -557,15 +569,21 @@
     SCLAlertView *alert = self.newAlert;
     [alert addButton:@"自动连接" actionBlock:^{
         self.isAutoConnect = YES;
+        [self button:self.connectionButton state:ATButtonStateDisable];
         NSLog(@"点击了自动连接");
     }];
     [alert addButton:@"停止扫描" actionBlock:^{
         NSLog(@"点击了停止扫描");
-        self.connectionButton.enabled = YES;
+        self.isAutoConnect = NO;
+        [self button:self.connectionButton state:ATButtonStateNormal];
+        
+        // 停止扫描
         [self.iPhone stopScan];
-        [self.myTimer invalidate];
-        [self.myTimer fire];
-        self.myTimerProgress = 0;
+        
+        // 重置定时器
+        self.myTimerProgress = 0; // 计时进度恢复为0
+        [self.myTimer invalidate];// 销毁定时器
+        [self.myTimer fire];      // 销毁定时器
         
     }];
     
@@ -573,11 +591,10 @@
     if (!_alertForScaning) {
         self.isAutoConnect = NO;
     }
-    self.connectionButton.enabled = NO;
+    [self.connectionButton buttonState:ATButtonStateDisable];
 
     [alert showWaiting:self title:@"正在扫描"
               subTitle:@"正在扫描周围可用的蓝牙灯..."
-//     subTitle:[NSString stringWithFormat:@"正在扫描周围可用的蓝牙灯\n请稍等。。。"]
       closeButtonTitle:nil duration:0.0f];
     
     _alertForScaning = alert;
@@ -586,24 +603,48 @@
     
 }
 
+// 未找到设备
 - (void)showAlertWithDeviceNotFoundWithAction:(void (^)())action{
     
     SCLAlertView *alert = self.newAlert;
     
     [alert addButton:@"继续扫描" actionBlock:^{
         NSLog(@"点击了继续扫描");
-        
         action();
     }];
     [alert addButton:@"好的" actionBlock:^{
         NSLog(@"点击了好的");
         self.isAutoConnect = NO;
+        [self button:self.connectionButton state:ATButtonStateNormal];
     }];
     [alert showError:self title:@"找不到蓝牙灯" subTitle:@"请检查手机蓝牙开关或者蓝牙灯电源是否已经打开。" closeButtonTitle:nil duration:0.0f];
     
 }
 
+// 发现设备
+- (void)showAlertWithDiscoverDevice:(NSString *)device{
+    
+    SCLAlertView *alert = self.newAlert;
+    
+    [alert addButton:@"连接设备" actionBlock:^{
+        [self.iPhone connectSmartLamp:[self.iPhone.scanedDeviceList lastObject]];
+        [self showAlertWithConnecting];
+    }];
+    
+    [alert addButton:@"设备列表" actionBlock:^{
+        ViewController *view = [self.storyboard instantiateViewControllerWithIdentifier:@"BluetoothViewController"];
+        [self.navigationController pushViewController:view animated:YES];
+    }];
+    
+    [alert showNotice:self
+                title:@"发现设备"
+             subTitle:device
+     closeButtonTitle:@"取消" duration:0.0f];
+    
+    
+}
 
+// 正在连接
 - (SCLAlertView *)showAlertWithConnecting{
     
     if (!_alertForConnecting) {
@@ -616,17 +657,20 @@
     
 }
 
+// 连接成功
 - (void)showAlertWithConnectSuccess{
     
     [self.alertForConnecting hideView];
     self.alertForConnecting = nil;
-    self.brightnessSlider.enabled = YES;
+    
+    [self button:self.connectionButton state:ATButtonStateSelected];
     
     SCLAlertView *alert = self.newAlert;
     [alert showSuccess:self title:@"连接成功" subTitle:@"蓝牙灯连接成功!" closeButtonTitle:nil duration:1.0f];
     
 }
 
+// 断开连接
 - (void)showAlertWithWhetherDisconnectWithAction:(void (^)())action deviceName:(NSString *)deviceName{
     
     SCLAlertView *alert = self.newAlert;
@@ -634,6 +678,7 @@
     [alert addButton:@"断开" actionBlock:^{
         NSLog(@"点击了断开");
         action();
+        [self button:self.connectionButton state:ATButtonStateNormal];
         
     }];
     NSString *subTitle = [NSString stringWithFormat:@"是否断开与\"%@\"的连接?",deviceName];
@@ -641,6 +686,7 @@
     
 }
 
+// 颜色动画
 - (void)showAlertWithColorAnimation{
     
     SCLAlertView *alert = self.newAlert;
@@ -648,45 +694,93 @@
     [alert addButton:@"三色跳变" actionBlock:^{
         NSLog(@"点击了三色跳变");
         [self.iPhone letSmartLampPerformColorAnimation:ColorAnimationSaltusStep3];
-        [self setPaletteEnable:NO];
+        [self button:self.animationButton state:ATButtonStateSelected];
     }];
     [alert addButton:@"七色跳变" actionBlock:^{
         NSLog(@"点击了七色跳变");
         [self.iPhone letSmartLampPerformColorAnimation:ColorAnimationSaltusStep7];
-        [self setPaletteEnable:NO];
+        [self button:self.animationButton state:ATButtonStateSelected];
      }];
     
     [alert addButton:@"渐变" actionBlock:^{
         NSLog(@"点击了渐变");
         [self.iPhone letSmartLampPerformColorAnimation:ColorAnimationGratation];
-        [self setPaletteEnable:NO];
+        [self button:self.animationButton state:ATButtonStateSelected];
     }];
-    
-    
-    [alert showCustom:self
-                image:[UIImage imageNamed:@"create_new"]
-                color:self.tintColor
-                title:@"动画模式"
-             subTitle:@"请选择动画模式"
-     closeButtonTitle:@"取消"
-             duration:0.0f];
 
+    [alert showNotice:self
+                  title:@"动画模式"
+               subTitle:@"请选择动画模式"
+       closeButtonTitle:@"取消"
+               duration:0.0f];
     
 }
 
-- (void)setPaletteEnable:(BOOL)isEnable{
+#pragma mark 🚫 通知
+
+// 注册在通知中心
+- (void)receiverNotification{
     
-    self.palette.alpha = isEnable;
-    [self.palette setUserInteractionEnabled:isEnable];
-    if (isEnable) {
-        [self.animationButton setTitle:@"动画" forState:UIControlStateNormal];
-    } else{
-        [self.animationButton setTitle:@"调色" forState:UIControlStateNormal];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+               selector:@selector(bluetoothStatus:)
+                   name:@"Bluetooth"
+                 object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(discoverDevice:)
+                                                 name:@"Device"
+                                               object:nil];
+    
+    
+}
+
+// 蓝牙状态(不可用时)
+- (void)bluetoothStatus:(NSNotification *)notification{
+    
+    // 🖥
+    NSLog(@"频道是: %@",notification.name);
+    NSLog(@"收到的消息是: %@",notification.object);
+
+    if ([notification.object isEqualToString:@"蓝牙可用"]) {
+        [self button:self.connectionButton state:ATButtonStateNormal];
+    }else{
+        [self button:self.connectionButton state:ATButtonStateDisable];
     }
     
-    
 }
 
+// 发现设备
+- (void)discoverDevice:(NSNotification *)notification{
+    
+    // 🖥
+    NSLog(@"频道是: %@",notification.name);
+    NSLog(@"收到的消息是: %@",notification.object);
+    
+    // 停止扫描
+    [self.iPhone stopScan];
+    [self.alertForScaning hideView];
+    [self button:self.connectionButton state:ATButtonStateNormal];
+    
+
+    // 1. 如果设置为自动连接, 就自动连接
+    if (self.isAutoConnect) {
+        self.alertForConnecting = [self showAlertWithConnecting];
+        [self.iPhone connectSmartLamp:[self.iPhone.scanedDeviceList lastObject]];
+    }
+    // 2. 如果本地保存的记录中有这个蓝牙灯, 直接连接
+    else if ([self.connectedDevice containsObject:[self.iPhone.scanedDeviceList lastObject]]){
+        self.alertForConnecting = [self showAlertWithConnecting];
+        [self.iPhone connectSmartLamp:[self.iPhone.scanedDeviceList lastObject]];
+    }
+    // 3. 如果本地没有保存这个蓝牙灯的连接记录, 也没有设置自动连接, 就push到蓝牙设备列表页面
+    else {
+        // 弹出是否连接的对话框
+        [self showAlertWithDiscoverDevice:notification.object];
+    }
+
+    
+    
+}
 
 #pragma mark - 🔵🔵🔵🔵🔵🔵🔵🔵🔵🔵 数据源和代理
 

@@ -26,6 +26,7 @@
         _timer = 0;//0代表不定时关机
         _colorAnimation = ColorAnimationNone;
         _color = [UIColor whiteColor];
+        _brightness = 100.0f;
     }
     
     return self;
@@ -45,6 +46,7 @@
     [aCoder encodeInteger:self.timer forKey:@"timer"];
     [aCoder encodeInteger:self.colorAnimation forKey:@"colorAnimation"];
     [aCoder encodeObject:self.color forKey:@"color"];
+    [aCoder encodeFloat:self.brightness forKey:@"brightness"];
     
 }
 
@@ -60,7 +62,7 @@
         self.timer = [aDecoder decodeIntegerForKey:@"timer"];
         self.colorAnimation = [aDecoder decodeIntegerForKey:@"colorAnimation"];
         self.color = [aDecoder decodeObjectForKey:@"color"];
-        
+        self.brightness = [aDecoder decodeFloatForKey:@"brightness"];
         
     }
     return self;

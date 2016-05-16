@@ -34,7 +34,8 @@
 
 @property (weak, nonatomic) IBOutlet UISlider *brightnessSlider;
 
-@property (weak, nonatomic) IBOutlet UIButton *saveButton;
+//@property (weak, nonatomic) IBOutlet UIButton *saveButton;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *saveButton;
 
 @property (strong, nonatomic) NSArray *timeList;
 
@@ -62,11 +63,37 @@
     // 更新视图控件内容
     [self updateFrame];
     
+    
+    
+    UIImage *image;
+    
+    // 这里用do-while为了防止两次出现同样的内容, 优化体验
+    do {
+        int index = arc4random()%5;
+        NSString *imageName = [@"Lamp" stringByAppendingFormat:@"%d",index];
+        image = [UIImage imageNamed:imageName];
+    } while ([image isEqual:self.imageButton.currentBackgroundImage]);
+    
+    [self.imageButton setBackgroundImage:image forState:UIControlStateNormal];
+    
+
+    
 }
 
 -(void)viewDidAppear:(BOOL)animated{
     
     [self.navigationController setNavigationBarHidden:NO animated:YES];
+    
+    [NSTimer scheduledTimerWithTimeInterval:0.3 target:self selector:@selector(temp) userInfo:nil repeats:NO];
+    
+}
+
+-(void)temp{
+    
+//    [self.redSlider setValue:1 animated:YES];
+//    [self.greenSlider setValue:1 animated:YES];
+//    [self.blueSlider setValue:1 animated:YES];
+    [self.brightnessSlider setValue:90 animated:YES];
     
 }
 
@@ -144,16 +171,23 @@
     [self updateSmartLampStatus];
     
 }
+- (IBAction)saveButton:(UIBarButtonItem *)sender {
 
-// 保存按钮
-- (IBAction)saveButton:(UIButton *)sender {
-    
     [self saveCache];
     [self addToProfilesList];
     [self.navigationController popViewControllerAnimated:YES];
-    
-    
+
 }
+
+// 保存按钮
+//- (IBAction)saveButton:(UIButton *)sender {
+//    
+//    [self saveCache];
+//    [self addToProfilesList];
+//    [self.navigationController popViewControllerAnimated:YES];
+//    
+//    
+//}
 
 
 #pragma mark - 🚫🚫🚫🚫🚫🚫🚫🚫🚫🚫 私有方法 
@@ -163,8 +197,7 @@
     
     [self.titleTextField  textFieldState:ATTextFieldStateEditEnd];
     [self.detailTextField textFieldState:ATTextFieldStateEditEnd];
-    [self.saveButton      buttonState:ATButtonStateNormal];
-    
+
 }
 
 // 更新视图控件内容
@@ -175,27 +208,26 @@
     // 描述
     self.detailTextField.text = self.aProfiles.detail;
     // 图片
-    [self.imageButton setBackgroundImage:self.aProfiles.image forState:UIControlStateNormal];
+//    [self.imageButton setBackgroundImage:self.aProfiles.image forState:UIControlStateNormal];
     // 定时关灯
     [self.timerPicker selectRow:(0.2 * self.aProfiles.timer) inComponent:0 animated:YES];
     // 色彩动画
     self.colorSegmented.selectedSegmentIndex = self.aProfiles.colorAnimation;
     // 滑块
-    CGFloat red=0,green=0,blue=0,bright=0;
-    if ([self respondsToSelector:@selector(getRed:green:blue:alpha:)]) {
-        [self.color getRed:&red green:&green blue:&blue alpha:&bright];
-    }
-    else {
-        const CGFloat *components = CGColorGetComponents(self.color.CGColor);
-        red = components[0];
-        green = components[1];
-        blue = components[2];
-        bright = components[3];
-    }
-    [self.redSlider setValue:red animated:YES];
-    [self.greenSlider setValue:green animated:YES];
-    [self.blueSlider setValue:blue animated:YES];
-    [self.brightnessSlider setValue:bright animated:YES];
+//    CGFloat red=0,green=0,blue=0;
+//    if ([self respondsToSelector:@selector(getRed:green:blue:alpha:)]) {
+//        [self.color getRed:&red green:&green blue:&blue alpha:nil];
+//    }
+//    else {
+//        const CGFloat *components = CGColorGetComponents(self.aProfiles.color.CGColor);
+//        red = components[0];
+//        green = components[1];
+//        blue = components[2];
+//    }
+//    [self.redSlider setValue:red animated:YES];
+//    [self.greenSlider setValue:green animated:YES];
+//    [self.blueSlider setValue:blue animated:YES];
+//    [self.brightnessSlider setValue:self.aProfiles.brightness animated:YES];
     
     // 滑块是否可用
     [self setSliderEnable:!self.aProfiles.colorAnimation];
@@ -280,7 +312,7 @@
     
     // 颜色和亮度
     self.aProfiles.color = self.color;
-    
+    self.aProfiles.brightness = self.brightnessSlider.value;
     
     [ATFileManager saveCache:self.aProfiles];
     

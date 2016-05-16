@@ -219,27 +219,6 @@
                                                     <constraint firstItem="Nn4-2b-RC3" firstAttribute="leading" secondItem="9UZ-FG-gXr" secondAttribute="leading" id="thE-Sn-p8k"/>
                                                 </constraints>
                                             </view>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7jZ-qS-Foj">
-                                                <rect key="frame" x="240" y="387" width="48" height="48"/>
-                                                <color key="backgroundColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="48" id="LKY-CE-tsh"/>
-                                                    <constraint firstAttribute="width" constant="48" id="Zz2-wC-wbS"/>
-                                                </constraints>
-                                                <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
-                                                <state key="normal" image="save"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                        <integer key="value" value="24"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                                <connections>
-                                                    <action selector="saveButton:" destination="x64-ZZ-TpG" eventType="touchUpInside" id="WW4-OY-qgl"/>
-                                                    <action selector="touchDown:" destination="x64-ZZ-TpG" eventType="touchDown" id="vll-QN-TKk"/>
-                                                    <action selector="touchUp:" destination="x64-ZZ-TpG" eventType="touchUpOutside" id="Gbf-W2-Q40"/>
-                                                    <action selector="touchUp:" destination="x64-ZZ-TpG" eventType="touchUpInside" id="pjw-Gb-EVf"/>
-                                                </connections>
-                                            </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="esd-li-V79">
                                                 <rect key="frame" x="0.0" y="202" width="288" height="73"/>
                                                 <subviews>
@@ -275,10 +254,10 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="11s-FX-NM9">
-                                                <rect key="frame" x="0.0" y="283" width="228" height="164"/>
+                                                <rect key="frame" x="0.0" y="283" width="288" height="164"/>
                                                 <subviews>
-                                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="CXs-7M-0Zi">
-                                                        <rect key="frame" x="40" y="126" width="182" height="31"/>
+                                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="CXs-7M-0Zi">
+                                                        <rect key="frame" x="40" y="126" width="242" height="31"/>
                                                         <connections>
                                                             <action selector="sliderRGB:" destination="x64-ZZ-TpG" eventType="valueChanged" id="h8y-wN-we4"/>
                                                         </connections>
@@ -288,20 +267,20 @@
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Xzb-0a-tAI">
-                                                        <rect key="frame" x="40" y="8" width="182" height="31"/>
+                                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Xzb-0a-tAI">
+                                                        <rect key="frame" x="40" y="8" width="242" height="31"/>
                                                         <connections>
                                                             <action selector="sliderRGB:" destination="x64-ZZ-TpG" eventType="valueChanged" id="T3P-KG-5Yk"/>
                                                         </connections>
                                                     </slider>
-                                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="bH4-MC-YP9">
-                                                        <rect key="frame" x="40" y="46" width="182" height="31"/>
+                                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="bH4-MC-YP9">
+                                                        <rect key="frame" x="40" y="46" width="242" height="31"/>
                                                         <connections>
                                                             <action selector="sliderRGB:" destination="x64-ZZ-TpG" eventType="valueChanged" id="yVx-sc-mvn"/>
                                                         </connections>
                                                     </slider>
-                                                    <slider opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Zc2-6m-Uiy">
-                                                        <rect key="frame" x="40" y="84" width="182" height="35"/>
+                                                    <slider opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Zc2-6m-Uiy">
+                                                        <rect key="frame" x="40" y="84" width="242" height="35"/>
                                                         <connections>
                                                             <action selector="sliderRGB:" destination="x64-ZZ-TpG" eventType="valueChanged" id="bK1-l4-wzw"/>
                                                         </connections>
@@ -353,7 +332,6 @@
                                         <constraints>
                                             <constraint firstItem="KIc-3Z-Aie" firstAttribute="leading" secondItem="C4A-vz-TLh" secondAttribute="trailing" constant="8" id="12c-AM-bw0"/>
                                             <constraint firstItem="KIc-3Z-Aie" firstAttribute="top" secondItem="M30-39-6Aj" secondAttribute="top" id="2Gf-ed-Epf"/>
-                                            <constraint firstAttribute="bottom" secondItem="7jZ-qS-Foj" secondAttribute="bottom" constant="20" id="37s-Dl-fAv"/>
                                             <constraint firstItem="11s-FX-NM9" firstAttribute="top" secondItem="esd-li-V79" secondAttribute="bottom" constant="8" id="7tR-lg-Nh3"/>
                                             <constraint firstItem="KIc-3Z-Aie" firstAttribute="leading" secondItem="C4A-vz-TLh" secondAttribute="trailing" constant="8" id="8AF-yN-bu3"/>
                                             <constraint firstItem="esd-li-V79" firstAttribute="leading" secondItem="M30-39-6Aj" secondAttribute="leading" id="8K4-ka-uvx"/>
@@ -361,11 +339,10 @@
                                             <constraint firstItem="9UZ-FG-gXr" firstAttribute="leading" secondItem="M30-39-6Aj" secondAttribute="leading" id="AAe-vh-Sge"/>
                                             <constraint firstItem="C4A-vz-TLh" firstAttribute="leading" secondItem="M30-39-6Aj" secondAttribute="leading" id="CV8-OX-wRj"/>
                                             <constraint firstItem="C4A-vz-TLh" firstAttribute="top" secondItem="M30-39-6Aj" secondAttribute="top" id="HKA-sX-Q4V"/>
-                                            <constraint firstItem="7jZ-qS-Foj" firstAttribute="leading" secondItem="11s-FX-NM9" secondAttribute="trailing" constant="12" id="OlJ-jd-66x"/>
                                             <constraint firstItem="esd-li-V79" firstAttribute="top" secondItem="9UZ-FG-gXr" secondAttribute="bottom" constant="8" id="QKj-Pv-6lL"/>
                                             <constraint firstAttribute="trailing" secondItem="esd-li-V79" secondAttribute="trailing" id="Rzm-EQ-Z8A"/>
                                             <constraint firstItem="11s-FX-NM9" firstAttribute="leading" secondItem="M30-39-6Aj" secondAttribute="leading" id="YCG-j5-kIR"/>
-                                            <constraint firstAttribute="trailing" secondItem="7jZ-qS-Foj" secondAttribute="trailing" id="Yvd-c9-0b8"/>
+                                            <constraint firstAttribute="trailing" secondItem="11s-FX-NM9" secondAttribute="trailing" id="YYH-sk-J2j"/>
                                             <constraint firstItem="9UZ-FG-gXr" firstAttribute="top" secondItem="C4A-vz-TLh" secondAttribute="bottom" constant="8" id="ash-gF-O9H"/>
                                             <constraint firstAttribute="trailing" secondItem="9UZ-FG-gXr" secondAttribute="trailing" id="hol-68-rzm"/>
                                             <constraint firstAttribute="trailing" secondItem="KIc-3Z-Aie" secondAttribute="trailing" id="mva-PN-lEC"/>
@@ -391,7 +368,14 @@
                             <constraint firstAttribute="trailingMargin" secondItem="0lX-QY-w2H" secondAttribute="trailing" id="wXA-qt-baH"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="设定" id="qd3-d9-yU0"/>
+                    <navigationItem key="navigationItem" title="设定" id="qd3-d9-yU0">
+                        <barButtonItem key="rightBarButtonItem" image="Icon_Save" id="Af1-pG-o1d">
+                            <inset key="imageInsets" minX="23" minY="13" maxX="0.0" maxY="9"/>
+                            <connections>
+                                <action selector="saveButton:" destination="x64-ZZ-TpG" id="U1J-OB-8SX"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
@@ -402,7 +386,7 @@
                         <outlet property="greenSlider" destination="bH4-MC-YP9" id="2Xc-Yd-qh8"/>
                         <outlet property="imageButton" destination="ABb-D1-QCZ" id="Jfw-DI-D7a"/>
                         <outlet property="redSlider" destination="Xzb-0a-tAI" id="2gM-NA-I7r"/>
-                        <outlet property="saveButton" destination="7jZ-qS-Foj" id="ge1-xN-Vmm"/>
+                        <outlet property="saveButton" destination="Af1-pG-o1d" id="i9C-pF-Lqn"/>
                         <outlet property="sliderView" destination="11s-FX-NM9" id="8Yo-KZ-Lxm"/>
                         <outlet property="timerPicker" destination="eTW-P6-81p" id="HxT-zJ-fkw"/>
                         <outlet property="titleTextField" destination="vT5-CM-3MQ" id="VXH-aW-Ytg"/>
@@ -456,8 +440,7 @@
                                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="100" minValue="0.0" maxValue="100" minimumValueImage="powerOff" maximumValueImage="powerOn" translatesAutoresizingMaskIntoConstraints="NO" id="gqr-OW-PCh" customClass="ASValueTrackingSlider">
                                                 <rect key="frame" x="6" y="42" width="300" height="31"/>
                                                 <connections>
-                                                    <action selector="sliderRGB:" destination="nHe-8W-S81" eventType="valueChanged" id="dwT-xb-r0o"/>
-                                                    <action selector="sliderTouchUp:" destination="nHe-8W-S81" eventType="touchUpInside" id="9K3-tW-QQh"/>
+                                                    <action selector="brightnessSlider:" destination="nHe-8W-S81" eventType="valueChanged" id="VBb-Eo-EW8"/>
                                                 </connections>
                                             </slider>
                                         </subviews>
@@ -487,7 +470,7 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
-                                                    <action selector="actionButton:" destination="nHe-8W-S81" eventType="touchUpInside" id="dhC-7K-utB"/>
+                                                    <action selector="animationButton:" destination="nHe-8W-S81" eventType="touchUpInside" id="f04-AR-adl"/>
                                                     <action selector="touchDown:" destination="nHe-8W-S81" eventType="touchDown" id="wwI-DF-iOw"/>
                                                     <action selector="touchUp:" destination="nHe-8W-S81" eventType="touchUpInside" id="35w-gH-zVF"/>
                                                     <action selector="touchUp:" destination="nHe-8W-S81" eventType="touchUpOutside" id="6MN-XR-WTw"/>
@@ -495,7 +478,7 @@
                                             </button>
                                             <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="dKN-nK-HdS">
                                                 <rect key="frame" x="211" y="8" width="93" height="36"/>
-                                                <color key="backgroundColor" red="0.40000000596046448" green="0.80000001192092896" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="backgroundColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="36" id="bw7-If-ktV"/>
                                                 </constraints>
@@ -508,7 +491,7 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
-                                                    <action selector="actionButton:" destination="nHe-8W-S81" eventType="touchUpInside" id="cXo-kS-6tJ"/>
+                                                    <action selector="connectionButton:" destination="nHe-8W-S81" eventType="touchUpInside" id="wVr-ag-9Er"/>
                                                     <action selector="touchDown:" destination="nHe-8W-S81" eventType="touchDown" id="Uzc-cQ-ixe"/>
                                                     <action selector="touchUp:" destination="nHe-8W-S81" eventType="touchUpInside" id="W10-6w-NON"/>
                                                     <action selector="touchUp:" destination="nHe-8W-S81" eventType="touchUpOutside" id="XS8-Vb-xQT"/>
@@ -529,7 +512,7 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
-                                                    <action selector="actionButton:" destination="nHe-8W-S81" eventType="touchUpInside" id="P7v-U9-uCx"/>
+                                                    <action selector="switchButton:" destination="nHe-8W-S81" eventType="touchUpInside" id="9FH-TD-MXW"/>
                                                     <action selector="touchDown:" destination="nHe-8W-S81" eventType="touchDown" id="QDc-Y1-OLB"/>
                                                     <action selector="touchUp:" destination="nHe-8W-S81" eventType="touchUpInside" id="YkX-AS-vFt"/>
                                                     <action selector="touchUp:" destination="nHe-8W-S81" eventType="touchUpOutside" id="bF6-tL-h1A"/>
@@ -696,6 +679,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Icon_Save" width="48" height="48"/>
         <image name="Image_Palette" width="365" height="365"/>
         <image name="Lamp0" width="52" height="52"/>
         <image name="LampOFF" width="200" height="260"/>
@@ -706,7 +690,6 @@
         <image name="new" width="48" height="48"/>
         <image name="powerOff" width="24" height="24"/>
         <image name="powerOn" width="24" height="24"/>
-        <image name="save" width="48" height="48"/>
     </resources>
     <color key="tintColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
 </document>

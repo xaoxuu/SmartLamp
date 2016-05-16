@@ -18,38 +18,32 @@
     self.clipsToBounds = NO;
     self.layer.shadowColor = [UIColor blackColor].CGColor;
     self.layer.shadowOffset = CGSizeMake(0.0,0.0);
-    self.layer.borderWidth = 0;
-    self.layer.borderColor = [UIColor whiteColor].CGColor;
     self.layer.backgroundColor = [UIColor colorWithRed:0.42 green:0.8 blue:1 alpha:1].CGColor;
     self.layer.shadowRadius = 0.5;
-    if (self.isSelected == YES) {
-        state = ATButtonStateSelected;
-    }
 
     switch (state) {
         case ATButtonStateNormal:
             self.layer.shadowOffset = CGSizeMake(0.0,0.0);
             self.layer.shadowOpacity = 0.2;
             self.layer.shadowRadius = 0.5;
-            self.layer.backgroundColor = [UIColor colorWithRed:0.42 green:0.8 blue:1 alpha:1].CGColor;
+            self.layer.backgroundColor = self.normalColor.CGColor;
             break;
         case ATButtonStateTap: //
-            self.layer.shadowOffset = CGSizeMake(0.0,3.0);
+            self.layer.shadowOffset = CGSizeMake(0.0,4.0);
             self.layer.shadowOpacity = 0.3;
-            self.layer.shadowRadius = 7.0;
-            self.layer.backgroundColor = [UIColor colorWithRed:0.71 green:0.9 blue:1 alpha:1].CGColor;
+            self.layer.shadowRadius = 5.0;
+            self.layer.backgroundColor = self.selectedColor.CGColor;
             break;
         case ATButtonStateSelected: //
             self.selected = YES;
-            self.layer.shadowOffset = CGSizeMake(0.0,0.0);
+            self.layer.shadowOffset = CGSizeMake(0.0,3.0);
             self.layer.shadowOpacity = 0.2;
-            self.layer.shadowRadius = 0.5;
-            self.layer.borderWidth = 2;
-            self.layer.backgroundColor = [UIColor colorWithRed:0.42 green:0.8 blue:1 alpha:1].CGColor;
+            self.layer.shadowRadius = 4.0;
+            self.layer.backgroundColor = self.selectedColor.CGColor;
             break;
         case ATButtonStateDisable: //
             [self setEnabled:NO];
-            self.layer.backgroundColor = [UIColor colorWithRed:0.71 green:0.9 blue:1 alpha:1].CGColor;
+            self.layer.backgroundColor = self.disabledColor.CGColor;
             self.layer.shadowOffset = CGSizeMake(0.0,0.0);
             self.layer.shadowOpacity = 0.2;
             self.layer.shadowRadius = 0.5;
@@ -60,6 +54,19 @@
     }
     
 }
+
+- (UIColor *)normalColor{
+    return [UIColor colorWithRed:0.40f green:0.80f blue:0.98f alpha:1.00f];
+}
+
+- (UIColor *)disabledColor{
+    return [UIColor colorWithRed:0.70f green:0.90f blue:0.99f alpha:1.00f];
+}
+
+- (UIColor *)selectedColor{
+    return [UIColor colorWithRed:0.55f green:0.85f blue:0.98f alpha:1.00f];
+}
+
 
 
 

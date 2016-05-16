@@ -854,6 +854,7 @@ SCLTimerDisplay *buttonTimer;
             
         case Notice:
             viewColor = UIColorFromHEX(0x727375);
+            viewColor = UIColorFromHEX(0x66CDFA);// 蓝色
             iconImage = SCLAlertViewStyleKit.imageOfNotice;
             break;
             
@@ -864,21 +865,25 @@ SCLTimerDisplay *buttonTimer;
             
         case Info:
             viewColor = UIColorFromHEX(0x2866BF);
+            viewColor = UIColorFromHEX(0x66CDFA);// 蓝色
             iconImage = SCLAlertViewStyleKit.imageOfInfo;
             break;
             
         case Edit:
             viewColor = UIColorFromHEX(0xA429FF);
+            viewColor = UIColorFromHEX(0x66CDFA);// 蓝色
             iconImage = SCLAlertViewStyleKit.imageOfEdit;
             break;
             
         case Waiting:
             viewColor = UIColorFromHEX(0x6c125d);
+            viewColor = UIColorFromHEX(0x66CDFA);// 蓝色
             break;
             
         case Question:
             viewColor = UIColorFromHEX(0x727375);
             iconImage = SCLAlertViewStyleKit.imageOfQuestion;
+            viewColor = UIColorFromHEX(0x66CDFA);// 蓝色
             break;
             
         case Custom:
