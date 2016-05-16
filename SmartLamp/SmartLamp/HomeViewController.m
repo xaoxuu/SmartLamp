@@ -32,7 +32,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *connectionButton;
 
 
-
 // 定时器
 @property (strong, nonatomic) NSTimer *myTimer;
 @property (assign, nonatomic) CGFloat myTimerProgress;
@@ -257,7 +256,7 @@
     else{
         
         // 连接按钮状态
-        if (self.iPhone.available&&!self.isAutoConnect) {
+        if (self.iPhone.isBluetoothAvailable&&!self.isAutoConnect) {
             [self button:self.connectionButton state:ATButtonStateNormal];
         } else{
             [self button:self.connectionButton state:ATButtonStateDisable];
@@ -649,8 +648,11 @@
     
     if (!_alertForConnecting) {
         SCLAlertView *alert = self.newAlert;
-        [alert showWaiting:self title:@"正在连接" subTitle:@"正在连接蓝牙灯，请稍等。。。" closeButtonTitle:nil duration:1.8f];
-        [NSTimer scheduledTimerWithTimeInterval:1.5f target:self selector:@selector(showAlertWithConnectSuccess) userInfo:nil repeats:NO];
+        [alert showWaiting:self title:@"正在连接" subTitle:@"正在连接蓝牙灯，请稍等。。。" closeButtonTitle:nil duration:10.2f];
+        
+        // 如果10秒之内没有弹出连接成功的提示, 就弹出连接失败的提示(连接成功时会关掉这个对话框)
+        [NSTimer scheduledTimerWithTimeInterval:10.0f target:self selector:@selector(showAlertWithConnectFail) userInfo:nil repeats:NO];
+        
         _alertForConnecting = alert;
     }
     return _alertForConnecting;
@@ -667,6 +669,19 @@
     
     SCLAlertView *alert = self.newAlert;
     [alert showSuccess:self title:@"连接成功" subTitle:@"蓝牙灯连接成功!" closeButtonTitle:nil duration:1.0f];
+    
+}
+
+// 连接失败
+- (void)showAlertWithConnectFail{
+    
+    [self.alertForConnecting hideView];
+    self.alertForConnecting = nil;
+    
+    [self button:self.connectionButton state:ATButtonStateSelected];
+    
+    SCLAlertView *alert = self.newAlert;
+    [alert showError:self title:@"连接失败" subTitle:@"蓝牙灯连接失败!" closeButtonTitle:@"好的" duration:0.0f];
     
 }
 
@@ -721,26 +736,39 @@
 // 注册在通知中心
 - (void)receiverNotification{
     
+    // 蓝牙状态
     [[NSNotificationCenter defaultCenter] addObserver:self
-               selector:@selector(bluetoothStatus:)
-                   name:@"Bluetooth"
-                 object:nil];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(discoverDevice:)
-                                                 name:@"Device"
+                                             selector:@selector(notificationBluetoothStatus:)
+                                                 name:BLUETOOTH
                                                object:nil];
     
+    // 连接
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(notificationConnect:)
+                                                 name:CONNECT
+                                               object:nil];
+    
+    // 设备
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(notificationDevice:)
+                                                 name:DEVICE
+                                               object:nil];
+    
+    // 断开连接
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(notificationDisconnect:)
+                                                 name:DISCONNECT
+                                               object:nil];
     
 }
 
-// 蓝牙状态(不可用时)
-- (void)bluetoothStatus:(NSNotification *)notification{
+// 蓝牙状态的通知
+- (void)notificationBluetoothStatus:(NSNotification *)notification{
     
     // 🖥
     NSLog(@"频道是: %@",notification.name);
     NSLog(@"收到的消息是: %@",notification.object);
-
+    
     if ([notification.object isEqualToString:@"蓝牙可用"]) {
         [self button:self.connectionButton state:ATButtonStateNormal];
     }else{
@@ -749,19 +777,17 @@
     
 }
 
-// 发现设备
-- (void)discoverDevice:(NSNotification *)notification{
+// 发现设备的通知
+- (void)notificationDevice:(NSNotification *)notification{
     
     // 🖥
     NSLog(@"频道是: %@",notification.name);
     NSLog(@"收到的消息是: %@",notification.object);
     
     // 停止扫描
-    [self.iPhone stopScan];
     [self.alertForScaning hideView];
     [self button:self.connectionButton state:ATButtonStateNormal];
     
-
     // 1. 如果设置为自动连接, 就自动连接
     if (self.isAutoConnect) {
         self.alertForConnecting = [self showAlertWithConnecting];
@@ -777,14 +803,41 @@
         // 弹出是否连接的对话框
         [self showAlertWithDiscoverDevice:notification.object];
     }
-
-    
     
 }
 
+// 连接时的通知
+- (void)notificationConnect:(NSNotification *)notification{
+    
+    // 🖥
+    NSLog(@"频道是: %@",notification.name);
+    NSLog(@"收到的消息是: %@",notification.object);
+    if ([notification.object isEqualToString:SUCCESS]) {
+        // 连接成功
+        [self showAlertWithConnectSuccess];
+        
+    } else{
+        // 连接失败
+        [self.newAlert showError:self title:@"连接失败" subTitle:@"与蓝牙灯连接失败。" closeButtonTitle:@"好的" duration:0.0f];
+    }
+    
+}
+
+// 断开时的通知
+- (void)notificationDisconnect:(NSNotification *)notification{
+    
+    // 🖥
+    NSLog(@"频道是: %@",notification.name);
+    NSLog(@"收到的消息是: %@",notification.object);
+    if ([notification.object isEqualToString:SUCCESS]) {
+        // 设备已断开
+        [self.newAlert showError:self title:@"已断开连接" subTitle:@"与蓝牙灯的连接已断开。" closeButtonTitle:@"好的" duration:0.0f];
+    }
+    
+}
+
+
 #pragma mark - 🔵🔵🔵🔵🔵🔵🔵🔵🔵🔵 数据源和代理
-
-
 
 - (NSString *)slider:(ASValueTrackingSlider *)slider stringForValue:(float)value{
     
@@ -793,6 +846,7 @@
 }
 
 - (void)sliderWillDisplayPopUpView:(ASValueTrackingSlider *)slider{
+    
     
     
 }

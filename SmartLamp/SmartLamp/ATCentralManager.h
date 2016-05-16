@@ -14,36 +14,55 @@
 #import <CoreBluetooth/CoreBluetooth.h>
 #import "ATProfiles.h"
 
+// 通知
+#define BLUETOOTH @"蓝牙"
+#define CONNECT @"连接"
+#define DISCONNECT @"断开连接"
+#define DEVICE @"设备"
+
+#define DISCOVER @"发现设备"
+#define SUCCESS @"连接成功"
+#define FAIL @"连接失败"
+
+
+
 @interface ATCentralManager : NSObject <NSCopying,CBCentralManagerDelegate,CBPeripheralDelegate>
 
 #pragma mark - 属性
 
-// 中心设备
+// 中心设备单例
 @property (strong, nonatomic) CBCentralManager *manager;
-
-
 
 // 扫描到的蓝牙设备列表
 @property (strong, nonatomic) NSMutableArray<CBPeripheral *> *scanedDeviceList;
 
+#pragma mark 状态标记
+
+// 蓝牙是否可用
+@property (assign, nonatomic) BOOL isBluetoothAvailable;
 
 // 中心设备与周边设备的连接状态
 @property (assign, nonatomic) BOOL isConnecting;
 
 
+#pragma mark - 🍀 公有方法 🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀
 
-#pragma mark - 供控制器调用的方法
-
+#pragma mark 🔍 扫描
 
 /**
- *	@author Aesir Titan, 2016-05-09 16:05:01
+ *	@author Aesir Titan, 2016-05-16 16:05:39
  *
- *	@brief 中心设备开始搜索蓝牙灯
- *
- *	@return 找到的蓝牙灯设备列表
+ *	@brief 开始扫描
  */
-- (NSArray *)searchSmartLamp;
+- (void)startScan;
+/**
+ *	@author Aesir Titan, 2016-05-16 16:05:45
+ *
+ *	@brief 停止扫描
+ */
+- (void)stopScan;
 
+#pragma mark 🔗 连接
 
 /**
  *	@author Aesir Titan, 2016-05-09 18:05:59
@@ -54,8 +73,6 @@
  */
 - (void)connectSmartLamp:(CBPeripheral *)smartLamp;
 
-
-
 /**
  *	@author Aesir Titan, 2016-05-09 18:05:17
  *
@@ -63,9 +80,8 @@
  */
 - (void)disConnectSmartLamp;
 
-- (void)startScan;
-- (void)stopScan;
-- (BOOL)available;
+#pragma mark 🔌 开关
+
 /**
  *	@author Aesir Titan, 2016-04-29 15:04:12
  *
@@ -84,15 +100,14 @@
  */
 - (void)letSmartLampPowerOffAfter:(NSUInteger)minutes;
 
+#pragma mark 🔆 控制
+
 /**
- *	@author Aesir Titan, 2016-04-29 15:04:56
+ *	@author Aesir Titan, 2016-05-16 16:05:18
  *
- *	@brief 设置蓝牙灯颜色和亮度
+ *	@brief 设置蓝牙灯的颜色
  *
- *	@param red		红色 float(0~1)
- *	@param green	绿色 float(0~1)
- *	@param blue		蓝色 float(0~1)
- *	@param bright	亮度 float(0~1)
+ *	@param color	颜色
  */
 - (void)letSmartLampSetColor:(UIColor *)color;
 
@@ -114,7 +129,7 @@
  */
 - (void)letSmartLampPerformColorAnimation:(ColorAnimation)animation;
 
-#pragma mark 单例
+#pragma mark 📦 构造方法
 
 // defaultCentralManager (可以用此方法快速创建一个单例对象)
 + (instancetype)defaultCentralManager;
