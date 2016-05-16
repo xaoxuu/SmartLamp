@@ -243,6 +243,22 @@
     }
     // 否则就显示单色模式
     else{
+        
+//        // 把传入的颜色暂存到属性中, 以便于恢复状态
+//        self.color = color;
+//        // 提取出UIColor中的RGB值
+//        CGFloat red=0,green=0,blue=0,bright=0;
+//        if ([self respondsToSelector:@selector(getRed:green:blue:alpha:)]) {
+//            [color getRed:&red green:&green blue:&blue alpha:&bright];
+//        }
+//        else {
+//            const CGFloat *components = CGColorGetComponents(color.CGColor);
+//            red = components[0];
+//            green = components[1];
+//            blue = components[2];
+//            bright = components[3];
+//        }
+        
         [self.iPhone letSmartLampSetColor:self.color];
     }
     

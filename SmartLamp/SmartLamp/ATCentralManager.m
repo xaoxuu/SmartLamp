@@ -27,7 +27,7 @@ ATCentralManager *iPhone;
 // 颜色
 @property (strong, nonatomic) UIColor *color;
 
-// 亮度
+// 亮度 (0~100)
 @property (assign, nonatomic) CGFloat brightness;
 
 #pragma mark 状态标记
@@ -130,7 +130,18 @@ ATCentralManager *iPhone;
         }
         // 关灯
         else {
-            [iPhone letSmartLampSetBrightness:0];
+            [iPhone letSmartLampSetColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0]];
+//            [self sendData:^(char *p) {
+//                
+//                *p++ = 0x07;                // 设备状态输出
+//                
+//                *p++ = 0x00;    //r
+//                *p++ = 0x00;  //g
+//                *p++ = 0x00;   //b
+//                *p++ = 0x00;                //w
+//                *p++ = 0x00; //brt
+//                
+//            }];
         }
 
     }
@@ -170,17 +181,18 @@ ATCentralManager *iPhone;
         self.color = color;
         // 提取出UIColor中的RGB值
         CGFloat red=0,green=0,blue=0,bright=0;
-        if ([self respondsToSelector:@selector(getRed:green:blue:alpha:)]) {
+#warning sdf
+//        if ([self respondsToSelector:@selector(getRed:green:blue:alpha:)]) {
             [color getRed:&red green:&green blue:&blue alpha:&bright];
-        }
-        else {
-            const CGFloat *components = CGColorGetComponents(color.CGColor);
-            red = components[0];
-            green = components[1];
-            blue = components[2];
-            bright = components[3];
-        }
-        
+//        }
+//        else {
+//            const CGFloat *components = CGColorGetComponents(color.CGColor);
+//            red = components[0];
+//            green = components[1];
+//            blue = components[2];
+//            bright = components[3];
+//        }
+    
         // 调用发送数据的Block
         [self sendData:^(char *p) {
             
@@ -204,18 +216,9 @@ ATCentralManager *iPhone;
     // 只有在连接的状态下才执行设置亮度的指令
     if (self.isConnecting) {
         
-        // 调用发送数据的Block
-        [self sendData:^(char *p) {
-            
-            *p++ = 0x0f;                // 亮度指令
-            
-            p++;  //[]
-            p++;  //[]
-            p++;  //[]
-            *p++ = (int)(2.55 * brightness);// brt
-            
-        }];
-        
+        CGFloat red=0,green=0,blue=0,bright=0;
+        [self.color getRed:&red green:&green blue:&blue alpha:&bright];
+        [self letSmartLampSetColor:[UIColor colorWithRed:red green:green blue:blue alpha:0.01*brightness]];
     }
     
 }
@@ -336,7 +339,7 @@ ATCentralManager *iPhone;
             // 将这个蓝牙灯对象保存到列表
             [self.scanedDeviceList addObject:aPeripheral];
             // 发送通知
-            NSString *device = [NSString stringWithFormat:@"<手机>已发现蓝牙设备<%@>,是否连接?",aPeripheral.name];
+            NSString *device = [NSString stringWithFormat:@"已发现蓝牙设备<%@>,是否连接?",aPeripheral.name];
             NSLog(@"%@",device);
             [[NSNotificationCenter defaultCenter] postNotificationName:DEVICE object:device];
             
