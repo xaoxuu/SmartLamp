@@ -147,10 +147,10 @@ ATCentralManager *iPhone;
 }
 
 // 设置定时关机
-- (void)letSmartLampPowerOffAfter:(NSUInteger)minutes{
+- (void)letSmartLampSleepAfter:(NSUInteger)minutes{
     
     // 只有在连接的状态下才执行定时关机的指令
-    if (self.isConnecting) {
+    if (self.isConnecting&&minutes) {
         
         // 保证传入的时间在支持的范围内
         if (minutes < 5) minutes = 5;

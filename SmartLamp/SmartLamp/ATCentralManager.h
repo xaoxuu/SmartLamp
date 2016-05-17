@@ -101,7 +101,7 @@
  *
  *	@param minutes	分钟
  */
-- (void)letSmartLampPowerOffAfter:(NSUInteger)minutes;
+- (void)letSmartLampSleepAfter:(NSUInteger)minutes;
 
 #pragma mark 🔆 控制
 

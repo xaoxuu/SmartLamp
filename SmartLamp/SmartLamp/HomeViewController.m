@@ -369,7 +369,6 @@
     _palette.layer.shadowRadius = 2.0;
     _palette.layer.shadowOpacity = 0.3f;
     
-    
     // 滑动条
     self.brightnessSlider.popUpViewColor = self.tintColor;
     [self.brightnessSlider setAutoAdjustTrackColor:YES];
@@ -398,7 +397,10 @@
 // 更新框架
 - (void)updateFrame{
     
-    
+    // 如果有定时关机, 就定时关机
+    if (self.aProfiles.timer) {
+        [self.iPhone letSmartLampSleepAfter:self.aProfiles.timer];
+    }
     
 }
 
@@ -883,7 +885,13 @@
     if ([notification.object isEqualToString:SUCCESS]) {
         // 设备已断开
         [self.newAlert showError:self title:@"已断开连接" subTitle:@"与蓝牙灯的连接已断开。" closeButtonTitle:@"好的" duration:0.5f];
+        // 状态标记
+        self.isAutoConnect = NO;
+        self.iPhone.isConnecting = NO;
         self.lastConnectStatus = NO;
+        // 按钮状态
+        [self button:self.connectionButton state:ATButtonStateNormal];
+        
     }
     
 }
