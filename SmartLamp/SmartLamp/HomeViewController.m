@@ -361,12 +361,20 @@
     // 原来的连接状态
     self.lastConnectStatus = NO;
     
+    // logo
+    _lampLogo.layer.cornerRadius = 0.5*_lampLogo.frame.size.width;
+    _lampLogo.layer.shadowOffset = (CGSize){0,0};
+    _lampLogo.layer.shadowRadius = 2.0f;
+    _lampLogo.layer.shadowColor = [UIColor blackColor].CGColor;
+    _lampLogo.layer.shadowOpacity = 0.3f;
+    
+    
     // 调色板的样式
-    _palette.layer.cornerRadius = 100;
+    _palette.layer.cornerRadius = 0.5*_palette.frame.size.width;
     _palette.layer.borderWidth = 3;
     _palette.layer.borderColor = [UIColor whiteColor].CGColor;
     _palette.layer.shadowOffset = (CGSize){0,0};
-    _palette.layer.shadowRadius = 2.0;
+    _palette.layer.shadowRadius = 2.0f;
     _palette.layer.shadowOpacity = 0.3f;
     
     // 滑动条
@@ -496,6 +504,7 @@
         
         switch (state) {
             case ATButtonStateNormal:
+                [self.lampLogo setHighlighted:YES];
                 // 按钮标题
                 button.selected = NO;
                 [button setTitle:@"开灯" forState:UIControlStateNormal];
@@ -508,6 +517,7 @@
             case ATButtonStateTap: //
                 break;
             case ATButtonStateSelected: //
+                [self.lampLogo setHighlighted:NO];
                 // 按钮标题
                 [button setTitle:@"关灯" forState:UIControlStateNormal];
                 // 滑块
@@ -517,6 +527,7 @@
                 [self button:self.animationButton state:ATButtonStateNormal];
                 break;
             case ATButtonStateDisable: //
+                [self.lampLogo setHighlighted:YES];
                 // 按钮标题
                 [button setTitle:@"开灯" forState:UIControlStateNormal];
                 // 滑块
@@ -535,6 +546,7 @@
         
         switch (state) {
             case ATButtonStateNormal:
+                [self.lampLogo setEnabled:NO];
                 // 按钮标题
                 button.selected = NO;
                 [button setTitle:@"连接" forState:UIControlStateNormal];
@@ -544,12 +556,14 @@
             case ATButtonStateTap: //
                 break;
             case ATButtonStateSelected: //
+                [self.lampLogo setEnabled:YES];
                 // 按钮标题
                 [button setTitle:@"断开" forState:UIControlStateNormal];
                 // 开关按钮
                 [self button:self.switchButton state:ATButtonStateNormal];
                 break;
             case ATButtonStateDisable: //
+                [self.lampLogo setEnabled:NO];
                 // 按钮标题
                 [button setTitle:@"等待" forState:UIControlStateNormal];
                 // 开关按钮
