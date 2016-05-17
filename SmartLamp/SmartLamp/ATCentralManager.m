@@ -32,8 +32,6 @@ ATCentralManager *iPhone;
 
 #pragma mark 状态标记
 
-// 是否正在扫描
-@property (assign, nonatomic) BOOL isScaning;
 
 @end
 
@@ -181,9 +179,13 @@ ATCentralManager *iPhone;
         self.color = color;
         // 提取出UIColor中的RGB值
         CGFloat red=0,green=0,blue=0,bright=0;
-#warning sdf
-//        if ([self respondsToSelector:@selector(getRed:green:blue:alpha:)]) {
-            [color getRed:&red green:&green blue:&blue alpha:&bright];
+        [color getRed:&red green:&green blue:&blue alpha:&bright];
+        
+        
+//        CGFloat red=0,green=0,blue=0,bright=0;
+//#warning sdf
+//        if ([color respondsToSelector:@selector(getRed:green:blue:alpha:)]) {
+//            [color getRed:&red green:&green blue:&blue alpha:&bright];
 //        }
 //        else {
 //            const CGFloat *components = CGColorGetComponents(color.CGColor);

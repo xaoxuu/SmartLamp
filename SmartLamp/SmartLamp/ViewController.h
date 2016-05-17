@@ -63,7 +63,7 @@ typedef NS_ENUM(NSInteger, AlertQuestion){
 // 按钮按下的效果
 - (IBAction)touchDown:(UIButton *)sender;
 
-@property (strong, nonatomic) UIColor *color;
+//@property (strong, nonatomic) UIColor *color;
 // 新建一个AlertView
 -(SCLAlertView *)newAlert;
 

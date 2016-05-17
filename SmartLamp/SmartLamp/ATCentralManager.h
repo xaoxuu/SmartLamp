@@ -41,6 +41,9 @@
 // 蓝牙是否可用
 @property (assign, nonatomic) BOOL isBluetoothAvailable;
 
+// 是否正在扫描
+@property (assign, nonatomic) BOOL isScaning;
+
 // 中心设备与周边设备的连接状态
 @property (assign, nonatomic) BOOL isConnecting;
 
@@ -118,7 +121,7 @@
  *
  *	@param brightness	亮度值(0~100)
  */
-- (void)letSmartLampSetBrightness:(CGFloat)brightness;
+//- (void)letSmartLampSetBrightness:(CGFloat)brightness;
 
 /**
  *	@author Aesir Titan, 2016-04-29 15:04:46

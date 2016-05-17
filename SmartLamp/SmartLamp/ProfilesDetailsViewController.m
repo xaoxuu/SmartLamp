@@ -64,9 +64,7 @@
     [self updateFrame];
     
     
-    
     UIImage *image;
-    
     // 这里用do-while为了防止两次出现同样的内容, 优化体验
     do {
         int index = arc4random()%5;
@@ -83,17 +81,6 @@
 -(void)viewDidAppear:(BOOL)animated{
     
     [self.navigationController setNavigationBarHidden:NO animated:YES];
-    
-    [NSTimer scheduledTimerWithTimeInterval:0.3 target:self selector:@selector(temp) userInfo:nil repeats:NO];
-    
-}
-
--(void)temp{
-    
-//    [self.redSlider setValue:1 animated:YES];
-//    [self.greenSlider setValue:1 animated:YES];
-//    [self.blueSlider setValue:1 animated:YES];
-    [self.brightnessSlider setValue:90 animated:YES];
     
 }
 
@@ -168,26 +155,28 @@
 // 颜色和亮度滑块
 - (IBAction)sliderRGB:(UISlider *)sender {
     
+    self.aProfiles.color = [UIColor colorWithRed:self.redSlider.value green:self.greenSlider.value blue:self.blueSlider.value alpha:self.brightnessSlider.value];
     [self updateSmartLampStatus];
     
 }
 - (IBAction)saveButton:(UIBarButtonItem *)sender {
 
-    [self saveCache];
-    [self addToProfilesList];
-    [self.navigationController popViewControllerAnimated:YES];
+    if ([self.titleTextField.text isEqualToString:@""]) {
+        [self.newAlert showWarning:self
+                             title:@"缺少必要信息"
+                          subTitle:@"请给当前情景模式起一个名字"
+                  closeButtonTitle:@"好的" duration:0.0f];
 
+    } else{
+        
+        [self saveCache];
+        [self addToProfilesList];
+        [self.navigationController popViewControllerAnimated:YES];
+        
+    }
+    
 }
 
-// 保存按钮
-//- (IBAction)saveButton:(UIButton *)sender {
-//    
-//    [self saveCache];
-//    [self addToProfilesList];
-//    [self.navigationController popViewControllerAnimated:YES];
-//    
-//    
-//}
 
 
 #pragma mark - 🚫🚫🚫🚫🚫🚫🚫🚫🚫🚫 私有方法 
@@ -204,9 +193,9 @@
 - (void)updateFrame{
     
     // 标题
-    self.titleTextField.text = self.aProfiles.title;
+    
     // 描述
-    self.detailTextField.text = self.aProfiles.detail;
+    
     // 图片
 //    [self.imageButton setBackgroundImage:self.aProfiles.image forState:UIControlStateNormal];
     // 定时关灯
@@ -214,20 +203,14 @@
     // 色彩动画
     self.colorSegmented.selectedSegmentIndex = self.aProfiles.colorAnimation;
     // 滑块
-//    CGFloat red=0,green=0,blue=0;
-//    if ([self respondsToSelector:@selector(getRed:green:blue:alpha:)]) {
-//        [self.color getRed:&red green:&green blue:&blue alpha:nil];
-//    }
-//    else {
-//        const CGFloat *components = CGColorGetComponents(self.aProfiles.color.CGColor);
-//        red = components[0];
-//        green = components[1];
-//        blue = components[2];
-//    }
-//    [self.redSlider setValue:red animated:YES];
-//    [self.greenSlider setValue:green animated:YES];
-//    [self.blueSlider setValue:blue animated:YES];
-//    [self.brightnessSlider setValue:self.aProfiles.brightness animated:YES];
+    // 提取出UIColor中的RGB值
+    CGFloat red=0,green=0,blue=0,bright=0;
+    [self.aProfiles.color getRed:&red green:&green blue:&blue alpha:&bright];
+
+    [self.redSlider setValue:red animated:YES];
+    [self.greenSlider setValue:green animated:YES];
+    [self.blueSlider setValue:blue animated:YES];
+    [self.brightnessSlider setValue:bright animated:YES];
     
     // 滑块是否可用
     [self setSliderEnable:!self.aProfiles.colorAnimation];
@@ -243,23 +226,7 @@
     }
     // 否则就显示单色模式
     else{
-        
-//        // 把传入的颜色暂存到属性中, 以便于恢复状态
-//        self.color = color;
-//        // 提取出UIColor中的RGB值
-//        CGFloat red=0,green=0,blue=0,bright=0;
-//        if ([self respondsToSelector:@selector(getRed:green:blue:alpha:)]) {
-//            [color getRed:&red green:&green blue:&blue alpha:&bright];
-//        }
-//        else {
-//            const CGFloat *components = CGColorGetComponents(color.CGColor);
-//            red = components[0];
-//            green = components[1];
-//            blue = components[2];
-//            bright = components[3];
-//        }
-        
-        [self.iPhone letSmartLampSetColor:self.color];
+        [self.iPhone letSmartLampSetColor:self.aProfiles.color];
     }
     
 }
@@ -316,19 +283,15 @@
     
     // 标题
     self.aProfiles.title = [_titleTextField.text isEqualToString:@""]?@"情景模式":_titleTextField.text;
-    
     // 图片
     self.aProfiles.image = self.imageButton.currentBackgroundImage;
     
     // 描述
     self.aProfiles.detail = [_detailTextField.text isEqualToString:@""]?@"没有描述信息":_detailTextField.text;
     
-    // 定时picker
-    // 渐变Segmented
-    
-    // 颜色和亮度
-    self.aProfiles.color = self.color;
-    self.aProfiles.brightness = self.brightnessSlider.value;
+    // 定时picker √
+    // 渐变Segmented √
+    // 颜色和亮度 √
     
     [ATFileManager saveCache:self.aProfiles];
     

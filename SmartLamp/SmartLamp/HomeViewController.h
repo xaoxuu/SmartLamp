@@ -16,7 +16,7 @@
 
 @property (strong, nonatomic) SCLAlertView *alertForScaning;
 @property (strong, nonatomic) SCLAlertView *alertForConnecting;
-
+@property (strong, nonatomic) SCLAlertView *alertForConnectSuccess;
 
 
 

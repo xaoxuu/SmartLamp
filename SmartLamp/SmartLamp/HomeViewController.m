@@ -23,13 +23,14 @@
 // 圆环
 @property (strong, nonatomic) UIImageView *circle;
 // 亮度滑块
-@property (weak, nonatomic) IBOutlet UISlider *brightnessSlider;
+@property (weak, nonatomic) IBOutlet ASValueTrackingSlider *brightnessSlider;
 // 动画按钮
 @property (weak, nonatomic) IBOutlet UIButton *animationButton;
 // 开关灯按钮
 @property (weak, nonatomic) IBOutlet UIButton *switchButton;
 // 连接蓝牙按钮
 @property (weak, nonatomic) IBOutlet UIButton *connectionButton;
+
 
 
 // 定时器
@@ -54,9 +55,6 @@
     
     // 初始化
     [self initialization];
-    
-    // 检查是否连接成功
-    [self checkConnect];
 
 }
 
@@ -71,11 +69,12 @@
     
     // 重新加载视图(从本地读取配置文件)
     [self reloadView];
+
+    // 检查是否连接成功
+    [self checkConnect];
     
     // 更新蓝牙灯状态
-//    [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(updateSmartLampStatus) userInfo:nil repeats:NO];
-
-    [self checkConnect];
+    [self updateSmartLampStatus];
     
 }
 
@@ -89,6 +88,7 @@
 // 视图消失之后
 -(void)viewDidDisappear:(BOOL)animated{
     
+    [self.circle removeFromSuperview];
     [self saveCache];
     
 }
@@ -111,20 +111,16 @@
 
     // 当调色板可见并且触摸在内部时调用
     if (x*x + y*y < r*r && self.palette.alpha) {
-        NSLog(@"point:%g,%g",point.x,point.y);
-        
         // 更新颜色
-        self.color = [self.palette.image getColorAtPixel:point inImageView:self.palette];
+        self.aProfiles.color = [self.palette.image getColorAtPixel:point inImageView:self.palette];
         // 更新蓝牙灯状态
         [self updateSmartLampStatus];
         // 更新圆环位置
         [self updateCircleWithPoint:point];
         // 更新视图
         [self updateLayer];
-        
     }
 
-    
 }
 
 -(void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
@@ -141,7 +137,7 @@
         NSLog(@"point:%g,%g",point.x,point.y);
         
         // 更新颜色
-        self.color = [self.palette.image getColorAtPixel:point inImageView:self.palette];
+        self.aProfiles.color = [self.palette.image getColorAtPixel:point inImageView:self.palette];
         // 更新蓝牙灯状态
         [self updateSmartLampStatus];
         // 更新圆环位置
@@ -151,7 +147,6 @@
         
     }
 
-    
 }
 
 
@@ -200,10 +195,8 @@
         if (self.aProfiles.colorAnimation) {
             [self.iPhone letSmartLampPerformColorAnimation:self.aProfiles.colorAnimation];
         } else{
-            [self.iPhone letSmartLampSetColor:self.color];
+            [self.iPhone letSmartLampSetColor:self.aProfiles.color];
         }
-        
-        
         
     }
     
@@ -233,13 +226,18 @@
     
 }
 
+// 亮度条按下的时候就取消动画
+- (IBAction)cancelAnimation:(UISlider *)sender {
+    self.aProfiles.colorAnimation = ColorAnimationNone;
+}
 
+// 更新亮度
 - (IBAction)brightnessSlider:(UISlider *)sender {
     
-    // 更新蓝牙灯状态
-    self.aProfiles.colorAnimation = ColorAnimationNone;
-    [self.iPhone letSmartLampPerformColorAnimation:self.aProfiles.colorAnimation];
-    [self.iPhone letSmartLampSetBrightness:self.brightnessSlider.value];
+    // 赋值
+    self.aProfiles.brightness = self.brightnessSlider.value;
+    // 发送指令
+    [self updateSmartLampStatus];
     // 按钮和调色板
     [self button:self.animationButton state:ATButtonStateNormal];
     
@@ -262,6 +260,15 @@
         
         // 连接按钮状态
         [self button:self.connectionButton state:ATButtonStateSelected];
+        
+        // 如果灯是开着的
+        if (self.aProfiles.brightness) {
+            [self button:self.switchButton state:ATButtonStateSelected];
+            self.brightnessSlider.value = self.aProfiles.brightness;
+            if (self.aProfiles.colorAnimation) {
+                [self button:self.animationButton state:ATButtonStateSelected];
+            }
+        }
         
     }
     
@@ -313,7 +320,7 @@
     // 步进
     self.myTimerProgress += 1.0;
     
-    if (self.myTimerProgress == 1.0) {
+    if (self.myTimerProgress == 1.0 && self.iPhone.isScaning) {
         [self.iPhone stopScan];
         [self.iPhone startScan];
     }
@@ -363,12 +370,18 @@
     _palette.layer.shadowOpacity = 0.3f;
     
     
+    // 滑动条
+    self.brightnessSlider.popUpViewColor = self.tintColor;
+    [self.brightnessSlider setAutoAdjustTrackColor:YES];
+    NSNumberFormatter *fm = [[NSNumberFormatter alloc]init];
+    fm.numberStyle = NSNumberFormatterPercentStyle;
+    self.brightnessSlider.numberFormatter = fm;
+    
     // 注册通知
     [self receiverNotification];
     
     // ==================== [ 自动连接 ] ==================== //
-//    [NSTimer scheduledTimerWithTimeInterval:0.5f target:self selector:@selector(searchDevice) userInfo:nil repeats:NO];
-//    [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(checkConnect) userInfo:nil repeats:NO];
+    [NSTimer scheduledTimerWithTimeInterval:0.5f target:self selector:@selector(searchDevice) userInfo:nil repeats:NO];
     
     
 }
@@ -394,9 +407,9 @@
 - (void)updateLayer{
     
     // 背景颜色
-    self.backgroundView.backgroundColor = self.color;
+    self.backgroundView.backgroundColor = self.aProfiles.color;
     // 滑块的轨道颜色
-    self.brightnessSlider.minimumTrackTintColor = self.color;
+    self.brightnessSlider.minimumTrackTintColor = self.aProfiles.color;
     
 }
 
@@ -410,7 +423,13 @@
     }
     // 否则就显示单色模式
     else{
-        [self.iPhone letSmartLampSetColor:self.color];
+        // 提取出UIColor中的RGB值
+        CGFloat red=0,green=0,blue=0,bright=0;
+        [self.aProfiles.color getRed:&red green:&green blue:&blue alpha:&bright];
+        // 赋值
+        self.aProfiles.color = [UIColor colorWithRed:red green:green blue:blue alpha:self.aProfiles.brightness];
+        // 发送数据
+        [self.iPhone letSmartLampSetColor:self.aProfiles.color];
     }
     
 }
@@ -419,8 +438,6 @@
 // 保存缓存
 - (void)saveCache{
     
-    self.aProfiles.color = self.color;
-    self.aProfiles.brightness = self.brightnessSlider.value;
     [ATFileManager saveCache:self.aProfiles];
     
 }
@@ -565,7 +582,7 @@
 -(UIImageView *)circle{
     
     if (!_circle) {
-        self.circle = [[UIImageView alloc] initWithFrame:(CGRect){0,0,30,30}];
+        self.circle = [[UIImageView alloc] initWithFrame:(CGRect){0,0,20,20}];
         self.circle.image = [UIImage imageNamed:@"Icon_Circle"];
         [self.circle setUserInteractionEnabled:NO];
     }
@@ -646,6 +663,8 @@
     
     SCLAlertView *alert = self.newAlert;
     
+    [self.alertForScaning hideView];
+    
     [alert addButton:@"连接设备" actionBlock:^{
         [self.iPhone connectSmartLamp:[self.iPhone.scanedDeviceList lastObject]];
         [self showAlertWithConnecting];
@@ -687,11 +706,12 @@
     [self.alertForConnecting hideView];
     self.alertForConnecting = nil;
     [self.myTimer invalidate];
-    
+    self.lastConnectStatus = YES;
     [self button:self.connectionButton state:ATButtonStateSelected];
     
     SCLAlertView *alert = self.newAlert;
     [alert showSuccess:self title:@"连接成功" subTitle:@"蓝牙灯连接成功!" closeButtonTitle:@"好的" duration:1.0f];
+    _alertForConnectSuccess = alert;
     
 }
 
@@ -811,24 +831,27 @@
     NSLog(@"频道是: %@",notification.name);
     NSLog(@"收到的消息是: %@",notification.object);
     
-    // 停止扫描
-    [self.alertForScaning hideView];
     [self button:self.connectionButton state:ATButtonStateNormal];
     
+    // 1. 如果设置为自动连接, 就自动连接 2. 如果本地保存的记录中有这个蓝牙灯, 直接连接
+    BOOL isAutoConnect = self.isAutoConnect && [self.connectedDevice containsObject:[self.iPhone.scanedDeviceList lastObject]];
+    
     // 1. 如果设置为自动连接, 就自动连接
-    if (self.isAutoConnect) {
+    if (isAutoConnect) {
+        // 关闭扫描的对话框
+//        [self.alertForScaning hideView];
+        // 连接
         self.alertForConnecting = [self showAlertWithConnecting];
         [self.iPhone connectSmartLamp:[self.iPhone.scanedDeviceList lastObject]];
     }
-    // 2. 如果本地保存的记录中有这个蓝牙灯, 直接连接
-    else if ([self.connectedDevice containsObject:[self.iPhone.scanedDeviceList lastObject]]){
-        self.alertForConnecting = [self showAlertWithConnecting];
-        [self.iPhone connectSmartLamp:[self.iPhone.scanedDeviceList lastObject]];
-    }
+   
     // 3. 如果本地没有保存这个蓝牙灯的连接记录, 也没有设置自动连接, 就push到蓝牙设备列表页面
     else {
         // 弹出是否连接的对话框
-        [self showAlertWithDiscoverDevice:notification.object];
+        [self performSelector:@selector(showAlertWithDiscoverDevice:) withObject:notification.object afterDelay:0.5];
+        // 关闭扫描的对话框
+//        [self.alertForScaning performSelector:@selector(hideView) withObject:nil afterDelay:0.5];
+        
     }
     
 }
@@ -841,8 +864,7 @@
     NSLog(@"收到的消息是: %@",notification.object);
     if ([notification.object isEqualToString:SUCCESS]) {
         // 连接成功
-        [self performSelector:@selector(showAlertWithConnectSuccess) withObject:nil afterDelay:1];
-//        [self showAlertWithConnectSuccess];
+       [self performSelector:@selector(showAlertWithConnectSuccess) withObject:nil afterDelay:1];
         
     } else{
         // 连接失败
@@ -850,6 +872,7 @@
     }
     
 }
+
 
 // 断开时的通知
 - (void)notificationDisconnect:(NSNotification *)notification{
@@ -859,7 +882,8 @@
     NSLog(@"收到的消息是: %@",notification.object);
     if ([notification.object isEqualToString:SUCCESS]) {
         // 设备已断开
-        [self.newAlert showError:self title:@"已断开连接" subTitle:@"与蓝牙灯的连接已断开。" closeButtonTitle:@"好的" duration:0.0f];
+        [self.newAlert showError:self title:@"已断开连接" subTitle:@"与蓝牙灯的连接已断开。" closeButtonTitle:@"好的" duration:0.5f];
+        self.lastConnectStatus = NO;
     }
     
 }

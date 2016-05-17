@@ -124,7 +124,7 @@
                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="情景模式标题" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vT5-CM-3MQ">
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="情景模式标题" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vT5-CM-3MQ">
                                                         <rect key="frame" x="42" y="8" width="162" height="30"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next"/>
@@ -135,7 +135,7 @@
                                                             <action selector="touchReturn:" destination="x64-ZZ-TpG" eventType="editingDidEnd" id="11t-aj-rbi"/>
                                                         </connections>
                                                     </textField>
-                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="应用在什么情景" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0ln-Wr-2hH">
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="应用在什么情景" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0ln-Wr-2hH">
                                                         <rect key="frame" x="42" y="46" width="162" height="30"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next"/>
@@ -256,8 +256,9 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="11s-FX-NM9">
                                                 <rect key="frame" x="0.0" y="283" width="288" height="164"/>
                                                 <subviews>
-                                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="CXs-7M-0Zi">
+                                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="CXs-7M-0Zi">
                                                         <rect key="frame" x="40" y="126" width="242" height="31"/>
+                                                        <color key="minimumTrackTintColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                         <connections>
                                                             <action selector="sliderRGB:" destination="x64-ZZ-TpG" eventType="valueChanged" id="h8y-wN-we4"/>
                                                         </connections>
@@ -269,18 +270,21 @@
                                                     </label>
                                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Xzb-0a-tAI">
                                                         <rect key="frame" x="40" y="8" width="242" height="31"/>
+                                                        <color key="minimumTrackTintColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                         <connections>
                                                             <action selector="sliderRGB:" destination="x64-ZZ-TpG" eventType="valueChanged" id="T3P-KG-5Yk"/>
                                                         </connections>
                                                     </slider>
                                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="bH4-MC-YP9">
                                                         <rect key="frame" x="40" y="46" width="242" height="31"/>
+                                                        <color key="minimumTrackTintColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                         <connections>
                                                             <action selector="sliderRGB:" destination="x64-ZZ-TpG" eventType="valueChanged" id="yVx-sc-mvn"/>
                                                         </connections>
                                                     </slider>
                                                     <slider opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Zc2-6m-Uiy">
                                                         <rect key="frame" x="40" y="84" width="242" height="35"/>
+                                                        <color key="minimumTrackTintColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                         <connections>
                                                             <action selector="sliderRGB:" destination="x64-ZZ-TpG" eventType="valueChanged" id="bK1-l4-wzw"/>
                                                         </connections>
@@ -437,10 +441,11 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HAU-Am-FNr">
                                         <rect key="frame" x="8" y="379" width="312" height="80"/>
                                         <subviews>
-                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="100" minValue="0.0" maxValue="100" minimumValueImage="powerOff" maximumValueImage="powerOn" translatesAutoresizingMaskIntoConstraints="NO" id="gqr-OW-PCh" customClass="ASValueTrackingSlider">
+                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" minimumValueImage="powerOff" maximumValueImage="powerOn" translatesAutoresizingMaskIntoConstraints="NO" id="gqr-OW-PCh" customClass="ASValueTrackingSlider">
                                                 <rect key="frame" x="6" y="42" width="300" height="31"/>
                                                 <connections>
                                                     <action selector="brightnessSlider:" destination="nHe-8W-S81" eventType="valueChanged" id="VBb-Eo-EW8"/>
+                                                    <action selector="cancelAnimation:" destination="nHe-8W-S81" eventType="touchDown" id="ATV-vt-AEu"/>
                                                 </connections>
                                             </slider>
                                         </subviews>
