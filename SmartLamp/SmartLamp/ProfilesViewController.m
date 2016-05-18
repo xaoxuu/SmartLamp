@@ -78,8 +78,8 @@
 // 初始化
 - (void)initialization{
     
-    [self.editButton buttonState:ATButtonStateNormal];
-    [self.addButton  buttonState:ATButtonStateNormal];
+    [self.editButton buttonState:ATButtonStateTap];
+    [self.addButton  buttonState:ATButtonStateTap];
     
 }
 

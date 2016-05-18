@@ -44,9 +44,9 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="editButton:" destination="ZHm-aR-g60" eventType="touchUpInside" id="XTC-AI-ypj"/>
-                                    <action selector="touchDown:" destination="ZHm-aR-g60" eventType="touchDown" id="d6W-zC-6Jg"/>
-                                    <action selector="touchUp:" destination="ZHm-aR-g60" eventType="touchUpOutside" id="SDi-l2-T3O"/>
-                                    <action selector="touchUp:" destination="ZHm-aR-g60" eventType="touchUpInside" id="lIP-Dm-duf"/>
+                                    <action selector="touchDown:" destination="ZHm-aR-g60" eventType="touchUpOutside" id="cLY-qn-xHE"/>
+                                    <action selector="touchDown:" destination="ZHm-aR-g60" eventType="touchUpInside" id="g9h-NO-ryi"/>
+                                    <action selector="touchUp:" destination="ZHm-aR-g60" eventType="touchDown" id="z6h-ll-y6S"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iM8-Hi-nPP">
@@ -64,9 +64,9 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="touchDown:" destination="ZHm-aR-g60" eventType="touchDown" id="FOf-GK-Kak"/>
-                                    <action selector="touchUp:" destination="ZHm-aR-g60" eventType="touchUpInside" id="pe9-Tu-lfa"/>
-                                    <action selector="touchUp:" destination="ZHm-aR-g60" eventType="touchUpOutside" id="xQM-fD-srH"/>
+                                    <action selector="touchDown:" destination="ZHm-aR-g60" eventType="touchUpOutside" id="INZ-0Y-EBZ"/>
+                                    <action selector="touchDown:" destination="ZHm-aR-g60" eventType="touchUpInside" id="LRg-SQ-gDE"/>
+                                    <action selector="touchUp:" destination="ZHm-aR-g60" eventType="touchDown" id="rV0-Kw-qyw"/>
                                     <segue destination="x64-ZZ-TpG" kind="show" id="8gQ-OY-ViS"/>
                                 </connections>
                             </button>
