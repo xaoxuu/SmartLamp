@@ -2,12 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "idea-1.png",
+      "filename" : "SmartLamp_HomeLogo.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "idea.png",
       "scale" : "2x"
     },
     {

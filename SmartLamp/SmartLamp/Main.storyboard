@@ -428,8 +428,8 @@
                                                     <constraint firstAttribute="height" constant="80" id="ag0-nW-Scr"/>
                                                     <constraint firstAttribute="width" constant="80" id="uwy-gI-56y"/>
                                                 </constraints>
-                                                <state key="normal" backgroundImage="Logo_SmartLamp"/>
-                                                <state key="highlighted" backgroundImage="Logo_SmartLamp">
+                                                <state key="normal" backgroundImage="SmartLamp_HomeLogo"/>
+                                                <state key="highlighted" backgroundImage="SmartLamp_HomeLogo">
                                                     <color key="titleColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                                 <connections>
@@ -690,7 +690,7 @@
         <image name="Icon_Save" width="48" height="48"/>
         <image name="Image_Palette" width="365" height="365"/>
         <image name="Lamp0" width="52" height="52"/>
-        <image name="Logo_SmartLamp" width="270" height="270"/>
+        <image name="SmartLamp_HomeLogo" width="260" height="260"/>
         <image name="bulleted_list_filled" width="50" height="50"/>
         <image name="dog_house" width="24" height="24"/>
         <image name="horizontal_settings_mixer_filled" width="25" height="25"/>

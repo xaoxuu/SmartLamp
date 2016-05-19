@@ -898,7 +898,7 @@
     NSLog(@"收到的消息是: %@",notification.object);
     if ([notification.object isEqualToString:SUCCESS]) {
         // 设备已断开
-        [self.newAlert showError:self title:@"已断开连接" subTitle:@"与蓝牙灯的连接已断开。" closeButtonTitle:@"好的" duration:0.5f];
+        [self.newAlert showError:self title:@"已断开连接" subTitle:@"与蓝牙灯的连接已断开。" closeButtonTitle:@"好的" duration:1.0f];
         // 状态标记
         self.isAutoConnect = NO;
         self.iPhone.isConnecting = NO;
