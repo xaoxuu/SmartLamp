@@ -7,8 +7,6 @@
 //
 
 #import "ProfilesViewController.h"
-#import "ATProfiles.h"
-
 
 @interface ProfilesViewController () <UITableViewDataSource,UITableViewDelegate>
 

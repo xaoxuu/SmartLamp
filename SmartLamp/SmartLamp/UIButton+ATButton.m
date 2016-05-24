@@ -11,9 +11,10 @@
 
 @implementation UIButton (ATButton)
 
+// 设置按钮的状态
 - (void)buttonState:(ATButtonState)state{
-    [self setEnabled:YES];
     
+    [self setEnabled:YES];
     self.layer.opacity = 1.0;
     self.clipsToBounds = NO;
     self.layer.shadowColor = [UIColor blackColor].CGColor;
@@ -41,16 +42,13 @@
             self.layer.shadowRadius = 4.0;
             self.layer.backgroundColor = self.selectedColor.CGColor;
             break;
-        case ATButtonStateDisable: //
+        case ATButtonStateDisabled: //
             [self setEnabled:NO];
             self.layer.backgroundColor = self.disabledColor.CGColor;
             self.layer.shadowOffset = CGSizeMake(0.0,0.0);
             self.layer.shadowOpacity = 0.2;
             self.layer.shadowRadius = 0.5;
-            
             break;
-
-
     }
     
 }

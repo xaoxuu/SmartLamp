@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "SmartLamp_LaunchScreen.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "SmartLamp_LaunchScreen-1.png",
       "scale" : "2x"
     },
     {

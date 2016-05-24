@@ -12,7 +12,7 @@
 		DD4A435C1CE1E4230093D87A /* UIButton+ATButton.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4A435B1CE1E4230093D87A /* UIButton+ATButton.m */; };
 		DD4A43621CE203550093D87A /* ProfilesDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4A43611CE203550093D87A /* ProfilesDetailsViewController.m */; };
 		DD4A43651CE230340093D87A /* UITextField+ATText.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4A43641CE230340093D87A /* UITextField+ATText.m */; };
-		DD9D1C701CE88D2400F1A796 /* UIImage+getColorAtPixel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD9D1C6F1CE88D2300F1A796 /* UIImage+getColorAtPixel.m */; };
+		DD97BB531CF3227A00B94B66 /* UIImageView+GetColorAtPixel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD97BB521CF3227A00B94B66 /* UIImageView+GetColorAtPixel.m */; };
 		DDB0D1EB1CD224C100C6445D /* ATCentralManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB0D1EA1CD224C100C6445D /* ATCentralManager.m */; };
 		DDC0AFD21CC8C29100B669A1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DDC0AFD11CC8C29100B669A1 /* main.m */; };
 		DDC0AFD51CC8C29100B669A1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DDC0AFD41CC8C29100B669A1 /* AppDelegate.m */; };
@@ -65,8 +65,8 @@
 		DD4A43611CE203550093D87A /* ProfilesDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfilesDetailsViewController.m; sourceTree = "<group>"; };
 		DD4A43631CE230340093D87A /* UITextField+ATText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+ATText.h"; sourceTree = "<group>"; };
 		DD4A43641CE230340093D87A /* UITextField+ATText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+ATText.m"; sourceTree = "<group>"; };
-		DD9D1C6E1CE88D2300F1A796 /* UIImage+getColorAtPixel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+getColorAtPixel.h"; sourceTree = "<group>"; };
-		DD9D1C6F1CE88D2300F1A796 /* UIImage+getColorAtPixel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+getColorAtPixel.m"; sourceTree = "<group>"; };
+		DD97BB511CF3227A00B94B66 /* UIImageView+GetColorAtPixel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+GetColorAtPixel.h"; sourceTree = "<group>"; };
+		DD97BB521CF3227A00B94B66 /* UIImageView+GetColorAtPixel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+GetColorAtPixel.m"; sourceTree = "<group>"; };
 		DDB0D1E91CD224C100C6445D /* ATCentralManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATCentralManager.h; sourceTree = "<group>"; };
 		DDB0D1EA1CD224C100C6445D /* ATCentralManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATCentralManager.m; sourceTree = "<group>"; };
 		DDC0AFCD1CC8C29100B669A1 /* SmartLamp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartLamp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -186,10 +186,8 @@
 		DDC0AFD01CC8C29100B669A1 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				DD9D1C6E1CE88D2300F1A796 /* UIImage+getColorAtPixel.h */,
-				DD9D1C6F1CE88D2300F1A796 /* UIImage+getColorAtPixel.m */,
 				DDDB865E1CE777780036B99A /* ASSlider */,
-				DDDB85CC1CE4A4D80036B99A /* SCLAlert */,
+				DDDB85CC1CE4A4D80036B99A /* SCLAlertVIew */,
 				DDC0AFE11CC8C29100B669A1 /* Info.plist */,
 				DDC0AFD11CC8C29100B669A1 /* main.m */,
 				DDC0AFD31CC8C29100B669A1 /* AppDelegate.h */,
@@ -225,6 +223,8 @@
 				DD4A435B1CE1E4230093D87A /* UIButton+ATButton.m */,
 				DD4A43631CE230340093D87A /* UITextField+ATText.h */,
 				DD4A43641CE230340093D87A /* UITextField+ATText.m */,
+				DD97BB511CF3227A00B94B66 /* UIImageView+GetColorAtPixel.h */,
+				DD97BB521CF3227A00B94B66 /* UIImageView+GetColorAtPixel.m */,
 				DDF5AD421CC8F3FB008F4E1C /* Asset.xcassets */,
 			);
 			name = View;
@@ -247,7 +247,7 @@
 			name = Controller;
 			sourceTree = "<group>";
 		};
-		DDDB85CC1CE4A4D80036B99A /* SCLAlert */ = {
+		DDDB85CC1CE4A4D80036B99A /* SCLAlertVIew */ = {
 			isa = PBXGroup;
 			children = (
 				DDDB85B31CE4A4CD0036B99A /* UIImage+ImageEffects.h */,
@@ -268,7 +268,7 @@
 				DDDB85C21CE4A4CD0036B99A /* SCLSwitchView.h */,
 				DDDB85C31CE4A4CD0036B99A /* SCLSwitchView.m */,
 			);
-			name = SCLAlert;
+			name = SCLAlertVIew;
 			sourceTree = "<group>";
 		};
 		DDDB865E1CE777780036B99A /* ASSlider */ = {
@@ -437,7 +437,7 @@
 				DD4A43561CE19E0F0093D87A /* ATProfiles.m in Sources */,
 				DDC0AFD51CC8C29100B669A1 /* AppDelegate.m in Sources */,
 				DDF5AD3E1CC8E75F008F4E1C /* HomeViewController.m in Sources */,
-				DD9D1C701CE88D2400F1A796 /* UIImage+getColorAtPixel.m in Sources */,
+				DD97BB531CF3227A00B94B66 /* UIImageView+GetColorAtPixel.m in Sources */,
 				DDC0AFD21CC8C29100B669A1 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

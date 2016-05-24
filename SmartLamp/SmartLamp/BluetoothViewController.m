@@ -14,12 +14,6 @@
 
 @property (strong, nonatomic) UIRefreshControl *refreshControl;
 
-@property (strong, nonatomic) NSTimer *myTimer;
-
-@property (assign, nonatomic) CGFloat myTimerProgress;
-
-
-
 @end
 
 @implementation BluetoothViewController
@@ -34,10 +28,12 @@
     
     
 }
+
 // 隐藏状态栏
 - (BOOL)prefersStatusBarHidden{
     return NO;
 }
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -273,7 +269,6 @@
 
 // 选中某一行
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
     
     // ==================== [ 实例化选中的对象 ] ==================== //
     CBPeripheral *selected = self.iPhone.scanedDeviceList[indexPath.row];

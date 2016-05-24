@@ -18,25 +18,25 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Db1-Fh-OIx">
-                                <rect key="frame" x="0.0" y="171" width="320" height="226"/>
+                                <rect key="frame" x="0.0" y="194" width="320" height="180"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Smart Lamp" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jrv-7U-PWD">
-                                        <rect key="frame" x="63" y="144" width="195" height="51"/>
+                                        <rect key="frame" x="63" y="98" width="195" height="51"/>
                                         <fontDescription key="fontDescription" name="ChalkboardSE-Light" family="Chalkboard SE" pointSize="36"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="designed by Aesir Titan 2016" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wfc-3z-PSU">
-                                        <rect key="frame" x="56" y="203" width="209" height="23"/>
+                                        <rect key="frame" x="56" y="157" width="209" height="23"/>
                                         <fontDescription key="fontDescription" name="ChalkboardSE-Light" family="Chalkboard SE" pointSize="16"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SmartLamp_LaunchScreen" translatesAutoresizingMaskIntoConstraints="NO" id="9PL-0K-KQI">
-                                        <rect key="frame" x="96" y="8" width="128" height="128"/>
+                                        <rect key="frame" x="128" y="8" width="64" height="64"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="128" id="IOk-S4-0fB"/>
-                                            <constraint firstAttribute="width" constant="128" id="Tw7-9D-cyP"/>
+                                            <constraint firstAttribute="height" constant="64" id="IOk-S4-0fB"/>
+                                            <constraint firstAttribute="width" constant="64" id="Tw7-9D-cyP"/>
                                         </constraints>
                                     </imageView>
                                 </subviews>
@@ -46,9 +46,9 @@
                                     <constraint firstItem="Wfc-3z-PSU" firstAttribute="centerX" secondItem="Db1-Fh-OIx" secondAttribute="centerX" id="N7c-RT-rMx"/>
                                     <constraint firstItem="9PL-0K-KQI" firstAttribute="centerX" secondItem="Db1-Fh-OIx" secondAttribute="centerX" id="QJx-4j-sne"/>
                                     <constraint firstAttribute="bottom" secondItem="Wfc-3z-PSU" secondAttribute="bottom" id="j3p-7F-JAH"/>
-                                    <constraint firstAttribute="height" constant="226" id="jmJ-tn-WXM"/>
+                                    <constraint firstAttribute="height" constant="180" id="jmJ-tn-WXM"/>
                                     <constraint firstItem="9PL-0K-KQI" firstAttribute="top" secondItem="Db1-Fh-OIx" secondAttribute="top" constant="8" id="lFb-tG-4X8"/>
-                                    <constraint firstItem="Jrv-7U-PWD" firstAttribute="top" secondItem="9PL-0K-KQI" secondAttribute="bottom" constant="8" id="yrW-0d-jQp"/>
+                                    <constraint firstItem="Wfc-3z-PSU" firstAttribute="top" secondItem="Jrv-7U-PWD" secondAttribute="bottom" constant="8" id="pe1-jn-WQe"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -59,6 +59,8 @@
                             <constraint firstItem="Db1-Fh-OIx" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="h2Z-gw-g60"/>
                         </constraints>
                     </view>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -67,6 +69,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="SmartLamp_LaunchScreen" width="260" height="260"/>
+        <image name="SmartLamp_LaunchScreen" width="200" height="200"/>
     </resources>
 </document>

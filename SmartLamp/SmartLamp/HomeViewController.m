@@ -7,9 +7,9 @@
 //
 
 #import "HomeViewController.h"
-#import "ATCentralManager.h"
 #import "ASValueTrackingSlider.h"
 #import "UIImage+ImageEffects.h"
+#import "UIImageView+GetColorAtPixel.h"
 
 @interface HomeViewController () <ASValueTrackingSliderDataSource,ASValueTrackingSliderDelegate>
 
@@ -31,14 +31,8 @@
 // 连接蓝牙按钮
 @property (weak, nonatomic) IBOutlet UIButton *connectionButton;
 
-
-
-// 定时器
-@property (strong, nonatomic) NSTimer *myTimer;
-@property (assign, nonatomic) CGFloat myTimerProgress;
-
-// 上一次的连接状态
-@property (assign, nonatomic) BOOL lastConnectStatus;
+// 已经连接过的设备列表
+@property (strong, nonatomic) NSArray *connectedDevice;
 
 @end
 
@@ -69,19 +63,20 @@
     
     // 重新加载视图(从本地读取配置文件)
     [self reloadView];
-
-    // 检查是否连接成功
-    [self checkConnect];
     
     // 更新蓝牙灯状态
     [self updateSmartLampStatus];
+    
+    // 如果有定时关机, 就定时关机
+    if (self.aProfiles.timer) {
+        [self.iPhone letSmartLampSleepAfter:self.aProfiles.timer];
+    }
     
 }
 
 // 视图出现之后
 -(void)viewDidAppear:(BOOL)animated{
     
-//    [self performSelector:@selector(showAlertWithConnecting) withObject:nil afterDelay:3];
     
 }
 
@@ -99,56 +94,47 @@
     // Dispose of any resources that can be recreated.
 }
 
-// 调试
+// 触摸开始
+-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    
+    UITouch *touch = [touches anyObject];
+    CGPoint point = [touch locationInView:self.palette];
+    
+    // set background color of view
+    // 设置视图背景颜色
+    [self getColorAtPoint:point completion:^(UIColor *color) {
+        // 更新颜色
+        self.aProfiles.color = color;
+        // 更新蓝牙灯状态
+        [self updateSmartLampStatus];
+        // 更新圆环位置
+        [self updateCircleWithPoint:point];
+        // 更新视图
+        [self updateLayer];
+    }];
+    
+}
+
+// 触摸移动
 -(void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
 
     UITouch *touch = [touches anyObject];
     CGPoint point = [touch locationInView:self.palette];
     
-    CGFloat x = point.x - 0.5*self.palette.frame.size.width - 1;
-    CGFloat y = point.y - 0.5*self.palette.frame.size.height - 1;
-    CGFloat r = 0.5 * (self.palette.frame.size.width - 20);
-
-    // 当调色板可见并且触摸在内部时调用
-    if (x*x + y*y < r*r && self.palette.alpha) {
+    // set background color of view
+    // 设置视图背景颜色
+    [self getColorAtPoint:point completion:^(UIColor *color) {
         // 更新颜色
-        self.aProfiles.color = [self.palette.image getColorAtPixel:point inImageView:self.palette];
+        self.aProfiles.color = [self.palette getColorAtPixel:point];
         // 更新蓝牙灯状态
         [self updateSmartLampStatus];
         // 更新圆环位置
         [self updateCircleWithPoint:point];
         // 更新视图
         [self updateLayer];
-    }
+    }];
 
 }
-
--(void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-    
-    UITouch *touch = [touches anyObject];
-    CGPoint point = [touch locationInView:self.palette];
-    
-    CGFloat x = point.x - 0.5*self.palette.frame.size.width - 1;
-    CGFloat y = point.y - 0.5*self.palette.frame.size.height - 1;
-    CGFloat r = 0.5 * (self.palette.frame.size.width - 20);
-    
-    // 当调色板可见并且触摸在内部时调用
-    if (x*x + y*y < r*r && self.palette.alpha) {
-        NSLog(@"point:%g,%g",point.x,point.y);
-        
-        // 更新颜色
-        self.aProfiles.color = [self.palette.image getColorAtPixel:point inImageView:self.palette];
-        // 更新蓝牙灯状态
-        [self updateSmartLampStatus];
-        // 更新圆环位置
-        [self updateCircleWithPoint:point];
-        // 更新视图
-        [self updateLayer];
-        
-    }
-
-}
-
 
 #pragma mark - 🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀 控件事件
 
@@ -218,7 +204,7 @@
         } deviceName:[self.iPhone.scanedDeviceList lastObject].name];
     } else{
         // 连接按钮状态
-        [self button:self.connectionButton state:ATButtonStateDisable];
+        [self button:self.connectionButton state:ATButtonStateDisabled];
         // 搜索蓝牙设备
         [self searchDevice];
     }
@@ -243,52 +229,7 @@
     
 }
 
-
-
-#pragma mark - 🔵🔵🔵🔵🔵🔵🔵🔵🔵🔵 连接设备 
-
-// 检查是否连接成功
-- (void)checkConnect{
-    
-    // 如果现在状态是已连接
-    if (self.iPhone.isConnecting) {
-        
-        // 如果之前是未连接, 就弹出提示"已连接"
-        if (!self.lastConnectStatus) {
-            [self showAlertWithConnectSuccess];
-        }
-        
-        // 连接按钮状态
-        [self button:self.connectionButton state:ATButtonStateSelected];
-        
-        // 如果灯是开着的
-        if (self.aProfiles.brightness) {
-            [self button:self.switchButton state:ATButtonStateSelected];
-            self.brightnessSlider.value = self.aProfiles.brightness;
-            if (self.aProfiles.colorAnimation) {
-                [self button:self.animationButton state:ATButtonStateSelected];
-            }
-        }
-        
-    }
-    
-    // 未连接状态
-    else{
-        
-        // 连接按钮状态
-        if (self.iPhone.isBluetoothAvailable&&!self.isAutoConnect) {
-            [self button:self.connectionButton state:ATButtonStateNormal];
-        } else{
-            [self button:self.connectionButton state:ATButtonStateDisable];
-        }
-        
-    }
-    
-    // 记录当前的状态
-    self.lastConnectStatus = self.iPhone.isConnecting;
-    
-}
-
+#pragma mark - 🔵🔵🔵🔵🔵🔵🔵🔵🔵🔵 连接设备
 
 // 搜索设备
 - (void)searchDevice{
@@ -326,7 +267,7 @@
     }
     
     // 循环结束时调用(如果扫描到了设备或者时间超过)
-    if (self.iPhone.scanedDeviceList.count||self.myTimerProgress>10) {
+    if (self.iPhone.scanedDeviceList.count||self.myTimerProgress>20) {
         
         // 如果扫描到了设备会自动调用 showAlertWithDiscoverDevice
         
@@ -358,16 +299,12 @@
 // 视图初始化设置
 - (void)initialization{
     
-    // 原来的连接状态
-    self.lastConnectStatus = NO;
-    
     // logo
     _lampLogo.layer.cornerRadius = 0.5*_lampLogo.frame.size.width;
     _lampLogo.layer.shadowOffset = (CGSize){0,0};
     _lampLogo.layer.shadowRadius = 2.0f;
     _lampLogo.layer.shadowColor = [UIColor blackColor].CGColor;
     _lampLogo.layer.shadowOpacity = 0.3f;
-    
     
     // 调色板的样式
     _palette.layer.cornerRadius = 0.5*_palette.frame.size.width;
@@ -390,7 +327,6 @@
     // ==================== [ 自动连接 ] ==================== //
     [NSTimer scheduledTimerWithTimeInterval:0.5f target:self selector:@selector(searchDevice) userInfo:nil repeats:NO];
     
-    
 }
 
 // 重新加载视图
@@ -405,9 +341,34 @@
 // 更新框架
 - (void)updateFrame{
     
-    // 如果有定时关机, 就定时关机
-    if (self.aProfiles.timer) {
-        [self.iPhone letSmartLampSleepAfter:self.aProfiles.timer];
+    // ==================== [ 按钮的状态 ] ==================== //
+    // 如果现在状态是已连接
+    if (self.iPhone.isConnecting) {
+        
+        // 连接按钮状态
+        [self button:self.connectionButton state:ATButtonStateSelected];
+        
+        // 如果灯是开着的
+        if (self.aProfiles.brightness) {
+            [self button:self.switchButton state:ATButtonStateSelected];
+            self.brightnessSlider.value = self.aProfiles.brightness;
+            if (self.aProfiles.colorAnimation) {
+                [self button:self.animationButton state:ATButtonStateSelected];
+            }
+        }
+        
+    }
+    
+    // 未连接状态
+    else{
+        
+        // 连接按钮状态
+        if (self.iPhone.isBluetoothAvailable&&!self.isAutoConnect) {
+            [self button:self.connectionButton state:ATButtonStateNormal];
+        } else{
+            [self button:self.connectionButton state:ATButtonStateDisabled];
+        }
+        
     }
     
 }
@@ -488,7 +449,7 @@
                 self.palette.alpha = NO;
                 [self.palette setUserInteractionEnabled:NO];
                 break;
-            case ATButtonStateDisable: //
+            case ATButtonStateDisabled: //
                 // 按钮标题
                 [button setTitle:@"动画" forState:UIControlStateNormal];
                 // 调色板
@@ -512,7 +473,7 @@
                 self.brightnessSlider.enabled = NO;
                 [self.brightnessSlider setValue:0 animated:YES];
                 // 动画按钮
-                [self button:self.animationButton state:ATButtonStateDisable];
+                [self button:self.animationButton state:ATButtonStateDisabled];
                 break;
             case ATButtonStateTap: //
                 break;
@@ -526,7 +487,7 @@
                 // 动画按钮
                 [self button:self.animationButton state:ATButtonStateNormal];
                 break;
-            case ATButtonStateDisable: //
+            case ATButtonStateDisabled: //
                 [self.lampLogo setHighlighted:YES];
                 // 按钮标题
                 [button setTitle:@"开灯" forState:UIControlStateNormal];
@@ -534,7 +495,7 @@
                 self.brightnessSlider.enabled = NO;
                 [self.brightnessSlider setValue:0 animated:YES];
                 // 动画按钮
-                [self button:self.animationButton state:ATButtonStateDisable];
+                [self button:self.animationButton state:ATButtonStateDisabled];
                 break;
                 
         }
@@ -551,7 +512,7 @@
                 button.selected = NO;
                 [button setTitle:@"连接" forState:UIControlStateNormal];
                 // 开关按钮
-                [self button:self.switchButton state:ATButtonStateDisable];
+                [self button:self.switchButton state:ATButtonStateDisabled];
                 break;
             case ATButtonStateTap: //
                 break;
@@ -562,12 +523,12 @@
                 // 开关按钮
                 [self button:self.switchButton state:ATButtonStateNormal];
                 break;
-            case ATButtonStateDisable: //
+            case ATButtonStateDisabled: //
                 [self.lampLogo setEnabled:NO];
                 // 按钮标题
                 [button setTitle:@"等待" forState:UIControlStateNormal];
                 // 开关按钮
-                [self button:self.switchButton state:ATButtonStateDisable];
+                [self button:self.switchButton state:ATButtonStateDisabled];
                 break;
                 
         }
@@ -580,7 +541,21 @@
 
 }
 
-
+// Access to the specified pixel color, and perform operations
+// 获取指定像素点的颜色, 并执行操作
+- (void)getColorAtPoint:(CGPoint)point completion:(void(^)(UIColor *color))completion{
+    
+    CGFloat x = point.x - 0.5*self.palette.frame.size.width - 1;
+    CGFloat y = point.y - 0.5*self.palette.frame.size.height - 1;
+    CGFloat r = 0.5 * (self.palette.frame.size.width - 20);
+    
+    // When the touch point is inside palette coordinates.
+    // 当触摸点在取色板内部时调用
+    if (powf(x,2) + powf(y, 2) < powf(r, 2)) {
+        completion([self.palette getColorAtPixel:point]);
+    }
+    
+}
 
 #pragma mark 🚫 懒加载
 
@@ -618,7 +593,7 @@
     SCLAlertView *alert = self.newAlert;
     [alert addButton:@"自动连接" actionBlock:^{
         self.isAutoConnect = YES;
-        [self button:self.connectionButton state:ATButtonStateDisable];
+        [self button:self.connectionButton state:ATButtonStateDisabled];
         NSLog(@"点击了自动连接");
     }];
     [alert addButton:@"停止扫描" actionBlock:^{
@@ -640,7 +615,7 @@
     if (!_alertForScaning) {
         self.isAutoConnect = NO;
     }
-    [self.connectionButton buttonState:ATButtonStateDisable];
+    [self.connectionButton buttonState:ATButtonStateDisabled];
 
     [alert showWaiting:self title:@"正在扫描"
               subTitle:@"正在扫描周围可用的蓝牙灯..."
@@ -722,7 +697,6 @@
     [self.alertForConnecting hideView];
     self.alertForConnecting = nil;
     [self.myTimer invalidate];
-    self.lastConnectStatus = YES;
     [self button:self.connectionButton state:ATButtonStateSelected];
     
     SCLAlertView *alert = self.newAlert;
@@ -835,7 +809,7 @@
     if ([notification.object isEqualToString:@"蓝牙可用"]) {
         [self button:self.connectionButton state:ATButtonStateNormal];
     }else{
-        [self button:self.connectionButton state:ATButtonStateDisable];
+        [self button:self.connectionButton state:ATButtonStateDisabled];
     }
     
 }
@@ -852,11 +826,8 @@
     // 1. 如果设置为自动连接, 就自动连接 2. 如果本地保存的记录中有这个蓝牙灯, 直接连接
     BOOL isAutoConnect = self.isAutoConnect && [self.connectedDevice containsObject:[self.iPhone.scanedDeviceList lastObject]];
     
-    // 1. 如果设置为自动连接, 就自动连接
+    // 自动连接
     if (isAutoConnect) {
-        // 关闭扫描的对话框
-//        [self.alertForScaning hideView];
-        // 连接
         self.alertForConnecting = [self showAlertWithConnecting];
         [self.iPhone connectSmartLamp:[self.iPhone.scanedDeviceList lastObject]];
     }
@@ -865,14 +836,12 @@
     else {
         // 弹出是否连接的对话框
         [self performSelector:@selector(showAlertWithDiscoverDevice:) withObject:notification.object afterDelay:0.5];
-        // 关闭扫描的对话框
-//        [self.alertForScaning performSelector:@selector(hideView) withObject:nil afterDelay:0.5];
         
     }
     
 }
 
-// 连接时的通知
+// 连接成功或失败时的通知
 - (void)notificationConnect:(NSNotification *)notification{
     
     // 🖥
@@ -881,7 +850,8 @@
     if ([notification.object isEqualToString:SUCCESS]) {
         // 连接成功
        [self performSelector:@selector(showAlertWithConnectSuccess) withObject:nil afterDelay:1];
-        
+        // 关闭自动连接
+        self.isAutoConnect = NO;
     } else{
         // 连接失败
         [self.newAlert showError:self title:@"连接失败" subTitle:@"与蓝牙灯连接失败。" closeButtonTitle:@"好的" duration:0.0f];
@@ -899,10 +869,6 @@
     if ([notification.object isEqualToString:SUCCESS]) {
         // 设备已断开
         [self.newAlert showError:self title:@"已断开连接" subTitle:@"与蓝牙灯的连接已断开。" closeButtonTitle:@"好的" duration:1.0f];
-        // 状态标记
-        self.isAutoConnect = NO;
-        self.iPhone.isConnecting = NO;
-        self.lastConnectStatus = NO;
         // 按钮状态
         [self button:self.connectionButton state:ATButtonStateNormal];
         

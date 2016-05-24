@@ -36,7 +36,7 @@
                                     <constraint firstAttribute="width" constant="48" id="xqK-3k-XlV"/>
                                 </constraints>
                                 <inset key="contentEdgeInsets" minX="12" minY="12" maxX="12" maxY="12"/>
-                                <state key="normal" image="bulleted_list_filled"/>
+                                <state key="normal" image="Icon_Edit"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                         <integer key="value" value="24"/>
@@ -57,7 +57,7 @@
                                     <constraint firstAttribute="width" constant="48" id="Yu2-H4-h7O"/>
                                 </constraints>
                                 <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
-                                <state key="normal" image="new"/>
+                                <state key="normal" image="Icon_Add"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                         <integer key="value" value="24"/>
@@ -84,7 +84,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="iM8-Hi-nPP" secondAttribute="trailing" id="zeF-yf-MsY"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="情景模式" image="horizontal_settings_mixer_filled" id="eSm-tl-wgW"/>
+                    <tabBarItem key="tabBarItem" title="情景模式" image="Icon_Profiles" id="eSm-tl-wgW"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
@@ -199,8 +199,8 @@
                                                             <outlet property="delegate" destination="x64-ZZ-TpG" id="Ftb-jZ-era"/>
                                                         </connections>
                                                     </pickerView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="定时关机:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nn4-2b-RC3">
-                                                        <rect key="frame" x="0.0" y="0.0" width="73" height="21"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="定时关机：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nn4-2b-RC3">
+                                                        <rect key="frame" x="0.0" y="0.0" width="85" height="21"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="21" id="Tam-U0-d1e"/>
                                                         </constraints>
@@ -234,8 +234,8 @@
                                                             <action selector="colorSegmented:" destination="x64-ZZ-TpG" eventType="valueChanged" id="GOr-LI-fMx"/>
                                                         </connections>
                                                     </segmentedControl>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="色彩渐变:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FDv-eQ-ZNt">
-                                                        <rect key="frame" x="0.0" y="8" width="73" height="21"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="动画模式：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FDv-eQ-ZNt">
+                                                        <rect key="frame" x="0.0" y="8" width="85" height="21"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -578,7 +578,7 @@
                             <constraint firstItem="qsK-Yh-IkZ" firstAttribute="top" secondItem="oJn-yb-gZX" secondAttribute="bottom" id="wmS-rP-NEs"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="主页" image="dog_house" id="mfK-Sv-c5w"/>
+                    <tabBarItem key="tabBarItem" title="主页" image="Icon_Home" id="mfK-Sv-c5w"/>
                     <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
@@ -687,14 +687,14 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Icon_Add" width="48" height="48"/>
+        <image name="Icon_Edit" width="50" height="50"/>
+        <image name="Icon_Home" width="24" height="24"/>
+        <image name="Icon_Profiles" width="25" height="25"/>
         <image name="Icon_Save" width="48" height="48"/>
         <image name="Image_Palette" width="365" height="365"/>
         <image name="Lamp0" width="52" height="52"/>
-        <image name="SmartLamp_HomeLogo" width="260" height="260"/>
-        <image name="bulleted_list_filled" width="50" height="50"/>
-        <image name="dog_house" width="24" height="24"/>
-        <image name="horizontal_settings_mixer_filled" width="25" height="25"/>
-        <image name="new" width="48" height="48"/>
+        <image name="SmartLamp_HomeLogo" width="130" height="130"/>
         <image name="powerOff" width="24" height="24"/>
         <image name="powerOn" width="24" height="24"/>
     </resources>

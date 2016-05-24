@@ -10,6 +10,7 @@
 
 @implementation UITextField (ATText)
 
+// 设置文本框的状态
 - (void)textFieldState:(ATTextFieldState)state{
     
     self.layer.opacity = 1.0;

@@ -25,6 +25,7 @@ typedef NS_ENUM(NSUInteger,ATFileType){
 // 保存缓存
 + (void)saveCache:(ATProfiles *)aProfiles;
 
+// 读取缓存
 + (ATProfiles *)readCache;
 
 // 保存文件

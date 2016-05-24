@@ -11,6 +11,4 @@
 
 @interface BluetoothViewController : HomeViewController
 
-
-
 @end

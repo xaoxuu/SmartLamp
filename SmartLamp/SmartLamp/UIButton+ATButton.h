@@ -13,17 +13,18 @@
 // 按钮状态枚举
 typedef NS_ENUM(NSUInteger,ATButtonState){
     
-    // 按钮弹起
+    // 按钮正常状态
     ATButtonStateNormal,
-    // 按钮按下
+    // 按钮轻触时
     ATButtonStateTap,
     
-    // 按钮选中
+    // 按钮选中时
     ATButtonStateSelected,
-    // 按钮不可用
-    ATButtonStateDisable
+    // 按钮不可用时
+    ATButtonStateDisabled
 };
 
+// 设置按钮的状态
 - (void)buttonState:(ATButtonState)state;
 
 

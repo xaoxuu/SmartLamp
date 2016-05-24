@@ -8,11 +8,8 @@
 
 #import "ProfilesDetailsViewController.h"
 #import "UITextField+ATText.h"
-#import "HomeViewController.h"
-
 
 @interface ProfilesDetailsViewController () <UIPickerViewDataSource,UIPickerViewDelegate>
-
 
 @property (weak, nonatomic) IBOutlet UITextField *titleTextField;
 
@@ -34,7 +31,6 @@
 
 @property (weak, nonatomic) IBOutlet UISlider *brightnessSlider;
 
-//@property (weak, nonatomic) IBOutlet UIButton *saveButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *saveButton;
 
 @property (strong, nonatomic) NSArray *timeList;
@@ -58,23 +54,11 @@
     // Dispose of any resources that can be recreated.
 }
 
+// 视图即将出现的时候
 -(void)viewWillAppear:(BOOL)animated{
     
     // 更新视图控件内容
     [self updateFrame];
-    
-    
-    UIImage *image;
-    // 这里用do-while为了防止两次出现同样的内容, 优化体验
-    do {
-        int index = arc4random()%5;
-        NSString *imageName = [@"Lamp" stringByAppendingFormat:@"%d",index];
-        image = [UIImage imageNamed:imageName];
-    } while ([image isEqual:self.imageButton.currentBackgroundImage]);
-    
-    [self.imageButton setBackgroundImage:image forState:UIControlStateNormal];
-    
-
     
 }
 
@@ -192,12 +176,16 @@
 // 更新视图控件内容
 - (void)updateFrame{
     
-    // 标题
-    
-    // 描述
-    
     // 图片
-//    [self.imageButton setBackgroundImage:self.aProfiles.image forState:UIControlStateNormal];
+    UIImage *image;
+    // 这里用do-while为了防止两次出现同样的内容, 优化体验
+    do {
+        int index = arc4random()%5;
+        NSString *imageName = [@"Lamp" stringByAppendingFormat:@"%d",index];
+        image = [UIImage imageNamed:imageName];
+    } while ([image isEqual:self.imageButton.currentBackgroundImage]);
+    [self.imageButton setBackgroundImage:image forState:UIControlStateNormal];
+    
     // 定时关灯
     [self.timerPicker selectRow:(0.2 * self.aProfiles.timer) inComponent:0 animated:YES];
     // 色彩动画

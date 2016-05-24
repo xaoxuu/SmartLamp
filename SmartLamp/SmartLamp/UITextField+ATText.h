@@ -20,6 +20,7 @@ typedef NS_ENUM(NSUInteger,ATTextFieldState){
     
 };
 
+// 设置文本框的状态
 - (void)textFieldState:(ATTextFieldState)state;
 
 @end

@@ -10,6 +10,7 @@
 
 @implementation ATFileManager
 
+// 保存缓存
 + (void)saveCache:(ATProfiles *)aProfiles{
     
     NSData *data = [NSKeyedArchiver archivedDataWithRootObject:aProfiles];
@@ -17,6 +18,7 @@
     
 }
 
+// 读取缓存
 + (ATProfiles *)readCache{
     
     NSData *data = [NSData dataWithContentsOfFile:[self cachePath]];
@@ -28,7 +30,6 @@
 + (BOOL)saveFile:(ATFileType)file withPlist:(NSMutableArray *)plist{
     
     NSString *path;
-    
     BOOL result = NO;
     switch (file) {
         case ATFileTypeDevice: //
@@ -72,7 +73,7 @@
  
 }
 
-
+// 删除文件
 + (void)removeFile:(ATFileType)file{
     
     NSString *path;
@@ -90,8 +91,6 @@
     return;
     
 }
-
-
 
 // 获取 Document 下的文件完整路径
 + (NSString *)docPathWithFileName:(NSString *)fileName{

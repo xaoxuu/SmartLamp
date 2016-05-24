@@ -15,14 +15,14 @@
 #import "ATProfiles.h"
 
 // 通知
-#define BLUETOOTH @"蓝牙"
-#define CONNECT @"连接"
+#define BLUETOOTH  @"蓝牙"
+#define CONNECT    @"连接"
 #define DISCONNECT @"断开连接"
-#define DEVICE @"设备"
+#define DEVICE     @"设备"
 
-#define DISCOVER @"发现设备"
-#define SUCCESS @"连接成功"
-#define FAIL @"连接失败"
+#define DISCOVER   @"发现设备"
+#define SUCCESS    @"成功"
+#define FAIL       @"失败"
 
 
 
@@ -113,15 +113,6 @@
  *	@param color	颜色
  */
 - (void)letSmartLampSetColor:(UIColor *)color;
-
-/**
- *	@author Aesir Titan, 2016-05-16 10:05:18
- *
- *	@brief 设置蓝牙灯亮度
- *
- *	@param brightness	亮度值(0~100)
- */
-//- (void)letSmartLampSetBrightness:(CGFloat)brightness;
 
 /**
  *	@author Aesir Titan, 2016-04-29 15:04:46

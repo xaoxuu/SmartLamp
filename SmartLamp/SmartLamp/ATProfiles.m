@@ -12,23 +12,21 @@
 
 + (instancetype)defaultProfiles{
     
-    return [[self alloc] initWithDefault];
+    return [[ATProfiles alloc] init];
     
 }
 
-- (instancetype)initWithDefault{
+- (instancetype)init{
     
     if (self = [super init]) {
-        
         _title = @"情景模式";
         _detail = @"没有描述信息";
-        _image = [UIImage imageNamed:@"smartLamp"];
+        _image = [UIImage imageNamed:@"Lamp0"];
         _timer = 0;//0代表不定时关机
         _colorAnimation = ColorAnimationNone;
         _color = [UIColor whiteColor];
-        _brightness = 100.0f;
+        _brightness = 1.0f;
     }
-    
     return self;
     
 }
@@ -51,7 +49,7 @@
 }
 
 // 解档
-- (nullable instancetype)initWithCoder:(NSCoder *)aDecoder // NS_DESIGNATED_INITIALIZER
+- (nullable instancetype)initWithCoder:(NSCoder *)aDecoder
 {
     if(self = [super init])
     {

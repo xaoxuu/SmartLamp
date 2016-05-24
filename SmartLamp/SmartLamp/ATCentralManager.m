@@ -27,7 +27,7 @@ ATCentralManager *iPhone;
 // 颜色
 @property (strong, nonatomic) UIColor *color;
 
-// 亮度 (0~100)
+// 亮度 (0~1)
 @property (assign, nonatomic) CGFloat brightness;
 
 #pragma mark 状态标记
@@ -89,8 +89,7 @@ ATCentralManager *iPhone;
         if (self.peripheral) {
             // 调用连接周边设备的方法
             [self.manager connectPeripheral:self.peripheral options:nil];
-            // 状态标记
-            self.isConnecting = YES;
+            // 状态标记写在代理中
         }
         
     }
@@ -105,8 +104,7 @@ ATCentralManager *iPhone;
         
         // 调用断开连接的方法
         [self.manager cancelPeripheralConnection:self.peripheral];
-        // 更新状态值
-        self.isConnecting = NO;
+        // 状态标记写在代理中
         // 控制台输出
         NSLog(@"蓝牙设备已断开");
         
@@ -129,17 +127,6 @@ ATCentralManager *iPhone;
         // 关灯
         else {
             [iPhone letSmartLampSetColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0]];
-//            [self sendData:^(char *p) {
-//                
-//                *p++ = 0x07;                // 设备状态输出
-//                
-//                *p++ = 0x00;    //r
-//                *p++ = 0x00;  //g
-//                *p++ = 0x00;   //b
-//                *p++ = 0x00;                //w
-//                *p++ = 0x00; //brt
-//                
-//            }];
         }
 
     }
@@ -169,6 +156,19 @@ ATCentralManager *iPhone;
 
 #pragma mark 🔆 控制
 
+// 设置亮度
+- (void)letSmartLampSetBrightness:(CGFloat)brightness{
+    
+    // 只有在连接的状态下才执行设置亮度的指令
+    if (self.isConnecting) {
+        
+        CGFloat red=0,green=0,blue=0,bright=0;
+        [self.color getRed:&red green:&green blue:&blue alpha:&bright];
+        [self letSmartLampSetColor:[UIColor colorWithRed:red green:green blue:blue alpha:brightness]];
+    }
+    
+}
+
 // 设置颜色
 - (void)letSmartLampSetColor:(UIColor *)color{
     
@@ -181,20 +181,6 @@ ATCentralManager *iPhone;
         CGFloat red=0,green=0,blue=0,bright=0;
         [color getRed:&red green:&green blue:&blue alpha:&bright];
         
-        
-//        CGFloat red=0,green=0,blue=0,bright=0;
-//#warning sdf
-//        if ([color respondsToSelector:@selector(getRed:green:blue:alpha:)]) {
-//            [color getRed:&red green:&green blue:&blue alpha:&bright];
-//        }
-//        else {
-//            const CGFloat *components = CGColorGetComponents(color.CGColor);
-//            red = components[0];
-//            green = components[1];
-//            blue = components[2];
-//            bright = components[3];
-//        }
-    
         // 调用发送数据的Block
         [self sendData:^(char *p) {
             
@@ -208,19 +194,6 @@ ATCentralManager *iPhone;
             
         }];
         
-    }
-    
-}
-
-// 设置亮度
-- (void)letSmartLampSetBrightness:(CGFloat)brightness{
-    
-    // 只有在连接的状态下才执行设置亮度的指令
-    if (self.isConnecting) {
-        
-        CGFloat red=0,green=0,blue=0,bright=0;
-        [self.color getRed:&red green:&green blue:&blue alpha:&bright];
-        [self letSmartLampSetColor:[UIColor colorWithRed:red green:green blue:blue alpha:0.01*brightness]];
     }
     
 }
@@ -354,16 +327,19 @@ ATCentralManager *iPhone;
 // 连接成功的时候
 - (void)centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)aPeripheral
 {
+    
     NSLog(@"<手机>已连接: %@", aPeripheral.name);
     // 连接成功后设置代理
     aPeripheral.delegate = self;
     NSLog(@"<手机>代理设置成功");
+    // 状态标记写在代理中
+    self.isConnecting = YES;
+    
     // 发送通知
     [[NSNotificationCenter defaultCenter] postNotificationName:CONNECT object:SUCCESS];
     // 同时开始 查看这个周边对象服务 会在以下的方法回调
     //- (void) peripheral:(CBPeripheral *)aPeripheral didDiscoverServices:(NSError *)error;
     [aPeripheral discoverServices:nil];
-    
     
     // 停止扫描
     [self stopScan];
@@ -373,7 +349,8 @@ ATCentralManager *iPhone;
 // 周边对象与中心断开连接的时候
 - (void)centralManager:(CBCentralManager *)central didDisconnectPeripheral:(CBPeripheral *)aPeripheral error:(NSError *)error
 {
-    
+    // 状态标记写在代理中
+    self.isConnecting = NO;
     // 如果中心设备拥有一个周边对象
     if(self.peripheral)
     {
@@ -393,7 +370,7 @@ ATCentralManager *iPhone;
     NSLog(@"<手机>与%@连接失败. 错误信息是: %@", aPeripheral, [error localizedDescription]);
     // 发送通知
     [[NSNotificationCenter defaultCenter] postNotificationName:CONNECT object:FAIL];
-    //
+    // 如果中心设备拥有一个周边对象
     if(self.peripheral)
     {
         // 取消代理

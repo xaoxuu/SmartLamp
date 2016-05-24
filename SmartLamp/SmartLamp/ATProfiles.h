@@ -42,6 +42,7 @@ typedef NS_ENUM(NSUInteger,ColorAnimation){
 // 单色模式的亮度
 @property (assign, nonatomic) CGFloat brightness;
 
+// 构造方法
 + (ATProfiles *)defaultProfiles;
 
 
