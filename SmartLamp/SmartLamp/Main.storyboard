@@ -37,6 +37,7 @@
                                 </constraints>
                                 <inset key="contentEdgeInsets" minX="12" minY="12" maxX="12" maxY="12"/>
                                 <state key="normal" image="Icon_Edit"/>
+                                <state key="highlighted" image="Icon_Edit"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                         <integer key="value" value="24"/>
@@ -58,6 +59,7 @@
                                 </constraints>
                                 <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
                                 <state key="normal" image="Icon_Add"/>
+                                <state key="highlighted" image="Icon_Add"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                         <integer key="value" value="24"/>
