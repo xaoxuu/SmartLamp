@@ -854,7 +854,6 @@ SCLTimerDisplay *buttonTimer;
             
         case Notice:
             viewColor = UIColorFromHEX(0x727375);
-            viewColor = UIColorFromHEX(0x66CDFA);// 蓝色
             iconImage = SCLAlertViewStyleKit.imageOfNotice;
             break;
             
@@ -865,25 +864,21 @@ SCLTimerDisplay *buttonTimer;
             
         case Info:
             viewColor = UIColorFromHEX(0x2866BF);
-            viewColor = UIColorFromHEX(0x66CDFA);// 蓝色
             iconImage = SCLAlertViewStyleKit.imageOfInfo;
             break;
             
         case Edit:
             viewColor = UIColorFromHEX(0xA429FF);
-            viewColor = UIColorFromHEX(0x66CDFA);// 蓝色
             iconImage = SCLAlertViewStyleKit.imageOfEdit;
             break;
             
         case Waiting:
             viewColor = UIColorFromHEX(0x6c125d);
-            viewColor = UIColorFromHEX(0x66CDFA);// 蓝色
             break;
             
         case Question:
             viewColor = UIColorFromHEX(0x727375);
             iconImage = SCLAlertViewStyleKit.imageOfQuestion;
-            viewColor = UIColorFromHEX(0x66CDFA);// 蓝色
             break;
             
         case Custom:
@@ -1199,10 +1194,10 @@ SCLTimerDisplay *buttonTimer;
 {
     UIView *appView = (_usingNewWindow) ? [UIApplication sharedApplication].keyWindow.subviews.lastObject : _rootViewController.view;
     UIImage *image = [UIImage convertViewToImage:appView];
-    UIImage *blurSnapshotImage = [image applyBlurWithRadius:20.0f
-                                                  tintColor:[UIColor colorWithWhite:0.7f
+    UIImage *blurSnapshotImage = [image applyBlurWithRadius:5.0f
+                                                  tintColor:[UIColor colorWithWhite:0.2f
                                                                               alpha:0.7f]
-                                      saturationDeltaFactor:3.0f
+                                      saturationDeltaFactor:1.8f
                                                   maskImage:nil];
     
     _backgroundView.image = blurSnapshotImage;

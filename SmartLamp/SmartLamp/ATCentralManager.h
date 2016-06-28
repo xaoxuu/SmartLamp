@@ -11,8 +11,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <CoreBluetooth/CoreBluetooth.h>
-#import "ATProfiles.h"
+
+
 
 // 通知
 #define BLUETOOTH  @"蓝牙"

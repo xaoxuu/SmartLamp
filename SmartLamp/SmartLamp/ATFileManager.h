@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "ATProfiles.h"
 
 @interface ATFileManager : NSObject
 

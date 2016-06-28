@@ -69,6 +69,11 @@
     
 }
 
+- (IBAction)menuButton:(UIBarButtonItem *)sender {
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_LEFTVIEW object:LEFTVIEW_OPEN];
+    
+}
 
 #pragma mark - 🚫🚫🚫🚫🚫🚫🚫🚫🚫🚫 私有方法
 
@@ -132,7 +137,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseId];
     if (!cell) {
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:reuseId];
-        
+        cell.backgroundColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.0];
         /*🖥*/NSLog(@"新建了一个cell");
         
     }

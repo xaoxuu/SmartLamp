@@ -7,10 +7,10 @@
 //
 
 #import "ATCentralManager.h"
-#import "ATProfiles.h"
-#import "ATFileManager.h"
-#import "SCLAlertView.h"
-#import "UIButton+ATButton.h"
+
+#import <SCLAlertView.h>
+
+
 
 
 @interface ViewController : UIViewController

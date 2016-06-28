@@ -8,7 +8,7 @@
 
 #import "HomeViewController.h"
 #import "ASValueTrackingSlider.h"
-#import "UIImage+ImageEffects.h"
+#import <UIImage+ImageEffects.h>
 #import "UIImageView+GetColorAtPixel.h"
 
 @interface HomeViewController () <ASValueTrackingSliderDataSource,ASValueTrackingSliderDelegate>
@@ -45,7 +45,7 @@
     // Do any additional setup after loading the view.
     
     // 隐藏状态栏
-    [self prefersStatusBarHidden];
+//    [self prefersStatusBarHidden];
     
     // 初始化
     [self initialization];
@@ -120,7 +120,8 @@
 
     UITouch *touch = [touches anyObject];
     CGPoint point = [touch locationInView:self.palette];
-    
+    // 🖥
+    NSLog(@"point: %f,%f",point.x,point.y);
     // set background color of view
     // 设置视图背景颜色
     [self getColorAtPoint:point completion:^(UIColor *color) {
@@ -137,6 +138,15 @@
 }
 
 #pragma mark - 🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀 控件事件
+
+
+- (IBAction)menuButton:(UIBarButtonItem *)sender {
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_LEFTVIEW object:LEFTVIEW_OPEN];
+    
+    
+}
+
 
 - (IBAction)animationButton:(UIButton *)sender {
     
