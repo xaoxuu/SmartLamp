@@ -1,0 +1,15 @@
+PODS:
+  - MJRefresh (3.1.0)
+  - SCLAlertView-Objective-C (1.0.3)
+
+DEPENDENCIES:
+  - MJRefresh (~> 3.1.0)
+  - SCLAlertView-Objective-C (~> 1.0.3)
+
+SPEC CHECKSUMS:
+  MJRefresh: 743e6404967d1c2c688472ea3ecfde247d872db4
+  SCLAlertView-Objective-C: e83376218b431109dc5403adc63f8e9787db7b74
+
+PODFILE CHECKSUM: 338f05b9a4793fe88577a8f645b40e07e68e4e30
+
+COCOAPODS: 1.0.0

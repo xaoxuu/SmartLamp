@@ -1,0 +1,79 @@
+//
+//  PrefixHeader.pch
+//  SmartLamp
+//
+//  Created by Aesir Titan on 2016-06-27.
+//  Copyright © 2016 Titan Studio. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+
+#ifdef __OBJC__ // ==================== [ OC宏 ] ==================== //
+
+
+// ==================== [ 头文件 ] ==================== //
+#import "AppDelegate.h"
+// 库
+
+#import "ATColorManager.h"
+// Model
+#import "ATProfiles.h"
+#import "ATFileManager.h"
+#import "ATCentralManager.h"
+
+// Tools
+#import "UITextField+ATText.h"
+//#import <MJRefresh.h>
+#import "UIView+ATRect.h"
+#import "UIBarButtonItem+ATItem.h"
+#import "SCLAlertView+ATAlertView.h"
+
+
+// 单利 - 中心设备
+#define atCentralManager [ATCentralManager defaultCentralManager]
+
+// ==================== [ 尺寸 ] ==================== //
+#define SCREEN_W [UIScreen mainScreen].bounds.size.width
+#define SCREEN_H [UIScreen mainScreen].bounds.size.height
+#define SCREEN_CenterX SCREEN_W * 0.5
+#define SCREEN_CenterY SCREEN_H * 0.5
+
+
+// ==================== [ 颜色 ] ==================== //
+// 单例 - 颜色管理器
+#define atColor [ATColorManager defaultColorManager]
+
+
+// ==================== [ 通知 ] ==================== //
+
+// 单例 - 通知中心
+#define atNotificationCenter [NSNotificationCenter defaultCenter]
+
+#define NOTI_LEFTVIEW       @"LEFTVIEW"
+#define NOTI_LEFTVIEW_OPEN  @"OPEN"
+#define NOTI_LEFTVIEW_CLOSE @"CLOSE"
+
+
+#define NOTI_MESSAGE @"MESSAGE"
+
+
+#define atNotificationCenter_deviceStatus(string) [atNotificationCenter postNotificationName:@"deviceStatus" object:string]
+
+#ifdef DEBUG // ==================== [ 调试宏 ] ==================== //
+#define LOG_FUNC                NSLog(@"💬%s💬",__func__);
+#define LOG(description)        NSLog(@"💬%@",description);
+#define LOG_OBJ(description,obj)NSLog(@"💬%@:💬%@",description,obj);
+#define LOG_INTEGER(integer)    NSLog(@"💬%s:💬%d",__func__,integer);
+#define LOG_UINTEGER(uinteger)    NSLog(@"💬%s:💬%ld",__func__,uinteger);
+#define LOG_FLOAT(float)        NSLog(@"💬%s:💬%f",__func__,float);
+#define LOG_POINT(point)        NSLog(@"💬%s:💬%@",__func__,NSStringFromCGPoint(point));
+#define LOG_SIZE(size)          NSLog(@"💬%s:💬%@",__func__,NSStringFromCGSize(size));
+#define LOG_FRAME(frame)        NSLog(@"💬%s:💬%@",__func__,NSStringFromCGRect(frame));
+#endif // ==================== [ 调试宏 ] ==================== //
+#endif // ==================== [ OC宏 ] ==================== //
+#endif /* PrefixHeader_pch */
