@@ -52,7 +52,8 @@ static BOOL isScanedNewDevice = NO;
 static BOOL isConnected = NO;
 // 是否可发送数据
 static BOOL canSendData = NO;
-
+// 灯是否打开
+static BOOL isTurnOn = NO;
 @implementation ATCentralManager
 
 #pragma mark - 公有方法
@@ -261,8 +262,9 @@ static BOOL canSendData = NO;
     // 否则就显示单色模式(包含亮度)
     else{
         self.currentBrightness = self.currentProfiles.brightness;
-        self.currentProfiles.brightness = 0;
-        
+        if (!isTurnOn) {
+            self.currentProfiles.brightness = 0;
+        }
         if (!_brightTimer) {
             _brightTimer = [NSTimer scheduledTimerWithTimeInterval:0.05 target:self selector:@selector(turnOn) userInfo:nil repeats:YES];
         }
@@ -594,7 +596,9 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic
         _brightTimer = nil;
     }
     [self letSmartLampUpdateBrightness];
+    isTurnOn = YES;
 }
+
 // 渐暗关灯
 - (void)turnOff{
     self.currentProfiles.brightness -= 0.05;
@@ -608,6 +612,7 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic
         [_brightTimer fire];
         _brightTimer = nil;
     }
+    isTurnOn = NO;
 }
 
 #pragma mark 给蓝牙设备发送数据

@@ -29,7 +29,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="viY-9e-6cN">
                                 <rect key="frame" x="56" y="0.0" width="232" height="93"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="情景模式1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PfL-bN-ocA">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="情景模式" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PfL-bN-ocA">
                                         <rect key="frame" x="8" y="0.0" width="216" height="21"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                         <nil key="highlightedColor"/>
@@ -70,7 +70,6 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="EQU-kf-eaU" firstAttribute="top" secondItem="bVN-O6-zIN" secondAttribute="top" id="0Pv-dF-bt4"/>
                             <constraint firstItem="viY-9e-6cN" firstAttribute="leading" secondItem="EQU-kf-eaU" secondAttribute="trailing" constant="8" id="1J6-4M-mJ9"/>
@@ -81,7 +80,6 @@
                         </constraints>
                     </view>
                 </subviews>
-                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 <constraints>
                     <constraint firstItem="bVN-O6-zIN" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="Blq-Am-ReU"/>
                     <constraint firstAttribute="bottomMargin" secondItem="bVN-O6-zIN" secondAttribute="bottom" id="Cjx-qd-zXX"/>

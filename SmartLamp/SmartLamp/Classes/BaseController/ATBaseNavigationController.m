@@ -36,11 +36,11 @@
     // 标题颜色
     NSDictionary * dict = [NSDictionary dictionaryWithObject:atColor.backgroundColor forKey:NSForegroundColorAttributeName];
     self.navigationBar.titleTextAttributes = dict;
-    // 隐藏分割线
+//     隐藏分割线
     [self.navigationBar.subviews[0].subviews[0] removeFromSuperview];
     // 不透明
     self.navigationBar.translucent = NO;
-
+    
 }
 
 

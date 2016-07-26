@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "电.png",
+      "filename" : "menu.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "电-1.png",
+      "filename" : "menu-1.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "电-2.png",
+      "filename" : "menu-2.png",
       "scale" : "3x"
     }
   ],

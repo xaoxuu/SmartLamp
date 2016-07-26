@@ -51,9 +51,9 @@
     self.sceneVC = [[SceneViewController alloc] init];
     self.deviceVC = [[DeviceViewController alloc] init];
     
-    [self at_setupChlidController:[[ATBaseNavigationController alloc] initWithRootViewController:self.homeVC] title:@"主页" image:@"tabbar_mainframe" selectedImage:@"tabbar_mainframeHL"];
-    [self at_setupChlidController:[[ATBaseNavigationController alloc] initWithRootViewController:self.sceneVC] title:@"情景" image:@"tabbar_contacts" selectedImage:@"tabbar_contactsHL"];
-    [self at_setupChlidController:[[ATBaseNavigationController alloc] initWithRootViewController:self.deviceVC] title:@"设备" image:@"tabbar_discover" selectedImage:@"tabbar_discoverHL"];
+    [self at_setupChlidController:[[ATBaseNavigationController alloc] initWithRootViewController:self.homeVC] title:@"主页" image:@"tabbar_home" selectedImage:@"tabbar_home"];
+    [self at_setupChlidController:[[ATBaseNavigationController alloc] initWithRootViewController:self.sceneVC] title:@"情景" image:@"tabbar_scene" selectedImage:@"tabbar_scene"];
+    [self at_setupChlidController:[[ATBaseNavigationController alloc] initWithRootViewController:self.deviceVC] title:@"设备" image:@"tabbar_device" selectedImage:@"tabbar_device"];
     
 }
 

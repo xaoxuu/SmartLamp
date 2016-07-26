@@ -16,6 +16,7 @@
 @interface SceneViewController () <UITableViewDataSource, UITableViewDelegate>
 // table view
 @property (strong, nonatomic) UITableView *tableView;
+
 // 情景模式列表
 @property (strong, nonatomic) NSMutableArray<ATProfiles *> *sceneList;
 // 已选行
@@ -53,6 +54,10 @@
     [self reloadData];
 }
 
+- (void)viewDidDisappear:(BOOL)animated{
+    [self.tableView setEditing:NO animated:YES];
+    [ATFileManager saveProfilesList:self.sceneList];
+}
 
 #pragma mark - 私有方法
 
@@ -71,12 +76,13 @@
     self.selectedView.backgroundColor = atColor.themeColor;
     [self.view addSubview:self.selectedView];
     
+    
 }
 
 - (void)_initNavigationBar{
     self.navigationItem.title = @"情景模式";
-    self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithImage:@"add" highImage:@"add" target:self action:@selector(leftBarBtn)];
-    self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithImage:@"add" highImage:@"add" target:self action:@selector(rightBarBtn)];
+    self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithImage:@"scene_menu" highImage:@"scene_menu" target:self action:@selector(leftBarBtn)];
+    self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithImage:@"scene_add" highImage:@"scene_add" target:self action:@selector(rightBarBtn)];
     
 }
 
@@ -95,6 +101,7 @@
     self.selectedRow += 1;
     [ATFileManager saveProfilesList:self.sceneList];
     [self reloadData];
+    [self.tableView setEditing:NO animated:YES];
 }
 
 - (void)_initTableView{
@@ -113,6 +120,7 @@
     [self.view addSubview:self.tableView];
     self.tableView.backgroundColor = atColor.backgroundColor;
     
+    
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         [self reloadData];
     }];
@@ -125,6 +133,8 @@
     
     [self.tableView reloadData];
     [self.tableView.mj_header endRefreshing];
+    
+    
 }
 
 // 设置选中行
@@ -156,6 +166,7 @@
     // 应用情景模式
     [atCentralManager letSmartLampApplyProfiles:self.sceneList[indexPath.row]];
     self.selectedRow = indexPath.row;
+    [self reloadData];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{

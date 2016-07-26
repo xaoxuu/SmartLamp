@@ -155,10 +155,18 @@
 
 #pragma mark 构造方法
 
-// defaultCentralManager (可以用此方法快速创建一个单例对象)
+/**
+ *	@author Aesir Titan, 2016-04-29 16:07:35
+ *
+ *	@brief 静态构造方法
+ */
 + (instancetype)defaultCentralManager;
 
-// sharedCentralManager
+/**
+ *	@author Aesir Titan, 2016-04-29 16:07:52
+ *
+ *	@brief 实例构造方法
+ */
 + (instancetype)sharedCentralManager;
 
 

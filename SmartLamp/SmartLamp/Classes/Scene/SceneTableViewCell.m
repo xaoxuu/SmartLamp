@@ -76,6 +76,8 @@
         self.sceneTimer.text = @"";
     }
     
+    
+    
 }
 
 
@@ -86,6 +88,9 @@
     NSString *tmp = [NSString stringWithFormat:@"%d",arc4random()%8];
     self.sceneImage.image = [UIImage imageNamed:tmp];
     self.sceneImage.clipsToBounds = YES;
+    
+    self.backgroundColor = [UIColor clearColor];
+    
 }
 
 @end
