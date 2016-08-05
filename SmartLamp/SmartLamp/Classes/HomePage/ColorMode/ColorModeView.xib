@@ -42,7 +42,7 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TWg-66-O6x">
                             <rect key="frame" x="8" y="240" width="304" height="52"/>
                             <subviews>
-                                <button opaque="NO" tag="38" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="62G-cn-Kcc" customClass="ATMaterialButton">
+                                <button opaque="NO" tag="38" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="62G-cn-Kcc" customClass="ATRadioButton">
                                     <rect key="frame" x="8" y="8" width="91" height="36"/>
                                     <color key="backgroundColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
@@ -60,7 +60,7 @@
                                         <action selector="animationBtn:" destination="iN0-l3-epB" eventType="touchUpInside" id="qpU-ze-0l6"/>
                                     </connections>
                                 </button>
-                                <button opaque="NO" tag="39" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="eVh-ry-cNv" customClass="ATMaterialButton">
+                                <button opaque="NO" tag="39" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="eVh-ry-cNv" customClass="ATRadioButton">
                                     <rect key="frame" x="107" y="8" width="90" height="36"/>
                                     <color key="backgroundColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
@@ -78,7 +78,7 @@
                                         <action selector="animationBtn:" destination="iN0-l3-epB" eventType="touchUpInside" id="uag-yI-MmE"/>
                                     </connections>
                                 </button>
-                                <button opaque="NO" tag="40" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="9ny-aV-TZ7" customClass="ATMaterialButton">
+                                <button opaque="NO" tag="40" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="9ny-aV-TZ7" customClass="ATRadioButton">
                                     <rect key="frame" x="205" y="8" width="91" height="36"/>
                                     <color key="backgroundColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
@@ -113,7 +113,6 @@
                             </constraints>
                         </view>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstItem="ccG-ak-60d" firstAttribute="top" secondItem="GAi-aH-9M3" secondAttribute="top" id="2F6-0N-84V"/>
                         <constraint firstItem="TWg-66-O6x" firstAttribute="leading" secondItem="GAi-aH-9M3" secondAttribute="leading" constant="8" id="3xt-MA-V4Q"/>
@@ -125,7 +124,6 @@
                     </constraints>
                 </view>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="GAi-aH-9M3" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Y83-g9-0Wc"/>
                 <constraint firstItem="GAi-aH-9M3" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Z5G-iO-Jq0"/>

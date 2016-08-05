@@ -8,159 +8,121 @@
 
 #import "ColorModeView.h"
 #import "UIImageView+GetColorAtPixel.h"
-#import "ATMaterialButton.h"
+#import "ATRadioButton.h"
+#import "CALayer+ATLayer.h"
 
 @interface ColorModeView ()
 
-// 中心设备, 单例
-@property (strong, nonatomic) ATCentralManager *centralManager;
-
+// palette
 @property (weak, nonatomic) IBOutlet UIImageView *palette;
-
+// palette view
 @property (weak, nonatomic) IBOutlet UIView *paletteView;
-
-@property (weak, nonatomic) UIPanGestureRecognizer *pan;
-
-@property (weak, nonatomic) UITapGestureRecognizer *tap;
-
-
-// 圆环
+// circle
 @property (strong, nonatomic) UIImageView *circle;
-
+// color animation view
 @property (weak, nonatomic) IBOutlet UIView *colorAnimationBtnView;
+// gesture signal
+@property (strong, nonatomic) RACSignal *gesture;
 
 @end
 
 @implementation ColorModeView
 
-#pragma mark - 视图事件
+#pragma mark - view events
 
 - (void)awakeFromNib{
     [self layoutIfNeeded];
     
-    // 初始化UI
+    // init UI
     [self _initUI];
-    // 设置手势
-    [self _setupGestureRecognizer];
+    // subscribeRAC
+    [self subscribeRAC];
+    // setup gesture
+    [self setupGestureRecognizer];
     
 }
 
-// 滑动手势
-- (void)pan:(UIPanGestureRecognizer *)sender {
-    [self deSelectAnimationButton];
-    CGPoint point = [sender locationInView:self.palette];
-    //set background color of view
-    // 设置视图背景颜色
-    [self getColorAtPoint:point completion:^(UIColor *color) {
-        // 更新颜色
-        atCentralManager.currentProfiles.color = color;
-        // 更新蓝牙灯状态
-        [atCentralManager letSmartLampUpdateColor];
-        // 更新圆环位置
-        [self updateCircleWithPoint:point];
-        
-    }];
-}
-
-// 点击手势
-- (void)tap:(UITapGestureRecognizer *)sender {
-    [self deSelectAnimationButton];
-    CGPoint point = [sender locationInView:self.palette];
-    //set background color of view
-    // 设置视图背景颜色
-    [self getColorAtPoint:point completion:^(UIColor *color) {
-        // 更新颜色
-        atCentralManager.currentProfiles.color = color;
-        // 更新蓝牙灯状态
-        [atCentralManager letSmartLampUpdateColor];
-        // 更新圆环位置
-        [self updateCircleWithPoint:point];
-        
-    }];
-}
-
-#pragma mark - 控件事件
-
-// 点击了动画按钮
-- (IBAction)animationBtn:(ATMaterialButton *)sender {
+// animation button events
+- (IBAction)animationBtn:(UIButton *)sender {
     atCentralManager.currentProfiles.colorAnimation = sender.tag;
     [atCentralManager letSmartLampPerformColorAnimation];
 }
 
+#pragma mark - private methods
 
-
-#pragma mark - 私有方法
-
-// 初始化UI
+// init UI
 - (void)_initUI{
-    self.palette.layer.shadowOffset = CGSizeMake(0, 0);
-    self.palette.layer.shadowRadius = 2;
-    self.palette.layer.shadowOpacity = 0.5;
+    self.palette.layer.at_shadowOpacity(0.5).at_shadowOffset(CGSizeZero).at_shadowRadius(2);
 }
-// 设置手势
-- (void)_setupGestureRecognizer{
+
+// subscribeRAC
+- (void)subscribeRAC{
     
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap:)];
-    self.tap = tap;
-    [self.paletteView addGestureRecognizer:self.tap];
-    
-    UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(pan:)];
-    self.pan = pan;
-    [self.paletteView addGestureRecognizer:self.pan];
-    
-    
+    // turn on
+    [atCentralManager.didPerformColorAnimation subscribeNext:^(id x) {
+        if (![x boolValue]) {
+            [self deSelectAllButton];
+        }
+    }];
     
 }
 
-// Access to the specified pixel color, and perform operations
-// 获取指定像素点的颜色, 并执行操作
-- (void)getColorAtPoint:(CGPoint)point completion:(void(^)(UIColor *color))completion{
+// setup gesture
+- (void)setupGestureRecognizer{
+    // tap
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] init];
+    [self.paletteView addGestureRecognizer:tap];
+    // pan
+    UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] init];
+    [self.paletteView addGestureRecognizer:pan];
     
-    CGFloat x = point.x - 0.5*self.palette.frame.size.width - 1;
-    CGFloat y = point.y - 0.5*self.palette.frame.size.height - 1;
-    CGFloat r = 0.5 * (self.palette.frame.size.width - 5);
+    // merge tap and pan gesture
+    self.gesture = [tap.rac_gestureSignal merge:pan.rac_gestureSignal];
+    [self.gesture subscribeNext:^(UIGestureRecognizer *sender) {
+        // touch point
+        CGPoint point = [sender locationInView:self.palette];
+        // color from touch point
+        [self.palette at_getColorFromCircleWithPoint:point completion:^(UIColor *color) {
+            // update color
+            atCentralManager.currentProfiles.color = color;
+            [atCentralManager letSmartLampUpdateColor];
+            atCentralManager.currentProfiles.colorAnimation = ColorAnimationNone;
+            // update UI
+            [self updateCircleWithPoint:point];
+            [self deSelectAllButton];
+        }];
+    }];
     
-    // When the touch point is inside palette coordinates.
-    // 当触摸点在取色板内部时调用
-    if (powf(x,2) + powf(y, 2) < powf(r, 2)) {
-        completion([self.palette at_getColorAtPixel:point]);
-        atCentralManager.currentProfiles.colorAnimation = ColorAnimationNone;
+}
+
+// deselect all button
+- (void)deSelectAllButton{
+    for (ATRadioButton *btn in self.colorAnimationBtnView.subviews) {
+        [btn deSelectAllButton];
     }
-    
 }
 
-// 更新圆环的位置
+// update circle point
 - (void)updateCircleWithPoint:(CGPoint)point{
-    
-    [self.circle removeFromSuperview];
     CGSize size = self.circle.frame.size;
     point.x -= size.width * 0.5;
     point.y -= size.height * 0.5;
     self.circle.frame = (CGRect){point,size};
-    
-    [self.palette addSubview:self.circle];
-    
+    [self layoutIfNeeded];
 }
 
-// 取消选中动画按钮
-- (void)deSelectAnimationButton{
-    for (ATMaterialButton *btn in self.colorAnimationBtnView.subviews) {
-        btn.selected = NO;
-    }
-}
 
-#pragma mark 懒加载
+#pragma mark lazy load
 
+// circle
 -(UIImageView *)circle{
-    
     if (!_circle) {
         self.circle = [[UIImageView alloc] initWithFrame:(CGRect){0,0,20,20}];
         self.circle.image = [UIImage imageNamed:@"Icon_Circle"];
         [self.circle setUserInteractionEnabled:NO];
+        [self.palette addSubview:_circle];
     }
-    
     return _circle;
-    
 }
 
 @end

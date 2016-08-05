@@ -8,16 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "ATTabBar.h"
-#import "HomeViewController.h"
-#import "SceneViewController.h"
-#import "DeviceViewController.h"
 
 
 @interface ATBaseTabBarController : UITabBarController
 
-@property (strong, nonatomic) HomeViewController *homeVC;
-@property (strong, nonatomic) SceneViewController *sceneVC;
-@property (strong, nonatomic) DeviceViewController *deviceVC;
 
 @property (strong, nonatomic) ATTabBar *atTabBar;
 

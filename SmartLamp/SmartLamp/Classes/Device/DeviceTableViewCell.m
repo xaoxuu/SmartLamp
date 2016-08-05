@@ -9,13 +9,15 @@
 #import "DeviceTableViewCell.h"
 
 @interface DeviceTableViewCell ()
+
+// content view
 @property (weak, nonatomic) IBOutlet UIView *content;
 
 @end
 
 @implementation DeviceTableViewCell
 
-#pragma mark - 视图事件
+#pragma mark - view events
 
 - (void)awakeFromNib {
     [super awakeFromNib];
@@ -30,62 +32,57 @@
 
 - (void)layoutSubviews{
     [super layoutSubviews];
-    // 初始化UI
+    // init UI
     [self _initUI];
-    // 设置通知
-    [self _setupNotification];
+    // subscribeRAC
+    [self subscribeRAC];
+    // handle switch events
+    [self handleSwitchEvents];
     
 }
 
-#pragma mark - 控件事件
-// switch
-- (IBAction)cellSwitchTouchUp:(UISwitch *)sender {
-    if (sender.on) {
-        [atCentralManager connectSmartLamp:self.model];
-        [sender setOn:YES animated:YES];
-    }else{
-        [atCentralManager disConnectSmartLamp];
-        [sender setOn:NO animated:YES];
-    }
+// handle switch events
+- (void)handleSwitchEvents{
+    [[self.cell_switch rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(UISwitch *sender) {
+        // do something
+        if (sender.on) {
+            [atCentralManager connectSmartLamp:self.model];
+            [sender setOn:YES animated:YES];
+        }else{
+            [atCentralManager disConnectSmartLamp];
+            [sender setOn:NO animated:YES];
+        }
+    }];
 }
 
 
-#pragma mark - 私有方法
+#pragma mark - private methods
 
-#pragma mark 初始化
-// 初始化UI
+// subscribeRAC
+- (void)subscribeRAC{
+    [atCentralManager.didConnectSuccess subscribeNext:^(id x) {
+        [self.cell_switch setOn:YES animated:YES];
+    }];
+    [atCentralManager.didConnectFail subscribeNext:^(id x) {
+        [self.cell_switch setOn:NO animated:YES];
+    }];
+    [atCentralManager.didDisconnect subscribeNext:^(id x) {
+        [self.cell_switch setOn:NO animated:YES];
+    }];
+}
+
+
+#pragma mark initialization methods
+
+// init UI
 - (void)_initUI{
     
     self.cell_switch.onTintColor = atColor.themeColor;
     
 }
 
-// 设置通知
-- (void)_setupNotification{
-    
-    [atNotificationCenter addObserver:self selector:@selector(receiveConnectNotification:) name:NOTI_BLE_CONNECT object:nil];
-    
-}
 
-#pragma mark 通知
 
-// 连接状态通知
-- (void)receiveConnectNotification:(NSNotification *)noti{
-    if ([noti.name isEqualToString:NOTI_BLE_CONNECT]) {
-        // 连接成功
-        if ([noti.object isEqualToString:NOTI_BLE_CONNECT_SUCCESS]) {
-            [self.cell_switch setOn:YES animated:YES];
-        }
-        // 连接失败
-        else if ([noti.object isEqualToString:NOTI_BLE_CONNECT_FAIL]){
-            [self.cell_switch setOn:NO animated:YES];
-        }
-        // 断开连接
-        else if([noti.object isEqualToString:NOTI_BLE_CONNECT_DISCONNECT]){
-            [self.cell_switch setOn:NO animated:YES];
-        }
-    }
-}
 
 
 @end

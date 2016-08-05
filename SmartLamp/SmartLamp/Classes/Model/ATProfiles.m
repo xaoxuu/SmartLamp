@@ -32,9 +32,9 @@
 }
 
 
-#pragma mark 📂 归档解档
+#pragma mark archive and unarchive
 
-// 归档
+// archive
 - (void)encodeWithCoder:(NSCoder *)aCoder
 {
     [aCoder encodeObject:self.title forKey:@"title"];
@@ -48,7 +48,7 @@
     
 }
 
-// 解档
+// unarchive
 - (nullable instancetype)initWithCoder:(NSCoder *)aDecoder
 {
     if(self = [super init])
@@ -65,25 +65,6 @@
     }
     return self;
 }
-
-+ (instancetype)aProfilesWithProfiles:(ATProfiles *)aProfiles image:(UIImage *)image {
-    return [[ATProfiles alloc] initWithProfiles:aProfiles image:image];
-}
-
-- (instancetype)initWithProfiles:(ATProfiles *)aProfiles image:(UIImage *)image{
-    if (self = [super init]) {
-        _title = [NSString stringWithFormat:@"%@",aProfiles.title];
-        _detail = [NSString stringWithFormat:@"%@",aProfiles.detail];
-        
-        _image = image;
-        _timer = aProfiles.timer;
-        _colorAnimation = aProfiles.colorAnimation;
-        _color = [UIColor colorWithCGColor:aProfiles.color.CGColor];
-        _brightness = aProfiles.brightness;
-    }
-    return self;
-}
-
 
 
 @end

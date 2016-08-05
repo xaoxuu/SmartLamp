@@ -7,13 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <SCLAlertView.h>
+#import "SCLAlertView.h"
 #import "ATRootViewController.h"
 
 
 @interface ATBaseViewController : UIViewController
 
-
-
+// rac be selected
+@property (strong, nonatomic) RACSubject *didSelected;
 
 @end

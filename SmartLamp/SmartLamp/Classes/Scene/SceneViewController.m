@@ -9,37 +9,44 @@
 #import "SceneViewController.h"
 #import "ATRadarAnimationView.h"
 #import "SceneTableViewCell.h"
-#import <MJRefresh.h>
+#import "MJRefresh.h"
 #import "HomeViewController.h"
+#import "UITableView+ATTableView.h"
 
 #define NIB_SCENE @"SceneTableViewCell"
 @interface SceneViewController () <UITableViewDataSource, UITableViewDelegate>
+
 // table view
 @property (strong, nonatomic) UITableView *tableView;
-
-// 情景模式列表
+// scene list
 @property (strong, nonatomic) NSMutableArray<ATProfiles *> *sceneList;
-// 已选行
+// selected row
 @property (assign, nonatomic) NSUInteger selectedRow;
-// 已选行左侧的view
+// selected left view
 @property (strong, nonatomic) UIView *selectedView;
-// 已选行的y坐标
+// selected left view point.y
 @property (assign, nonatomic) CGFloat selectedY;
 
 @end
 
 @implementation SceneViewController
-#pragma mark - 视图事件
+
+#pragma mark - view events
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    // 初始化table view
-    [self _initTableView];
-    // 初始化UI
+    // init UI
     [self _initUI];
-    // 初始化导航栏
-    [self _initNavigationBar];
+    // subscribe RAC
+    [self subscribeRAC];
+    // setup table view
+    [self setupTableView];
+    // setup selected view
+    [self setupSelectedView];
+    // setup navigation bar
+    [self setupNavigationBar];
     
     
 }
@@ -48,7 +55,6 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
 
 - (void)viewWillAppear:(BOOL)animated{
     [self reloadData];
@@ -59,149 +65,184 @@
     [ATFileManager saveProfilesList:self.sceneList];
 }
 
-#pragma mark - 私有方法
+#pragma mark - private methods
 
-#pragma mark 懒加载
+// setup selectedview
+- (void)setupSelectedView{
+    // init and add to superview
+    self.selectedView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 4, 110)];
+    [self.view addSubview:self.selectedView];
+    // style
+    self.selectedView.backgroundColor = atColor.themeColor;
+}
+
+// reload data
+- (void)reloadData{
+    
+    [self.tableView reloadData];
+    [self.tableView.mj_header endRefreshing];
+    
+}
+
+// set selected row
+- (void)setSelectedRow:(NSUInteger)selectedRow{
+    _selectedRow = selectedRow;
+    [UIView animateWithDuration:0.38f animations:^{
+        self.selectedView.at_y = self.tableView.rowHeight * selectedRow + 1 - self.tableView.contentOffset.y;
+    }];
+}
+
+
+#pragma mark lazy load
+
+// sceneList
 - (NSMutableArray<ATProfiles *> *)sceneList{
     if (!_sceneList) {
         _sceneList = [ATFileManager readProfilesList];
     }
     return _sceneList;
 }
-#pragma mark 🚫 初始化
 
+
+#pragma mark initialization methods
+
+// init UI
 - (void)_initUI{
     
-    self.selectedView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 4, 110)];
-    self.selectedView.backgroundColor = atColor.themeColor;
-    [self.view addSubview:self.selectedView];
-    
-    
 }
 
-- (void)_initNavigationBar{
+// subscribeRAC
+- (void)subscribeRAC{
+    [self.didSelected subscribeNext:^(id x) {
+        [self.tableView.mj_header beginRefreshing];
+    }];
+}
+
+// setup navigation bar
+- (void)setupNavigationBar{
     self.navigationItem.title = @"情景模式";
-    self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithImage:@"scene_menu" highImage:@"scene_menu" target:self action:@selector(leftBarBtn)];
-    self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithImage:@"scene_add" highImage:@"scene_add" target:self action:@selector(rightBarBtn)];
-    
-}
-
-// 导航栏左按钮
-- (void)leftBarBtn{
-    if (self.tableView.editing) {
+    // left button
+    self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithImage:@"scene_menu" highImage:@"scene_menu" action:^{
+        if (self.tableView.editing) {
+            [self.tableView setEditing:NO animated:YES];
+        }else{
+            [self.tableView setEditing:YES animated:YES];
+        }
+    }];
+    // right button
+    self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithImage:@"scene_add" highImage:@"scene_add" action:^{
+        ATProfiles *aProfiles = [ATProfiles defaultProfiles];
+        [self.sceneList insertObject:aProfiles atIndex:0];
+        self.selectedRow += 1;
+        [ATFileManager saveProfilesList:self.sceneList];
+        [self.tableView.mj_header endRefreshing];
         [self.tableView setEditing:NO animated:YES];
-    }else{
-        [self.tableView setEditing:YES animated:YES];
-    }
-}
-// 导航栏右按钮
-- (void)rightBarBtn{
-    ATProfiles *aProfiles = [ATProfiles defaultProfiles];
-    [self.sceneList insertObject:aProfiles atIndex:0];
-    self.selectedRow += 1;
-    [ATFileManager saveProfilesList:self.sceneList];
-    [self reloadData];
-    [self.tableView setEditing:NO animated:YES];
+    }];
+    
 }
 
-- (void)_initTableView{
-    
-    self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds];
-    self.tableView.dataSource = self;
-    self.tableView.delegate = self;
-    [self.tableView registerNib:[UINib nibWithNibName:NIB_SCENE bundle:[NSBundle mainBundle]] forCellReuseIdentifier:NIB_SCENE];
-    self.tableView.rowHeight = 110;
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    
-    self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 1, 1)];
-    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 1, 76)];
-    
-    self.tableView.sectionHeaderHeight = 0;
-    [self.view addSubview:self.tableView];
-    self.tableView.backgroundColor = atColor.backgroundColor;
-    
-    
+// setup table view
+- (void)setupTableView{
+    // init and add to superview
+    self.tableView = [UITableView at_tableViewWithTarget:self frame:normal registerNibForCellReuseIdentifier:NIB_SCENE];
+    // table header and footer height
+    self.tableView.at_tableHeaderView(none).at_sectionHeaderHeight(0).at_rowHeight(110);
+    // refresh
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        [self.tableView.mj_header endRefreshing];
         [self reloadData];
     }];
     
 }
 
-#pragma mark 重载数据
 
-- (void)reloadData{
-    
-    [self.tableView reloadData];
-    [self.tableView.mj_header endRefreshing];
-    
-    
+
+#pragma mark - table view data source
+
+// number of sections
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 1;
 }
 
-// 设置选中行
-- (void)setSelectedRow:(NSUInteger)selectedRow{
-    _selectedRow = selectedRow;
-    
-    [UIView animateWithDuration:0.2 animations:^{
-        self.selectedView.at_y = self.tableView.rowHeight * selectedRow + 1 - self.tableView.contentOffset.y;
-    }];
-    
-}
-
-#pragma mark - 🔵🔵🔵🔵🔵🔵🔵🔵🔵🔵 数据源和代理
-
-
+// number of rows in section
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return self.sceneList.count;
 }
 
+// cell
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    // dequeue reusable cell with reuse identifier
     SceneTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NIB_SCENE];
+    // do something
     cell.model = self.sceneList[indexPath.row];
+    // return cell
     return cell;
 }
 
-// 选中
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    // 应用情景模式
-    [atCentralManager letSmartLampApplyProfiles:self.sceneList[indexPath.row]];
-    self.selectedRow = indexPath.row;
-    [self reloadData];
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return 0;
-}
-
-
-// 删除
+// commit editing style
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
+    // will delete
     if (editingStyle == UITableViewCellEditingStyleDelete) {
+        // NSMutableArray remove object at index
         [self.sceneList removeObjectAtIndex:indexPath.row];
+        // save cache
         [ATFileManager saveProfilesList:self.sceneList];
+        // table view delete rows at index path
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
         if (self.selectedRow || !self.sceneList.count) {
             self.selectedRow -= 1;
         }
     }
 }
-// 移动
+
+// move
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath{
+    // get source from modelList
     id source = self.sceneList[sourceIndexPath.row];
+    // remove source from modelList
     [self.sceneList removeObjectAtIndex:sourceIndexPath.row];
+    // insert source to destination index path
     [self.sceneList insertObject:source atIndex:destinationIndexPath.row];
+    // save cache
     [ATFileManager saveProfilesList:self.sceneList];
-    
 }
 
-// 开始滑动
+
+#pragma mark table view delegate
+
+// did select row
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    // deselect row
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    // do something
+    // apply scene mode
+    [atCentralManager letSmartLampApplyProfiles:self.sceneList[indexPath.row]];
+    self.selectedRow = indexPath.row;
+    [self.tableView.mj_header endRefreshing];
+}
+
+
+#pragma mark - scroll view delegate
+
+// will begin dragging
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
     self.selectedY = _selectedView.at_y + scrollView.contentOffset.y;
 }
 
-// 滑动
+// scrolling
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
     self.selectedView.at_y = self.selectedY - scrollView.contentOffset.y;
 }
+
+// did zoom
+- (void)scrollViewDidZoom:(UIScrollView *)scrollView NS_AVAILABLE_IOS(3_2){
+    
+}
+
+// did scroll to top
+- (void)scrollViewDidScrollToTop:(UIScrollView *)scrollView{
+    
+}
+
 
 @end

@@ -10,17 +10,17 @@
 
 @interface UITextField (ATText)
 
-// 文本框状态枚举
+// textfiled status
 typedef NS_ENUM(NSUInteger,ATTextFieldState){
     
-    // 非编辑状态
+    // not editing
     ATTextFieldStateEditEnd,
-    // 编辑状态
+    // editing
     ATTextFieldStateEditing,
     
 };
 
-// 设置文本框的状态
+// set status
 - (void)textFieldState:(ATTextFieldState)state;
 
 @end

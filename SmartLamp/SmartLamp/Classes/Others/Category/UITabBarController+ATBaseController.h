@@ -11,11 +11,11 @@
 @interface UITabBarController (ATBaseController)
 
 
-#pragma mark - 主要方法
+#pragma mark - main
 - (BOOL)at_setupChlidController:(UINavigationController * __nonnull)vc title:(NSString * __nullable)title image:(NSString * __nonnull)image selectedImage:(NSString * __nullable)selectedImage;
 
 
-#pragma mark - 风格自定义
+#pragma mark - detail
 
 - (void)at_initWithDefaultStyle;
 

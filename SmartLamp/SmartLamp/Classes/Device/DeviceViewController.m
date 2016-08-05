@@ -10,36 +10,40 @@
 #import "ATRadarAnimationView.h"
 
 #import "DeviceTableViewCell.h"
-#import <MJRefresh.h>
+#import "MJRefresh.h"
+#import "UITableView+ATTableView.h"
 
 #define NIB_DEVICE @"DeviceTableViewCell"
 @interface DeviceViewController () <UITableViewDataSource, UITableViewDelegate>
 
+// table view
 @property (strong, nonatomic) UITableView *tableView;
-
+// connected peripheral
 @property (strong, nonatomic) CBPeripheral *connectedPeripheral;
-
+// scaned device list
 @property (strong, nonatomic) NSArray *scanedDeviceList;
 
 @end
 
 @implementation DeviceViewController
 
-#pragma mark - 视图事件
+#pragma mark - view events
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    // 初始化导航栏
-    [self _initNavigationBar];
-    // 初始化表视图
-    [self _initTableView];
-    // 设置通知
-    [self _setupNotification];
+    // setupNavigationBar
+    [self setupNavigationBar];
+    // setupTableView
+    [self setupTableView];
+    // subscribeRAC
+    [self subscribeRAC];
     
     
 }
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -49,101 +53,64 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    // do not allows to show alert
     AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
     appDelegate.rootVC.allowsShowAlert = NO;
+    // reload data
+    [self reloadData];
+    // start scan
     [atCentralManager startScanWithAutoTimeout];
 }
+
 - (void)viewDidDisappear:(BOOL)animated{
     [super viewDidDisappear:animated];
-    [atCentralManager stopScan];
+    // do not allows to show alert
     AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
     appDelegate.rootVC.allowsShowAlert = YES;
+    // reload data
+    [self reloadData];
+    // stop scan
+    [atCentralManager stopScan];
 }
 
 
-#pragma mark - 私有方法
+#pragma mark - private methods
 
-#pragma mark 初始化
-// 初始化导航栏
-- (void)_initNavigationBar{
+#pragma mark initialization methods
+
+// setup navigation bar
+- (void)setupNavigationBar{
     self.navigationItem.title = @"设备";
 }
 
-// 初始化tableview
-- (void)_initTableView{
-    
-    self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds];
-    self.tableView.dataSource = self;
-    self.tableView.delegate = self;
-    [self.tableView registerNib:[UINib nibWithNibName:NIB_DEVICE bundle:[NSBundle mainBundle]] forCellReuseIdentifier:NIB_DEVICE];
-    self.tableView.rowHeight = 70;
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    
-    self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 1, 1)];
-    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 1, 50)];
-    
-    
-    [self.view addSubview:self.tableView];
-    self.tableView.backgroundColor = atColor.backgroundColor;
-    
-    
+// setup table view
+- (void)setupTableView{
+    // init and add to superview
+    self.tableView = [UITableView at_tableViewWithTarget:self frame:normal registerNibForCellReuseIdentifier:NIB_DEVICE];
+    // table header and footer height
+    self.tableView.at_tableHeaderView(none).at_rowHeight(70);
+    // refresh
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         [atCentralManager startScanWithAutoTimeout];
+        [self.tableView.mj_header performSelector:@selector(endRefreshing) withObject:nil afterDelay:3.0f];
     }];
     
 }
-// 设置通知
-- (void)_setupNotification{
-    [atNotificationCenter addObserver:self selector:@selector(receiveFoundDeviceNotification:) name:NOTI_BLE_SCAN object:nil];
-    [atNotificationCenter addObserver:self selector:@selector(receiveConnectNotification:) name:NOTI_BLE_CONNECT object:nil];
+
+// subscribeRAC
+- (void)subscribeRAC{
+    // stop scan -> reload data
+    [atCentralManager.didStopScan subscribeNext:^(id x) {
+        [self reloadData];
+    }];
+    // refresh data
+    [self.didSelected subscribeNext:^(id x) {
+        [self.tableView.mj_header beginRefreshing];
+    }];
+    
 }
 
-#pragma mark 懒加载
-// 已连接的设备
-- (CBPeripheral *)connectedPeripheral{
-    if (!_connectedPeripheral) {
-        _connectedPeripheral = [atCentralManager connectedPeripheral];
-    }
-    return _connectedPeripheral;
-}
-// 懒加载 - 扫描到的设备列表
-- (NSArray *)scanedDeviceList{
-    if (!_scanedDeviceList) {
-        _scanedDeviceList = [atCentralManager scanedDeviceList];
-    }
-    return _scanedDeviceList;
-}
-#pragma mark 通知
-// 扫描通知
-- (void)receiveFoundDeviceNotification:(NSNotification *)noti{
-    if ([noti.name isEqualToString:NOTI_BLE_SCAN]) {
-        // 开始扫描
-        if ([noti.object isEqualToString:NOTI_BLE_SCAN_START]) {
-            
-        }
-        // 停止扫描
-        else if ([noti.object isEqualToString:NOTI_BLE_SCAN_STOP]){
-            [self reloadData];
-        }
-        // 发现设备
-        else if ([noti.object isEqualToString:NOTI_BLE_SCAN_FOUND]) {
-            
-            
-        }
-        // 未发现设备
-        else if ([noti.object isEqualToString:NOTI_BLE_SCAN_NOTFOUND]){
-            
-            
-        }
-    }
-}
-// 连接状态通知
-- (void)receiveConnectNotification:(NSNotification *)noti{
-    if ([noti.name isEqualToString:NOTI_BLE_CONNECT]) {
-        [self reloadData];
-    }
-}
-// 重载数据
+// reloadData
 - (void)reloadData{
     self.connectedPeripheral = [atCentralManager connectedPeripheral];
     self.scanedDeviceList = [atCentralManager scanedDeviceList];
@@ -151,32 +118,64 @@
     [self.tableView reloadData];
 }
 
-#pragma mark - 数据源和代理
 
+#pragma mark lazy load
+
+// connectedPeripheral
+- (CBPeripheral *)connectedPeripheral{
+    if (!_connectedPeripheral) {
+        _connectedPeripheral = [atCentralManager connectedPeripheral];
+    }
+    return _connectedPeripheral;
+}
+
+// scanedDeviceList
+- (NSArray *)scanedDeviceList{
+    if (!_scanedDeviceList) {
+        _scanedDeviceList = [atCentralManager scanedDeviceList];
+    }
+    return _scanedDeviceList;
+}
+
+
+#pragma mark - table view data source
+
+// number of sections
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 1;
+}
+
+// number of rows in section
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return self.scanedDeviceList.count;
 }
 
+// cell
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    // dequeue reusable cell with reuse identifier
     DeviceTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NIB_DEVICE];
+    // do something
     cell.model = self.scanedDeviceList[indexPath.row];
-    
     if ([self.scanedDeviceList[indexPath.row] isEqual:self.connectedPeripheral]) {
         cell.cell_switch.on = YES;
     } else {
         cell.cell_switch.on = NO;
     }
-    
+    // return cell
     return cell;
 }
 
+
+#pragma mark table view delegate
+
+// did select row
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    // deselect row
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    // do something
+    
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return 0;
-}
 
 
 

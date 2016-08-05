@@ -30,11 +30,8 @@
                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kip-8t-1r6">
+                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kip-8t-1r6" customClass="ATSwitch">
                                     <rect key="frame" x="247" y="4" width="51" height="31"/>
-                                    <connections>
-                                        <action selector="switchButtonTapped:" destination="iN0-l3-epB" eventType="valueChanged" id="wc3-ZX-DGe"/>
-                                    </connections>
                                 </switch>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -48,7 +45,6 @@
                             </constraints>
                         </view>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="vrb-Gt-1Oh" secondAttribute="trailing" constant="8" id="6lR-pL-5Ue"/>
                         <constraint firstItem="Frz-mR-kW8" firstAttribute="top" secondItem="kEt-5d-k6l" secondAttribute="top" id="G0h-UQ-eHJ"/>
@@ -60,7 +56,6 @@
                     </constraints>
                 </view>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="kEt-5d-k6l" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="1WT-KQ-uVl"/>
                 <constraint firstItem="kEt-5d-k6l" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="EDv-DX-Ywi"/>

@@ -19,7 +19,8 @@
 // ==================== [ 头文件 ] ==================== //
 #import "AppDelegate.h"
 // 库
-
+#import <ReactiveCocoa/ReactiveCocoa.h>
+#import "MBProgressHUD.h"
 #import "ATColorManager.h"
 // Model
 #import "ATProfiles.h"
@@ -27,6 +28,7 @@
 #import "ATCentralManager.h"
 
 // Tools
+#import "UIView+Responder.h"
 #import "UITextField+ATText.h"
 //#import <MJRefresh.h>
 #import "UIView+ATRect.h"
@@ -65,15 +67,25 @@
 #define atNotificationCenter_deviceStatus(string) [atNotificationCenter postNotificationName:@"deviceStatus" object:string]
 
 #ifdef DEBUG // ==================== [ 调试宏 ] ==================== //
-#define LOG_FUNC                NSLog(@"💬%s💬",__func__);
-#define LOG(description)        NSLog(@"💬%@",description);
-#define LOG_OBJ(description,obj)NSLog(@"💬%@:💬%@",description,obj);
-#define LOG_INTEGER(integer)    NSLog(@"💬%s:💬%d",__func__,integer);
-#define LOG_UINTEGER(uinteger)    NSLog(@"💬%s:💬%ld",__func__,uinteger);
-#define LOG_FLOAT(float)        NSLog(@"💬%s:💬%f",__func__,float);
-#define LOG_POINT(point)        NSLog(@"💬%s:💬%@",__func__,NSStringFromCGPoint(point));
-#define LOG_SIZE(size)          NSLog(@"💬%s:💬%@",__func__,NSStringFromCGSize(size));
-#define LOG_FRAME(frame)        NSLog(@"💬%s:💬%@",__func__,NSStringFromCGRect(frame));
+// debug
+#define ATNSLog                  NSLog
+#define ATLogFunc                NSLog(@"💬func:%s",__func__)
+// result
+#define ATLogResult(result)      NSLog(@"%@💬func:%s",result?@"🔵Success":@"🔴Fail",__func__)
+#define ATLogSuccessTips(tips)   NSLog(@"🔵%@",tips)
+#define ATLogFailTips(tips)      NSLog(@"🔴%@",tips)
+#define ATLogError(error)        NSLog(@"🔴func:%s,%@", __func__,error.localizedDescription)
+// obj
+#define ATLogString(description) NSLog(@"💬%@",description)
+#define ATLogDetail(desc1,desc2) NSLog(@"💬%@:%@",desc1,desc2)
+#define ATLogObj(description,obj)NSLog(@"💬%@:💬%@",description,obj)
+// assign
+#define ATLogInteger(integer)    NSLog(@"💬%s:💬%d",__func__,integer)
+#define ATLogUinteger(uinteger)  NSLog(@"💬%s:💬%ld",__func__,uinteger)
+#define ATLogFloat(float)        NSLog(@"💬%s:💬%f",__func__,float)
+#define ATLogPoint(point)        NSLog(@"💬%s:💬%@",__func__,NSStringFromCGPoint(point))
+#define ATLogSize(size)          NSLog(@"💬%s:💬%@",__func__,NSStringFromCGSize(size))
+#define ATLogRect(rect)          NSLog(@"💬%s:💬%@",__func__,NSStringFromCGRect(rect))
 #endif // ==================== [ 调试宏 ] ==================== //
 #endif // ==================== [ OC宏 ] ==================== //
 #endif /* PrefixHeader_pch */

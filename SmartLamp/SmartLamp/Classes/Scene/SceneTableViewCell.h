@@ -10,7 +10,8 @@
 
 
 @interface SceneTableViewCell : UITableViewCell
-// 情景模式模型
+
+// scene model
 @property (strong, nonatomic) ATProfiles *model;
 
 @end

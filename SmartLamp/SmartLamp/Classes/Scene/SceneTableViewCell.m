@@ -10,18 +10,23 @@
 
 @interface SceneTableViewCell ()
 
+// image
 @property (weak, nonatomic) IBOutlet UIImageView *sceneImage;
-
+// title
 @property (weak, nonatomic) IBOutlet UILabel *sceneTitle;
+// brightness
 @property (weak, nonatomic) IBOutlet UILabel *sceneBright;
+// color
 @property (weak, nonatomic) IBOutlet UILabel *sceneColor;
+// timer
 @property (weak, nonatomic) IBOutlet UILabel *sceneTimer;
 
 @end
 
 @implementation SceneTableViewCell
 
-#pragma mark - 视图事件
+
+#pragma mark - view events
 
 - (void)awakeFromNib {
     [super awakeFromNib];
@@ -39,18 +44,41 @@
     [super setSelected:selected animated:animated];
 }
 
+- (void)prepareForReuse{
+    [super prepareForReuse];
+    self.alpha = 0.3f;
+    self.transform = CGAffineTransformMakeScale(1.18f, 1.18f);
+    [UIView animateWithDuration:0.5f delay:0.0f usingSpringWithDamping:1.0f initialSpringVelocity:0.1f options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        self.transform = CGAffineTransformIdentity;
+        self.alpha = 1;
+    } completion:^(BOOL finished) {
+        self.transform = CGAffineTransformIdentity;
+    }];
+    
+}
 
-// 设置模型
+
+#pragma mark - private methods
+
+// init UI
+- (void)_initUI{
+    NSString *tmp = [NSString stringWithFormat:@"%d",arc4random()%8];
+    self.sceneImage.image = [UIImage imageNamed:tmp];
+    self.sceneImage.clipsToBounds = YES;
+    self.backgroundColor = [UIColor clearColor];
+}
+
+// set model
 - (void)setModel:(ATProfiles *)model{
-    // 图片
+    // image
     self.sceneImage.image = model.image;
-    // 标题
+    // title
     self.sceneTitle.text = model.title;
-    // 亮度
+    // brightness
     NSNumber *brightness = [NSNumber numberWithFloat:model.brightness];
     NSString *brightnessStr = [NSNumberFormatter localizedStringFromNumber:brightness numberStyle:NSNumberFormatterPercentStyle];
     self.sceneBright.text = [NSString stringWithFormat:@"亮度: %@",brightnessStr];
-    // 颜色
+    // color
     switch (model.colorAnimation) {
         case ColorAnimationNone: {
             self.sceneColor.text = @"单色模式";
@@ -69,28 +97,14 @@
             break;
         }
     }
-    // 定时
+    // timer
     if (model.timer) {
         self.sceneTimer.text = [NSString stringWithFormat:@"%ld分钟后关灯",model.timer];
     } else{
         self.sceneTimer.text = @"";
     }
     
-    
-    
 }
 
-
-#pragma mark - 私有方法
-
-// 初始化UI
-- (void)_initUI{
-    NSString *tmp = [NSString stringWithFormat:@"%d",arc4random()%8];
-    self.sceneImage.image = [UIImage imageNamed:tmp];
-    self.sceneImage.clipsToBounds = YES;
-    
-    self.backgroundColor = [UIColor clearColor];
-    
-}
 
 @end

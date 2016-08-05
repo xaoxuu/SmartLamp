@@ -8,16 +8,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeViewController">
             <connections>
-                <outlet property="appTitle" destination="Ap6-dR-m1X" id="PeF-uy-YwT"/>
                 <outlet property="atToolbarView" destination="h5d-tz-wh6" id="tbp-R6-uLl"/>
                 <outlet property="brightSlider" destination="rwY-Yh-YYQ" id="nDD-D8-Ld2"/>
                 <outlet property="contentView" destination="aCm-YA-2FQ" id="OyT-Ew-yTc"/>
-                <outlet property="deviceName" destination="0kF-dn-1Ok" id="iUq-Tq-PbD"/>
-                <outlet property="deviceStatus" destination="i8R-6U-qSX" id="j9n-0h-D59"/>
-                <outlet property="deviceStatusImage" destination="Ods-b9-2l9" id="vVL-O0-LBG"/>
                 <outlet property="headerView" destination="6lC-k4-LGt" id="MnJ-o2-ifl"/>
-                <outlet property="overView" destination="H3m-2H-qze" id="Maz-6E-6Vf"/>
-                <outlet property="switchButton" destination="rck-Rb-vTV" id="TXd-ba-K3W"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -32,7 +26,7 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aCm-YA-2FQ">
                             <rect key="frame" x="0.0" y="160" width="320" height="318"/>
                         </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6lC-k4-LGt">
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6lC-k4-LGt" customClass="ATHeaderView">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="160"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" alpha="0.10000000000000001" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Lamp1" translatesAutoresizingMaskIntoConstraints="NO" id="1C2-Mr-SEd">
@@ -90,9 +84,6 @@
                                         </imageView>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dO4-ka-CXu">
                                             <rect key="frame" x="0.0" y="0.0" width="240" height="52"/>
-                                            <connections>
-                                                <action selector="overviewTapped:" destination="-1" eventType="touchUpInside" id="nEu-oe-LNw"/>
-                                            </connections>
                                         </button>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -111,11 +102,8 @@
                                         <constraint firstItem="dO4-ka-CXu" firstAttribute="leading" secondItem="H3m-2H-qze" secondAttribute="leading" id="ym6-ey-5Xf"/>
                                     </constraints>
                                 </view>
-                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" onImage="home_switch_on" offImage="home_switch_off" translatesAutoresizingMaskIntoConstraints="NO" id="rck-Rb-vTV">
+                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" onImage="home_switch_on" offImage="home_switch_off" translatesAutoresizingMaskIntoConstraints="NO" id="rck-Rb-vTV" customClass="ATSwitch">
                                     <rect key="frame" x="261" y="125" width="51" height="31"/>
-                                    <connections>
-                                        <action selector="switchButtonTouchUp:" destination="-1" eventType="touchUpInside" id="2q0-uo-l8R"/>
-                                    </connections>
                                 </switch>
                             </subviews>
                             <color key="backgroundColor" red="0.17254901960784313" green="0.69019607843137254" blue="0.31764705882352939" alpha="1" colorSpace="calibratedRGB"/>
@@ -137,16 +125,21 @@
                                 <constraint firstItem="H3m-2H-qze" firstAttribute="leading" secondItem="6lC-k4-LGt" secondAttribute="leading" constant="16" id="vkP-3I-WHm"/>
                                 <constraint firstAttribute="trailing" secondItem="H3m-2H-qze" secondAttribute="trailing" constant="64" id="zw9-fS-4KO"/>
                             </constraints>
+                            <connections>
+                                <outlet property="appTitle" destination="Ap6-dR-m1X" id="6RU-Hg-bsW"/>
+                                <outlet property="connectButton" destination="dO4-ka-CXu" id="uje-nQ-AU2"/>
+                                <outlet property="deviceName" destination="0kF-dn-1Ok" id="URj-qd-a5R"/>
+                                <outlet property="deviceStatus" destination="i8R-6U-qSX" id="WcO-OU-Or2"/>
+                                <outlet property="deviceStatusImage" destination="Ods-b9-2l9" id="Bea-cF-VBm"/>
+                                <outlet property="overView" destination="H3m-2H-qze" id="Y7M-md-RSo"/>
+                                <outlet property="switchButton" destination="rck-Rb-vTV" id="z6h-5T-q7S"/>
+                            </connections>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dDO-4D-B0X">
                             <rect key="frame" x="0.0" y="478" width="320" height="30"/>
                             <subviews>
-                                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="rwY-Yh-YYQ">
+                                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="rwY-Yh-YYQ" customClass="ATSlider">
                                     <rect key="frame" x="14" y="0.0" width="292" height="31"/>
-                                    <connections>
-                                        <action selector="brightSliderChanged:" destination="-1" eventType="valueChanged" id="YwH-rp-yUI"/>
-                                        <action selector="brightSliderTouchDown:" destination="-1" eventType="touchDown" id="RuA-EF-IiY"/>
-                                    </connections>
                                 </slider>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>

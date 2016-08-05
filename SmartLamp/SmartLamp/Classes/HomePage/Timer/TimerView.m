@@ -7,63 +7,62 @@
 //
 
 #import "TimerView.h"
+#import "ATSwitch.h"
 
 @interface TimerView () <UIPickerViewDataSource,UIPickerViewDelegate>
-// 时间列表
+// time list
 @property (strong, nonatomic) NSArray *timeList;
-// 时间选择器
+// time picker
 @property (weak, nonatomic) IBOutlet UIPickerView *timerPicker;
-// 提示文字
+// tip label
 @property (weak, nonatomic) IBOutlet UILabel *tipLabel;
-// 开关按钮
-@property (weak, nonatomic) IBOutlet UISwitch *switchButton;
-// 选中行
+// switch
+@property (weak, nonatomic) IBOutlet ATSwitch *switchButton;
+// selected row
 @property (assign, nonatomic) NSUInteger selectedRow;
 
 @end
 
 @implementation TimerView
 
-#pragma mark - 视图事件
+#pragma mark - view events
+
 - (void)awakeFromNib{
     [self layoutIfNeeded];
+    // init UI
     [self _initUI];
+    // handle switch events
+    [self handleSwitchEvents];
+}
+
+// handle switch events
+- (void)handleSwitchEvents{
+    [[self.switchButton rac_signalForControlEvents:UIControlEventValueChanged] subscribeNext:^(UISwitch *sender) {
+        // do something
+        [self updateLabel];
+        // get selected row
+        atCentralManager.currentProfiles.timer = 5 * self.selectedRow * self.switchButton.on;
+        [atCentralManager letSmartLampPerformSleepMode];
+        [atCentralManager.didSendData sendNext:nil];
+    }];
 }
 
 
-
-
-#pragma mark - 控件事件
-
-- (IBAction)switchButtonTapped:(UISwitch *)sender {
-    [self updateLabel];
-    // 获取一列中选中的一行的索引, 赋值到属性中
-    atCentralManager.currentProfiles.timer = 5 * self.selectedRow * self.switchButton.on;
-    [atCentralManager letSmartLampPerformSleepMode];
-    
-
-}
-
-
-#pragma mark - 私有方法
-
-// 初始化UI
+// init UI
 - (void)_initUI{
+    // selected row
     self.selectedRow = atCentralManager.currentProfiles.timer / 5;
-    
+    // picker
     [self.timerPicker selectRow:self.selectedRow inComponent:0 animated:YES];
-    
+    // switch
+    [self.switchButton at_themeColorStyle];
     [self.switchButton setSelected:self.selectedRow];
-    self.switchButton.tintColor = atColor.themeColor_light;
-    self.switchButton.onTintColor = atColor.themeColor_light;
-    self.switchButton.thumbTintColor = atColor.themeColor;
-    self.switchButton.transform = CGAffineTransformMakeScale(0.7, 0.7);
-    
+    // label
     [self updateLabel];
     
 }
 
-// 更新标签文字
+// update label
 - (void)updateLabel{
     if (self.selectedRow && self.switchButton.on) {
         self.tipLabel.text = [NSString stringWithFormat:@"当前状态: %@后关闭",self.timeList[_selectedRow]];
@@ -72,21 +71,19 @@
     }
 }
 
-#pragma mark 懒加载
-// 定时关灯的时间数组
+
+#pragma mark lazy load
+
+// time list
 -(NSArray *)timeList{
     
     if (!_timeList) {
-        
         NSMutableArray *tempArr = [NSMutableArray array];
         [tempArr addObject:@"不启用定时关灯"];
-        
         for (int i=1; i<=24; i++) {
-            
             if (5*i<60) {
                 NSString *timeStr = [NSString stringWithFormat:@"%d",5*i];
                 [tempArr addObject:[timeStr stringByAppendingString:@"分钟"]];
-                
             } else{
                 NSString *timeStr = [NSString stringWithFormat:@"%d",5*i/60];
                 NSString *tempStr1 = [timeStr stringByAppendingString:@"小时"];
@@ -95,56 +92,44 @@
                 if (5*i%60) {
                     tempStr2 = [timeStr stringByAppendingString:@"分钟"];
                 }
-                
                 [tempArr addObject:[tempStr1 stringByAppendingString:tempStr2]];
-                
             }
-            
         }
-        
         _timeList = tempArr;
-        
     }
-    
     return _timeList;
     
 }
 
-#pragma mark - 数据源和代理
 
-#pragma mark UIPickerView DataSource
+#pragma mark - picker view data source
 
-// returns the number of 'columns' to display.
+// number of components in picker view
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
-    
     return 1;
-    
 }
 
-// returns the # of rows in each component..
+// number of rows in component
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component{
-    
     return self.timeList.count;
-    
 }
 
-#pragma mark UIPickerView Delegate
-// 每一行的数据 = 每一个父类对象的标题
+
+#pragma mark picker view delegate
+
+// title for row
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component{
-    
-    // 获取一列中每一行的数据, 显示到view
+    // get data from model list
     return self.timeList[row];
-    
 }
 
+// did select row
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
-    
+    // do something
     self.selectedRow = row;
     [self updateLabel];
     atCentralManager.currentProfiles.timer = 5 * row * self.switchButton.on;
-    // 发送通知
-    [atNotificationCenter postNotificationName:NOTI_BLE_STATUS object:NOTI_BLE_STATUS_CHANGE];
-    
+    [atCentralManager.didSendData sendNext:nil];
 }
 
 

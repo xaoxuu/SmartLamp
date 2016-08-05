@@ -7,15 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <SCLAlertView.h>
-#import "ATBaseTabBarController.h"
 
 @interface ATRootViewController : UIViewController
 
-// 允许弹窗
+// allows to show alert
 @property (assign, nonatomic) BOOL allowsShowAlert;
 
-// 主控制器
-@property (strong, nonatomic) ATBaseTabBarController *mainVC;
 
 @end

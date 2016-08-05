@@ -18,6 +18,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    // remove separactor
+    [self.navigationController.navigationBar.subviews[0].subviews[0] removeFromSuperview];
+    // subviews extend layout include opaque bars
+    self.extendedLayoutIncludesOpaqueBars = YES;
     
 }
 
@@ -26,18 +30,15 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (RACSubject *)didSelected{
+    if (!_didSelected) {
+        // create it
+        _didSelected = [RACSubject subject];
+        // do something...
+        
+    }
+    return _didSelected;
 }
-*/
-
-
-
-
 
 @end

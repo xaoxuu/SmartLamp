@@ -7,6 +7,7 @@
 //
 
 #import "ATBaseNavigationController.h"
+#import "ATNavigationBar.h"
 
 @interface ATBaseNavigationController ()
 
@@ -17,7 +18,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
+    // init UI
     [self _initUI];
 }
 
@@ -26,20 +27,15 @@
     // Dispose of any resources that can be recreated.
 }
 
-// 初始化UI
+
+// init UI
 - (void)_initUI{
-    // 颜色
-    self.navigationBar.barTintColor = atColor.themeColor;
-    self.navigationBar.tintColor = atColor.backgroundColor;
+    // navigation bar
+    ATNavigationBar *atNavBar = [ATNavigationBar barWithBarTintColor:atColor.themeColor];
+    [self setValue:atNavBar forKey:@"navigationBar"];
+    // color
     self.view.tintColor = atColor.backgroundColor;
     self.navigationItem.titleView.tintColor = atColor.backgroundColor;
-    // 标题颜色
-    NSDictionary * dict = [NSDictionary dictionaryWithObject:atColor.backgroundColor forKey:NSForegroundColorAttributeName];
-    self.navigationBar.titleTextAttributes = dict;
-//     隐藏分割线
-    [self.navigationBar.subviews[0].subviews[0] removeFromSuperview];
-    // 不透明
-    self.navigationBar.translucent = NO;
     
 }
 

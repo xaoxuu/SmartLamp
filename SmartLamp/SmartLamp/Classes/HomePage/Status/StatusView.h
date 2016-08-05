@@ -10,11 +10,8 @@
 #import "ATProfiles.h"
 
 @interface StatusView : UIView
-// 情景模式图片
-@property (weak, nonatomic) IBOutlet UIButton *detail_SceneImage;
-// 情景模式
+
+// scene mode
 @property (strong, nonatomic) ATProfiles *aProfiles;
-// 更新UI
-- (void)updateUI;
 
 @end

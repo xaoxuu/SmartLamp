@@ -12,7 +12,7 @@
 
 
 
-#pragma mark - 🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀 快速弹窗
+#pragma mark - 快速弹窗
 
 + (void)at_showNotice:(UIViewController *)vc title:(NSString *)title subTitle:(NSString *)subTitle closeButtonTitle:(NSString *)closeButtonTitle duration:(NSTimeInterval)duration {
     
@@ -44,7 +44,7 @@
 }
 
 
-#pragma mark - 🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀 创建弹窗实例
+#pragma mark - 创建弹窗实例
 
 + (instancetype)at_SCLAlertViewWithColor:(UIColor *)color {
     

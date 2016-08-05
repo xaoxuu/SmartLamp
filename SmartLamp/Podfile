@@ -1,6 +1,9 @@
 platform:ios, '8.0'
 
+use_frameworks!
 target ‘SmartLamp’ do
+  pod 'ReactiveCocoa'
+#  pod 'MBProgressHUD'
 #  pod 'AFNetworking', '~> 3.0.4'
   #pod 'HYBNetworking', '~> 2.0.1'
   pod 'MJRefresh', '~> 3.1.0'

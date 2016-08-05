@@ -28,9 +28,6 @@
                             </imageView>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gj9-sa-gLD">
                                 <rect key="frame" x="231" y="9" width="51" height="31"/>
-                                <connections>
-                                    <action selector="cellSwitchTouchUp:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="tFb-8I-yfN"/>
-                                </connections>
                             </switch>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H27-7A-oon">
                                 <rect key="frame" x="56" y="4" width="167" height="40"/>

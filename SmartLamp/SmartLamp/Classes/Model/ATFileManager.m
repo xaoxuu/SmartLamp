@@ -8,7 +8,6 @@
 
 #import "ATFileManager.h"
 
-
 #define FILE_PROFILES @"profiles"
 #define FILE_DEVICE   @"device"
 #define FILE_CACHE    @"cache"
@@ -16,16 +15,17 @@
 
 @implementation ATFileManager
 
+#pragma mark - cache
 
-#pragma mark - 📂📂📂📂📂📂📂📂📂📂 缓存
-// 读取缓存
+// read cache
 + (ATProfiles *)readCache{
     
     NSData *data = [NSData dataWithContentsOfFile:[self cachePath]];
     return [NSKeyedUnarchiver unarchiveObjectWithData:data];
     
 }
-// 保存缓存
+
+// save cache
 + (void)saveCache:(ATProfiles *)aProfiles{
     
     NSData *data = [NSKeyedArchiver archivedDataWithRootObject:aProfiles];
@@ -33,8 +33,10 @@
     
 }
 
-#pragma mark - 📂📂📂📂📂📂📂📂📂📂 情景模式
-// 读情景模式文件
+
+#pragma mark - profiles
+
+// read profiles
 + (NSMutableArray<ATProfiles *> *)readProfilesList{
     NSString *path = [self docPathWithFileName:FILE_PROFILES];
     NSData *data = [NSData dataWithContentsOfFile:path];
@@ -44,48 +46,50 @@
     }
     return plist;
 }
-// 保存情景模式
+// save profiles
 + (BOOL)saveProfilesList:(NSMutableArray<ATProfiles *> *)plist {
     NSString *path = [self docPathWithFileName:FILE_PROFILES];
     NSData *data = [NSKeyedArchiver archivedDataWithRootObject:plist];
     return [data writeToFile:path atomically:YES];
 }
-// 插入元素
+// insert a profiles
 + (void)insertProfiles:(ATProfiles *)aProfiles toIndex:(NSUInteger)index {
     NSMutableArray *plist = [self readProfilesList];
     [plist insertObject:aProfiles atIndex:index];
     [self saveProfilesList:plist];
 }
-// 删除第一个元素
+// remove first object
 + (void)removeProfilesFirstObject {
     NSMutableArray *plist = [self readProfilesList];
     [plist removeObjectAtIndex:0];
     [self saveProfilesList:plist];
 }
+// remove a profiles
 + (void)removeProfiles:(ATProfiles *)aProfiles {
     NSMutableArray *plist = [self readProfilesList];
+    BOOL ret;
     if ([plist containsObject:aProfiles]) {
         [plist removeObject:aProfiles];
-        LOG(@"删除成功");
+        ret = YES;
     } else{
-        LOG(@"删除失败");
+        ret = NO;
     }
-    
+    ATLogResult(ret);
     [self saveProfilesList:plist];
 }
-// 删除指定位置的元素
+// remove a profiles at index
 + (void)removeProfilesObjectAtIndex:(NSUInteger)index {
     NSMutableArray *plist = [self readProfilesList];
     [plist removeObjectAtIndex:index];
     [self saveProfilesList:plist];
 }
-// 删除最后一个元素
+// remove last object
 + (void)removeProfilesLastObject {
     NSMutableArray *plist = [self readProfilesList];
     [plist removeLastObject];
     [self saveProfilesList:plist];
 }
-// 删除情景模式列表文件
+// delete file
 + (void)deleteProfilesFile {
     NSString *path;
     NSFileManager *fm = [NSFileManager defaultManager];
@@ -94,7 +98,9 @@
 }
 
 
-#pragma mark - 📂📂📂📂📂📂📂📂📂📂 设备列表
+#pragma mark - device
+
+// read device list
 + (NSMutableArray *)readDeviceList {
     NSString *path = [self docPathWithFileName:FILE_DEVICE];
     NSMutableArray *plist = [NSMutableArray arrayWithContentsOfFile:path];
@@ -103,10 +109,12 @@
     }
     return plist;
 }
+// save device list
 + (BOOL)saveDeviceList:(NSMutableArray *)plist {
     NSString *path = [self docPathWithFileName:FILE_DEVICE];
     return [plist writeToFile:path atomically:YES];
 }
+// delete file
 + (void)deleteDeviceFile {
     NSString *path;
     NSFileManager *fm = [NSFileManager defaultManager];
@@ -114,41 +122,30 @@
     [fm removeItemAtPath:path error:nil];
 }
 
-#pragma mark - 🚫🚫🚫🚫🚫🚫🚫🚫🚫🚫 私有方法
 
+#pragma mark - private methods
 
-// 获取 Document 下的文件完整路径
+// file path in document
 + (NSString *)docPathWithFileName:(NSString *)fileName{
-    
-    /*======================[ 获取路径 ]======================*/
-    // document
-    NSArray *documentPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    // 合并路径 ( 文件夹路径 + 文件名 )
-    NSString *filePath = [[documentPath objectAtIndex:0]
-                          stringByAppendingPathComponent:fileName];
+    // document path
+    NSString *documentPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
+    // appending path
+    NSString *filePath = [documentPath stringByAppendingPathComponent:fileName];
     filePath = [filePath stringByAppendingPathExtension:FILE_PLIST];
     return filePath;
     
 }
 
-// 获取缓存文件路径
+// cache path
 + (NSString *)cachePath{
-    
-    NSArray *cachePath = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
-    // 合并路径 ( 文件夹路径 + 文件名 )
-    NSString *filePath = [[cachePath objectAtIndex:0]
-                          stringByAppendingPathComponent:FILE_CACHE];
+    // cache path
+    NSString *cachePath = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES)[0];
+    // appending path
+    NSString *filePath = [cachePath stringByAppendingPathComponent:FILE_CACHE];
     filePath = [filePath stringByAppendingPathExtension:FILE_PLIST];
-    
     return filePath;
     
 }
-
-
-
-
-
-
 
 
 

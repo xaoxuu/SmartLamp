@@ -19,4 +19,19 @@
     return [[self alloc] initWithCustomView:button];
 }
 
+
++ (instancetype)itemWithImage:(NSString *)image highImage:(NSString *)highImage action:(void (^)())action {
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeSystem];
+    [button setImage:[UIImage imageNamed:image] forState:UIControlStateNormal];
+    [button setImage:[UIImage imageNamed:highImage] forState:UIControlStateHighlighted];
+
+    [[button rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        action();
+    }];
+    [button sizeToFit];
+    return [[self alloc] initWithCustomView:button];
+    
+}
+
+
 @end

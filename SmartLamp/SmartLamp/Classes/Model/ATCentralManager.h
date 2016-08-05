@@ -14,161 +14,148 @@
 #import <CoreBluetooth/CoreBluetooth.h>
 
 
-#define NOTI_BLE_AVAILABLE  @"蓝牙是否可用"
-
-#define NOTI_BLE_SCAN @"扫描类通知"
-#define NOTI_BLE_SCAN_START @"开始扫描"
-#define NOTI_BLE_SCAN_STOP @"停止扫描"
-#define NOTI_BLE_SCAN_FOUND @"发现设备"
-#define NOTI_BLE_SCAN_NOTFOUND @"未发现设备"
-
-#define NOTI_BLE_CONNECT @"连接类通知"
-#define NOTI_BLE_CONNECT_SUCCESS @"连接成功"
-#define NOTI_BLE_CONNECT_FAIL @"连接失败"
-#define NOTI_BLE_CONNECT_DISCONNECT @"断开连接"
-
-#define NOTI_BLE_STATUS @"灯状态通知"
-#define NOTI_BLE_STATUS_CHANGE @"状态改变"
-#define NOTI_BLE_STATUS_TURNON @"灯打开了"
-#define NOTI_BLE_STATUS_TURNOFF @"灯关闭了"
-
-
 @interface ATCentralManager : NSObject <NSCopying,CBCentralManagerDelegate,CBPeripheralDelegate>
 
-#pragma mark - 模型
-/**
- *	@author Aesir Titan, 2016-07-24 17:07:06
- *
- *	@brief 蓝牙周边设备
- */
+#pragma mark - model
+// current connected peripheral
 @property (strong, nonatomic) CBPeripheral *connectedPeripheral;
-
-/**
- *	@author Aesir Titan, 2016-07-24 17:07:48
- *
- *	@brief 扫描到的蓝牙灯列表
- */
+// scaned deviceList
 @property (strong, nonatomic) NSMutableArray<CBPeripheral *> *scanedDeviceList;
-
-/**
- *	@author Aesir Titan, 2016-07-24 17:07:58
- *
- *	@brief 当前使用的情景模式
- */
+// current aProfiles
 @property (strong, nonatomic) ATProfiles *currentProfiles;
 
-#pragma mark - 公有方法
+#pragma mark - RACSubject
+// rac signal for scaning
+@property (strong, nonatomic) RACSubject *didScaning;
+// rac signal for stop scaning
+@property (strong, nonatomic) RACSubject *didStopScan;
+// rac signal for device found
+@property (strong, nonatomic) RACSubject *didDeviceFound;
+// rac signal for device not found
+@property (strong, nonatomic) RACSubject *didNotFound;
+// rac signal for connect success
+@property (strong, nonatomic) RACSubject *didConnectSuccess;
+// rac signal for connect fail
+@property (strong, nonatomic) RACSubject *didConnectFail;
+// rac signal for disconnect
+@property (strong, nonatomic) RACSubject *didDisconnect;
+// rac signal for turn on
+@property (strong, nonatomic) RACSubject *didTurnOn;
+// rac signal for turn off
+@property (strong, nonatomic) RACSubject *didTurnOff;
+// rac signal for color animation
+@property (strong, nonatomic) RACSubject *didPerformColorAnimation;
+// rac signal for send data
+@property (strong, nonatomic) RACSubject *didSendData;
 
-#pragma mark 扫描
+#pragma mark - public methods
+
+#pragma mark scan
 /**
  *	@author Aesir Titan, 2016-07-24 17:07:51
  *
- *	@brief 自动超时的扫描(超时时间默认5秒)
+ *	@brief start scan with auto timeout (default is 5 seconds)
  */
 - (void)startScanWithAutoTimeout;
 
 /**
  *	@author Aesir Titan, 2016-05-16 16:05:45
  *
- *	@brief 立即停止扫描
+ *	@brief stop scan right now
  */
 - (void)stopScan;
 
-#pragma mark 连接
-
+#pragma mark connect
 /**
  *	@author Aesir Titan, 2016-05-09 18:05:59
  *
- *	@brief 连接给定的蓝牙灯
+ *	@brief connect a peripheral
  *
- *	@param smartLamp	给定的蓝牙灯
+ *	@param smartLamp	peripheral
  */
 - (void)connectSmartLamp:(CBPeripheral *)smartLamp;
 
 /**
  *	@author Aesir Titan, 2016-05-09 18:05:17
  *
- *	@brief 断开与当前蓝牙灯的连接
+ *	@brief disconnect current peripheral
  */
 - (void)disConnectSmartLamp;
 
 /**
  *	@author Aesir Titan, 2016-07-24 17:07:19
  *
- *	@brief 连接或断开连接
+ *	@brief connect or disconnect peripheral
  */
 - (void)connectOrDisconnect;
 
-#pragma mark 开关
-
+#pragma mark turn on or turn off
 /**
  *	@author Aesir Titan, 2016-04-29 15:04:12
  *
- *	@brief 蓝牙灯电源开关
+ *	@brief turn on or turn off
  *
- *	@param work	YES:开, NO:关
+ *	@param work	YES:turn on, NO:turn off
  */
 - (void)letSmartLampTurnOnIf:(BOOL)isYes;
 
 /**
  *	@author Aesir Titan, 2016-04-29 15:04:21
  *
- *	@brief 蓝牙灯定时关机
+ *	@brief perform sleep mode
  */
 - (void)letSmartLampPerformSleepMode;
 
-#pragma mark 控制
-
+#pragma mark control
 /**
  *	@author Aesir Titan, 2016-07-20 17:07:16
  *
- *	@brief 动画模式
+ *	@brief color animation mode
  */
 - (void)letSmartLampPerformColorAnimation;
 /**
  *	@author Aesir Titan, 2016-07-20 17:07:07
  *
- *	@brief 更新蓝牙灯的颜色
+ *	@brief color
  */
 - (void)letSmartLampUpdateColor;
 
 /**
  *	@author Aesir Titan, 2016-07-20 17:07:23
  *
- *	@brief 更新亮度
+ *	@brief update brightness
  */
 - (void)letSmartLampUpdateBrightness;
 /**
  *	@author Aesir Titan, 2016-07-20 17:07:31
  *
- *	@brief 更新所有状态
+ *	@brief update all status
  */
 - (void)letSmartLampUpdateAllStatus;
 /**
  *	@author Aesir Titan, 2016-07-24 19:07:06
  *
- *	@brief 应用情景模式
+ *	@brief apply aProfiles
  *
- *	@param aProfiles	给定情景模式
+ *	@param aProfiles	aProfiles
  */
 - (void)letSmartLampApplyProfiles:(ATProfiles *)aProfiles;
 
-#pragma mark 构造方法
+#pragma mark creator
 
 /**
  *	@author Aesir Titan, 2016-04-29 16:07:35
  *
- *	@brief 静态构造方法
+ *	@brief creator
  */
 + (instancetype)defaultCentralManager;
 
 /**
  *	@author Aesir Titan, 2016-04-29 16:07:52
  *
- *	@brief 实例构造方法
+ *	@brief creator
  */
 + (instancetype)sharedCentralManager;
-
 
 
 @end

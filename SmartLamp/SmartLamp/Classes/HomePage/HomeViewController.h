@@ -7,9 +7,6 @@
 //
 
 #import "ATBaseViewController.h"
-#import "StatusView.h"
-#import "ColorModeView.h"
-#import "TimerView.h"
 
 @interface HomeViewController : ATBaseViewController
 

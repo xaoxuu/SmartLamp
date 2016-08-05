@@ -6,7 +6,7 @@
 //  Copyright © 2016年 Titan Studio. All rights reserved.
 //
 
-#import <SCLAlertView.h>
+#import "SCLAlertView.h"
 
 @interface SCLAlertView (ATAlertView)
 

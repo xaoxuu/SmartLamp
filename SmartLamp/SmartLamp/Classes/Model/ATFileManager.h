@@ -8,116 +8,117 @@
 
 #import <Foundation/Foundation.h>
 
-
-
-
 @interface ATFileManager : NSObject
 
-#pragma mark - 缓存
+#pragma mark - cache
+
 /**
  *	@author Aesir Titan, 2016-07-21 19:07:53
  *
- *	@brief 读取缓存
+ *	@brief read cache
  *
- *	@return 情景模式文件
+ *	@return current profiles
  */
 + (ATProfiles *)readCache;
 /**
  *	@author Aesir Titan, 2016-07-21 19:07:05
  *
- *	@brief 保存缓存
+ *	@brief save cache
  *
- *	@param aProfiles	情景模式文件
+ *	@param aProfiles current profiles
  */
 + (void)saveCache:(ATProfiles *)aProfiles;
 
 
-#pragma mark - 情景模式
+#pragma mark - profiles
+
 /**
  *	@author Aesir Titan, 2016-07-21 19:07:00
  *
- *	@brief 读取情景模式列表
+ *	@brief read profiles list
  *
- *	@return 模型数组
+ *	@return profiles list
  */
 + (NSMutableArray<ATProfiles *> *)readProfilesList;
 /**
  *	@author Aesir Titan, 2016-07-21 19:07:15
  *
- *	@brief 保存情景模式列表
+ *	@brief save profiles list
  *
- *	@param plist	模型数组
+ *	@param plist profiles list
  *
- *	@return 是否成功
+ *	@return result
  */
 + (BOOL)saveProfilesList:(NSMutableArray<ATProfiles *> *)plist;
 /**
  *	@author Aesir Titan, 2016-07-21 19:07:28
  *
- *	@brief 删除情景模式列表文件
+ *	@brief delete profiles list file
  */
 + (void)deleteProfilesFile;
 /**
  *	@author Aesir Titan, 2016-07-21 19:07:51
  *
- *	@brief 向指定位置插入元素
+ *	@brief insert aProfiles to index
  *
- *	@param aProfiles	目标情景模式配置文件
- *	@param index		索引位置
+ *	@param aProfiles	aProfiles
+ *	@param index		index
  */
 + (void)insertProfiles:(ATProfiles *)aProfiles toIndex:(NSUInteger)index;
 /**
  *	@author Aesir Titan, 2016-07-21 19:07:37
  *
- *	@brief 删除第一个元素
+ *	@brief remove first object
  */
 + (void)removeProfilesFirstObject;
 /**
  *	@author Aesir Titan, 2016-07-23 18:07:55
  *
- *	@brief 删除指定元素
+ *	@brief remove aProfiles
  *
- *	@param aProfiles	指定对象
+ *	@param aProfiles	aProfiles
  */
 + (void)removeProfiles:(ATProfiles *)aProfiles;
 /**
  *	@author Aesir Titan, 2016-07-21 19:07:26
  *
- *	@brief 删除指定位置的元素
+ *	@brief remove object at index
  *
- *	@param index	索引
+ *	@param index	index
  */
 + (void)removeProfilesObjectAtIndex:(NSUInteger)index;
 /**
  *	@author Aesir Titan, 2016-07-21 19:07:42
  *
- *	@brief 删除最后一个元素
+ *	@brief remove last object
  */
 + (void)removeProfilesLastObject;
 
-#pragma mark - 设备列表
+
+#pragma mark - device
+
 /**
  *	@author Aesir Titan, 2016-07-21 19:07:00
  *
- *	@brief 保存设备列表
+ *	@brief save device list
  *
- *	@param plist	模型数组
+ *	@param plist	device list
  *
- *	@return 是否成功
+ *	@return result
  */
 + (BOOL)saveDeviceList:(NSMutableArray *)plist;
 /**
  *	@author Aesir Titan, 2016-07-21 19:07:25
  *
- *	@brief 读取设备列表
+ *	@brief read device list
  *
- *	@return 模型数组
+ *	@return device list
  */
 + (NSMutableArray *)readDeviceList;
 /**
  *	@author Aesir Titan, 2016-07-21 19:07:51
  *
- *	@brief 删除设备列表文件
+ *	@brief delete device list file
  */
 + (void)deleteDeviceFile;
 
