@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="73" id="KGk-i7-Jjw" customClass="DeviceTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="65"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r99-GA-nH5">
+                        <rect key="frame" x="16" y="8" width="288" height="48"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="device_lamp1" translatesAutoresizingMaskIntoConstraints="NO" id="Ac0-KE-3yt">
+                                <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="K3a-En-dEK"/>
+                                    <constraint firstAttribute="width" secondItem="Ac0-KE-3yt" secondAttribute="height" multiplier="1:1" id="UBj-Lc-nGU"/>
+                                </constraints>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H27-7A-oon">
+                                <rect key="frame" x="56" y="4" width="164" height="40"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="KQX-1000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="np1-P3-qPb">
+                                        <rect key="frame" x="8" y="0.0" width="148" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="蓝牙灯" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7hJ-y9-Tg5">
+                                        <rect key="frame" x="8" y="25" width="148" height="15"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="7hJ-y9-Tg5" secondAttribute="bottom" id="Aw4-E5-Or5"/>
+                                    <constraint firstItem="np1-P3-qPb" firstAttribute="leading" secondItem="H27-7A-oon" secondAttribute="leading" constant="8" id="GZt-Zp-8ZK"/>
+                                    <constraint firstAttribute="height" constant="40" id="T4C-H4-I3L"/>
+                                    <constraint firstItem="np1-P3-qPb" firstAttribute="top" secondItem="H27-7A-oon" secondAttribute="top" id="W3H-wm-Vu0"/>
+                                    <constraint firstItem="7hJ-y9-Tg5" firstAttribute="leading" secondItem="H27-7A-oon" secondAttribute="leading" constant="8" id="g5b-kg-oxU"/>
+                                    <constraint firstAttribute="trailing" secondItem="np1-P3-qPb" secondAttribute="trailing" constant="8" id="hmt-Iy-2kl"/>
+                                    <constraint firstAttribute="trailing" secondItem="7hJ-y9-Tg5" secondAttribute="trailing" constant="8" id="zkF-Ie-kvM"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4mO-VS-36r" customClass="ATMDSwitch">
+                                <rect key="frame" x="228" y="6" width="60" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="43T-rI-IFX"/>
+                                    <constraint firstAttribute="height" constant="36" id="72B-Tp-MyP"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Ac0-KE-3yt" firstAttribute="leading" secondItem="r99-GA-nH5" secondAttribute="leading" id="GfN-oy-MLM"/>
+                            <constraint firstItem="Ac0-KE-3yt" firstAttribute="top" secondItem="r99-GA-nH5" secondAttribute="top" id="JuZ-hD-BKI"/>
+                            <constraint firstItem="4mO-VS-36r" firstAttribute="leading" secondItem="H27-7A-oon" secondAttribute="trailing" constant="8" id="Rc6-Td-LBN"/>
+                            <constraint firstItem="4mO-VS-36r" firstAttribute="centerY" secondItem="r99-GA-nH5" secondAttribute="centerY" id="U2B-Jw-LME"/>
+                            <constraint firstAttribute="trailing" secondItem="4mO-VS-36r" secondAttribute="trailing" id="b1p-0b-HZu"/>
+                            <constraint firstAttribute="bottom" secondItem="Ac0-KE-3yt" secondAttribute="bottom" id="dGP-OC-wlc"/>
+                            <constraint firstItem="H27-7A-oon" firstAttribute="centerY" secondItem="r99-GA-nH5" secondAttribute="centerY" id="m3H-6c-A0t"/>
+                            <constraint firstItem="H27-7A-oon" firstAttribute="leading" secondItem="Ac0-KE-3yt" secondAttribute="trailing" constant="8" id="zhc-WI-StV"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailingMargin" secondItem="r99-GA-nH5" secondAttribute="trailing" constant="8" id="Ore-jq-9iD"/>
+                    <constraint firstItem="r99-GA-nH5" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="8" id="RGb-if-sfX"/>
+                    <constraint firstItem="r99-GA-nH5" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="S5F-MB-WgO"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="cell_detail" destination="7hJ-y9-Tg5" id="IkP-wc-qCH"/>
+                <outlet property="cell_image" destination="Ac0-KE-3yt" id="CRC-zS-aTy"/>
+                <outlet property="cell_title" destination="np1-P3-qPb" id="TKv-w8-FmS"/>
+                <outlet property="content" destination="r99-GA-nH5" id="t0p-8j-5NX"/>
+            </connections>
+            <point key="canvasLocation" x="266" y="385.5"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="device_lamp1" width="64" height="64"/>
+    </resources>
+</document>

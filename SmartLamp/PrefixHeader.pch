@@ -1,0 +1,33 @@
+//
+//  PrefixHeader.pch
+//  SmartLamp
+//
+//  Created by Aesir Titan on 2016-06-27.
+//  Copyright © 2016 Titan Studio. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+
+#ifdef __OBJC__ // ==================== [ __OBJC__ Macro ] ==================== //
+
+
+
+#import <ReactiveCocoa/ReactiveCocoa.h>
+
+// Aesir Titan
+#import <ATKit/ATKit.h>
+
+
+#import "SmartLampConst.h"
+
+#import <YYKit/YYKit.h>
+#import "ATCentralManager.h"
+#import "ATFileManager.h"
+
+#endif // ==================== [ __OBJC__ Macro ] ==================== //
+#endif /* PrefixHeader_pch */

@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ColorModeView">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="320"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GAi-aH-9M3">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="300"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ccG-ak-60d">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="260"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EcA-9q-t90">
+                                    <rect key="frame" x="60" y="30" width="200" height="200"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Image_Palette" translatesAutoresizingMaskIntoConstraints="NO" id="ZFb-Ad-cmn">
+                                            <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                                            <gestureRecognizers/>
+                                        </imageView>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="200" id="Zxc-uN-470"/>
+                                        <constraint firstAttribute="width" secondItem="EcA-9q-t90" secondAttribute="height" multiplier="1:1" id="hlW-ib-34T"/>
+                                    </constraints>
+                                </view>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="EcA-9q-t90" firstAttribute="centerX" secondItem="ccG-ak-60d" secondAttribute="centerX" id="9dW-R0-grJ"/>
+                                <constraint firstItem="EcA-9q-t90" firstAttribute="centerY" secondItem="ccG-ak-60d" secondAttribute="centerY" id="boc-Kg-6hv"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TWg-66-O6x">
+                            <rect key="frame" x="8" y="260" width="304" height="52"/>
+                            <subviews>
+                                <button opaque="NO" tag="38" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="62G-cn-Kcc" customClass="ATRadioButton">
+                                    <rect key="frame" x="8" y="8" width="91" height="36"/>
+                                    <color key="backgroundColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="36" id="t9K-ic-D0M"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
+                                    <inset key="contentEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
+                                    <state key="normal" title="三色跳变"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                            <integer key="value" value="3"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                    <connections>
+                                        <action selector="animationBtn:" destination="iN0-l3-epB" eventType="touchUpInside" id="qpU-ze-0l6"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" tag="39" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="eVh-ry-cNv" customClass="ATRadioButton">
+                                    <rect key="frame" x="107" y="8" width="90" height="36"/>
+                                    <color key="backgroundColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="36" id="8JP-x6-V7Z"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
+                                    <inset key="contentEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
+                                    <state key="normal" title="七色跳变"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                            <integer key="value" value="3"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                    <connections>
+                                        <action selector="animationBtn:" destination="iN0-l3-epB" eventType="touchUpInside" id="uag-yI-MmE"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" tag="40" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="9ny-aV-TZ7" customClass="ATRadioButton">
+                                    <rect key="frame" x="205" y="8" width="91" height="36"/>
+                                    <color key="backgroundColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="36" id="Z6W-WK-Yo0"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
+                                    <inset key="contentEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
+                                    <state key="normal" title="三色渐变"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                            <integer key="value" value="3"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                    <connections>
+                                        <action selector="animationBtn:" destination="iN0-l3-epB" eventType="touchUpInside" id="mwR-hM-PLP"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <constraints>
+                                <constraint firstAttribute="bottom" secondItem="eVh-ry-cNv" secondAttribute="bottom" constant="8" id="438-GA-dSz"/>
+                                <constraint firstItem="eVh-ry-cNv" firstAttribute="leading" secondItem="62G-cn-Kcc" secondAttribute="trailing" constant="8" id="BRA-Oh-t0E"/>
+                                <constraint firstItem="eVh-ry-cNv" firstAttribute="width" secondItem="62G-cn-Kcc" secondAttribute="width" id="F6R-3D-pmA"/>
+                                <constraint firstAttribute="bottom" secondItem="9ny-aV-TZ7" secondAttribute="bottom" constant="8" id="Khs-Ge-hkw"/>
+                                <constraint firstItem="62G-cn-Kcc" firstAttribute="leading" secondItem="TWg-66-O6x" secondAttribute="leading" constant="8" id="XCz-lh-3YV"/>
+                                <constraint firstItem="62G-cn-Kcc" firstAttribute="top" secondItem="TWg-66-O6x" secondAttribute="top" constant="8" id="glG-M4-9Nh"/>
+                                <constraint firstItem="9ny-aV-TZ7" firstAttribute="width" secondItem="62G-cn-Kcc" secondAttribute="width" id="kNz-bh-DbL"/>
+                                <constraint firstItem="9ny-aV-TZ7" firstAttribute="leading" secondItem="eVh-ry-cNv" secondAttribute="trailing" constant="8" id="o23-ko-7rT"/>
+                                <constraint firstItem="9ny-aV-TZ7" firstAttribute="top" secondItem="TWg-66-O6x" secondAttribute="top" constant="8" id="pNC-v9-ZAx"/>
+                                <constraint firstItem="eVh-ry-cNv" firstAttribute="top" secondItem="TWg-66-O6x" secondAttribute="top" constant="8" id="pvx-Xl-W1i"/>
+                                <constraint firstAttribute="trailing" secondItem="9ny-aV-TZ7" secondAttribute="trailing" constant="8" id="ttA-JE-nKS"/>
+                                <constraint firstAttribute="bottom" secondItem="62G-cn-Kcc" secondAttribute="bottom" constant="8" id="xW9-9i-m4j"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="ccG-ak-60d" firstAttribute="top" secondItem="GAi-aH-9M3" secondAttribute="top" id="2F6-0N-84V"/>
+                        <constraint firstItem="TWg-66-O6x" firstAttribute="leading" secondItem="GAi-aH-9M3" secondAttribute="leading" constant="8" id="3xt-MA-V4Q"/>
+                        <constraint firstAttribute="bottom" secondItem="TWg-66-O6x" secondAttribute="bottom" constant="8" id="CMQ-pJ-Eum"/>
+                        <constraint firstAttribute="trailing" secondItem="ccG-ak-60d" secondAttribute="trailing" id="NX0-Zd-d78"/>
+                        <constraint firstItem="TWg-66-O6x" firstAttribute="top" secondItem="ccG-ak-60d" secondAttribute="bottom" id="Tzx-Zn-pJS"/>
+                        <constraint firstItem="ccG-ak-60d" firstAttribute="leading" secondItem="GAi-aH-9M3" secondAttribute="leading" id="Wi5-CV-c1K"/>
+                        <constraint firstAttribute="trailing" secondItem="TWg-66-O6x" secondAttribute="trailing" constant="8" id="fR2-b7-OFw"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <constraints>
+                <constraint firstItem="GAi-aH-9M3" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Y83-g9-0Wc"/>
+                <constraint firstItem="GAi-aH-9M3" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Z5G-iO-Jq0"/>
+                <constraint firstAttribute="trailing" secondItem="GAi-aH-9M3" secondAttribute="trailing" id="cz1-ex-aJK"/>
+                <constraint firstAttribute="bottom" secondItem="GAi-aH-9M3" secondAttribute="bottom" id="xde-mK-nRh"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="colorAnimationBtnView" destination="TWg-66-O6x" id="ZLz-Qj-Zme"/>
+                <outlet property="palette" destination="ZFb-Ad-cmn" id="S5S-lx-qCr"/>
+                <outlet property="paletteView" destination="EcA-9q-t90" id="uXo-5s-t4O"/>
+            </connections>
+            <point key="canvasLocation" x="140" y="178.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="Image_Palette" width="365" height="365"/>
+    </resources>
+</document>
