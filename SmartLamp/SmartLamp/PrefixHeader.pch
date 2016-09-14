@@ -12,46 +12,80 @@
 // Include any system framework and library headers here that should be included in all compilation units.
 // You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
 
-#import "AppDelegate.h"
+
+#ifdef __OBJC__ // ==================== [ OC宏 ] ==================== //
+
+
 // ==================== [ 头文件 ] ==================== //
+#import "AppDelegate.h"
 // 库
-#import <CoreBluetooth/CoreBluetooth.h>
-
-
-// Tools
-#import "UIButton+ATButton.h"
-#import "UITextField+ATText.h"
-
+#import <ReactiveCocoa/ReactiveCocoa.h>
+#import "MBProgressHUD.h"
+#import "ATColorManager.h"
 // Model
 #import "ATProfiles.h"
 #import "ATFileManager.h"
+#import "ATCentralManager.h"
 
-// View
+// Tools
+#import "UIView+Responder.h"
+#import "UITextField+ATText.h"
+//#import <MJRefresh.h>
+#import "UIView+ATRect.h"
+#import "UIBarButtonItem+ATItem.h"
+#import "SCLAlertView+ATAlertView.h"
 
 
-// Controller
-#import "BaseViewController.h"
-#import "LeftTableViewController.h"
+// 单利 - 中心设备
+#define atCentralManager [ATCentralManager defaultCentralManager]
 
-
-
-
-// ==================== [ 宏定义 ] ==================== //
-
+// ==================== [ 尺寸 ] ==================== //
 #define SCREEN_W [UIScreen mainScreen].bounds.size.width
 #define SCREEN_H [UIScreen mainScreen].bounds.size.height
+#define SCREEN_CenterX SCREEN_W * 0.5
+#define SCREEN_CenterY SCREEN_H * 0.5
 
 
+// ==================== [ 颜色 ] ==================== //
+// 单例 - 颜色管理器
+#define atColor [ATColorManager defaultColorManager]
 
 
 // ==================== [ 通知 ] ==================== //
-#define NOTI_LEFTVIEW  @"LeftView"
-#define LEFTVIEW_OPEN  @"open"
-#define LEFTVIEW_CLOSE @"close"
+
+// 单例 - 通知中心
+#define atNotificationCenter [NSNotificationCenter defaultCenter]
+
+#define NOTI_LEFTVIEW       @"LEFTVIEW"
+#define NOTI_LEFTVIEW_OPEN  @"OPEN"
+#define NOTI_LEFTVIEW_CLOSE @"CLOSE"
 
 
+#define NOTI_MESSAGE @"MESSAGE"
 
 
+#define atNotificationCenter_deviceStatus(string) [atNotificationCenter postNotificationName:@"deviceStatus" object:string]
 
-
+#ifdef DEBUG // ==================== [ 调试宏 ] ==================== //
+// debug
+#define ATNSLog                  NSLog
+#define ATLogFunc                NSLog(@"💬func:%s",__func__)
+// result
+#define ATLogResult(result)      NSLog(@"%@💬func:%s",result?@"🔵Success":@"🔴Fail",__func__)
+#define ATLogSuccessTips(tips)   NSLog(@"🔵%@",tips)
+#define ATLogFailTips(tips)      NSLog(@"🔴%@",tips)
+#define ATLogError(error)        NSLog(@"🔴func:%s,%@", __func__,error.localizedDescription)
+// obj
+#define ATLogString(description) NSLog(@"💬%@",description)
+#define ATLogDetail(desc1,desc2) NSLog(@"💬%@:%@",desc1,desc2)
+#define ATLogObj(description,obj)NSLog(@"💬%@:💬%@",description,obj)
+// assign
+#define ATLogInteger(integer)    NSLog(@"💬%s:💬%d",__func__,integer)
+#define ATLogUinteger(uinteger)  NSLog(@"💬%s:💬%ld",__func__,uinteger)
+#define ATLogFloat(float)        NSLog(@"💬%s:💬%f",__func__,float)
+#define ATLogPoint(point)        NSLog(@"💬%s:💬%@",__func__,NSStringFromCGPoint(point))
+#define ATLogSize(size)          NSLog(@"💬%s:💬%@",__func__,NSStringFromCGSize(size))
+#define ATLogRect(rect)          NSLog(@"💬%s:💬%@",__func__,NSStringFromCGRect(rect))
+#endif // ==================== [ 调试宏 ] ==================== //
+#endif // ==================== [ OC宏 ] ==================== //
 #endif /* PrefixHeader_pch */

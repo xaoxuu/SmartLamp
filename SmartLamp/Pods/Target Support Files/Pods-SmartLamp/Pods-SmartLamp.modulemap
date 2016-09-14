@@ -1,0 +1,6 @@
+framework module Pods_SmartLamp {
+  umbrella header "Pods-SmartLamp-umbrella.h"
+
+  export *
+  module * { export * }
+}

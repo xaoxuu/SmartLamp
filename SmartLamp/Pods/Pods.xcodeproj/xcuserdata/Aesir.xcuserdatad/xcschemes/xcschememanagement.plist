@@ -4,7 +4,27 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>MBProgressHUD.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>MJRefresh.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-SmartLamp.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>ReactiveCocoa.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Result.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -17,12 +37,32 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>3D2C489CBD9F87078CD596B7746F9ED6</key>
+		<key>29DD99664D189A7CA206368F493B1E0B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A3CC3EC7CF0B6B0C520A51C7CFCE1558</key>
+		<key>2FDBB7EC2E2AAAD998B1489D23B9FAB2</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>377E26EDC7F16AB44060F08C34D8806F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>62A5B439EA7D3B8B257AE8180094FE67</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>71119150B78E9B45018FF935FC9D668F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>DBA6001481CEA0EBA031CC5C94508FAA</key>
 		<dict>
 			<key>primary</key>
 			<true/>
