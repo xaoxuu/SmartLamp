@@ -7,7 +7,7 @@
 //
 
 #import "ProfilesDetailsViewController.h"
-
+#import "UITextField+ATText.h"
 
 @interface ProfilesDetailsViewController () <UIPickerViewDataSource,UIPickerViewDelegate>
 
@@ -62,6 +62,17 @@
     
 }
 
+-(void)viewDidAppear:(BOOL)animated{
+    
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
+    
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+    
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
+    
+}
 
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     

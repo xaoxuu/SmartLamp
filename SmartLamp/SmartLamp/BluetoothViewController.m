@@ -47,6 +47,7 @@
 
 -(void)viewDidAppear:(BOOL)animated{
     
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
     // 页面刚出现的时候自动搜索蓝牙设备, 优化体验
     if (!self.iPhone.scanedDeviceList) {
         [self searchDevice];
@@ -54,7 +55,11 @@
     
 }
 
-
+-(void)viewWillDisappear:(BOOL)animated{
+    
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
+    
+}
 
 // 页面消失后, 
 -(void)viewDidDisappear:(BOOL)animated{

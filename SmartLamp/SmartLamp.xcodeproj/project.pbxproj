@@ -7,18 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B95FE0DF9EF4ADF6D2ADF4E5 /* libPods-SmartLamp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AC3432B358A2F20F30EBE47 /* libPods-SmartLamp.a */; };
 		DD4A43561CE19E0F0093D87A /* ATProfiles.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4A43551CE19E0F0093D87A /* ATProfiles.m */; };
 		DD4A43591CE1CF8B0093D87A /* ATFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4A43581CE1CF8B0093D87A /* ATFileManager.m */; };
 		DD4A435C1CE1E4230093D87A /* UIButton+ATButton.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4A435B1CE1E4230093D87A /* UIButton+ATButton.m */; };
 		DD4A43621CE203550093D87A /* ProfilesDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4A43611CE203550093D87A /* ProfilesDetailsViewController.m */; };
 		DD4A43651CE230340093D87A /* UITextField+ATText.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4A43641CE230340093D87A /* UITextField+ATText.m */; };
-		DD8464941D2100D300B7CB98 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD8464931D2100D300B7CB98 /* BaseViewController.m */; };
-		DD8464971D21010F00B7CB98 /* ATRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD8464961D21010F00B7CB98 /* ATRootViewController.m */; };
-		DD84649A1D210A7100B7CB98 /* LeftViewController.plist in Resources */ = {isa = PBXBuildFile; fileRef = DD8464991D210A7100B7CB98 /* LeftViewController.plist */; };
-		DD84649C1D21160300B7CB98 /* LeftView.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DD84649B1D21160300B7CB98 /* LeftView.xcassets */; };
-		DD84649F1D2117B200B7CB98 /* LeftTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD84649E1D2117B200B7CB98 /* LeftTableViewController.m */; };
-		DD8464A21D211EC400B7CB98 /* MainTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD8464A11D211EC400B7CB98 /* MainTabBarController.m */; };
 		DD97BB531CF3227A00B94B66 /* UIImageView+GetColorAtPixel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD97BB521CF3227A00B94B66 /* UIImageView+GetColorAtPixel.m */; };
 		DDB0D1EB1CD224C100C6445D /* ATCentralManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB0D1EA1CD224C100C6445D /* ATCentralManager.m */; };
 		DDC0AFD21CC8C29100B669A1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DDC0AFD11CC8C29100B669A1 /* main.m */; };
@@ -28,6 +21,14 @@
 		DDC0AFEB1CC8C29100B669A1 /* SmartLampTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DDC0AFEA1CC8C29100B669A1 /* SmartLampTests.m */; };
 		DDC0AFF61CC8C29100B669A1 /* SmartLampUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = DDC0AFF51CC8C29100B669A1 /* SmartLampUITests.m */; };
 		DDC0B0041CC8C2F400B669A1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDC0B0031CC8C2F400B669A1 /* Main.storyboard */; };
+		DDDB85C41CE4A4CD0036B99A /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = DDDB85B41CE4A4CD0036B99A /* UIImage+ImageEffects.m */; };
+		DDDB85C51CE4A4CD0036B99A /* SCLAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = DDDB85B61CE4A4CD0036B99A /* SCLAlertView.m */; };
+		DDDB85C61CE4A4CD0036B99A /* SCLButton.m in Sources */ = {isa = PBXBuildFile; fileRef = DDDB85B81CE4A4CD0036B99A /* SCLButton.m */; };
+		DDDB85C71CE4A4CD0036B99A /* SCLAlertViewResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = DDDB85BA1CE4A4CD0036B99A /* SCLAlertViewResponder.m */; };
+		DDDB85C81CE4A4CD0036B99A /* SCLAlertViewStyleKit.m in Sources */ = {isa = PBXBuildFile; fileRef = DDDB85BC1CE4A4CD0036B99A /* SCLAlertViewStyleKit.m */; };
+		DDDB85C91CE4A4CD0036B99A /* SCLTimerDisplay.m in Sources */ = {isa = PBXBuildFile; fileRef = DDDB85BF1CE4A4CD0036B99A /* SCLTimerDisplay.m */; };
+		DDDB85CA1CE4A4CD0036B99A /* SCLTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = DDDB85C11CE4A4CD0036B99A /* SCLTextView.m */; };
+		DDDB85CB1CE4A4CD0036B99A /* SCLSwitchView.m in Sources */ = {isa = PBXBuildFile; fileRef = DDDB85C31CE4A4CD0036B99A /* SCLSwitchView.m */; };
 		DDDB865C1CE777670036B99A /* ASValuePopUpView.m in Sources */ = {isa = PBXBuildFile; fileRef = DDDB86591CE777670036B99A /* ASValuePopUpView.m */; };
 		DDDB865D1CE777670036B99A /* ASValueTrackingSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = DDDB865B1CE777670036B99A /* ASValueTrackingSlider.m */; };
 		DDF5AD3E1CC8E75F008F4E1C /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDF5AD3D1CC8E75F008F4E1C /* HomeViewController.m */; };
@@ -54,9 +55,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		4AC3432B358A2F20F30EBE47 /* libPods-SmartLamp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SmartLamp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		8B596CB49C7F89149175F7E2 /* Pods-SmartLamp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartLamp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SmartLamp/Pods-SmartLamp.debug.xcconfig"; sourceTree = "<group>"; };
-		98D708CCDAEE63C59251A120 /* Pods-SmartLamp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartLamp.release.xcconfig"; path = "Pods/Target Support Files/Pods-SmartLamp/Pods-SmartLamp.release.xcconfig"; sourceTree = "<group>"; };
 		DD4A43541CE19E0F0093D87A /* ATProfiles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATProfiles.h; sourceTree = "<group>"; };
 		DD4A43551CE19E0F0093D87A /* ATProfiles.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATProfiles.m; sourceTree = "<group>"; };
 		DD4A43571CE1CF8B0093D87A /* ATFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATFileManager.h; sourceTree = "<group>"; };
@@ -67,17 +65,6 @@
 		DD4A43611CE203550093D87A /* ProfilesDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfilesDetailsViewController.m; sourceTree = "<group>"; };
 		DD4A43631CE230340093D87A /* UITextField+ATText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+ATText.h"; sourceTree = "<group>"; };
 		DD4A43641CE230340093D87A /* UITextField+ATText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+ATText.m"; sourceTree = "<group>"; };
-		DD84648C1D20F90A00B7CB98 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
-		DD8464921D2100D300B7CB98 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
-		DD8464931D2100D300B7CB98 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
-		DD8464951D21010F00B7CB98 /* ATRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATRootViewController.h; sourceTree = "<group>"; };
-		DD8464961D21010F00B7CB98 /* ATRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATRootViewController.m; sourceTree = "<group>"; };
-		DD8464991D210A7100B7CB98 /* LeftViewController.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = LeftViewController.plist; sourceTree = "<group>"; };
-		DD84649B1D21160300B7CB98 /* LeftView.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = LeftView.xcassets; sourceTree = "<group>"; };
-		DD84649D1D2117B200B7CB98 /* LeftTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftTableViewController.h; sourceTree = "<group>"; };
-		DD84649E1D2117B200B7CB98 /* LeftTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftTableViewController.m; sourceTree = "<group>"; };
-		DD8464A01D211EC400B7CB98 /* MainTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTabBarController.h; sourceTree = "<group>"; };
-		DD8464A11D211EC400B7CB98 /* MainTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTabBarController.m; sourceTree = "<group>"; };
 		DD97BB511CF3227A00B94B66 /* UIImageView+GetColorAtPixel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+GetColorAtPixel.h"; sourceTree = "<group>"; };
 		DD97BB521CF3227A00B94B66 /* UIImageView+GetColorAtPixel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+GetColorAtPixel.m"; sourceTree = "<group>"; };
 		DDB0D1E91CD224C100C6445D /* ATCentralManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATCentralManager.h; sourceTree = "<group>"; };
@@ -97,6 +84,23 @@
 		DDC0AFF51CC8C29100B669A1 /* SmartLampUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SmartLampUITests.m; sourceTree = "<group>"; };
 		DDC0AFF71CC8C29100B669A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DDC0B0031CC8C2F400B669A1 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		DDDB85B31CE4A4CD0036B99A /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
+		DDDB85B41CE4A4CD0036B99A /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageEffects.m"; sourceTree = "<group>"; };
+		DDDB85B51CE4A4CD0036B99A /* SCLAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCLAlertView.h; sourceTree = "<group>"; };
+		DDDB85B61CE4A4CD0036B99A /* SCLAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCLAlertView.m; sourceTree = "<group>"; };
+		DDDB85B71CE4A4CD0036B99A /* SCLButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCLButton.h; sourceTree = "<group>"; };
+		DDDB85B81CE4A4CD0036B99A /* SCLButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCLButton.m; sourceTree = "<group>"; };
+		DDDB85B91CE4A4CD0036B99A /* SCLAlertViewResponder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCLAlertViewResponder.h; sourceTree = "<group>"; };
+		DDDB85BA1CE4A4CD0036B99A /* SCLAlertViewResponder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCLAlertViewResponder.m; sourceTree = "<group>"; };
+		DDDB85BB1CE4A4CD0036B99A /* SCLAlertViewStyleKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCLAlertViewStyleKit.h; sourceTree = "<group>"; };
+		DDDB85BC1CE4A4CD0036B99A /* SCLAlertViewStyleKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCLAlertViewStyleKit.m; sourceTree = "<group>"; };
+		DDDB85BD1CE4A4CD0036B99A /* SCLMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCLMacros.h; sourceTree = "<group>"; };
+		DDDB85BE1CE4A4CD0036B99A /* SCLTimerDisplay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCLTimerDisplay.h; sourceTree = "<group>"; };
+		DDDB85BF1CE4A4CD0036B99A /* SCLTimerDisplay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCLTimerDisplay.m; sourceTree = "<group>"; };
+		DDDB85C01CE4A4CD0036B99A /* SCLTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCLTextView.h; sourceTree = "<group>"; };
+		DDDB85C11CE4A4CD0036B99A /* SCLTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCLTextView.m; sourceTree = "<group>"; };
+		DDDB85C21CE4A4CD0036B99A /* SCLSwitchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCLSwitchView.h; sourceTree = "<group>"; };
+		DDDB85C31CE4A4CD0036B99A /* SCLSwitchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCLSwitchView.m; sourceTree = "<group>"; };
 		DDDB86581CE777670036B99A /* ASValuePopUpView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASValuePopUpView.h; sourceTree = "<group>"; };
 		DDDB86591CE777670036B99A /* ASValuePopUpView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASValuePopUpView.m; sourceTree = "<group>"; };
 		DDDB865A1CE777670036B99A /* ASValueTrackingSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASValueTrackingSlider.h; sourceTree = "<group>"; };
@@ -115,7 +119,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B95FE0DF9EF4ADF6D2ADF4E5 /* libPods-SmartLamp.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -136,29 +139,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		10109E38E0F7215FA2F7CAD0 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				4AC3432B358A2F20F30EBE47 /* libPods-SmartLamp.a */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		DD8464981D21011500B7CB98 /* RootViewController */ = {
-			isa = PBXGroup;
-			children = (
-				DD8464951D21010F00B7CB98 /* ATRootViewController.h */,
-				DD8464961D21010F00B7CB98 /* ATRootViewController.m */,
-				DD8464A01D211EC400B7CB98 /* MainTabBarController.h */,
-				DD8464A11D211EC400B7CB98 /* MainTabBarController.m */,
-				DD8464921D2100D300B7CB98 /* BaseViewController.h */,
-				DD8464931D2100D300B7CB98 /* BaseViewController.m */,
-				DD84649D1D2117B200B7CB98 /* LeftTableViewController.h */,
-				DD84649E1D2117B200B7CB98 /* LeftTableViewController.m */,
-			);
-			name = RootViewController;
-			sourceTree = "<group>";
-		};
 		DDB0D1E81CD2248200C6445D /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -179,8 +159,6 @@
 				DDC0AFE91CC8C29100B669A1 /* SmartLampTests */,
 				DDC0AFF41CC8C29100B669A1 /* SmartLampUITests */,
 				DDC0AFCE1CC8C29100B669A1 /* Products */,
-				F370DC93BB09F4B4A628CF38 /* Pods */,
-				10109E38E0F7215FA2F7CAD0 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -197,7 +175,6 @@
 		DDC0AFCF1CC8C29100B669A1 /* SmartLamp */ = {
 			isa = PBXGroup;
 			children = (
-				DD8464981D21011500B7CB98 /* RootViewController */,
 				DDB0D1E81CD2248200C6445D /* Model */,
 				DDC0B0501CC8C57300B669A1 /* Controller */,
 				DDC0B04F1CC8C56800B669A1 /* View */,
@@ -209,9 +186,8 @@
 		DDC0AFD01CC8C29100B669A1 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				DD84648C1D20F90A00B7CB98 /* PrefixHeader.pch */,
-				DD8464991D210A7100B7CB98 /* LeftViewController.plist */,
 				DDDB865E1CE777780036B99A /* ASSlider */,
+				DDDB85CC1CE4A4D80036B99A /* SCLAlertVIew */,
 				DDC0AFE11CC8C29100B669A1 /* Info.plist */,
 				DDC0AFD11CC8C29100B669A1 /* main.m */,
 				DDC0AFD31CC8C29100B669A1 /* AppDelegate.h */,
@@ -250,7 +226,6 @@
 				DD97BB511CF3227A00B94B66 /* UIImageView+GetColorAtPixel.h */,
 				DD97BB521CF3227A00B94B66 /* UIImageView+GetColorAtPixel.m */,
 				DDF5AD421CC8F3FB008F4E1C /* Asset.xcassets */,
-				DD84649B1D21160300B7CB98 /* LeftView.xcassets */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -272,6 +247,30 @@
 			name = Controller;
 			sourceTree = "<group>";
 		};
+		DDDB85CC1CE4A4D80036B99A /* SCLAlertVIew */ = {
+			isa = PBXGroup;
+			children = (
+				DDDB85B31CE4A4CD0036B99A /* UIImage+ImageEffects.h */,
+				DDDB85B41CE4A4CD0036B99A /* UIImage+ImageEffects.m */,
+				DDDB85B51CE4A4CD0036B99A /* SCLAlertView.h */,
+				DDDB85B61CE4A4CD0036B99A /* SCLAlertView.m */,
+				DDDB85B71CE4A4CD0036B99A /* SCLButton.h */,
+				DDDB85B81CE4A4CD0036B99A /* SCLButton.m */,
+				DDDB85B91CE4A4CD0036B99A /* SCLAlertViewResponder.h */,
+				DDDB85BA1CE4A4CD0036B99A /* SCLAlertViewResponder.m */,
+				DDDB85BB1CE4A4CD0036B99A /* SCLAlertViewStyleKit.h */,
+				DDDB85BC1CE4A4CD0036B99A /* SCLAlertViewStyleKit.m */,
+				DDDB85BD1CE4A4CD0036B99A /* SCLMacros.h */,
+				DDDB85BE1CE4A4CD0036B99A /* SCLTimerDisplay.h */,
+				DDDB85BF1CE4A4CD0036B99A /* SCLTimerDisplay.m */,
+				DDDB85C01CE4A4CD0036B99A /* SCLTextView.h */,
+				DDDB85C11CE4A4CD0036B99A /* SCLTextView.m */,
+				DDDB85C21CE4A4CD0036B99A /* SCLSwitchView.h */,
+				DDDB85C31CE4A4CD0036B99A /* SCLSwitchView.m */,
+			);
+			name = SCLAlertVIew;
+			sourceTree = "<group>";
+		};
 		DDDB865E1CE777780036B99A /* ASSlider */ = {
 			isa = PBXGroup;
 			children = (
@@ -283,15 +282,6 @@
 			name = ASSlider;
 			sourceTree = "<group>";
 		};
-		F370DC93BB09F4B4A628CF38 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				8B596CB49C7F89149175F7E2 /* Pods-SmartLamp.debug.xcconfig */,
-				98D708CCDAEE63C59251A120 /* Pods-SmartLamp.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -299,12 +289,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DDC0AFFA1CC8C29100B669A1 /* Build configuration list for PBXNativeTarget "SmartLamp" */;
 			buildPhases = (
-				701EB5A36EF4F411C458E4F8 /* 📦 Check Pods Manifest.lock */,
 				DDC0AFC91CC8C29100B669A1 /* Sources */,
 				DDC0AFCA1CC8C29100B669A1 /* Frameworks */,
 				DDC0AFCB1CC8C29100B669A1 /* Resources */,
-				81AA24985FA1F3AFD9D970E3 /* 📦 Embed Pods Frameworks */,
-				79B888A9208CD5C49D48901C /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -404,9 +391,7 @@
 			files = (
 				DDF5AD431CC8F3FB008F4E1C /* Asset.xcassets in Resources */,
 				DDC0B0041CC8C2F400B669A1 /* Main.storyboard in Resources */,
-				DD84649C1D21160300B7CB98 /* LeftView.xcassets in Resources */,
 				DDC0AFE01CC8C29100B669A1 /* LaunchScreen.storyboard in Resources */,
-				DD84649A1D210A7100B7CB98 /* LeftViewController.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -426,54 +411,6 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		701EB5A36EF4F411C458E4F8 /* 📦 Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "📦 Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		79B888A9208CD5C49D48901C /* 📦 Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "📦 Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SmartLamp/Pods-SmartLamp-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		81AA24985FA1F3AFD9D970E3 /* 📦 Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "📦 Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SmartLamp/Pods-SmartLamp-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		DDC0AFC91CC8C29100B669A1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -481,21 +418,25 @@
 			files = (
 				DDF5AD411CC8E8CD008F4E1C /* ProfilesViewController.m in Sources */,
 				DDB0D1EB1CD224C100C6445D /* ATCentralManager.m in Sources */,
+				DDDB85C41CE4A4CD0036B99A /* UIImage+ImageEffects.m in Sources */,
 				DD4A43621CE203550093D87A /* ProfilesDetailsViewController.m in Sources */,
+				DDDB85C61CE4A4CD0036B99A /* SCLButton.m in Sources */,
 				DDDB865C1CE777670036B99A /* ASValuePopUpView.m in Sources */,
+				DDDB85CB1CE4A4CD0036B99A /* SCLSwitchView.m in Sources */,
+				DDDB85C81CE4A4CD0036B99A /* SCLAlertViewStyleKit.m in Sources */,
+				DDDB85C51CE4A4CD0036B99A /* SCLAlertView.m in Sources */,
 				DDDB865D1CE777670036B99A /* ASValueTrackingSlider.m in Sources */,
 				DD4A43651CE230340093D87A /* UITextField+ATText.m in Sources */,
 				DD4A435C1CE1E4230093D87A /* UIButton+ATButton.m in Sources */,
-				DD8464941D2100D300B7CB98 /* BaseViewController.m in Sources */,
 				DDF5AD461CC8F828008F4E1C /* BluetoothViewController.m in Sources */,
 				DDC0AFD81CC8C29100B669A1 /* ViewController.m in Sources */,
-				DD84649F1D2117B200B7CB98 /* LeftTableViewController.m in Sources */,
 				DD4A43591CE1CF8B0093D87A /* ATFileManager.m in Sources */,
-				DD8464A21D211EC400B7CB98 /* MainTabBarController.m in Sources */,
+				DDDB85C91CE4A4CD0036B99A /* SCLTimerDisplay.m in Sources */,
+				DDDB85CA1CE4A4CD0036B99A /* SCLTextView.m in Sources */,
+				DDDB85C71CE4A4CD0036B99A /* SCLAlertViewResponder.m in Sources */,
 				DD4A43561CE19E0F0093D87A /* ATProfiles.m in Sources */,
 				DDC0AFD51CC8C29100B669A1 /* AppDelegate.m in Sources */,
 				DDF5AD3E1CC8E75F008F4E1C /* HomeViewController.m in Sources */,
-				DD8464971D21010F00B7CB98 /* ATRootViewController.m in Sources */,
 				DD97BB531CF3227A00B94B66 /* UIImageView+GetColorAtPixel.m in Sources */,
 				DDC0AFD21CC8C29100B669A1 /* main.m in Sources */,
 			);
@@ -630,12 +571,8 @@
 		};
 		DDC0AFFB1CC8C29100B669A1 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8B596CB49C7F89149175F7E2 /* Pods-SmartLamp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
-				GCC_PRECOMPILE_PREFIX_HEADER = NO;
-				GCC_PREFIX_HEADER = "$(SRCROOT)/SmartLamp/PrefixHeader.pch";
 				INFOPLIST_FILE = SmartLamp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -646,12 +583,8 @@
 		};
 		DDC0AFFC1CC8C29100B669A1 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 98D708CCDAEE63C59251A120 /* Pods-SmartLamp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
-				GCC_PRECOMPILE_PREFIX_HEADER = NO;
-				GCC_PREFIX_HEADER = "$(SRCROOT)/SmartLamp/PrefixHeader.pch";
 				INFOPLIST_FILE = SmartLamp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
