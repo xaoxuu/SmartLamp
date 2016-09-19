@@ -3,8 +3,9 @@ platform:ios, '8.0'
 use_frameworks!
 target ‘SmartLamp’ do
     
-  pod 'ATKit'
   pod 'ReactiveCocoa', '~> 4.2.0'
+  pod 'ATKit'
+  
 #  pod 'MBProgressHUD'
   pod 'FMDB'
 #  pod 'AFNetworking', '~> 3.0.4'

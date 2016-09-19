@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2B959B5CC66C40DD4374BA28 /* Pods_SmartLamp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E10AEEBF6706EA924E438757 /* Pods_SmartLamp.framework */; };
 		DD0D5CAE1D70240C00CE79C7 /* SceneCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0D5CAC1D70240C00CE79C7 /* SceneCollectionViewCell.m */; };
 		DD0D5CB21D702E2E00CE79C7 /* SceneCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0D5CB11D702E2E00CE79C7 /* SceneCollectionView.m */; };
 		DD0D5CB41D702E3A00CE79C7 /* SceneCollectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD0D5CB31D702E3A00CE79C7 /* SceneCollectionView.xib */; };
@@ -299,6 +300,7 @@
 		DDDBF3041D563A8F006531B7 /* cover3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cover3.png; sourceTree = "<group>"; };
 		DDDBF3051D563A8F006531B7 /* cover4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cover4.png; sourceTree = "<group>"; };
 		DDDBF3061D563A8F006531B7 /* cover5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cover5.png; sourceTree = "<group>"; };
+		E10AEEBF6706EA924E438757 /* Pods_SmartLamp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SmartLamp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -306,6 +308,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2B959B5CC66C40DD4374BA28 /* Pods_SmartLamp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -326,6 +329,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		60ADD56B6ACF4F9C07F45F6F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E10AEEBF6706EA924E438757 /* Pods_SmartLamp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		DD46F6F01D50DF87002A3328 /* 发现 */ = {
 			isa = PBXGroup;
 			children = (
@@ -771,6 +782,7 @@
 				DDC0AFF41CC8C29100B669A1 /* SmartLampUITests */,
 				DDC0AFCE1CC8C29100B669A1 /* Products */,
 				F370DC93BB09F4B4A628CF38 /* Pods */,
+				60ADD56B6ACF4F9C07F45F6F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -889,12 +901,15 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DDC0AFFA1CC8C29100B669A1 /* Build configuration list for PBXNativeTarget "SmartLamp" */;
 			buildPhases = (
+				BCD62E46F8D31FDB9026EA2B /* 📦 Check Pods Manifest.lock */,
 				701EB5A36EF4F411C458E4F8 /* [CP] Check Pods Manifest.lock */,
 				DDC0AFC91CC8C29100B669A1 /* Sources */,
 				DDC0AFCA1CC8C29100B669A1 /* Frameworks */,
 				DDC0AFCB1CC8C29100B669A1 /* Resources */,
 				81AA24985FA1F3AFD9D970E3 /* [CP] Embed Pods Frameworks */,
 				79B888A9208CD5C49D48901C /* [CP] Copy Pods Resources */,
+				9EFF76C488AACE78658784AE /* 📦 Embed Pods Frameworks */,
+				19F2F6AF4F22EAB3CAA16FF8 /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1037,6 +1052,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		19F2F6AF4F22EAB3CAA16FF8 /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SmartLamp/Pods-SmartLamp-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		701EB5A36EF4F411C458E4F8 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1080,6 +1110,36 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SmartLamp/Pods-SmartLamp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9EFF76C488AACE78658784AE /* 📦 Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SmartLamp/Pods-SmartLamp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BCD62E46F8D31FDB9026EA2B /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
