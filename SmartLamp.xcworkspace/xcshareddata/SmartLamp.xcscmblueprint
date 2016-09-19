@@ -1,0 +1,37 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "8DCD2FE4355AF1683569728AE3D69E1A36C0FF53+++5D143B1",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "8DCD2FE4355AF1683569728AE3D69E1A36C0FF53+++8831CDF" : 0,
+    "8DCD2FE4355AF1683569728AE3D69E1A36C0FF53+++CDFA4F8" : 0,
+    "8DCD2FE4355AF1683569728AE3D69E1A36C0FF53+++5D143B1" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "CAA12A5E-0131-4428-9214-4360D7095BB5",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "8DCD2FE4355AF1683569728AE3D69E1A36C0FF53+++8831CDF" : "",
+    "8DCD2FE4355AF1683569728AE3D69E1A36C0FF53+++CDFA4F8" : "",
+    "8DCD2FE4355AF1683569728AE3D69E1A36C0FF53+++5D143B1" : "SmartLamp\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "SmartLamp",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "SmartLamp.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/TitanStudio\/SmartLamp.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "8DCD2FE4355AF1683569728AE3D69E1A36C0FF53+++5D143B1"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/TitanStudio\/SmartLamp.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "8DCD2FE4355AF1683569728AE3D69E1A36C0FF53+++8831CDF"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/TitanStudio\/SmartLamp.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "8DCD2FE4355AF1683569728AE3D69E1A36C0FF53+++CDFA4F8"
+    }
+  ]
+}

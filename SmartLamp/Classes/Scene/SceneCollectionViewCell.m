@@ -63,7 +63,7 @@
     [self.contentView addSubview:sceneImage];
     self.sceneImage = sceneImage;
     sceneImage.contentMode = UIViewContentModeScaleAspectFill;
-    sceneImage.image = [UIImage imageNamed:@"icon_scene_image"];
+    sceneImage.image = [UIImage imageNamed:@"icon_scenePlaceholder"];
     sceneImage.userInteractionEnabled = YES;
     sceneImage.clipsToBounds = YES;
     [sceneImage at_addTapGestureHandler:^(UITapGestureRecognizer * _Nonnull sender) {

@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		73D8D6B783A48FDF1BAF807F /* Pods_SmartLamp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51E9A0F281B5E43D72F84B45 /* Pods_SmartLamp.framework */; };
 		DD0D5CAE1D70240C00CE79C7 /* SceneCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0D5CAC1D70240C00CE79C7 /* SceneCollectionViewCell.m */; };
 		DD0D5CB21D702E2E00CE79C7 /* SceneCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0D5CB11D702E2E00CE79C7 /* SceneCollectionView.m */; };
 		DD0D5CB41D702E3A00CE79C7 /* SceneCollectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD0D5CB31D702E3A00CE79C7 /* SceneCollectionView.xib */; };
@@ -81,13 +80,13 @@
 		DD6206301D8558A300E1DAF2 /* ATFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6206011D8558A300E1DAF2 /* ATFileManager.m */; };
 		DD6206311D8558A300E1DAF2 /* ATProfiles.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6206031D8558A300E1DAF2 /* ATProfiles.m */; };
 		DD6206351D85592800E1DAF2 /* SmartLampConst.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6206341D85592800E1DAF2 /* SmartLampConst.m */; };
-		DD6206391D856BA600E1DAF2 /* YYPhotoGroupView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6206381D856BA600E1DAF2 /* YYPhotoGroupView.m */; };
 		DD7F41EA1D54912D0050D315 /* NewsCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD7F41E31D54912D0050D315 /* NewsCellView.m */; };
 		DD7F41EB1D54912D0050D315 /* NewsCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD7F41E41D54912D0050D315 /* NewsCellView.xib */; };
 		DD7F41ED1D54912D0050D315 /* NewsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD7F41E81D54912D0050D315 /* NewsModel.m */; };
 		DD7F41EE1D54912D0050D315 /* NewsTitles.plist in Resources */ = {isa = PBXBuildFile; fileRef = DD7F41E91D54912D0050D315 /* NewsTitles.plist */; };
 		DD80C1011D54AE0200B2B2F9 /* DiscoverHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD80C1001D54AE0200B2B2F9 /* DiscoverHeaderView.m */; };
 		DD84649A1D210A7100B7CB98 /* LeftViewController.plist in Resources */ = {isa = PBXBuildFile; fileRef = DD8464991D210A7100B7CB98 /* LeftViewController.plist */; };
+		DDBDF9DC1D8FBE5B00684E82 /* YYPhotoGroupView.m in Sources */ = {isa = PBXBuildFile; fileRef = DDBDF9DB1D8FBE5B00684E82 /* YYPhotoGroupView.m */; };
 		DDC0AFD21CC8C29100B669A1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DDC0AFD11CC8C29100B669A1 /* main.m */; };
 		DDC0AFD51CC8C29100B669A1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DDC0AFD41CC8C29100B669A1 /* AppDelegate.m */; };
 		DDC0AFEB1CC8C29100B669A1 /* SmartLampTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DDC0AFEA1CC8C29100B669A1 /* SmartLampTests.m */; };
@@ -125,7 +124,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		51E9A0F281B5E43D72F84B45 /* Pods_SmartLamp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SmartLamp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B596CB49C7F89149175F7E2 /* Pods-SmartLamp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartLamp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SmartLamp/Pods-SmartLamp.debug.xcconfig"; sourceTree = "<group>"; };
 		98D708CCDAEE63C59251A120 /* Pods-SmartLamp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartLamp.release.xcconfig"; path = "Pods/Target Support Files/Pods-SmartLamp/Pods-SmartLamp.release.xcconfig"; sourceTree = "<group>"; };
 		DD0D5CAB1D70240C00CE79C7 /* SceneCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SceneCollectionViewCell.h; sourceTree = "<group>"; };
@@ -261,8 +259,6 @@
 		DD6206031D8558A300E1DAF2 /* ATProfiles.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATProfiles.m; sourceTree = "<group>"; };
 		DD6206331D85592800E1DAF2 /* SmartLampConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmartLampConst.h; sourceTree = "<group>"; };
 		DD6206341D85592800E1DAF2 /* SmartLampConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SmartLampConst.m; sourceTree = "<group>"; };
-		DD6206371D856BA600E1DAF2 /* YYPhotoGroupView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYPhotoGroupView.h; sourceTree = "<group>"; };
-		DD6206381D856BA600E1DAF2 /* YYPhotoGroupView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYPhotoGroupView.m; sourceTree = "<group>"; };
 		DD7F41E21D54912D0050D315 /* NewsCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsCellView.h; sourceTree = "<group>"; };
 		DD7F41E31D54912D0050D315 /* NewsCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsCellView.m; sourceTree = "<group>"; };
 		DD7F41E41D54912D0050D315 /* NewsCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewsCellView.xib; sourceTree = "<group>"; };
@@ -273,6 +269,8 @@
 		DD80C1001D54AE0200B2B2F9 /* DiscoverHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoverHeaderView.m; sourceTree = "<group>"; };
 		DD84648C1D20F90A00B7CB98 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		DD8464991D210A7100B7CB98 /* LeftViewController.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = LeftViewController.plist; sourceTree = "<group>"; };
+		DDBDF9DA1D8FBE5B00684E82 /* YYPhotoGroupView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYPhotoGroupView.h; sourceTree = "<group>"; };
+		DDBDF9DB1D8FBE5B00684E82 /* YYPhotoGroupView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYPhotoGroupView.m; sourceTree = "<group>"; };
 		DDC0AFCD1CC8C29100B669A1 /* SmartLamp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartLamp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DDC0AFD11CC8C29100B669A1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		DDC0AFD31CC8C29100B669A1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -308,7 +306,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				73D8D6B783A48FDF1BAF807F /* Pods_SmartLamp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -736,15 +733,6 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		DD6206361D856BA600E1DAF2 /* YYPhotoGroupView */ = {
-			isa = PBXGroup;
-			children = (
-				DD6206371D856BA600E1DAF2 /* YYPhotoGroupView.h */,
-				DD6206381D856BA600E1DAF2 /* YYPhotoGroupView.m */,
-			);
-			path = YYPhotoGroupView;
-			sourceTree = "<group>";
-		};
 		DD7F41E11D54912D0050D315 /* News */ = {
 			isa = PBXGroup;
 			children = (
@@ -758,19 +746,26 @@
 			path = News;
 			sourceTree = "<group>";
 		};
-		DD9C98111D6D7D6000584687 /* Frameworks */ = {
+		DDBDF9D81D8FBE5B00684E82 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				DD6206361D856BA600E1DAF2 /* YYPhotoGroupView */,
-				51E9A0F281B5E43D72F84B45 /* Pods_SmartLamp.framework */,
+				DDBDF9D91D8FBE5B00684E82 /* YYPhotoGroupView */,
 			);
 			path = Frameworks;
+			sourceTree = "<group>";
+		};
+		DDBDF9D91D8FBE5B00684E82 /* YYPhotoGroupView */ = {
+			isa = PBXGroup;
+			children = (
+				DDBDF9DA1D8FBE5B00684E82 /* YYPhotoGroupView.h */,
+				DDBDF9DB1D8FBE5B00684E82 /* YYPhotoGroupView.m */,
+			);
+			path = YYPhotoGroupView;
 			sourceTree = "<group>";
 		};
 		DDC0AFC41CC8C29100B669A1 = {
 			isa = PBXGroup;
 			children = (
-				DD9C98111D6D7D6000584687 /* Frameworks */,
 				DDC0AFCF1CC8C29100B669A1 /* SmartLamp */,
 				DDC0AFE91CC8C29100B669A1 /* SmartLampTests */,
 				DDC0AFF41CC8C29100B669A1 /* SmartLampUITests */,
@@ -792,6 +787,7 @@
 		DDC0AFCF1CC8C29100B669A1 /* SmartLamp */ = {
 			isa = PBXGroup;
 			children = (
+				DDBDF9D81D8FBE5B00684E82 /* Frameworks */,
 				DD54959B1D332EEC006854EB /* Classes */,
 				DDC0AFD01CC8C29100B669A1 /* Supporting Files */,
 			);
@@ -1128,7 +1124,7 @@
 				DDD93B8F1D3E182C0022F2E7 /* StatusView.m in Sources */,
 				DD54971E1D35DEA4006854EB /* HomeViewController.m in Sources */,
 				DD6206111D8558A300E1DAF2 /* SCLAlertView+ATAlertView.m in Sources */,
-				DD6206391D856BA600E1DAF2 /* YYPhotoGroupView.m in Sources */,
+				DDBDF9DC1D8FBE5B00684E82 /* YYPhotoGroupView.m in Sources */,
 				DD6206301D8558A300E1DAF2 /* ATFileManager.m in Sources */,
 				DD62062F1D8558A300E1DAF2 /* ATCentralManager.m in Sources */,
 				DD6206091D8558A300E1DAF2 /* ATManager+BaseVC.m in Sources */,
