@@ -13,6 +13,7 @@
 
 - (CALayer *(^)())at_maskToCircle{
     return ^{
+        self.masksToBounds = YES;
         self.cornerRadius = 0.5 * fmin(self.frame.size.width, self.frame.size.height);
         return self;
     };
