@@ -1,5 +1,6 @@
 #import <UIKit/UIKit.h>
 
+#import "ATKit.h"
 #import "ATCarouselView.h"
 #import "ATDrawerController.h"
 #import "UIViewController+DrawerGesture.h"
@@ -29,7 +30,6 @@
 #import "UIView+ATExtension.h"
 #import "UIView+ATFrameWrapper.h"
 #import "UIView+ATGestureExtension.h"
-#import "ATKit.h"
 #import "ATProgressHUD.h"
 #import "ATTabBarView.h"
 

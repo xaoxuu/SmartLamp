@@ -20,6 +20,6 @@
 // detail
 @property (weak, nonatomic) IBOutlet UILabel *cell_detail;
 // switch
-@property (weak, nonatomic) IBOutlet ATMDSwitch *cell_switch;
+@property (weak, nonatomic) ATMDSwitch *cell_switch;
 
 @end

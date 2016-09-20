@@ -24,7 +24,7 @@ static NSUInteger countOfSceneImages = 8;
         _title = @"情景模式";
         _detail = @"没有描述信息";
         self.randomSelectImage();
-        _image = [UIImage imageNamed:@"icon_scenePlaceholder"];
+        _image = [UIImage imageNamed:@"image_launch"];
         _timer = 0;//0代表不定时关机
         _colorMode = ATColorModeNone;
         _color = [UIColor whiteColor];

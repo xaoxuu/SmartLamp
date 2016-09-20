@@ -57,10 +57,10 @@
     AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
     appDelegate.rootVC.allowsShowAlert = NO;
     // reload data
-    [self reloadData];
-    if (!atCentral.aPeripheral) {
-        atCentral.startScanWithAutoTimeout();
-    }
+//    [self reloadData];
+//    if (!atCentral.aPeripheral) {
+//        atCentral.startScanWithAutoTimeout();
+//    }
     
 }
 
@@ -69,10 +69,10 @@
     // do not allows to show alert
     AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
     appDelegate.rootVC.allowsShowAlert = YES;
-    // reload data
-    [self reloadData];
-    // stop scan
-    atCentral.stopScan();
+//    // reload data
+//    [self reloadData];
+//    // stop scan
+//    atCentral.stopScan();
 }
 
 

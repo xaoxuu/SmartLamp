@@ -46,7 +46,7 @@
 
 // init UI
 - (void)_initUI{
-    self.trackOff = atColor.background;
+    self.trackOff = atColor.lightGray;
 }
 
 - (void)at_lightStyle {

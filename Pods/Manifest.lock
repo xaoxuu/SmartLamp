@@ -14,7 +14,18 @@ PODS:
   - AFNetworking/Serialization (3.0.4)
   - AFNetworking/UIKit (3.0.4):
     - AFNetworking/NSURLSession
-  - ATKit (0.0.2)
+  - ATKit (0.0.3):
+    - ATKit/ATCarousel (= 0.0.3)
+    - ATKit/ATDrawer (= 0.0.3)
+    - ATKit/ATFoundation (= 0.0.3)
+    - ATKit/ATProgressHUD (= 0.0.3)
+    - ATKit/ATTabBar (= 0.0.3)
+  - ATKit/ATCarousel (0.0.3)
+  - ATKit/ATDrawer (0.0.3)
+  - ATKit/ATFoundation (0.0.3)
+  - ATKit/ATProgressHUD (0.0.3):
+    - ATKit/ATFoundation
+  - ATKit/ATTabBar (0.0.3)
   - FMDB (2.6.2):
     - FMDB/standard (= 2.6.2)
   - FMDB/standard (2.6.2)
@@ -48,7 +59,7 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   AFNetworking: a0075feb321559dc78d9d85b55d11caa19eabb93
-  ATKit: 1b196d3cbf96c44fd70a1ee638a2882b89cab8b5
+  ATKit: 3c33fe256e19987015a9650dfd5aa50f0e524e6c
   FMDB: 854a0341b4726e53276f2a8996f06f1b80f9259a
   HYBNetworking: cb4d4bbe247f69dad3cc1a01eb5df69e01976ac6
   MaterialControls: aaabe6957059da904d5750f1d2ca2eee6f977e01
@@ -60,6 +71,6 @@ SPEC CHECKSUMS:
   SDWebImage: c325cf02c30337336b95beff20a13df489ec0ec9
   YYKit: 843d1b26e20b82c695790c9a89907eaa1e99907f
 
-PODFILE CHECKSUM: f4de448931543d279672a76c45b3be46d35b7e06
+PODFILE CHECKSUM: 7d41ebd399f43a585302282135786dfa51edd8b1
 
 COCOAPODS: 1.0.0

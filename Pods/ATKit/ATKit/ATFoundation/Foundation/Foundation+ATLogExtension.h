@@ -44,7 +44,29 @@
 #define ATLogCGRect(CGRect) NSLog((@"\nfunc:%s" "line:%d\n" "💬%@" "\n\n"), __FUNCTION__, __LINE__, NSStringFromCGRect(CGRect))
 
 
+#else
+
+#define ATLog(format, ...)
+#define ATLogFunc
+// result macro
+#define ATLogBOOL(BOOL)
+#define ATLogSuccess(format, ...)
+#define ATLogFail(format, ...)
+#define ATLogError(NSError)
+// obj macro
+#define ATLogOBJ(NSObject)
+// CG macro
+#define ATLogNSInteger(NSInteger)
+#define ATLogNSUInteger(NSUInteger)
+#define ATLogCGFloat(CGFloat) 
+#define ATLogCGPoint(CGPoint)
+#define ATLogCGSize(CGSize)
+#define ATLogCGRect(CGRect)
+
+
 #endif // ==================== [ DEBUG Macro ] ==================== //
+
+#else
 #endif // ==================== [ __OBJC__ Macro ] ==================== //
 
 

@@ -65,6 +65,46 @@
     self.pageControl.centerX = self.centerX;
 }
 
+
+- (void)addItem {
+    // save scene
+    ATProfiles *aProfiles = [ATProfiles defaultProfiles];
+    [self.sceneList addObject:aProfiles];
+    [ATFileManager saveProfilesList:self.sceneList];
+    // update page
+    self.pageControl.numberOfPages++;
+    self.pageControl.currentPage = self.sceneList.count-1;
+    // reload data
+    [self.collectionView reloadData];
+    [self at_delay:0.1 performInMainQueue:^(id  _Nonnull obj) {
+        [self.collectionView scrollToRight];
+    }];
+    
+}
+
+- (void)reloadData {
+    [self.collectionView reloadData];
+}
+
+- (void)saveData {
+    [ATFileManager saveProfilesList:self.sceneList];
+}
+
+
+- (void)removeItem {
+    NSUInteger selectedIndex = self.pageControl.currentPage;
+   
+    // NSMutableArray remove object at index
+    [self.sceneList removeObjectAtIndex:selectedIndex];
+    // save cache
+    [ATFileManager saveProfilesList:self.sceneList];
+    // view delete rows at index path
+    [self.collectionView deleteItemsAtIndexPaths:@[[NSIndexPath indexPathForRow:selectedIndex inSection:0]]];
+    [self.collectionView reloadData];
+    self.pageControl.numberOfPages--;
+
+}
+
 #pragma mark lazy load
 
 // sceneList
@@ -93,19 +133,19 @@
     // do something
     cell.model = self.sceneList[indexPath.row];
     
-    __weak ATProfiles *model = cell.model;
-    cell.deleteAction = ^(UIButton *sender){
-        NSIndexPath *index = [NSIndexPath indexPathForRow:[self.sceneList indexOfObject:model] inSection:indexPath.section];
-        // NSMutableArray remove object at index
-        [self.sceneList removeObject:model];
-        // save cache
-        [ATFileManager saveProfilesList:self.sceneList];
-        // view delete rows at index path
-        
-        [collectionView deleteItemsAtIndexPaths:@[index]];
-        [collectionView reloadData];
-        self.pageControl.numberOfPages--;
-    };
+//    __weak ATProfiles *model = cell.model;
+//    cell.deleteAction = ^(UIButton *sender){
+//        NSIndexPath *index = [NSIndexPath indexPathForRow:[self.sceneList indexOfObject:model] inSection:indexPath.section];
+//        // NSMutableArray remove object at index
+//        [self.sceneList removeObject:model];
+//        // save cache
+//        [ATFileManager saveProfilesList:self.sceneList];
+//        // view delete rows at index path
+//        
+//        [collectionView deleteItemsAtIndexPaths:@[index]];
+//        [collectionView reloadData];
+//        self.pageControl.numberOfPages--;
+//    };
     
     if (indexPath.row == self.selectedRow) {
         cell.selected = YES;
@@ -137,32 +177,6 @@
     
 }
 
-- (void)addItem {
-    // save scene
-    ATProfiles *aProfiles = [ATProfiles defaultProfiles];
-    [self.sceneList addObject:aProfiles];
-    [ATFileManager saveProfilesList:self.sceneList];
-    // update page
-    self.pageControl.numberOfPages++;
-    self.pageControl.currentPage = self.sceneList.count-1;
-    // reload data
-    [self.collectionView reloadData];
-    [self at_delay:0.1 performInMainQueue:^(id  _Nonnull obj) {
-        [self.collectionView scrollToRight];
-    }];
-    
-}
-
-- (void)reloadData {
-	[self.collectionView reloadData];
-}
-
-- (void)saveData {
-	[ATFileManager saveProfilesList:self.sceneList];
-}
-
-
-
 #pragma mark - scroll view delegate
 
 // did end decelerating (end scroll)
@@ -170,6 +184,8 @@
     NSUInteger index = scrollView.contentOffset.x/kScreenW;
     self.pageControl.currentPage = index;
 }
+
+
 
 
 @end

@@ -7,13 +7,12 @@
 //
 
 #import "CALayer+ATChainedWrapper.h"
-#import "UIColorManager.h"
+#import <ATKit/UIColorManager.h>
 
 @implementation CALayer (ATChainedWrapper)
 
 - (CALayer *(^)())at_maskToCircle{
     return ^{
-        self.masksToBounds = YES;
         self.cornerRadius = 0.5 * fmin(self.frame.size.width, self.frame.size.height);
         return self;
     };

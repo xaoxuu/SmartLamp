@@ -17,4 +17,6 @@
 
 - (void)saveData;
 
+- (void)removeItem;
+
 @end

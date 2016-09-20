@@ -7,10 +7,11 @@
 //
 
 #import "ATProgressHUD.h"
-#import "Foundation+CoreGraphics.h"
-#import "UIView+ATFrameWrapper.h"
-#import "UIColorManager.h"
-#import "CALayer+ATChainedWrapper.h"
+#import <ATKit/ATFoundation.h>
+//#import "Foundation+CoreGraphics.h"
+//#import "UIView+ATFrameWrapper.h"
+//#import "UIColorManager.h"
+//#import "CALayer+ATChainedWrapper.h"
 
 static UIView *sPopView;
 

@@ -335,7 +335,7 @@ static BOOL canSendData = NO;
 - (ATCentralManager *(^)(ATProfiles *))letSmartLampApplyProfiles{
     return ^(ATProfiles *aProfiles){
         _aProfiles = aProfiles;
-//        self.letSmartLampTurnOn();
+        self.letSmartLampTurnOn();
         return self;
     };
 }

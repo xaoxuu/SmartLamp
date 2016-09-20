@@ -29,6 +29,8 @@
 
 @property (strong, nonatomic) UIImageView *sceneImage;
 
+@property (weak, nonatomic) ATMDButton *changeImageButton;
+
 @property (weak, nonatomic) ATMDButton *applyButton;
 
 // image picker
@@ -63,11 +65,12 @@
     [self.contentView addSubview:sceneImage];
     self.sceneImage = sceneImage;
     sceneImage.contentMode = UIViewContentModeScaleAspectFill;
-    sceneImage.image = [UIImage imageNamed:@"icon_scenePlaceholder"];
+    sceneImage.image = [UIImage imageNamed:@"image_launch"];
     sceneImage.userInteractionEnabled = YES;
     sceneImage.clipsToBounds = YES;
     [sceneImage at_addTapGestureHandler:^(UITapGestureRecognizer * _Nonnull sender) {
-        [self _showPicker];
+        atCentral.letSmartLampApplyProfiles(_model);
+        self.applyButton.selected = !self.applyButton.selected;
     }];
     // info view
     UIView *infoView = [[UIView alloc] init];
@@ -110,12 +113,10 @@
     ATMDButton *deleteButton = [[ATMDButton alloc] initWithFrame:sceneIcon.frame];
     [infoView addSubview:deleteButton];
     self.deleteButton = deleteButton;
-    [deleteButton setImage:[UIImage imageNamed:@"icon_delete"] forState:UIControlStateNormal];
+    [deleteButton setImage:[UIImage imageNamed:@"icon_edit"] forState:UIControlStateNormal];
     deleteButton.layer.at_maskToCircle();
     [deleteButton at_addTouchUpInsideHandler:^(UIButton * _Nonnull sender) {
-        if (self.deleteAction) {
-            self.deleteAction(sender);
-        }
+        [self _showPicker];
     }];
     // apply button
     ATMDButton *applyButton = [[ATMDButton alloc] initWithFrame:sceneIcon.frame];
@@ -123,7 +124,6 @@
     self.applyButton = applyButton;
     [applyButton setImage:[UIImage imageNamed:@"icon_apply"] forState:UIControlStateNormal];
     applyButton.layer.at_maskToCircle();
-//    applyButton.layer.at_whiteBorder(1);
     [applyButton at_addTouchUpInsideHandler:^(UIButton * _Nonnull sender) {
         atCentral.letSmartLampApplyProfiles(_model);
         self.applyButton.selected = !self.applyButton.selected;
@@ -132,6 +132,7 @@
     // adjust
     applyButton.right = infoView.width - sMargin;
     deleteButton.right = applyButton.left - sMargin;
+    
     
 }
 

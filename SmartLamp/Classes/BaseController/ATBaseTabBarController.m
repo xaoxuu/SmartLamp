@@ -99,7 +99,7 @@
     [atCentral.didConnect subscribeNext:^(id x) {
         if ([x boolValue]) {
             [self.centerButton setImage:[UIImage imageNamed:@"tabbar_lamp"] forState:UIControlStateNormal];
-            [self.centerButton setImage:[UIImage imageNamed:@"tabbar_lampHL"] forState:UIControlStateSelected];
+            [self.centerButton setImage:[UIImage imageNamed:@"tabbar_lamp_HL"] forState:UIControlStateSelected];
         } else{
             [self.centerButton setImage:[UIImage imageNamed:@"tabbar_bluetoothHL"] forState:UIControlStateNormal];
             [self.centerButton setImage:[UIImage imageNamed:@"tabbar_bluetoothHL"] forState:UIControlStateSelected];

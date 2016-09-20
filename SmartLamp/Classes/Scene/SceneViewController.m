@@ -106,6 +106,9 @@
     self.atNavigationView = [ATNavigationView viewWithBarTintColor:atColor.theme height:64 title:@"情景模式"];
     [self.view addSubview:self.atNavigationView];
     
+    [self.atNavigationView at_leftButtonWithImage:@"icon_delete" action:^{
+        [self.collectionView removeItem];
+    }];
     [self.atNavigationView at_rightButtonWithImage:@"scene_add" action:^{
         [self.collectionView addItem];
     }];

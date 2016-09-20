@@ -33,8 +33,6 @@ static inline void atNoti_deviceStatus(NSObject *obj){
 @property (strong, nonatomic) SCLAlertView *alertForDeviceFound;
 // alert for connecting
 @property (strong, nonatomic) SCLAlertView *alertForConnecting;
-// alert for connect success
-@property (strong, nonatomic) SCLAlertView *alertForConnectSuccess;
 
 
 @end
@@ -218,20 +216,11 @@ static BOOL isShowingAlert = NO;
 }
 
 // alert for connect success
-- (SCLAlertView *)alertForConnectSuccess{
+- (void)alertForConnectSuccess{
     // hide connecting view
     [self.alertForConnecting hideView];
     self.alertForConnecting = nil;
-    if (!_alertForConnectSuccess) {
-        SCLAlertView *alert = [SCLAlertView at_SCLAlertViewWithColor:atColor.theme];
-        [alert addButton:@"好的" actionBlock:^{
-            self.alertForConnectSuccess = nil;
-        }];
-        [alert showSuccess:self title:@"连接成功" subTitle:@"蓝牙灯连接成功!" closeButtonTitle:nil duration:1.0f];
-        _alertForConnectSuccess = alert;
-        
-    }
-    return _alertForConnectSuccess;
+    [ATProgressHUD at_target:self.view showInfo:@"连接成功" duration:1];
     
 }
 

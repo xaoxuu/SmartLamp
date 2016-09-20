@@ -21,7 +21,7 @@
 
 // Aesir Titan
 #import <ATKit/ATKit.h>
-
+#import <ATKit/ATProgressHUD.h>
 
 #import "SmartLampConst.h"
 
