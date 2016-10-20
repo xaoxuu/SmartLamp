@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2B959B5CC66C40DD4374BA28 /* Pods_SmartLamp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E10AEEBF6706EA924E438757 /* Pods_SmartLamp.framework */; };
+		2B959B5CC66C40DD4374BA28 /* Pods_SmartLamp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E10AEEBF6706EA924E438757 /* Pods_SmartLamp.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		DD0D5CAE1D70240C00CE79C7 /* SceneCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0D5CAC1D70240C00CE79C7 /* SceneCollectionViewCell.m */; };
 		DD0D5CB21D702E2E00CE79C7 /* SceneCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0D5CB11D702E2E00CE79C7 /* SceneCollectionView.m */; };
 		DD0D5CB41D702E3A00CE79C7 /* SceneCollectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD0D5CB31D702E3A00CE79C7 /* SceneCollectionView.xib */; };
@@ -901,7 +901,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DDC0AFFA1CC8C29100B669A1 /* Build configuration list for PBXNativeTarget "SmartLamp" */;
 			buildPhases = (
-				BCD62E46F8D31FDB9026EA2B /* 📦 Check Pods Manifest.lock */,
+				BCD62E46F8D31FDB9026EA2B /* [CP] Check Pods Manifest.lock */,
 				701EB5A36EF4F411C458E4F8 /* [CP] Check Pods Manifest.lock */,
 				DDC0AFC91CC8C29100B669A1 /* Sources */,
 				DDC0AFCA1CC8C29100B669A1 /* Frameworks */,
@@ -968,7 +968,7 @@
 				TargetAttributes = {
 					DDC0AFCC1CC8C29100B669A1 = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = 6C36HX8DP4;
+						DevelopmentTeam = 7XN2GXNAZS;
 					};
 					DDC0AFE51CC8C29100B669A1 = {
 						CreatedOnToolsVersion = 7.3;
@@ -1127,19 +1127,19 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SmartLamp/Pods-SmartLamp-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		BCD62E46F8D31FDB9026EA2B /* 📦 Check Pods Manifest.lock */ = {
+		BCD62E46F8D31FDB9026EA2B /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1381,9 +1381,10 @@
 					"\"SDWebImage\"",
 					"-ObjC",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = io.github.titanstudio.SmartLamp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.titanstudio.smartlamp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1430,9 +1431,10 @@
 					"\"SDWebImage\"",
 					"-ObjC",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = io.github.titanstudio.SmartLamp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.titanstudio.smartlamp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

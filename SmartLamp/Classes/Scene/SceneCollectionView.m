@@ -34,6 +34,8 @@
     [super awakeFromNib];
     [self setupCollectionView];
     [self setupPageControl];
+    self.width = kScreenW;
+    self.height = kScreenH - self.top;
 }
 
 
@@ -159,7 +161,7 @@
 
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
-    return CGSizeMake(kScreenW, 455);
+    return CGSizeMake(self.width, self.height-64-49);
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
