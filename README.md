@@ -25,3 +25,58 @@
 - 开灯时瞬间变亮太刺眼如何进行体验优化？创建一个定时器，每次开灯的时候设置亮度为0，每隔50ms左右调用一次增加一点亮度，直至亮度达到关灯前的状态。
 - 关于丢包问题如何解决？可以对每一包发送的数据添加到数组里，每次从中取出一包发送，一定时间内没有收到返回值就重发。
 - 如何防止数据被拦截？通常采取加密措施。拟定一份加密协议，对数据进行打乱、插值、重组等。
+
+
+
+## 截图
+
+#### iPhone 4寸
+
+
+
+![IMG_0010](resources/screenshot/iphone,4.0/IMG_0010.PNG)
+
+
+![IMG_0010](resources/screenshot/iphone,4.0/IMG_0001.PNG)
+
+
+![IMG_0010](resources/screenshot/iphone,4.0/IMG_0011.PNG)
+
+
+
+
+
+
+![IMG_0010](resources/screenshot/iphone,4.0/IMG_0016.PNG)
+![IMG_0010](resources/screenshot/iphone,4.0/IMG_0017.PNG)
+
+![IMG_0010](resources/screenshot/iphone,4.0/IMG_0013.PNG)
+
+![IMG_0010](resources/screenshot/iphone,4.0/IMG_0014.PNG)
+
+
+
+#### iPhone 4.7寸
+
+![](resources/screenshot/iphone,4.7/screenshotiphone,4.7-1.png)
+![](resources/screenshot/iphone,4.7/screenshotiphone,4.7-2.png)
+
+![](resources/screenshot/iphone,4.7/screenshotiphone,4.7-3.png)
+
+![](resources/screenshot/iphone,4.7/screenshotiphone,4.7-4.png)
+
+![](resources/screenshot/iphone,4.7/screenshotiphone,4.7-5.png)
+
+
+
+
+
+
+#### iPhone 5.5寸
+
+![](resources/screenshot/iphone,5.5/screenshotiphone,5.5-1.png)
+![](resources/screenshot/iphone,5.5/screenshotiphone,5.5-2.png)
+![](resources/screenshot/iphone,5.5/screenshotiphone,5.5-3.png)
+![](resources/screenshot/iphone,5.5/screenshotiphone,5.5-4.png)
+![](resources/screenshot/iphone,5.5/screenshotiphone,5.5-5.png)
+
