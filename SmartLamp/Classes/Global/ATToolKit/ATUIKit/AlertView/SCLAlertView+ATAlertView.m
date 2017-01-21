@@ -55,9 +55,9 @@
 
 + (instancetype)at_SCLAlertViewWithDefaultColor {
     SCLAlertView *alert = [[SCLAlertView alloc] init];
-    alert.showAnimationType = FadeIn;
-    alert.hideAnimationType = FadeOut;
-    alert.backgroundType = Blur;
+    alert.showAnimationType = SCLAlertViewShowAnimationFadeIn;
+    alert.hideAnimationType = SCLAlertViewHideAnimationFadeOut;
+    alert.backgroundType = SCLAlertViewBackgroundBlur;
     return alert;
 }
 

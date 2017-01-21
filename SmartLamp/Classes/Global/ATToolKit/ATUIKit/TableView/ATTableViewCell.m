@@ -23,8 +23,10 @@
 
 
 - (void)awakeFromNib {
+    
     // Initialization code
     [self initUI];
+    [super awakeFromNib];
 }
 
 - (instancetype)init {

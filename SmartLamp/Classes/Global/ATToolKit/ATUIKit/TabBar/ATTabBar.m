@@ -106,7 +106,8 @@ static NSUInteger lastTap;
 
 // remove separator
 - (void)removeSeparator{
-    [[self.subviews lastObject] removeFromSuperview];
+    [[self.subviews firstObject] removeFromSuperview];
+    self.backgroundColor = atColor.white;
 }
 
 // lazy load

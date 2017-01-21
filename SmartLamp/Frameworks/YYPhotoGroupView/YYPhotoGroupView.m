@@ -132,26 +132,27 @@
         return;
     }
     
-    @weakify(self);
+//    @weakify(self);
+    __weak YYPhotoGroupCell *weakSelf = self;
     [_imageView setImageWithURL:item.largeImageURL placeholder:item.thumbImage options:kNilOptions progress:^(NSInteger receivedSize, NSInteger expectedSize) {
-        @strongify(self);
-        if (!self) return;
+//        @strongify(self);
+        if (!weakSelf) return;
         CGFloat progress = receivedSize / (float)expectedSize;
         progress = progress < 0.01 ? 0.01 : progress > 1 ? 1 : progress;
         if (isnan(progress)) progress = 0;
-        self.progressLayer.hidden = NO;
-        self.progressLayer.strokeEnd = progress;
+        weakSelf.progressLayer.hidden = NO;
+        weakSelf.progressLayer.strokeEnd = progress;
     } transform:nil completion:^(UIImage *image, NSURL *url, YYWebImageFromType from, YYWebImageStage stage, NSError *error) {
-        @strongify(self);
-        if (!self) return;
-        self.progressLayer.hidden = YES;
+//        @strongify(self);
+        if (!weakSelf) return;
+        weakSelf.progressLayer.hidden = YES;
         if (stage == YYWebImageStageFinished) {
-            self.maximumZoomScale = 3;
+            weakSelf.maximumZoomScale = 3;
             if (image) {
                 self->_itemDidLoad = YES;
                 
-                [self resizeSubviewSize];
-                [self.imageView.layer addFadeAnimationWithDuration:0.1 curve:UIViewAnimationCurveLinear];
+                [weakSelf resizeSubviewSize];
+                [weakSelf.imageView.layer addFadeAnimationWithDuration:0.1 curve:UIViewAnimationCurveLinear];
             }
         }
         

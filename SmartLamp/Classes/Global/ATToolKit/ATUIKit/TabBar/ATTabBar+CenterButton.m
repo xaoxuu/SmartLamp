@@ -51,8 +51,9 @@ static ATAnimationView *animation;
     const CGFloat btnH = self.height;
     CGFloat tabBarButtonY = 0;
     // index
-    int tabBarButtonIndex = 0;
+    NSUInteger tabBarButtonIndex = 0;
     // setting
+    
     for (UIView *subview in self.subviews) {
         // filter UITabBarButton
         if (subview.class != NSClassFromString(@"UITabBarButton")) continue;
@@ -65,6 +66,7 @@ static ATAnimationView *animation;
         subview.frame = CGRectMake(tabBarButtonX, tabBarButtonY, btnW, btnH);
         // index++
         tabBarButtonIndex++;
+        
     }
     
     // center button and animation

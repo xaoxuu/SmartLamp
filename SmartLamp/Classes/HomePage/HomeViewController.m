@@ -157,6 +157,7 @@
     
     self.contentView.width = kScreenW;
     self.contentView.height = kScreenH - self.contentView.top - 90;
+    
     self.atToolBar = [ATTabBarView tabBarWithTitleView:self.atToolbarView titles:@[@"状态",@"颜色",@"定时"] titleColor:atColor.white rippleColor:atColor.theme.darkRatio(0.2) contentView:self.contentView content:^UIView *(NSUInteger index) {
         return views[index];
     } action:^(NSUInteger index) {

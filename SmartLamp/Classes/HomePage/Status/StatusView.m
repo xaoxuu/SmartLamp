@@ -47,6 +47,7 @@
     [self handleTextFieldEvents];
     // update UI
     [self updateUI];
+    [super awakeFromNib];
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{

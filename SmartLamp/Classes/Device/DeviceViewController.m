@@ -54,7 +54,7 @@
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     // do not allows to show alert
-    AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     appDelegate.rootVC.allowsShowAlert = NO;
     // reload data
 //    [self reloadData];
@@ -67,7 +67,7 @@
 - (void)viewDidDisappear:(BOOL)animated{
     [super viewDidDisappear:animated];
     // do not allows to show alert
-    AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     appDelegate.rootVC.allowsShowAlert = YES;
 //    // reload data
 //    [self reloadData];

@@ -140,6 +140,8 @@ static inline CGFloat heightOf(UIView *view){
     self.contentScrollView = [[UIScrollView alloc] initWithFrame:contentView.bounds];
     [contentView addSubview:[[UIView alloc] initWithFrame:CGRectMake(0, 0, 1, 1)]];
     [contentView addSubview:self.contentScrollView];
+    NSLog(@"%lf",self.contentScrollView.frame.size.width);
+    NSLog(@"%lf",contentView.frame.size.width);
     // do something
     self.contentScrollView.delegate = self;
     self.contentScrollView.showsHorizontalScrollIndicator = NO;
@@ -378,7 +380,9 @@ static inline CGFloat heightOf(UIView *view){
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
     
     // select index
-    self.selectIndex((NSUInteger)scrollView.contentOffset.x/self.frame.size.width);
+    NSUInteger index = (NSUInteger)(scrollView.contentOffset.x/self.contentScrollView.frame.size.width);
+    NSLog(@"%lf,%lf,%lf",scrollView.contentOffset.x,self.contentScrollView.frame.size.width,scrollView.contentOffset.x/self.frame.size.width);
+    self.selectIndex(index);
     
 }
 

@@ -963,12 +963,13 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = AT;
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "Titan Studio";
 				TargetAttributes = {
 					DDC0AFCC1CC8C29100B669A1 = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = 7XN2GXNAZS;
+						DevelopmentTeam = 6C36HX8DP4;
+						LastSwiftMigration = 0800;
 					};
 					DDC0AFE51CC8C29100B669A1 = {
 						CreatedOnToolsVersion = 7.3;
@@ -1268,8 +1269,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -1313,8 +1316,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -1346,18 +1351,16 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 6C36HX8DP4;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/SmartLamp/Framework",
-					"$(PROJECT_DIR)/SmartLamp/Framework/Debug-iphonesimulator",
 					"$(PROJECT_DIR)",
-					"$(PROJECT_DIR)/Frameworks",
 				);
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/SmartLamp/PrefixHeader.pch";
 				INFOPLIST_FILE = SmartLamp/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -1372,18 +1375,17 @@
 					"-framework",
 					"\"MJRefresh\"",
 					"-framework",
-					"\"ReactiveCocoa\"",
-					"-framework",
-					"\"Result\"",
-					"-framework",
 					"\"SCLAlertView_Objective_C\"",
 					"-framework",
 					"\"SDWebImage\"",
+					"-framework",
+					"\"ReactiveObjC\"",
 					"-ObjC",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.titanstudio.smartlamp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.titanstudio.smartlamp2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -1396,18 +1398,16 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 6C36HX8DP4;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/SmartLamp/Framework",
-					"$(PROJECT_DIR)/SmartLamp/Framework/Debug-iphonesimulator",
 					"$(PROJECT_DIR)",
-					"$(PROJECT_DIR)/Frameworks",
 				);
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/SmartLamp/PrefixHeader.pch";
 				INFOPLIST_FILE = SmartLamp/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -1422,18 +1422,17 @@
 					"-framework",
 					"\"MJRefresh\"",
 					"-framework",
-					"\"ReactiveCocoa\"",
-					"-framework",
-					"\"Result\"",
-					"-framework",
 					"\"SCLAlertView_Objective_C\"",
 					"-framework",
 					"\"SDWebImage\"",
+					"-framework",
+					"\"ReactiveObjC\"",
 					"-ObjC",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.titanstudio.smartlamp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.titanstudio.smartlamp2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

@@ -31,6 +31,7 @@
     
     [self setupTableView];
     
+    [super awakeFromNib];
 }
 
 // setup table view

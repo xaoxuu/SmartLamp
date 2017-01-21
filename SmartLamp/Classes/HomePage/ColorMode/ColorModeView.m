@@ -38,6 +38,7 @@
     // setup gesture
     [self setupGestureRecognizer];
     
+    [super awakeFromNib];
 }
 
 // animation button events

@@ -13,6 +13,7 @@
 
 - (void)awakeFromNib{
     [self setupButtonStyle];
+    [super awakeFromNib];
 }
 
 - (instancetype)initWithCoder:(NSCoder *)coder

@@ -22,6 +22,7 @@
 - (void)awakeFromNib {
     // Initialization code
     [self initRippleLayer];
+    [super awakeFromNib];
 }
 
 - (instancetype)init {

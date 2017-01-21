@@ -6,7 +6,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import <QuartzCore/QuartzCore.h>
 IB_DESIGNABLE
 @interface ATAnimationView : UIView
 

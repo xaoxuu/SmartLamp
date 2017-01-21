@@ -91,7 +91,7 @@ You can either use these controls in your app via 2 ways:
 
 <p>2. Use via cocoapods</p>
 <p>   Add following line to Podfile:</p>
-<p>     pod 'MaterialControls', '~> 1.0.2'</p>
+<p>     pod 'MaterialControls', '~> 1.2.2'</p>
 
 # Some samples with floating button
 <p align="center">
