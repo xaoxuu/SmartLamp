@@ -1,4 +1,4 @@
-![](resources/icons/header.png)
+[![](resources/icons/header.png)](https://xaoxuu.com/smartlamp)
 
 > 一键设置情景模式、无极调光调色、定时关灯。 
 >
