@@ -1,6 +1,10 @@
-# SmartLamp
+![](resources/icons/header.png)
 
+> 一键设置情景模式、无极调光调色、定时关灯。 
+>
+> 智能家居可以变得如此简单。
 
+[![](resources/icons/button.png)](http://appstore.com)
 
 ## Smart Lamp 要点概述
 
