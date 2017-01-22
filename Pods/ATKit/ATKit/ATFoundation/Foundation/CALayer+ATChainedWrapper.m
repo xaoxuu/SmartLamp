@@ -7,7 +7,7 @@
 //
 
 #import "CALayer+ATChainedWrapper.h"
-#import <ATKit/UIColorManager.h>
+#import "UIColorManager.h"
 
 @implementation CALayer (ATChainedWrapper)
 

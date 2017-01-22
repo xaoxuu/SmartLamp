@@ -10,17 +10,14 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ColorModeView">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GAi-aH-9M3">
-                    <frame key="frameInset" width="600" height="600"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GAi-aH-9M3">
                     <subviews>
-                        <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ccG-ak-60d">
-                            <frame key="frameInset" width="600" height="540"/>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ccG-ak-60d">
                             <subviews>
-                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EcA-9q-t90">
-                                    <frame key="frameInset" minX="200" minY="170" width="200" height="200"/>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EcA-9q-t90">
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Image_Palette" translatesAutoresizingMaskIntoConstraints="NO" id="ZFb-Ad-cmn">
                                             <gestureRecognizers/>
@@ -42,11 +39,9 @@
                                 <constraint firstItem="EcA-9q-t90" firstAttribute="centerY" secondItem="ccG-ak-60d" secondAttribute="centerY" id="boc-Kg-6hv"/>
                             </constraints>
                         </view>
-                        <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TWg-66-O6x">
-                            <frame key="frameInset" minX="8" minY="540" width="584" height="52"/>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TWg-66-O6x">
                             <subviews>
-                                <button opaque="NO" tag="38" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="62G-cn-Kcc" customClass="ATRadioButton">
-                                    <frame key="frameInset" minX="8" minY="8" width="184" height="36"/>
+                                <button opaque="NO" tag="38" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="62G-cn-Kcc" customClass="ATRadioButton">
                                     <color key="backgroundColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="36" id="t9K-ic-D0M"/>
@@ -63,8 +58,7 @@
                                         <action selector="animationBtn:" destination="iN0-l3-epB" eventType="touchUpInside" id="qpU-ze-0l6"/>
                                     </connections>
                                 </button>
-                                <button opaque="NO" tag="39" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="eVh-ry-cNv" customClass="ATRadioButton">
-                                    <frame key="frameInset" minX="200" minY="8" width="184" height="36"/>
+                                <button opaque="NO" tag="39" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="eVh-ry-cNv" customClass="ATRadioButton">
                                     <color key="backgroundColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="36" id="8JP-x6-V7Z"/>
@@ -81,8 +75,7 @@
                                         <action selector="animationBtn:" destination="iN0-l3-epB" eventType="touchUpInside" id="uag-yI-MmE"/>
                                     </connections>
                                 </button>
-                                <button opaque="NO" tag="40" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="9ny-aV-TZ7" customClass="ATRadioButton">
-                                    <frame key="frameInset" minX="392" minY="8" width="184" height="36"/>
+                                <button opaque="NO" tag="40" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="9ny-aV-TZ7" customClass="ATRadioButton">
                                     <color key="backgroundColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="36" id="Z6W-WK-Yo0"/>

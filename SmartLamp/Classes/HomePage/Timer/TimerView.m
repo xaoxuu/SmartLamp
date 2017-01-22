@@ -16,7 +16,8 @@
 // selected row
 @property (assign, nonatomic) NSUInteger selectedRow;
 // table view
-@property (strong, nonatomic) UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+
 
 @end
 
@@ -37,8 +38,8 @@
 // setup table view
 - (void)setupTableView{
     // init and add to superview
-    self.tableView = [[UITableView alloc] initWithFrame:self.frame style:UITableViewStylePlain];
-    [self addSubview:self.tableView];
+//    self.tableView = [[UITableView alloc] initWithFrame:self.contentView.frame style:UITableViewStylePlain];
+//    [self.contentView addSubview:self.tableView];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     

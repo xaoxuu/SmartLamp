@@ -14,18 +14,18 @@ PODS:
   - AFNetworking/Serialization (3.0.4)
   - AFNetworking/UIKit (3.0.4):
     - AFNetworking/NSURLSession
-  - ATKit (0.0.3):
-    - ATKit/ATCarousel (= 0.0.3)
-    - ATKit/ATDrawer (= 0.0.3)
-    - ATKit/ATFoundation (= 0.0.3)
-    - ATKit/ATProgressHUD (= 0.0.3)
-    - ATKit/ATTabBar (= 0.0.3)
-  - ATKit/ATCarousel (0.0.3)
-  - ATKit/ATDrawer (0.0.3)
-  - ATKit/ATFoundation (0.0.3)
-  - ATKit/ATProgressHUD (0.0.3):
+  - ATKit (0.0.5):
+    - ATKit/ATCarousel (= 0.0.5)
+    - ATKit/ATDrawer (= 0.0.5)
+    - ATKit/ATFoundation (= 0.0.5)
+    - ATKit/ATProgressHUD (= 0.0.5)
+    - ATKit/ATTabBar (= 0.0.5)
+  - ATKit/ATCarousel (0.0.5)
+  - ATKit/ATDrawer (0.0.5)
+  - ATKit/ATFoundation (0.0.5)
+  - ATKit/ATProgressHUD (0.0.5):
     - ATKit/ATFoundation
-  - ATKit/ATTabBar (0.0.3)
+  - ATKit/ATTabBar (0.0.5)
   - FMDB (2.6.2):
     - FMDB/standard (= 2.6.2)
   - FMDB/standard (2.6.2)
@@ -57,7 +57,7 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   AFNetworking: a0075feb321559dc78d9d85b55d11caa19eabb93
-  ATKit: 3c33fe256e19987015a9650dfd5aa50f0e524e6c
+  ATKit: 0dc0d9acc514495837a25e69134931dddbe992ab
   FMDB: 854a0341b4726e53276f2a8996f06f1b80f9259a
   HYBNetworking: cb4d4bbe247f69dad3cc1a01eb5df69e01976ac6
   MaterialControls: 1c6b29e78d3a13d8dd6a67ed31b6d26eb5de8f72
