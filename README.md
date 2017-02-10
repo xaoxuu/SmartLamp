@@ -6,6 +6,8 @@
 
 [![](resources/icons/button.png)](http://appstore.com)
 
+###### v3.0：已适配iOS10
+
 
 
 ## 产品概述
