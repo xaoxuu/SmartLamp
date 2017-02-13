@@ -4,7 +4,7 @@
 >
 > 智能家居可以变得如此简单。
 
-[![](resources/icons/button.png)](http://appstore.com)
+[![](resources/icons/button.png)](https://itunes.apple.com/cn/app/smart-lamp-lan-ya-deng/id1167432725)
 
 ###### v3.0：已适配iOS10
 
