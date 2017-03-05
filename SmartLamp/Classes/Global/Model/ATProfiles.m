@@ -82,6 +82,10 @@ static NSUInteger countOfSceneImages = 8;
     return ^(){
         return self;
     };
+    
+    UIButton *butoin = [[UIButton alloc] init];
+    
+    UIButton *button2 = [UIButton buttonWithType:UIButtonTypeCustom];
 }
 
 
