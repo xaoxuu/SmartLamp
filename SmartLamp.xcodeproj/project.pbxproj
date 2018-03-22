@@ -968,9 +968,9 @@
 				TargetAttributes = {
 					DDC0AFCC1CC8C29100B669A1 = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = 7XN2GXNAZS;
+						DevelopmentTeam = 34W5TB5KD2;
 						LastSwiftMigration = 0800;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 					DDC0AFE51CC8C29100B669A1 = {
 						CreatedOnToolsVersion = 7.3;
@@ -1354,7 +1354,8 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 7XN2GXNAZS;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = 34W5TB5KD2;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1385,10 +1386,10 @@
 					"\"ReactiveObjC\"",
 					"-ObjC",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.titanstudio.smartlamp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.xaoxuu.smartlamp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "2022bb8a-9fa6-4392-8284-29430f5d8f89";
+				PROVISIONING_PROFILE_SPECIFIER = "Smart Lamp Development";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1402,7 +1403,8 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 7XN2GXNAZS;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = 34W5TB5KD2;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1433,10 +1435,10 @@
 					"\"ReactiveObjC\"",
 					"-ObjC",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.titanstudio.smartlamp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.xaoxuu.smartlamp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "2022bb8a-9fa6-4392-8284-29430f5d8f89";
+				PROVISIONING_PROFILE_SPECIFIER = "Smart Lamp Development";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
